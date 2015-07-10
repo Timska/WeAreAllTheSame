@@ -7,7 +7,7 @@ public class Category {
 
 	private String name;
 	private List<Game> games;
-	private int resourceId;
+	private int pictureResourceId;
 	
 	public Category(){
 		games = new ArrayList<Game>();
@@ -16,7 +16,7 @@ public class Category {
 	public Category(String name, int resourceId){
 		this.name = name;
 		games = new ArrayList<Game>();
-		this.resourceId = resourceId;
+		this.pictureResourceId = resourceId;
 	}
 	
 	public void addNewGame(Game g){
@@ -28,7 +28,7 @@ public class Category {
 	}
 
 	public int getResourceId() {
-		return resourceId;
+		return pictureResourceId;
 	}
 
 	public List<Game> getGames() {

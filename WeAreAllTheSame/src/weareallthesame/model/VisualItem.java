@@ -1,10 +1,10 @@
 package weareallthesame.model;
 
-public class SoundItem extends Item{
+public class VisualItem extends Item {
 
 	private int resourceId;
 	
-	public SoundItem(String name, Category category, int resourceId){
+	public VisualItem(String name, Category category, int resourceId){
 		super(name, category);
 		this.resourceId = resourceId;
 	}
