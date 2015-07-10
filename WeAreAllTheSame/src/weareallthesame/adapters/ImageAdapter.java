@@ -1,6 +1,8 @@
 package weareallthesame.adapters;
 
-import weareallthesame.view.R;
+import java.util.List;
+
+import weareallthesame.model.Category;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,15 +11,17 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 public class ImageAdapter extends BaseAdapter {
-	
-	private Context mContext;
 
-	public ImageAdapter(Context c) {
+	private Context mContext;
+	public static List<Category> mThumbIds;
+
+	public ImageAdapter(Context c, List<Category> categories) {
 		mContext = c;
+		mThumbIds = categories;
 	}
 
 	public int getCount() {
-		return mThumbIds.length;
+		return mThumbIds.size();
 	}
 
 	public Object getItem(int position) {
@@ -41,20 +45,8 @@ public class ImageAdapter extends BaseAdapter {
 			imageView = (ImageView) convertView;
 		}
 
-		imageView.setImageResource(mThumbIds[position]);
+		imageView.setImageResource(mThumbIds.get(position).getResourceId());
 		return imageView;
 	}
-	
-	private Integer[] mThumbIds = { 
-			R.drawable.letters, R.drawable.numbers,
-			R.drawable.forms, R.drawable.animals,
-			R.drawable.fruit_vegetables, R.drawable.weather,
-			R.drawable.seasons, R.drawable.months_days, 
-			R.drawable.day_details, R.drawable.colors_objects, 
-			R.drawable.prepositions, R.drawable.hygiene, 
-			R.drawable.body_parts, R.drawable.emotions, 
-			R.drawable.clothes };
-	
+
 }
-
-

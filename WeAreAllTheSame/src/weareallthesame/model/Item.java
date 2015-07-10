@@ -4,12 +4,12 @@ public abstract class Item {
 
 	private Category category;
 	private String name;
-	
-	public Item(){
-		
+
+	public Item() {
+
 	}
-	
-	public Item(String name, Category category){
+
+	public Item(String name, Category category) {
 		this.name = name;
 		this.category = category;
 	}
@@ -21,6 +21,5 @@ public abstract class Item {
 	public Category getCategory() {
 		return category;
 	}
-	
-	
+
 }

@@ -3,8 +3,8 @@ package weareallthesame.model;
 public class VisualItem extends Item {
 
 	private int resourceId;
-	
-	public VisualItem(String name, Category category, int resourceId){
+
+	public VisualItem(String name, Category category, int resourceId) {
 		super(name, category);
 		this.resourceId = resourceId;
 	}
@@ -12,5 +12,5 @@ public class VisualItem extends Item {
 	public int getResourceId() {
 		return resourceId;
 	}
-	
+
 }
