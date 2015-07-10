@@ -10,6 +10,7 @@ public class MainInitialization {
 
 	public static final int NumeberOfCategories = 15;
 	
+	//Category names in static array
 	private static String[] names = {"Букви", "Бројки", "Форми", "Животни", 
 		"Овошје и зеленчук", "Временски услови", "Годишни времиња", "Денови и месеци",
 		"Ден", "Бои и предмети", "Предлози", "Хигиена", "Делови од тело", "Облека", "Емоции"};
