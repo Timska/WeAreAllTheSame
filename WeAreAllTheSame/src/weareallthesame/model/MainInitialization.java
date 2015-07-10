@@ -3,6 +3,7 @@ package weareallthesame.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Context;
 import weareallthesame.view.R;
 
 
@@ -10,10 +11,15 @@ public class MainInitialization {
 
 	public static final int NumeberOfCategories = 15;
 	
-	//Category names in static array
-	private static String[] names = {"Букви", "Бројки", "Форми", "Животни", 
-		"Овошје и зеленчук", "Временски услови", "Годишни времиња", "Денови и месеци",
-		"Ден", "Бои и предмети", "Предлози", "Хигиена", "Делови од тело", "Емоции", "Облека"};
+	private static Integer[] stringIds = { 
+		R.string.letters, R.string.numbers,
+		R.string.forms, R.string.animals,
+		R.string.fruit_vegetables, R.string.weather,
+		R.string.seasons, R.string.months_days, 
+		R.string.day_details, R.string.colors_objects, 
+		R.string.prepositions, R.string.hygiene, 
+		R.string.body_parts, R.string.emotions, 
+		R.string.clothes };
 	
 	private static Integer[] mThumbIds = { 
 			R.drawable.letters, R.drawable.numbers,
@@ -25,10 +31,10 @@ public class MainInitialization {
 			R.drawable.body_parts, R.drawable.emotions, 
 			R.drawable.clothes };
 	
-	public static List<Category> initializeCategories(){
+	public static List<Category> initializeCategories(Context ctx){
 		List<Category> list = new ArrayList<Category>();
 		for(int i=0; i<NumeberOfCategories; ++i){
-			Category c = new Category(names[i], mThumbIds[i]);
+			Category c = new Category(ctx.getString(stringIds[i]), mThumbIds[i]);
 			list.add(c);
 		}
 		

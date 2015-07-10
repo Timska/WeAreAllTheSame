@@ -4,5 +4,22 @@
     <string name="app_name">WeAreAllTheSame</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
+    <!-- Category names -->
+    <string name="letters">Букви</string>
+    <string name="numbers">Бројки</string>
+    <string name="forms">Форми</string>
+    <string name="animals">Животни</string>
+    <string name="fruit_vegetables">Овошје и зеленчук</string>
+    <string name="weather">Временски услови</string>
+    <string name="seasons">Годишни времиња</string>
+    <string name="months_days">Денови и месеци</string>
+    <string name="day_details">Ден</string>
+    <string name="colors_objects">Бои и предмети</string>
+    <string name="prepositions">Предлози</string>
+    <string name="hygiene">Хигиена</string>
+    <string name="body_parts">Делови од тело</string>
+    <string name="emotions">Емоции</string>
+    <string name="clothes">Облека</string>
 
 </resources>
