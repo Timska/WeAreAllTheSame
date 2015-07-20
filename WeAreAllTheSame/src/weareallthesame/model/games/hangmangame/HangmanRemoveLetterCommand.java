@@ -3,9 +3,8 @@ package weareallthesame.model.games.hangmangame;
 import weareallthesame.model.commands.AbstractCommand;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
-import weareallthesame.model.interfaces.Typable;
 
-public class HangmanRemoveLetterCommand extends AbstractCommand implements Typable {
+public class HangmanRemoveLetterCommand extends AbstractCommand {
 
 	private HangmanInterface game;
 	private int positionFrom;

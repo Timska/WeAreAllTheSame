@@ -9,16 +9,10 @@ import weareallthesame.model.exceptions.InvalidViewTypeException;
 import weareallthesame.model.games.Game;
 import weareallthesame.model.games.hangmangame.HangmanGame;
 
-public class LettersCategory implements CategoryInterface{
+public class LettersCategory extends AbstractCategory{
 
-	private String name;
-
-	public LettersCategory(String name) {
-		this.name = name;
-	}
-
-	public String getName() {
-		return name;
+	public LettersCategory(String name, String resourceName) {
+		super(name, resourceName);
 	}
 
 	@Override

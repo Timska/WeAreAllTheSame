@@ -10,6 +10,7 @@ import weareallthesame.model.commands.Command;
 import weareallthesame.model.exceptions.CommandDoesNotExistException;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.interfaces.TypeHolder;
 
 public abstract class AbstractGame implements Game {
 	private List<String> tags;

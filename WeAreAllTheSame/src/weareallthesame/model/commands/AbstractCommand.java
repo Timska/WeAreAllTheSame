@@ -2,8 +2,9 @@ package weareallthesame.model.commands;
 
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.interfaces.Typable;
 
-public abstract class AbstractCommand implements Command {
+public abstract class AbstractCommand implements Command, Typable {
 	private boolean executed;
 
 	@Override
