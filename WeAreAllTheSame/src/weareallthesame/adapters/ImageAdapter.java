@@ -2,7 +2,7 @@ package weareallthesame.adapters;
 
 import java.util.List;
 
-import weareallthesame.model.Category;
+import weareallthesame.model.categories.Category;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;

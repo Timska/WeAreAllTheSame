@@ -3,8 +3,9 @@ package weareallthesame.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Context;
+import weareallthesame.model.categories.Category;
 import weareallthesame.view.R;
+import android.content.Context;
 
 public class MainInitialization {
 
