@@ -23,5 +23,6 @@
     <string name="clothes">Облека</string>
     <string name="title_activity_zoom">ZoomActivity</string>
     <string name="description_zoom_touch_close">Expanded image (touch to close)</string>
+    <string name="title_activity_hangman_game">HangmanGameActivity</string>
 
 </resources>

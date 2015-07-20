@@ -1,7 +1,9 @@
-package weareallthesame.model;
+package weareallthesame.model.categories;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import weareallthesame.model.games.Game;
 
 public class Category {
 

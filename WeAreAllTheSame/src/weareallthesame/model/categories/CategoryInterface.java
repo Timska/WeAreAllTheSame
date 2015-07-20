@@ -1,0 +1,28 @@
+package weareallthesame.model.categories;
+
+import java.util.Iterator;
+
+import weareallthesame.model.exceptions.GameDoesNotExistException;
+import weareallthesame.model.exceptions.InvalidViewTypeException;
+import weareallthesame.model.games.Game;
+import weareallthesame.model.interfaces.Typable;
+import weareallthesame.model.interfaces.TypeHolder;
+
+/**
+ * Sekoja klasa sto ke go implementira ovoj interfejs ke bide fabrika za igri.
+ * @author i5
+ *
+ */
+public interface CategoryInterface extends TypeHolder, Typable{
+
+	/**
+	 * Ovoj metod ke kreira igra spored tipot.
+	 * @param type tipot na igrata sto treba da se kreira
+	 * @param tags tagovite koi potoa ke se predadat na igrata sto se kreira
+	 * @return kreiranata igra
+	 * @throws GameDoesNotExistException kategorijata od koja sto ja barate igrata ne znae da ja kreira
+	 * @throws InvalidViewTypeException ispratenoto view ne moze da se iskoristi za toj tip na igra
+	 */
+	public Game getGame(String type, Iterator<String> tags, Object view) throws GameDoesNotExistException, InvalidViewTypeException;
+	
+}
