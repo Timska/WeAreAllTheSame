@@ -17,17 +17,32 @@ public class CategoryFactory implements TypeHolder{
 	 * @return kategorija
 	 * @throws CategoryDoesNotExistException ne znae da kreira kategorija za dadeniot tip
 	 */
-	public AbstractCategory getCategory(String type, String name, String resourceName) throws CategoryDoesNotExistException{
+	public AbstractCategory getCategory(String type) throws CategoryDoesNotExistException{
 		/* TODO ke treba da se doimplementira za dadeniot tip da se kreira soodvetnata kategorija.
-			Ne e seuste implementirano bidejki ne se kreirani site kategorii. */
+			Treba da procita od baza. */
 		
 		if(type.equalsIgnoreCase("letters")){
-			return new LettersCategory(name, resourceName);
+			return new LettersCategory("Букви", "letters");
 		}
 		
 		throw new CategoryDoesNotExistException("Ne postoi kategorija za dadeniot tip");
 	}
-
+	
+	/**
+	 * Ovoj metod ke vraka resurs za tip na kategorija
+	 * @param type tipot na kategorijata
+	 * @return resurs do slika za kategorijata
+	 */
+	public String getCategoryResource(String type){
+		//TODO od baza da se napravi vcituvanje na resursot za dadenata kategorija
+		return null;
+	}
+	
+	public String getCategoryName(String type){
+		//TODO od baza da se napravi vcituvanje na imeto za dadenata kategorija
+		return null;
+	}
+	
 	@Override
 	public Iterator<String> getTypes() {
 		/* TODO da se procitaat kateoriite od baza ili staticki vo lista da se dodadat kako sto imam

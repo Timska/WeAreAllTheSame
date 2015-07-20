@@ -25,4 +25,7 @@ public interface CategoryInterface extends TypeHolder, Typable{
 	 */
 	public Game getGame(String type, Iterator<String> tags, Object view) throws GameDoesNotExistException, InvalidViewTypeException;
 	
+	public String getName();
+	
+	public String getResourceName();
 }
