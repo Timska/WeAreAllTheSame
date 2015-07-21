@@ -1,5 +1,7 @@
 package weareallthesame.view;
 
+import java.util.List;
+
 import weareallthesame.model.items.Item;
 import weareallthesame.view.games.hangmangame.HangmanViewInterface;
 import android.app.Activity;
@@ -35,7 +37,20 @@ public class HangmanGameActivity extends Activity implements HangmanViewInterfac
 	}
 
 	@Override
-	public void setAnswer(Item item) {
+	public void gameOver() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setOrUpdateOfferedLettersAndUsedLetters(
+			List<Character> allOfferedLetters, List<Boolean> usedLettersFlagged) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setOrUpdateUserAnswer(List<Character> userAnswer) {
 		// TODO Auto-generated method stub
 		
 	}

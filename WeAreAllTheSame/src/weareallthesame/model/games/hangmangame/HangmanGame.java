@@ -38,11 +38,11 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 	
 	private void setAnswer(){
 		answer = ItemFactory.getItem(this.getTags(), 1).next(); 
-		view.setAnswer(answer);
 	}
 	
 	private void init(){
 		offeredLetters = new ArrayList<Character>();
+		offeredLettersUsed = new ArrayList<Boolean>();
 		for(int i=0;i<numberOfOfferedLetters;++i){
 			if(i < answer.getName().length()){
 				offeredLetters.add(Character.toUpperCase(answer.getName().charAt(i)));
@@ -52,9 +52,12 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 			}
 			offeredLettersUsed.add(false);
 		}
+		
+		userAnswer = new ArrayList<Character>();
 		for(int i=0;i<answer.getName().length();++i){
 			userAnswer.add('_');
 		}
+		
 		gameOver = false;
 	}
 	
@@ -66,6 +69,11 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 	public String getType() {
 		return "Hangman";
 	}
+	
+	private void updateView(){
+		view.setOrUpdateOfferedLettersAndUsedLetters(offeredLetters, offeredLettersUsed);
+		view.setOrUpdateUserAnswer(userAnswer);
+	}
 
 	public void setLetter(int positionFrom, int positionTo) throws GameOverException, CommandException{
 		if(gameOver){
@@ -76,6 +84,9 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 		}
 		userAnswer.set(positionTo, offeredLetters.get(positionFrom));
 		offeredLettersUsed.set(positionFrom, true);
+		
+		updateView();
+		
 		checkGameOver();
 	}
 	
@@ -92,6 +103,7 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 		userAnswer.set(positionFrom, Character.valueOf('_'));
 		offeredLettersUsed.set(positionTo, false);
 		
+		updateView();
 	}
 	
 	private void checkGameOver() throws CommandException{
@@ -106,6 +118,7 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 		if(sb.toString().equals(answer.getName())){
 			wrongAnswer = false;
 			gameOver = true;
+			view.gameOver();
 		}
 		
 		if(wrongAnswer){
