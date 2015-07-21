@@ -1,9 +1,12 @@
-package weareallthesame.view;
+package weareallthesame.view.games.hangmangame;
 
 import java.util.List;
 
 import weareallthesame.model.items.Item;
-import weareallthesame.view.games.hangmangame.HangmanViewInterface;
+import weareallthesame.view.R;
+import weareallthesame.view.R.id;
+import weareallthesame.view.R.layout;
+import weareallthesame.view.R.menu;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -51,6 +54,12 @@ public class HangmanGameActivity extends Activity implements HangmanViewInterfac
 
 	@Override
 	public void setOrUpdateUserAnswer(List<Character> userAnswer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setAnswer(Item item) {
 		// TODO Auto-generated method stub
 		
 	}

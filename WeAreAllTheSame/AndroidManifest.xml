@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HangmanGameActivity"
+            android:name="weareallthesame.view.games.hangmangame.HangmanGameActivity"
             android:label="@string/title_activity_hangman_game" >
         </activity>
     </application>

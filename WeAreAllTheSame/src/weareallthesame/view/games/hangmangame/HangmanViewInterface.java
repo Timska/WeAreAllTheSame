@@ -2,8 +2,16 @@ package weareallthesame.view.games.hangmangame;
 
 import java.util.List;
 
+import weareallthesame.model.items.Item;
+
 
 public interface HangmanViewInterface {
+	
+	/**
+	 * Ovoj metod se koristi za da se oznaci tocniot odgovor na igrata.
+	 * @param item odgovorot na igrata (go sodrzi odgovorot i resurs do nego)
+	 */
+	public void setAnswer(Item item);
 	
 	/**
 	 * Ovoj metod se koristi za da se oznaci deka igrata e zavrsena.
