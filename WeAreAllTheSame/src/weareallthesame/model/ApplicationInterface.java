@@ -6,8 +6,11 @@ import weareallthesame.exceptions.CategoryDoesNotExistException;
 import weareallthesame.factories.CategoryFactory;
 import weareallthesame.model.categories.CategoryInterface;
 import weareallthesame.model.exceptions.CategoryNotChosenException;
+import weareallthesame.model.exceptions.CommandDoesNotExistException;
+import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameDoesNotExistException;
 import weareallthesame.model.exceptions.GameNotOpenException;
+import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
 import weareallthesame.model.games.Game;
 
@@ -57,6 +60,17 @@ public class ApplicationInterface {
 	}
 	
 	/**
+	 * So ovoj metod se zatvora kategorijata sto bila otvorena
+	 * @throws CategoryNotChosenException nema otvorena kategorija
+	 */
+	public void closeCategory() throws CategoryNotChosenException{
+		if(currentCategory == null){
+			throw new CategoryNotChosenException("Ne moze da se zatvori kategorijata bidejki nema otvoreno kategorija");
+		}
+		currentCategory = null;
+	}
+	
+	/**
 	 * So ovoj metod se dobivaat site igri vo momentalno otvorenata kategorija.
 	 * @return tipovite na igri vo momentalno otvorenata kategorija
 	 * @throws CategoryNotChosenException nitu edna kategorija ne e momentalno otvorena
@@ -95,5 +109,44 @@ public class ApplicationInterface {
 		currentGame = null;
 	}
 	
+	/**
+	 * So ovoj metod se dobivaat site tipovi na komandi koi mozat da se izvrsat vo aktivnata igra.
+	 * @return tipovite na komandi za aktivnata igra
+	 * @throws GameNotOpenException nema aktivna igra
+	 */
+	public Iterator<String> getCommandsForActiveGame() throws GameNotOpenException{
+		if(currentGame == null){
+			throw new GameNotOpenException("Nema aktivna igra za da se dobijat nejzini komandi");
+		}
+		return currentGame.getCommandTypes();
+	}
 	
+	/**
+	 * So ovoj metod se izvrsuva komada.
+	 * @param type tipot na komandata sto sakame da ja izvrsime
+	 * @param arguments argumentite potrebni za da se izvrsi komandata
+	 * @throws GameNotOpenException nema aktivna igra
+	 * @throws GameOverException igrata e zavrsena i ne moze poveke da se izvrsuvaat komandi
+	 * @throws CommandException greska pri izvrsuvanje na komandata
+	 * @throws CommandDoesNotExistException ne postoi takva komanda za aktivnata igra
+	 */
+	public void executeCommand(String type, Object... arguments) throws GameNotOpenException, GameOverException, CommandException, CommandDoesNotExistException{
+		if(currentGame == null){
+			throw new GameNotOpenException("Ne moze da se izvrsi komanda bidejki nema aktivna igra");
+		}
+		currentGame.execute(type, arguments);
+	}
+	
+	/**
+	 * So ovoj metod igrata se vraka vo sostojbata vo koja bila pred da se izvrsi poslednata komanda.
+	 * @throws GameNotOpenException nema aktivna igra
+	 * @throws GameOverException igrata e zavrsena
+	 * @throws CommandException greska pri vrakanje na prethodnata sostojba na igrata
+	 */
+	public void undoLastCommand() throws GameNotOpenException, GameOverException, CommandException{
+		if(currentGame == null){
+			throw new GameNotOpenException("Ne moze da se ponisti poslednata komanda bidejki nema aktivna igra");
+		}
+		currentGame.undo();
+	}
 }

@@ -6,6 +6,7 @@ import weareallthesame.model.exceptions.CommandDoesNotExistException;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.interfaces.Typable;
+import weareallthesame.model.interfaces.TypeHolder;
 
 public interface Game extends Typable {
 
