@@ -35,9 +35,4 @@ public class HangmanCommandFactory implements CommandFactory {
 		throw new CommandDoesNotExistException(String.format("Komandata od tip %s", type));
 	}
 
-	@Override
-	public Command getDefault(Object... arguments) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

@@ -22,15 +22,5 @@ public interface CommandFactory extends TypeHolder {
 	 */
 	public Command getCommand(String type, Object... arguments) throws CommandDoesNotExistException;
 
-	/**
-	 * So povikot na ovoj metod se kreira nova komanda so predodreden tip.
-	 * Parametrite se prosleduvaat.
-	 * 
-	 * @param arguments
-	 *            ja definiraat strukturata na komandata. Tie se edinstveni za
-	 *            sekoj tip na komanda, t.e. zavisat od tipot.
-	 * @return komanda koja korespondira argumentite koi se prosledeni.
-	 */
-	public Command getDefault(Object... arguments);
 	
 }
