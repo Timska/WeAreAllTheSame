@@ -10,10 +10,10 @@ import weareallthesame.model.exceptions.CommandDoesNotExistException;
 
 public class HangmanCommandFactory implements CommandFactory {
 
-	private HangmanInterface hangmanInterface;
+	private HangmanInterface receiver;
 
-	public HangmanCommandFactory(HangmanInterface hangmanInterface) {
-		this.hangmanInterface = hangmanInterface;
+	public HangmanCommandFactory(HangmanInterface receiver) {
+		this.receiver = receiver;
 	}
 
 	@Override
@@ -27,10 +27,10 @@ public class HangmanCommandFactory implements CommandFactory {
 	@Override
 	public Command getCommand(String type, Object... arguments) throws CommandDoesNotExistException {
 		if(type.equalsIgnoreCase("hangmanaddletter")){
-			return new HangmanAddLetterCommand(hangmanInterface, (Integer) arguments[0], (Integer) arguments[1]);
+			return new HangmanAddLetterCommand(receiver, (Integer) arguments[0], (Integer) arguments[1]);
 		}
 		else if(type.equalsIgnoreCase("hangmanremoveletter")){
-			return new HangmanRemoveLetterCommand(hangmanInterface, (Integer) arguments[0], (Integer) arguments[1]);
+			return new HangmanRemoveLetterCommand(receiver, (Integer) arguments[0], (Integer) arguments[1]);
 		}
 		throw new CommandDoesNotExistException(String.format("Komandata od tip %s", type));
 	}
