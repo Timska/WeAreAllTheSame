@@ -128,4 +128,14 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 			throw new CommandException("Pogresen odgovor");
 		}
 	}
+
+	public String getCorrectAnswer() {
+		return answer.getName();
+	}
+
+	public List<Character> getUserAnswer() {
+		return userAnswer;
+	}
+	
+	
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import weareallthesame.model.exceptions.GameDoesNotExistException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
 import weareallthesame.model.games.Game;
+import weareallthesame.model.games.hangmangame.HangmanEasyGame;
 import weareallthesame.model.games.hangmangame.HangmanGame;
 
 public class LettersCategory extends AbstractCategory{
@@ -19,7 +20,7 @@ public class LettersCategory extends AbstractCategory{
 	public Iterator<String> getTypes() {
 		List<String> types = new ArrayList<String>();
 		types.add("Hangman");
-		
+		types.add("HangmanEasy");
 		// TODO treba da se dodadat i ostanatite tipovi na igri vo ovaa kategorija
 		
 		return types.iterator();
@@ -35,6 +36,9 @@ public class LettersCategory extends AbstractCategory{
 		// TODO Treba da se dodadat i drugite igri
 		if(type.equalsIgnoreCase("hangman")){
 			return new HangmanGame(tags, view);
+		}
+		if(type.equalsIgnoreCase("hangmaneasy")){
+			return new HangmanEasyGame(tags, view);
 		}
 		
 		throw new GameDoesNotExistException("Igrata sto ja barate ne postoi");
