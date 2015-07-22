@@ -5,8 +5,9 @@ import java.util.Iterator;
 import weareallthesame.model.exceptions.CommandDoesNotExistException;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.exceptions.WrongArgumentTypeException;
+import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.interfaces.Typable;
-import weareallthesame.model.interfaces.TypeHolder;
 
 public interface Game extends Typable {
 
@@ -17,8 +18,10 @@ public interface Game extends Typable {
 	 * @throws CommandException 
 	 * @throws GameOverException 
 	 * @throws CommandDoesNotExistException 
+	 * @throws WrongArgumentTypeException 
+	 * @throws WrongNumberOfArgumentsException 
 	 */
-	public void execute(String type, Object... arguments) throws GameOverException, CommandException, CommandDoesNotExistException;
+	public void execute(String type, Object... arguments) throws GameOverException, CommandException, CommandDoesNotExistException, WrongNumberOfArgumentsException, WrongArgumentTypeException;
 	
 	/**
 	 * Ovoj metod e povrzan so {@link Game#execute(String, Object...)} metodot i dokolku se povika pravi revert na posledno 

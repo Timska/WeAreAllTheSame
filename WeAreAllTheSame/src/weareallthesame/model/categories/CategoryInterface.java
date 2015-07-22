@@ -23,7 +23,7 @@ public interface CategoryInterface extends TypeHolder, Typable{
 	 * @throws GameDoesNotExistException kategorijata od koja sto ja barate igrata ne znae da ja kreira
 	 * @throws InvalidViewTypeException ispratenoto view ne moze da se iskoristi za toj tip na igra
 	 */
-	public Game getGame(String type, Iterator<String> tags, Object view) throws GameDoesNotExistException, InvalidViewTypeException;
+	public Game getGame(String type, Iterator<String> tags, Object view, String question) throws GameDoesNotExistException, InvalidViewTypeException;
 	
 	public String getName();
 	

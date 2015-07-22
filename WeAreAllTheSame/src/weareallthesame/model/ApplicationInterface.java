@@ -12,6 +12,8 @@ import weareallthesame.model.exceptions.GameDoesNotExistException;
 import weareallthesame.model.exceptions.GameNotOpenException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
+import weareallthesame.model.exceptions.WrongArgumentTypeException;
+import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.games.Game;
 
 public class ApplicationInterface {
@@ -91,11 +93,11 @@ public class ApplicationInterface {
 	 * @throws GameDoesNotExistException vo izbranata kategorija ne postoi igra od toj tip
 	 * @throws InvalidViewTypeException isptateniot pogled ne znae kako da se spravi so igrata sto se kreira
 	 */
-	public void openGame(String type, Iterator<String> tags, Object view) throws CategoryNotChosenException, GameDoesNotExistException, InvalidViewTypeException{
+	public void openGame(String type, Iterator<String> tags, Object view, String question) throws CategoryNotChosenException, GameDoesNotExistException, InvalidViewTypeException{
 		if(currentCategory == null){
 			throw new CategoryNotChosenException("Ne moze da se izberi igra bidejki nema izbrano kategorija");
 		}
-		currentGame = currentCategory.getGame(type, tags, view);
+		currentGame = currentCategory.getGame(type, tags, view, question);
 	}
 	
 	/**
@@ -129,8 +131,10 @@ public class ApplicationInterface {
 	 * @throws GameOverException igrata e zavrsena i ne moze poveke da se izvrsuvaat komandi
 	 * @throws CommandException greska pri izvrsuvanje na komandata
 	 * @throws CommandDoesNotExistException ne postoi takva komanda za aktivnata igra
+	 * @throws WrongArgumentTypeException  pogresen broj na isprateni argumenti
+	 * @throws WrongNumberOfArgumentsException nekoj od argumentite e od pogresen tip
 	 */
-	public void executeCommand(String type, Object... arguments) throws GameNotOpenException, GameOverException, CommandException, CommandDoesNotExistException{
+	public void executeCommand(String type, Object... arguments) throws GameNotOpenException, GameOverException, CommandException, CommandDoesNotExistException, WrongNumberOfArgumentsException, WrongArgumentTypeException {
 		if(currentGame == null){
 			throw new GameNotOpenException("Ne moze da se izvrsi komanda bidejki nema aktivna igra");
 		}

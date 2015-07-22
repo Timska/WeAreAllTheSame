@@ -7,8 +7,8 @@ import weareallthesame.model.exceptions.InvalidViewTypeException;
 
 public class HangmanEasyGame extends HangmanGame{
 
-	public HangmanEasyGame(Iterator<String> tags, Object view) throws InvalidViewTypeException {
-		super(tags, view);
+	public HangmanEasyGame(Iterator<String> tags, Object view, String question) throws InvalidViewTypeException {
+		super(tags, view, question);
 		addHelp();
 	}
 	

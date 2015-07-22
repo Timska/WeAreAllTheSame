@@ -10,7 +10,8 @@ import weareallthesame.model.commands.Command;
 import weareallthesame.model.exceptions.CommandDoesNotExistException;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
-import weareallthesame.model.interfaces.TypeHolder;
+import weareallthesame.model.exceptions.WrongArgumentTypeException;
+import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 
 public abstract class AbstractGame implements Game {
 	private List<String> tags;
@@ -21,7 +22,7 @@ public abstract class AbstractGame implements Game {
 		this.commandFactory = commandFactory;
 	}
 
-	public AbstractGame(Iterator<String> tags) {
+	public AbstractGame(Iterator<String> tags, String question) {
 		this.tags = new ArrayList<String>();
 		while (tags.hasNext())
 			this.tags.add(tags.next());
@@ -29,7 +30,7 @@ public abstract class AbstractGame implements Game {
 	}
 
 	@Override
-	public void execute(String type, Object... arguments) throws GameOverException, CommandException, CommandDoesNotExistException {
+	public void execute(String type, Object... arguments) throws GameOverException, CommandException, CommandDoesNotExistException, WrongNumberOfArgumentsException, WrongArgumentTypeException {
 		Command command = commandFactory.getCommand(type, arguments);
 		command.execute();
 		commands.add(command);

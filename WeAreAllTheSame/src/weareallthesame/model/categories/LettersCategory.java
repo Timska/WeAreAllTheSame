@@ -32,13 +32,13 @@ public class LettersCategory extends AbstractCategory{
 	}
 
 	@Override
-	public Game getGame(String type, Iterator<String> tags, Object view) throws GameDoesNotExistException, InvalidViewTypeException {
+	public Game getGame(String type, Iterator<String> tags, Object view, String question) throws GameDoesNotExistException, InvalidViewTypeException {
 		// TODO Treba da se dodadat i drugite igri
 		if(type.equalsIgnoreCase("hangman")){
-			return new HangmanGame(tags, view);
+			return new HangmanGame(tags, view, question);
 		}
 		if(type.equalsIgnoreCase("hangmaneasy")){
-			return new HangmanEasyGame(tags, view);
+			return new HangmanEasyGame(tags, view, question);
 		}
 		
 		throw new GameDoesNotExistException("Igrata sto ja barate ne postoi");

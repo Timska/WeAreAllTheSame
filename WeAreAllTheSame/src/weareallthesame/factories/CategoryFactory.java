@@ -4,7 +4,6 @@ import java.util.Iterator;
 
 import weareallthesame.exceptions.CategoryDoesNotExistException;
 import weareallthesame.model.categories.AbstractCategory;
-import weareallthesame.model.categories.CategoryInterface;
 import weareallthesame.model.categories.LettersCategory;
 import weareallthesame.model.interfaces.TypeHolder;
 

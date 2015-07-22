@@ -23,8 +23,8 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 	private boolean gameOver;
 	private HangmanViewInterface view;
 	
-	public HangmanGame(Iterator<String> tags, Object view) throws InvalidViewTypeException{
-		super(tags);
+	public HangmanGame(Iterator<String> tags, Object view, String question) throws InvalidViewTypeException{
+		super(tags, question);
 		this.setCommandFactory(new HangmanCommandFactory(this));
 		if(view instanceof HangmanViewInterface){
 			this.view = (HangmanViewInterface)view;
