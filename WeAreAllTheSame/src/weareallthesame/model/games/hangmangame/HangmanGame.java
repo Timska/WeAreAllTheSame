@@ -60,6 +60,8 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 		}
 		
 		gameOver = false;
+		
+		updateView();
 	}
 	
 	private Character addRandomLetter(){
