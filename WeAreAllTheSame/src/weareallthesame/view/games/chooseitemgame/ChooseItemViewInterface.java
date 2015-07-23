@@ -1,10 +1,10 @@
-package weareallthesame.view.games.choosepicturefromwordgame;
+package weareallthesame.view.games.chooseitemgame;
 
 import java.util.List;
 
 import weareallthesame.model.items.Item;
 
-public interface ChoosePictureFromWordViewInterface {
+public interface ChooseItemViewInterface {
 
 	public void setAnswer(Item answer);
 

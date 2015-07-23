@@ -1,4 +1,4 @@
-package weareallthesame.model.interfaces;
+package weareallthesame.model.games.chooseitemgame;
 
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.items.Item;

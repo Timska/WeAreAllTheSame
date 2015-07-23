@@ -1,4 +1,4 @@
-package weareallthesame.model.games.choosepicturefromwordgame;
+package weareallthesame.model.games.chooseitemgame;
 
 import java.util.Iterator;
 import java.util.List;
@@ -9,20 +9,20 @@ import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
 import weareallthesame.model.games.AbstractGame;
 import weareallthesame.model.items.Item;
-import weareallthesame.view.games.choosepicturefromwordgame.ChoosePictureFromWordViewInterface;
+import weareallthesame.view.games.chooseitemgame.ChooseItemViewInterface;
 
-public class ChoosePictureFromWordGame extends AbstractGame implements ChoosePictureFromWordInterface{
+public class ChooseItemGame extends AbstractGame implements ChooseItemInterface{
 
-	private ChoosePictureFromWordViewInterface view;
+	private ChooseItemViewInterface view;
 	private Item answer;
 	private List<Item> offeredAnswers;
 	private boolean gameOver;
 	
-	public ChoosePictureFromWordGame(Iterator<String> tags, Object view, String question) throws InvalidViewTypeException {
+	public ChooseItemGame(Iterator<String> tags, Object view, String question) throws InvalidViewTypeException {
 		super(tags, question);
-		this.setCommandFactory(new ChoosePictureFromWordCommandFactory(this));
-		if(view instanceof ChoosePictureFromWordInterface){
-			this.view = (ChoosePictureFromWordViewInterface) view;
+		this.setCommandFactory(new ChooseItemCommandFactory(this));
+		if(view instanceof ChooseItemViewInterface){
+			this.view = (ChooseItemViewInterface) view;
 		}
 		else{
 			throw new InvalidViewTypeException("Se koristi gresno activity za ovaa igra");

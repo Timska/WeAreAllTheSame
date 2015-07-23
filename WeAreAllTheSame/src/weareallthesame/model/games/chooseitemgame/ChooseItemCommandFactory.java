@@ -1,4 +1,4 @@
-package weareallthesame.model.games.choosepicturefromwordgame;
+package weareallthesame.model.games.chooseitemgame;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,11 +12,11 @@ import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.items.Item;
 
-public class ChoosePictureFromWordCommandFactory implements CommandFactory {
+public class ChooseItemCommandFactory implements CommandFactory {
 
-	private ChoosePictureFromWordInterface receiver;
+	private ChooseItemInterface receiver;
 	
-	public ChoosePictureFromWordCommandFactory(ChoosePictureFromWordInterface receiver) {
+	public ChooseItemCommandFactory(ChooseItemInterface receiver) {
 		this.receiver = receiver;
 	}
 
