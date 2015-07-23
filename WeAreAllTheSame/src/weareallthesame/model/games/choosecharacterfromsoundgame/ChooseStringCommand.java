@@ -1,15 +1,15 @@
 package weareallthesame.model.games.choosecharacterfromsoundgame;
 
-import weareallthesame.model.commands.Command;
+import weareallthesame.model.commands.AbstractCommand;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 
-public class ChooseStringCommand implements Command{
+public class ChooseStringCommand extends AbstractCommand{
 
-	private ChooseCharacterFromSoundInterface game;
+	private ChooseStringFromSoundInterface game;
 	private String string;
 	
-	public ChooseStringCommand(ChooseCharacterFromSoundInterface game, String string) {
+	public ChooseStringCommand(ChooseStringFromSoundInterface game, String string) {
 		this.game = game;
 		this.string = string;
 	}
@@ -20,13 +20,12 @@ public class ChooseStringCommand implements Command{
 	}
 
 	@Override
-	public void execute() throws GameOverException, CommandException {
+	public void executeNow() throws GameOverException, CommandException {
 		game.chooseAnswer(string);
-		
 	}
 
 	@Override
-	public void undo() throws GameOverException, CommandException {
+	public void undoNow() throws GameOverException, CommandException {
 		
 	}
 

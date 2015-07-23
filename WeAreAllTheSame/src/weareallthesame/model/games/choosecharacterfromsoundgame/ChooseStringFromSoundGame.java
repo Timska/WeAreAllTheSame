@@ -13,7 +13,7 @@ import weareallthesame.model.games.AbstractGame;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.games.choosecharacterfromsoundgame.ChooseStringFromSoundViewInterface;
 
-public class ChooseStringFromSoundGame extends AbstractGame implements ChooseCharacterFromSoundInterface{
+public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStringFromSoundInterface{
 	
 	private ChooseStringFromSoundViewInterface view;
 	private Item answer;

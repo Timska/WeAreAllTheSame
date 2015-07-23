@@ -52,7 +52,7 @@ public class HangmanCommandFactory implements CommandFactory {
 			}
 			return new HangmanRemoveLetterCommand(receiver, (Integer) arguments[0], (Integer) arguments[1]);
 		}
-		throw new CommandDoesNotExistException(String.format("Komandata od tip %s", type));
+		throw new CommandDoesNotExistException("Ne postoi komanda od isprateniot tip");
 	}
 
 }
