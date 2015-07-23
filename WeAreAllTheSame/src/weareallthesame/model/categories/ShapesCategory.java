@@ -6,9 +6,9 @@ import weareallthesame.model.exceptions.GameDoesNotExistException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
 import weareallthesame.model.games.Game;
 
-public class ShapeCategory extends AbstractCategory{
+public class ShapesCategory extends AbstractCategory{
 
-	public ShapeCategory(String name, String resourceName) {
+	public ShapesCategory(String name, String resourceName) {
 		super(name, resourceName);
 	}
 
@@ -28,8 +28,7 @@ public class ShapeCategory extends AbstractCategory{
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Shapes";
 	}
 
 }

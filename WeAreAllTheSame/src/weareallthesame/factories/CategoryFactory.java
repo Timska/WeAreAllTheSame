@@ -5,7 +5,7 @@ import java.util.Iterator;
 import weareallthesame.exceptions.CategoryDoesNotExistException;
 import weareallthesame.model.categories.AbstractCategory;
 import weareallthesame.model.categories.LettersCategory;
-import weareallthesame.model.categories.ShapeCategory;
+import weareallthesame.model.categories.ShapesCategory;
 import weareallthesame.model.interfaces.TypeHolder;
 
 public class CategoryFactory implements TypeHolder{
@@ -23,8 +23,8 @@ public class CategoryFactory implements TypeHolder{
 		if(type.equalsIgnoreCase("letters")){
 			return new LettersCategory("Букви", "letters");
 		}
-		if(type.equalsIgnoreCase("shape")){
-			return new ShapeCategory("Форми", "shape");
+		if(type.equalsIgnoreCase("shapes")){
+			return new ShapesCategory("Форми", "shapes");
 		}
 		throw new CategoryDoesNotExistException("Ne postoi kategorija za dadeniot tip");
 	}
