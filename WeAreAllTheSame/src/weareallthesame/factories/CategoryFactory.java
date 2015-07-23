@@ -5,6 +5,7 @@ import java.util.Iterator;
 import weareallthesame.exceptions.CategoryDoesNotExistException;
 import weareallthesame.model.categories.AbstractCategory;
 import weareallthesame.model.categories.LettersCategory;
+import weareallthesame.model.categories.ShapeCategory;
 import weareallthesame.model.interfaces.TypeHolder;
 
 public class CategoryFactory implements TypeHolder{
@@ -12,7 +13,6 @@ public class CategoryFactory implements TypeHolder{
 	/**
 	 * Ovoj metod se koristi za kreiranje na kategorii
 	 * @param type tipot so koj ednoznacno e opredelena kategorijata
-	 * @param name imeto na kategorijata na makedonski sto ke se prikaze na krajniot korisnik
 	 * @return kategorija
 	 * @throws CategoryDoesNotExistException ne znae da kreira kategorija za dadeniot tip
 	 */
@@ -23,7 +23,9 @@ public class CategoryFactory implements TypeHolder{
 		if(type.equalsIgnoreCase("letters")){
 			return new LettersCategory("Букви", "letters");
 		}
-		
+		if(type.equalsIgnoreCase("shape")){
+			return new ShapeCategory("Форми", "shape");
+		}
 		throw new CategoryDoesNotExistException("Ne postoi kategorija za dadeniot tip");
 	}
 	
