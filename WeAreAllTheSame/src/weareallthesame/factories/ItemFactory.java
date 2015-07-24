@@ -1,10 +1,9 @@
 package weareallthesame.factories;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import weareallthesame.db.ItemContentProvider;
 import weareallthesame.db.ItemOpenHelper;
@@ -62,14 +61,20 @@ public class ItemFactory {
 				new String[] { ItemTagsOpenHelper.COLUMN_NAME },
 				getSelectionOfTags(tags), null, null);
 
-		Set<String> items = new HashSet<String>();
+		List<String> items = new ArrayList<String>();
 		while (cursor.moveToNext()) {
-			if (items.size() == numberOfItems) {
-				break;
-			}
 			String itemName = cursor.getString(cursor
 					.getColumnIndex(ItemTagsOpenHelper.COLUMN_NAME));
 			items.add(itemName);
+		}
+		Collections.shuffle(items);
+
+		int size = items.size();
+		for (int i = size; i >= 0; i--) {
+			if (items.size() <= numberOfItems) {
+				break;
+			}
+			items.remove(i);
 		}
 
 		List<Item> result = new ArrayList<Item>();
