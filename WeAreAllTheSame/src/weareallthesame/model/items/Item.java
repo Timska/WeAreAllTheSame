@@ -1,5 +1,6 @@
 package weareallthesame.model.items;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,7 +11,8 @@ public abstract class Item {
 
 	public Item(String name, Iterator<String> resourceNames) {
 		this.name = name;
-		while(resourceNames.hasNext()){
+		this.resourceNames = new ArrayList<String>();
+		while (resourceNames.hasNext()) {
 			this.resourceNames.add(resourceNames.next());
 		}
 	}
@@ -19,7 +21,7 @@ public abstract class Item {
 		return name;
 	}
 
-	public Iterator<String> getResourceNames(){
+	public Iterator<String> getResourceNames() {
 		return resourceNames.iterator();
 	}
 
