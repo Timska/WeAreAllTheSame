@@ -65,7 +65,9 @@ public class ItemFactory {
 		while (cursor.moveToNext()) {
 			String itemName = cursor.getString(cursor
 					.getColumnIndex(ItemTagsOpenHelper.COLUMN_NAME));
-			items.add(itemName);
+			if (!items.contains(itemName)) {
+				items.add(itemName);
+			}
 		}
 		Collections.shuffle(items);
 
