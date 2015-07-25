@@ -6,10 +6,10 @@ import java.util.List;
 
 import weareallthesame.db.CategoryContentProvider;
 import weareallthesame.db.CategoryOpenHelper;
-import weareallthesame.exceptions.CategoryDoesNotExistException;
 import weareallthesame.model.categories.AbstractCategory;
 import weareallthesame.model.categories.LettersCategory;
 import weareallthesame.model.categories.ShapesCategory;
+import weareallthesame.model.exceptions.CategoryDoesNotExistException;
 import weareallthesame.model.interfaces.TypeHolder;
 import android.content.ContentResolver;
 import android.content.Context;

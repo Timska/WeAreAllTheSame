@@ -2,9 +2,9 @@ package weareallthesame.model;
 
 import java.util.Iterator;
 
-import weareallthesame.exceptions.CategoryDoesNotExistException;
 import weareallthesame.factories.CategoryFactory;
 import weareallthesame.model.categories.CategoryInterface;
+import weareallthesame.model.exceptions.CategoryDoesNotExistException;
 import weareallthesame.model.exceptions.CategoryNotChosenException;
 import weareallthesame.model.exceptions.CommandDoesNotExistException;
 import weareallthesame.model.exceptions.CommandException;

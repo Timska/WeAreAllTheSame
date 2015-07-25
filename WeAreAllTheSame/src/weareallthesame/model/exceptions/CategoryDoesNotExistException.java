@@ -1,4 +1,4 @@
-package weareallthesame.exceptions;
+package weareallthesame.model.exceptions;
 
 public class CategoryDoesNotExistException extends Exception {
 
