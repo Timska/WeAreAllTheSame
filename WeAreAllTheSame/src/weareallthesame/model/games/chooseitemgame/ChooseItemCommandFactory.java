@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import weareallthesame.factories.CommandFactory;
-import weareallthesame.model.commands.ChooseItemCommand;
 import weareallthesame.model.commands.Command;
 import weareallthesame.model.exceptions.CommandDoesNotExistException;
 import weareallthesame.model.exceptions.WrongArgumentTypeException;

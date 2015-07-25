@@ -1,8 +1,8 @@
-package weareallthesame.model.commands;
+package weareallthesame.model.games.chooseitemgame;
 
+import weareallthesame.model.commands.AbstractCommand;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
-import weareallthesame.model.games.chooseitemgame.ChooseItemInterface;
 import weareallthesame.model.items.Item;
 
 public class ChooseItemCommand extends AbstractCommand{
