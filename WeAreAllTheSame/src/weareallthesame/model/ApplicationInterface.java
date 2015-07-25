@@ -21,13 +21,12 @@ import weareallthesame.model.games.Game;
 public class ApplicationInterface {
 
 	private CategoryFactory categoryFactory;
-	private ItemFactory itemFactory;
 	private CategoryInterface currentCategory;
 	private Game currentGame;
 	
 	public ApplicationInterface(Context context) {
 		categoryFactory = new CategoryFactory(context);
-		itemFactory = new ItemFactory(context);
+		ItemFactory.setContext(context);
 	}
 
 	/**

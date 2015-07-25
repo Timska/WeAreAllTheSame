@@ -29,18 +29,10 @@ public class ItemFactory {
 	private static Context ctx;
 	// Sluzi za povici do bazata
 	private static ContentResolver resolver;
-
-	public ItemFactory(Context ctx) {
-		ItemFactory.ctx = ctx;
+	
+	public static void setContext(Context context) {
+		ctx = context;
 		resolver = ctx.getContentResolver();
-	}
-
-	public ItemFactory() {
-
-	}
-
-	public Context getContext() {
-		return ctx;
 	}
 
 	/**
