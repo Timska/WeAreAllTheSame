@@ -1,15 +1,15 @@
-package weareallthesame.model.games.howmanygame;
+package weareallthesame.model.commands;
 
-import weareallthesame.model.commands.AbstractCommand;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.interfaces.ChooseNumberInterface;
 
-public class HowManyChooseNumberCommand extends AbstractCommand {
+public class ChooseNumberCommand extends AbstractCommand {
 
-	private HowManyInterface game;
+	private ChooseNumberInterface game;
 	private int number;
 	
-	public HowManyChooseNumberCommand(HowManyInterface game, int number) {
+	public ChooseNumberCommand(ChooseNumberInterface game, int number) {
 		this.game = game;
 		this.number = number;
 	}

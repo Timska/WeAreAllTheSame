@@ -1,0 +1,29 @@
+package weareallthesame.view.games.additionandsubtractiongames;
+
+import java.util.Set;
+
+public interface AdditionAndSubtractionNumbersViewInterface {
+
+	/**
+	 * Ovoj metod se koristi za da se setiraat broevite koi se sobiraat ili odzemaat.
+	 * @param numberOne
+	 * @param numberTwo
+	 */
+	public void setNumbers(int numberOne, int numberTwo);
+	
+	/**
+	 * So ovoj metod se setiraat ponudenite odgovori.
+	 * @param answers
+	 */
+	public void setOfferedAnswers(Set<Integer> answers);
+	
+	/**
+	 * So ovoj metod se izvestuva view-to deka igrata zavrsi.
+	 */
+	public void gameOver();
+	
+	/**
+	 * So ovoj metod se izvestuva view-to deka korisnikot odgovoril pogresno.
+	 */
+	public void wrongAnswer();
+}

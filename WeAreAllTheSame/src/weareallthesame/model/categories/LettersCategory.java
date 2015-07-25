@@ -6,6 +6,7 @@ import java.util.List;
 
 import weareallthesame.model.exceptions.GameDoesNotExistException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
+import weareallthesame.model.exceptions.MissingTagException;
 import weareallthesame.model.games.Game;
 import weareallthesame.model.games.choosecharacterfromsoundgame.ChooseStringFromSoundGame;
 import weareallthesame.model.games.hangmangame.HangmanEasyGame;
@@ -32,7 +33,7 @@ public class LettersCategory extends AbstractCategory{
 	}
 
 	@Override
-	public Game getGame(String type, Iterator<String> tags, Object view, String question) throws GameDoesNotExistException, InvalidViewTypeException {
+	public Game getGame(String type, Iterator<String> tags, Object view, String question) throws GameDoesNotExistException, InvalidViewTypeException, MissingTagException {
 		if(type.equalsIgnoreCase("hangman")){
 			return new HangmanGame(tags, view, question);
 		}

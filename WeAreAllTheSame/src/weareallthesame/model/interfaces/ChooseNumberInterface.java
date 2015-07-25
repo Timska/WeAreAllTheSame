@@ -1,9 +1,9 @@
-package weareallthesame.model.games.howmanygame;
+package weareallthesame.model.interfaces;
 
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 
-public interface HowManyInterface {
+public interface ChooseNumberInterface {
 
 	/**
 	 * So ovoj metod se izbira eden od ponudenite broevi kako odgovor.

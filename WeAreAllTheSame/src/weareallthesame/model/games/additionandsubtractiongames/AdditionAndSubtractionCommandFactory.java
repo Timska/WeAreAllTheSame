@@ -1,4 +1,4 @@
-package weareallthesame.model.games.howmanygame;
+package weareallthesame.model.games.additionandsubtractiongames;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,11 +12,11 @@ import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.interfaces.ChooseNumberInterface;
 
-public class HowManyCommandFactory implements CommandFactory{
+public class AdditionAndSubtractionCommandFactory implements CommandFactory{
 
 	private ChooseNumberInterface receiver;
 	
-	public HowManyCommandFactory(ChooseNumberInterface receiver) {
+	public AdditionAndSubtractionCommandFactory(ChooseNumberInterface receiver) {
 		this.receiver = receiver;
 	}
 

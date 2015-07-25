@@ -10,10 +10,11 @@ import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
 import weareallthesame.model.games.AbstractGame;
+import weareallthesame.model.interfaces.ChooseNumberInterface;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.games.howmanygame.HowManyViewInterface;
 
-public class HowManyGame extends AbstractGame implements HowManyInterface{
+public class HowManyGame extends AbstractGame implements ChooseNumberInterface{
 	
 	private HowManyViewInterface view;
 	private Item item;

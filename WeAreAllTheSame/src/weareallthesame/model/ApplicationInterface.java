@@ -14,6 +14,7 @@ import weareallthesame.model.exceptions.GameDoesNotExistException;
 import weareallthesame.model.exceptions.GameNotOpenException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
+import weareallthesame.model.exceptions.MissingTagException;
 import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.games.Game;
@@ -95,8 +96,9 @@ public class ApplicationInterface {
 	 * @throws CategoryNotChosenException ne moze da se otvori igra bidejki se nema izbrano kategorija
 	 * @throws GameDoesNotExistException vo izbranata kategorija ne postoi igra od toj tip
 	 * @throws InvalidViewTypeException isptateniot pogled ne znae kako da se spravi so igrata sto se kreira
+	 * @throws MissingTagException nedostiga tag za definiranje na igrata
 	 */
-	public void openGame(String type, Iterator<String> tags, Object view, String question) throws CategoryNotChosenException, GameDoesNotExistException, InvalidViewTypeException{
+	public void openGame(String type, Iterator<String> tags, Object view, String question) throws CategoryNotChosenException, GameDoesNotExistException, InvalidViewTypeException, MissingTagException{
 		if(currentCategory == null){
 			throw new CategoryNotChosenException("Ne moze da se izberi igra bidejki nema izbrano kategorija");
 		}

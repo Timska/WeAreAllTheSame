@@ -9,6 +9,7 @@ import weareallthesame.factories.LetterFactory;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
+import weareallthesame.model.exceptions.MissingTagException;
 import weareallthesame.model.games.AbstractGame;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.games.choosecharacterfromsoundgame.ChooseStringFromSoundViewInterface;
@@ -21,7 +22,7 @@ public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStr
 	private boolean gameOver;
 	private boolean letters;
 
-	public ChooseStringFromSoundGame(Iterator<String> tags, Object view, String question) throws InvalidViewTypeException {
+	public ChooseStringFromSoundGame(Iterator<String> tags, Object view, String question) throws InvalidViewTypeException, MissingTagException {
 		super(tags, question);
 		this.setCommandFactory(new ChooseStringFromSoundCommandFactory(this));
 		if(view instanceof ChooseStringFromSoundViewInterface){
@@ -35,16 +36,22 @@ public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStr
 		init();
 	}
 	
-	private void setSubgame(){
+	private void setSubgame() throws MissingTagException{
 		Iterator<String> tags = this.getTags();
+		boolean flag = false;
 		while(tags.hasNext()){
 			String tag = tags.next();
 			if(tag.equalsIgnoreCase("letters")){
 				this.letters = true;
+				flag = true;
 			}
 			else if(tag.equalsIgnoreCase("numbers")){
 				this.letters = false;
+				flag = true;
 			}
+		}
+		if(!flag){
+			throw new MissingTagException("Nedostiga tag za definiranje na igrata");
 		}
 	}
 	
