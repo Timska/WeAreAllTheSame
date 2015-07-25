@@ -2,7 +2,9 @@ package weareallthesame.model;
 
 import java.util.Iterator;
 
+import android.content.Context;
 import weareallthesame.factories.CategoryFactory;
+import weareallthesame.factories.ItemFactory;
 import weareallthesame.model.categories.CategoryInterface;
 import weareallthesame.model.exceptions.CategoryDoesNotExistException;
 import weareallthesame.model.exceptions.CategoryNotChosenException;
@@ -19,11 +21,13 @@ import weareallthesame.model.games.Game;
 public class ApplicationInterface {
 
 	private CategoryFactory categoryFactory;
+	private ItemFactory itemFactory;
 	private CategoryInterface currentCategory;
 	private Game currentGame;
 	
-	public ApplicationInterface() {
+	public ApplicationInterface(Context context) {
 		categoryFactory = new CategoryFactory();
+		itemFactory = new ItemFactory(context);
 	}
 
 	/**
