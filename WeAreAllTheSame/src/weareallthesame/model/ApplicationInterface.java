@@ -26,7 +26,7 @@ public class ApplicationInterface {
 	private Game currentGame;
 	
 	public ApplicationInterface(Context context) {
-		categoryFactory = new CategoryFactory();
+		categoryFactory = new CategoryFactory(context);
 		itemFactory = new ItemFactory(context);
 	}
 
