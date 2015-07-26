@@ -5,6 +5,7 @@ import java.util.Iterator;
 import android.content.Context;
 import weareallthesame.factories.CategoryFactory;
 import weareallthesame.factories.ItemFactory;
+import weareallthesame.factories.QuestionFactory;
 import weareallthesame.model.categories.CategoryInterface;
 import weareallthesame.model.exceptions.CategoryDoesNotExistException;
 import weareallthesame.model.exceptions.CategoryNotChosenException;
@@ -28,6 +29,7 @@ public class ApplicationInterface {
 	public ApplicationInterface(Context context) {
 		categoryFactory = new CategoryFactory(context);
 		ItemFactory.setContext(context);
+		QuestionFactory.setContext(context);
 	}
 
 	/**
