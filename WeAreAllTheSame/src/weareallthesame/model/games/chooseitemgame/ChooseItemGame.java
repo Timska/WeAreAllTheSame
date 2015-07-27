@@ -1,5 +1,6 @@
 package weareallthesame.model.games.chooseitemgame;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -33,11 +34,12 @@ public class ChooseItemGame extends AbstractGame implements ChooseItemInterface{
 	}
 	
 	private void setAnswer(){
-		answer = ItemFactory.getItem(view.getAnswerTags(), 1).next();
+		answer = ItemFactory.getItem(this.getTags(), 1).next();
 		view.setAnswer(answer);
 	}
 	
 	private void init(){
+		offeredAnswers = new ArrayList<Item>();
 		offeredAnswers.add(answer);
 		Random random = new Random();
 		int numOfferedAnswers = 0;

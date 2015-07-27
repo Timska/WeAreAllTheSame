@@ -1,15 +1,15 @@
-package weareallthesame.model.games.choosecharacterfromsoundgame;
+package weareallthesame.model.commands;
 
-import weareallthesame.model.commands.AbstractCommand;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.interfaces.ChooseStringInterface;
 
 public class ChooseStringCommand extends AbstractCommand{
 
-	private ChooseStringFromSoundInterface game;
+	private ChooseStringInterface game;
 	private String string;
 	
-	public ChooseStringCommand(ChooseStringFromSoundInterface game, String string) {
+	public ChooseStringCommand(ChooseStringInterface game, String string) {
 		this.game = game;
 		this.string = string;
 	}

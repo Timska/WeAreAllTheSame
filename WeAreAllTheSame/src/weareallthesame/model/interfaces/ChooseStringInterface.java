@@ -1,9 +1,9 @@
-package weareallthesame.model.games.choosecharacterfromsoundgame;
+package weareallthesame.model.interfaces;
 
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 
-public interface ChooseStringFromSoundInterface {
+public interface ChooseStringInterface {
 
 	public void chooseAnswer(String str) throws CommandException, GameOverException;
 }

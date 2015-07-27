@@ -5,7 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import weareallthesame.factories.ItemFactory;
-import weareallthesame.factories.LetterFactory;
+import weareallthesame.factories.SimpleFactory;
+import weareallthesame.factories.simplefactories.SimpleFactoryInterface;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
@@ -65,7 +66,8 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 	}
 	
 	private Character addRandomLetter(){
-		return LetterFactory.getDefaultLetter();
+		SimpleFactoryInterface factory = SimpleFactory.getFactory(this.getTags(), 31);
+		return factory.getDefault().charAt(0);
 	}
 	
 	@Override

@@ -1,4 +1,4 @@
-package weareallthesame.model.games.choosecharacterfromsoundgame;
+package weareallthesame.model.games.questiongame;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,14 +12,13 @@ import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.interfaces.ChooseStringInterface;
 
-public class ChooseStringFromSoundCommandFactory implements CommandFactory {
+public class QuestionCommandFactory implements CommandFactory {
 
 	private ChooseStringInterface receiver;
 	
-	public ChooseStringFromSoundCommandFactory(ChooseStringInterface receiver) {
+	public QuestionCommandFactory(ChooseStringInterface receiver) {
 		this.receiver = receiver;
 	}
-
 	@Override
 	public Iterator<String> getTypes() {
 		List<String> types = new ArrayList<String>();
@@ -29,7 +28,8 @@ public class ChooseStringFromSoundCommandFactory implements CommandFactory {
 
 	@Override
 	public Command getCommand(String type, Object... arguments)
-			throws CommandDoesNotExistException, WrongArgumentTypeException, WrongNumberOfArgumentsException {
+			throws CommandDoesNotExistException,
+			WrongNumberOfArgumentsException, WrongArgumentTypeException {
 		
 		if(type.equalsIgnoreCase("choosestring")){
 			if(arguments.length != 1){

@@ -1,6 +1,5 @@
 package weareallthesame.view.games.chooseitemgame;
 
-import java.util.Iterator;
 import java.util.List;
 
 import weareallthesame.model.items.Item;
@@ -29,10 +28,5 @@ public interface ChooseItemViewInterface {
 	 */
 	public void wrongAnswer();
 
-	/**
-	 * So ovoj metod se bara do view-to da isprati so koi tagovi e oznaceno resenieto na igrata.
-	 * @return iterator od tagovi
-	 */
-	public Iterator<String> getAnswerTags();
-
+	
 }

@@ -5,23 +5,24 @@ import java.util.Random;
 import java.util.Set;
 
 import weareallthesame.factories.ItemFactory;
-import weareallthesame.factories.LetterFactory;
+import weareallthesame.factories.SimpleFactory;
+import weareallthesame.factories.simplefactories.SimpleFactoryInterface;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
 import weareallthesame.model.exceptions.MissingTagException;
 import weareallthesame.model.games.AbstractGame;
+import weareallthesame.model.interfaces.ChooseStringInterface;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.games.choosecharacterfromsoundgame.ChooseStringFromSoundViewInterface;
 
-public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStringFromSoundInterface{
+public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStringInterface{
 	
 	private ChooseStringFromSoundViewInterface view;
 	private Item answer;
 	private Set<String> offeredAnswers;
 	private boolean gameOver;
-	private boolean letters;
-
+	
 	public ChooseStringFromSoundGame(Iterator<String> tags, Object view, String question) throws InvalidViewTypeException, MissingTagException {
 		super(tags, question);
 		this.setCommandFactory(new ChooseStringFromSoundCommandFactory(this));
@@ -32,10 +33,11 @@ public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStr
 			throw new InvalidViewTypeException("Se koristi gresno activity za ovaa igra");
 		}
 		setAnswer();
-		setSubgame();
+		//setSubgame();
 		init();
 	}
 	
+	/*
 	private void setSubgame() throws MissingTagException{
 		Iterator<String> tags = this.getTags();
 		boolean flag = false;
@@ -54,6 +56,7 @@ public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStr
 			throw new MissingTagException("Nedostiga tag za definiranje na igrata");
 		}
 	}
+	*/
 	
 	private void init(){
 		offeredAnswers.add(answer.getName());
@@ -62,15 +65,10 @@ public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStr
 		while(numOfferedLetters < 5){
 			numOfferedLetters = random.nextInt(10);
 		}
-		if(letters){
-			while(offeredAnswers.size() <= numOfferedLetters){
-				offeredAnswers.add(String.format("%c", LetterFactory.getDefaultLetter()));
-			}
-		}
-		else{
-			while(offeredAnswers.size() <= numOfferedLetters){
-				offeredAnswers.add(String.format("%d", random.nextInt(101)));
-			}
+		@SuppressWarnings("rawtypes")
+		SimpleFactoryInterface factory = SimpleFactory.getFactory(this.getTags(), 101);
+		while(offeredAnswers.size() <= numOfferedLetters){
+			offeredAnswers.add(factory.getDefault().toString());
 		}
 		view.setOfferedAnswers(offeredAnswers);
 	}
@@ -88,7 +86,7 @@ public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStr
 	@Override
 	public void chooseAnswer(String str) throws CommandException, GameOverException {
 		if(!offeredAnswers.contains(str)){
-			throw new CommandException("Bukvata sto sakate da ja izberete ne e vo ponudenite");
+			throw new CommandException("Vasiot izbor ne e del od ponudenite");
 		}
 		if(gameOver){
 			throw new GameOverException("Igrata e zavrsena");
