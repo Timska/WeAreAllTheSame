@@ -17,4 +17,14 @@ public interface OrderElementsViewInterface {
 	 */
 	public void setOrdered(List<String> orderedElements);
 
+	/**
+	 * So ovoj metod se izvestuva view-to deka korisnikot odgovoril pogresno.
+	 */
+	public void wrongAnswer();
+
+	/**
+	 * So ovoj metod se izvestuva view-to deka igrata zavrsi.
+	 */
+	public void gameOver();
+
 }

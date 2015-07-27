@@ -37,12 +37,12 @@ public class QuestionGame extends AbstractGame implements ChooseStringInterface 
 	
 	private void setQuestion(){
 		correct = QuestionFactory.getQuestion(this.getTags(), 1).next();
-		//view.setQuestion(correct.getQuestion());
+		view.setQuestion(correct.getQuestion());
 	}
 	
 	private void setOfferedAnswrers(){
 		offeredAnswers = new HashSet<String>();
-		//offeredAnswers.add(correct.getAnswer());
+		offeredAnswers.add(correct.getAnswer());
 		Random random = new Random();
 		int numOfferedAnswers = 0;
 		while(numOfferedAnswers < 5){
@@ -50,7 +50,7 @@ public class QuestionGame extends AbstractGame implements ChooseStringInterface 
 		}
 		Iterator<Question> offeredQuestions = QuestionFactory.getQuestion(this.getTags(), numOfferedAnswers - 1);
 		while(offeredQuestions.hasNext()){
-			//offeredAnswers.add(offeredQustions.next().getAnswer());
+			offeredAnswers.add(offeredQuestions.next().getAnswer());
 		}
 		view.setOfferedAnswers(offeredAnswers);
 	}
@@ -69,10 +69,10 @@ public class QuestionGame extends AbstractGame implements ChooseStringInterface 
 		else if(!offeredAnswers.contains(str)){
 			throw new CommandException("Vasiot odgovor ne e vo ponudenite");
 		}
-		/*if(correct.getAnswer().equals(str)){
+		if(correct.getAnswer().equals(str)){
 			gameOver = true;
 			view.gameOver();
-		}*/
+		}
 		else{
 			view.wrongAnswer();
 		}
