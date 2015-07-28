@@ -10,11 +10,10 @@ import weareallthesame.factories.simplefactories.SimpleFactoryInterface;
 
 public class SimpleFactory {
 
-	@SuppressWarnings("rawtypes")
 	public static SimpleFactoryInterface getFactory(Iterator<String> tags,
 			int maxPosition) {
-		while(tags.hasNext()) {
-			
+		while (tags.hasNext()) {
+
 			String type = tags.next();
 
 			if (type.equalsIgnoreCase("letters")) {

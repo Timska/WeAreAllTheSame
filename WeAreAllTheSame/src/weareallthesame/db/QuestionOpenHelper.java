@@ -4,29 +4,29 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class ItemTagsOpenHelper extends SQLiteOpenHelper {
+public class QuestionOpenHelper extends SQLiteOpenHelper {
 
 	public static final String COLUMN_ID = "_id";
-	public static final String COLUMN_NAME = "itemName";
-	public static final String COLUMN_TAG = "tag";
+	public static final String COLUMN_QUESTION = "question";
+	public static final String COLUMN_ANSWER = "name";
 
-	public static final String TABLE_NAME = "ItemTags";
+	public static final String TABLE_NAME = "Questions";
 
 	private static final int DATABASE_VERSION = 1;
 
 	private static final String DATABASE_NAME_EXPRESSION = "WeAreAllTheSameDatabase.db";
 
 	private static final String DATABASE_CREATE = String
-			.format("create table %s (%s integer primary key autoincrement, %s text not null, %s text not null);",
-					TABLE_NAME, COLUMN_ID, COLUMN_NAME, COLUMN_TAG);
+			.format("create table %s (%s integer primary key autoincrement, %s text not null, %s text not null, %s text not null);",
+					TABLE_NAME, COLUMN_ID, COLUMN_QUESTION, COLUMN_ANSWER);
 
-	public ItemTagsOpenHelper(Context context) {
+	public QuestionOpenHelper(Context context) {
 		super(context, DATABASE_NAME_EXPRESSION, null, DATABASE_VERSION);
 	}
 
 	@Override
-	public void onCreate(SQLiteDatabase database) {
-		database.execSQL(DATABASE_CREATE);
+	public void onCreate(SQLiteDatabase db) {
+		db.execSQL(DATABASE_CREATE);
 	}
 
 	@Override
@@ -34,4 +34,5 @@ public class ItemTagsOpenHelper extends SQLiteOpenHelper {
 		db.execSQL(String.format("DROP TABLE IF EXISTS %s", TABLE_NAME));
 		onCreate(db);
 	}
+
 }

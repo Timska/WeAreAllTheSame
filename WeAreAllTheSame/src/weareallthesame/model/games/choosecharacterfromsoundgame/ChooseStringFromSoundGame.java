@@ -65,7 +65,7 @@ public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStr
 		while(numOfferedLetters < 5){
 			numOfferedLetters = random.nextInt(10);
 		}
-		@SuppressWarnings("rawtypes")
+		
 		SimpleFactoryInterface factory = SimpleFactory.getFactory(this.getTags(), 101);
 		while(offeredAnswers.size() <= numOfferedLetters){
 			offeredAnswers.add(factory.getDefault().toString());
