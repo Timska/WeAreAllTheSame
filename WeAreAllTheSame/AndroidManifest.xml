@@ -34,13 +34,14 @@
             android:name=".games.chooseitemgame.FindTheWordFromThePictureActivity"
             android:label="@string/title_activity_find_the_word_from_the_picture" >
         </activity>
+     
         <activity
-            android:name=".games.chooseitemgame.FindWordFromPictureActivity"
-            android:label="@string/title_activity_find_word_from_picture" >
+            android:name=".games.chooseitemgame.FindThePictureFromTheWordActivity"
+            android:label="@string/title_activity_find_the_picture_from_the_word" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.chooseitemgame.FindThePictureFromTheWordActivity"
-            android:label="@string/title_activity_find_the_picture_from_the_word" >
+            android:name="weareallthesame.view.games.chooseitemgame.FindThePictureFromTheSound"
+            android:label="@string/title_activity_find_the_picture_from_the_sound" >
         </activity>
     </application>
 

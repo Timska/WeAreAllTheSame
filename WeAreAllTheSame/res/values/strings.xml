@@ -26,7 +26,9 @@
     <string name="title_activity_hangman_game">HangmanGameActivity</string>
     <string name="title_activity_find_the_word_from_the_picture">FindTheWordFromThePictureActivity</string>
     <string name="find_word_from_picture_description">Најди го точниот одговор според сликата.</string>
-    <string name="title_activity_find_word_from_picture">FindWordFromPictureActivity</string>
     <string name="title_activity_find_the_picture_from_the_word">FindThePictureFromTheWordActivity</string>
-	<string name="find_picture_from_word_description">Обележи ја точната слика, според дадениот збор.</string>
+    <string name="find_picture_from_word_description">Обележи ја точната слика, според дадениот збор.</string>
+    <string name="title_activity_find_the_picture_from_the_sound">FindThePictureFromTheSound</string>
+	<string name="find_picture_from_sound_task_description">Означи го соодветниот одговор според дадениот звук.</string>
+	<string name="find_picture_from_sound_button_play_text">Преслушај повторно.</string>
 </resources>
