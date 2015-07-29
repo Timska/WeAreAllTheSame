@@ -27,8 +27,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="weareallthesame.view.games.hangmangame.HangmanGameActivity"
+            android:name=".games.hangmangame.HangmanGameActivity"
             android:label="@string/title_activity_hangman_game" >
+        </activity>
+        <activity
+            android:name="weareallthesame.view.games.chooseitemgame.FindTheWordFromThePictureActivity"
+            android:label="@string/title_activity_find_the_word_from_the_picture" >
+        </activity>
+        <activity
+            android:name="weareallthesame.view.games.chooseitemgame.FindWordFromPictureActivity"
+            android:label="@string/title_activity_find_word_from_picture" >
         </activity>
     </application>
 
