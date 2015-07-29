@@ -4,17 +4,14 @@ import java.util.List;
 
 import weareallthesame.model.items.Item;
 import weareallthesame.view.R;
-import weareallthesame.view.R.id;
-import weareallthesame.view.R.layout;
-import weareallthesame.view.R.menu;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.Button;
 
 public class FindThePictureFromTheWordActivity extends Activity implements ChooseItemViewInterface {
 
 	private Item answer; 
+	private Button b;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

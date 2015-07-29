@@ -15,7 +15,6 @@ import android.widget.Button;
 
 public class FindThePictureFromTheSound extends Activity implements ChooseItemViewInterface{
 
-	private String TAG="FindThePictureFromTheSound";
 	private Button playSound;
 	private MediaPlayer mMediaPlayer;
 	
