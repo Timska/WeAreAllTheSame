@@ -25,7 +25,8 @@
     <string name="description_zoom_touch_close">Expanded image (touch to close)</string>
     <string name="title_activity_hangman_game">HangmanGameActivity</string>
     <string name="title_activity_find_the_word_from_the_picture">FindTheWordFromThePictureActivity</string>
-    <string name="find_word_from_letter_description">Најди го точниот одговор според сликата.</string>
+    <string name="find_word_from_picture_description">Најди го точниот одговор според сликата.</string>
     <string name="title_activity_find_word_from_picture">FindWordFromPictureActivity</string>
-
+    <string name="title_activity_find_the_picture_from_the_word">FindThePictureFromTheWordActivity</string>
+	<string name="find_picture_from_word_description">Обележи ја точната слика, според дадениот збор.</string>
 </resources>

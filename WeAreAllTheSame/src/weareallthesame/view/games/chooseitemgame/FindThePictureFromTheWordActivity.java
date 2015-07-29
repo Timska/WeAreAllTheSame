@@ -4,30 +4,20 @@ import java.util.List;
 
 import weareallthesame.model.items.Item;
 import weareallthesame.view.R;
+import weareallthesame.view.R.id;
+import weareallthesame.view.R.layout;
+import weareallthesame.view.R.menu;
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.view.Menu;
+import android.view.MenuItem;
 
-public class FindTheWordFromThePictureActivity extends Activity implements ChooseItemViewInterface {
+public class FindThePictureFromTheWordActivity extends Activity implements ChooseItemViewInterface {
 
-	
-	private Button answerOne;
-	private Button answerTwo;
-	private Button answerThree;
-	private Button answerFour;
-	
-	private ImageView picture;
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_find_the_word_from_the_picture);
-	
-		answerOne=(Button) findViewById(R.id.find_word_from_picture_answer_one);
-		answerTwo=(Button) findViewById(R.id.find_word_from_picture_answer_two);
-		answerThree=(Button) findViewById(R.id.find_word_from_picture_answer_three);
-		answerFour=(Button) findViewById(R.id.find_word_from_picture_answer_four);
+		setContentView(R.layout.activity_find_the_picture_from_the_word);
 	}
 
 	@Override
@@ -53,4 +43,6 @@ public class FindTheWordFromThePictureActivity extends Activity implements Choos
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 }
