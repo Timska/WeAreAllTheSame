@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/find_word_from_picture_description"
-        android:textSize="22sp" />
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/find_word_from_picture_picture"
