@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 public class FindThePictureFromTheWordActivity extends Activity implements ChooseItemViewInterface {
 
+	private Item answer; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

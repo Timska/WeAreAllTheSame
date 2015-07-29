@@ -17,9 +17,6 @@ public class FindThePictureFromTheSound extends Activity implements ChooseItemVi
 
 	private String TAG="FindThePictureFromTheSound";
 	private Button playSound;
-	private SoundPool soundPool;
-	private AudioManager audioManager;
-	private int soundId;
 	private MediaPlayer mMediaPlayer;
 	
 
@@ -28,15 +25,7 @@ public class FindThePictureFromTheSound extends Activity implements ChooseItemVi
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_find_the_picture_from_the_sound);
 	
-		/*audioManager=(AudioManager) getSystemService(AUDIO_SERVICE);
-		playSound=(Button) findViewById(R.id.find_picture_from_sound_button_play);
 		
-		//playSound.setEnabled(false);
-		soundPool=new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-		
-		soundId=soundPool.load(this,R.raw.slow_whoop_bubble_pop,1);
-		
-		soundPool.play(soundId, 2, 3, 1, 0, 1); */
 		
 		mMediaPlayer = new MediaPlayer();
 		mMediaPlayer = MediaPlayer.create(this, R.raw.slow_whoop_bubble_pop);

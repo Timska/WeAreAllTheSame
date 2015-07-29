@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 public class FindTheWordFromThePictureActivity extends Activity implements ChooseItemViewInterface {
 
+	private Item answer;
 	
 	private Button answerOne;
 	private Button answerTwo;
