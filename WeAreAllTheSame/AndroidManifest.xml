@@ -43,8 +43,12 @@
             android:label="@string/title_activity_find_the_picture_from_the_sound" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.chooseitemgame.FindPictureFromPictureActivity"
+            android:name=".games.chooseitemgame.FindPictureFromPictureActivity"
             android:label="@string/title_activity_find_picture_from_picture" >
+        </activity>
+        <activity
+            android:name="weareallthesame.view.games.howmanygame.HowManyObjectsActivity"
+            android:label="@string/title_activity_how_many_objects" >
         </activity>
     </application>
 

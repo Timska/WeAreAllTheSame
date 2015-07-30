@@ -32,5 +32,7 @@
     <string name="find_picture_from_sound_task_description">Означи го соодветниот одговор според дадениот звук.</string>
     <string name="find_picture_from_sound_button_play_text">Преслушај повторно.</string>
     <string name="title_activity_find_picture_from_picture">FindPictureFromPictureActivity</string>
-	<string name="find_picture_from_picture_task_description">За соодветната слика, одбери што е точно.</string>
+    <string name="find_picture_from_picture_task_description">За соодветната слика, одбери што е точно.</string>
+    <string name="title_activity_how_many_objects">HowManyObjectsActivity</string>
+	<string name="how_many_objects_description">Означи колку објекти гледаш на сликата.</string>
 </resources>
