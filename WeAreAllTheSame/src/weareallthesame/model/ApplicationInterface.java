@@ -3,6 +3,7 @@ package weareallthesame.model;
 import java.util.Iterator;
 
 import android.content.Context;
+import weareallthesame.db.FillDatabase;
 import weareallthesame.factories.CategoryFactory;
 import weareallthesame.factories.ItemFactory;
 import weareallthesame.factories.QuestionFactory;
@@ -27,6 +28,9 @@ public class ApplicationInterface {
 	private Game currentGame;
 	
 	public ApplicationInterface(Context context) {
+		FillDatabase.setContext(context);
+		FillDatabase.fillCategories();
+		
 		categoryFactory = new CategoryFactory(context);
 		ItemFactory.setContext(context);
 		QuestionFactory.setContext(context);
