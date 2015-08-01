@@ -87,7 +87,7 @@ public class AdditionAndSubtractionNumbersGame extends AbstractGame implements C
 
 	@Override
 	public String getType() {
-		return "AdditionAndSubtraction";
+		return "AdditionAndSubtractionNumbers";
 	}
 
 	@Override

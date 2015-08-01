@@ -55,7 +55,7 @@ public class ChooseItemGame extends AbstractGame implements ChooseItemInterface{
 
 	@Override
 	public String getType() {
-		return "ChoosePictureFromWord";
+		return "ChooseItem";
 	}
 
 	@Override

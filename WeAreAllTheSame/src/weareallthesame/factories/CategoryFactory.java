@@ -7,8 +7,18 @@ import java.util.List;
 import weareallthesame.db.CategoryContentProvider;
 import weareallthesame.db.CategoryOpenHelper;
 import weareallthesame.model.categories.AbstractCategory;
-import weareallthesame.model.categories.LettersCategory;
-import weareallthesame.model.categories.ShapesCategory;
+import weareallthesame.model.categories.CategoryAnimals;
+import weareallthesame.model.categories.CategoryClothesAndBodyParts;
+import weareallthesame.model.categories.CategoryColorsAndObjects;
+import weareallthesame.model.categories.CategoryDay;
+import weareallthesame.model.categories.CategoryEmotions;
+import weareallthesame.model.categories.CategoryFruitsAndVegetables;
+import weareallthesame.model.categories.CategoryLetters;
+import weareallthesame.model.categories.CategoryNumbers;
+import weareallthesame.model.categories.CategoryPrepositions;
+import weareallthesame.model.categories.CategoryShapes;
+import weareallthesame.model.categories.CategoryWeather;
+import weareallthesame.model.categories.CategoryYear;
 import weareallthesame.model.exceptions.CategoryDoesNotExistException;
 import weareallthesame.model.interfaces.TypeHolder;
 import android.content.ContentResolver;
@@ -55,11 +65,51 @@ public class CategoryFactory implements TypeHolder {
 		 */
 
 		if (type.equalsIgnoreCase("letters")) {
-			return new LettersCategory(getCategoryName(type),
+			return new CategoryLetters(getCategoryName(type),
 					getCategoryResource(type));
 		}
 		if (type.equalsIgnoreCase("shapes")) {
-			return new ShapesCategory(getCategoryName(type),
+			return new CategoryShapes(getCategoryName(type),
+					getCategoryResource(type));
+		}
+		if (type.equalsIgnoreCase("numbers")) {
+			return new CategoryNumbers(getCategoryName(type),
+					getCategoryResource(type));
+		}
+		if (type.equalsIgnoreCase("animals")) {
+			return new CategoryAnimals(getCategoryName(type),
+					getCategoryResource(type));
+		}
+		if (type.equalsIgnoreCase("fruitsandvegetables")) {
+			return new CategoryFruitsAndVegetables(getCategoryName(type),
+					getCategoryResource(type));
+		}
+		if (type.equalsIgnoreCase("weather")) {
+			return new CategoryWeather(getCategoryName(type),
+					getCategoryResource(type));
+		}
+		if (type.equalsIgnoreCase("year")) {
+			return new CategoryYear(getCategoryName(type),
+					getCategoryResource(type));
+		}
+		if (type.equalsIgnoreCase("day")) {
+			return new CategoryDay(getCategoryName(type),
+					getCategoryResource(type));
+		}
+		if (type.equalsIgnoreCase("colorsandobjects")) {
+			return new CategoryColorsAndObjects(getCategoryName(type),
+					getCategoryResource(type));
+		}
+		if (type.equalsIgnoreCase("prepositions")) {
+			return new CategoryPrepositions(getCategoryName(type),
+					getCategoryResource(type));
+		}
+		if (type.equalsIgnoreCase("clothesandbodyparts")) {
+			return new CategoryClothesAndBodyParts(getCategoryName(type),
+					getCategoryResource(type));
+		}
+		if (type.equalsIgnoreCase("emotions")) {
+			return new CategoryEmotions(getCategoryName(type),
 					getCategoryResource(type));
 		}
 		throw new CategoryDoesNotExistException(

@@ -29,4 +29,8 @@ public class AdditionAndSubtractionSetsGame extends AdditionAndSubtractionNumber
 		}
 	}
 
+	@Override
+	public String getType() {
+		return "AdditionAndSubtractionSets";
+	}
 }

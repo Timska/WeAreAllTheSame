@@ -30,4 +30,9 @@ public class ChooseSignBetweenSetsGame extends ChooseSignBetweenNumbersGame{
 			throw new InvalidViewTypeException("Se koristi gresno activity za ovaa igra");
 		}
 	}
+	
+	@Override
+	public String getType(){
+		return "ChooseSignBetweenSets";
+	}
 }

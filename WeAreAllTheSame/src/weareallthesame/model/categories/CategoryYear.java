@@ -4,18 +4,19 @@ import java.util.Iterator;
 
 import weareallthesame.model.exceptions.GameDoesNotExistException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
+import weareallthesame.model.exceptions.MissingTagException;
 import weareallthesame.model.games.Game;
 
-public class ShapesCategory extends AbstractCategory{
+public class CategoryYear extends AbstractCategory {
 
-	public ShapesCategory(String name, String resourceName) {
+	public CategoryYear(String name, String resourceName) {
 		super(name, resourceName);
 	}
 
 	@Override
 	public Game getGame(String type, Iterator<String> tags, Object view,
 			String question) throws GameDoesNotExistException,
-			InvalidViewTypeException {
+			InvalidViewTypeException, MissingTagException {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -28,7 +29,7 @@ public class ShapesCategory extends AbstractCategory{
 
 	@Override
 	public String getType() {
-		return "Shapes";
+		return "Year";
 	}
 
 }

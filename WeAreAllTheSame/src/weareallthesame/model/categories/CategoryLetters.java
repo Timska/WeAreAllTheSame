@@ -12,9 +12,9 @@ import weareallthesame.model.games.choosecharacterfromsoundgame.ChooseStringFrom
 import weareallthesame.model.games.hangmangame.HangmanEasyGame;
 import weareallthesame.model.games.hangmangame.HangmanGame;
 
-public class LettersCategory extends AbstractCategory{
+public class CategoryLetters extends AbstractCategory{
 
-	public LettersCategory(String name, String resourceName) {
+	public CategoryLetters(String name, String resourceName) {
 		super(name, resourceName);
 	}
 
