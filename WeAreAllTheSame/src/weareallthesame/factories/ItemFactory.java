@@ -2,8 +2,10 @@ package weareallthesame.factories;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import weareallthesame.db.ItemContentProvider;
 import weareallthesame.db.ItemOpenHelper;
@@ -29,7 +31,7 @@ public class ItemFactory {
 	private static Context ctx;
 	// Sluzi za povici do bazata
 	private static ContentResolver resolver;
-	
+
 	public static void setContext(Context context) {
 		ctx = context;
 		resolver = ctx.getContentResolver();
@@ -49,18 +51,23 @@ public class ItemFactory {
 			int numberOfItems) {
 		// TODO ke treba da se implementira citanje od baza na itemi za dadenite
 		// tagovi i da se vrati tocno numberOfItems itemi
+
 		Cursor cursor = resolver.query(ItemTagsContentProvider.CONTENT_URI,
 				new String[] { ItemTagsOpenHelper.COLUMN_NAME },
-				getSelectionOfTags(tags), null, null);
+				ItemTagsOpenHelper.COLUMN_TAG + "=" + tags.next(), null, null);
 
-		List<String> items = new ArrayList<String>();
-		while (cursor.moveToNext()) {
-			String itemName = cursor.getString(cursor
-					.getColumnIndex(ItemTagsOpenHelper.COLUMN_NAME));
-			if (!items.contains(itemName)) {
-				items.add(itemName);
-			}
+		Set<String> itemsSet = getItemNamesFromCursor(cursor);
+
+		while (tags.hasNext()) {
+			cursor = resolver.query(ItemTagsContentProvider.CONTENT_URI,
+					new String[] { ItemTagsOpenHelper.COLUMN_NAME },
+					ItemTagsOpenHelper.COLUMN_TAG + "=" + tags.next(), null,
+					null);
+
+			itemsSet.retainAll(getItemNamesFromCursor(cursor));
 		}
+
+		List<String> items = new ArrayList<String>(itemsSet);
 		Collections.shuffle(items);
 
 		int size = items.size();
@@ -91,14 +98,14 @@ public class ItemFactory {
 		return result.iterator();
 	}
 
-	private static String getSelectionOfTags(Iterator<String> tagsList) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(ItemTagsOpenHelper.COLUMN_TAG + "=" + tagsList.next());
-		while (tagsList.hasNext()) {
-			sb.append(" or " + ItemTagsOpenHelper.COLUMN_TAG + "="
-					+ tagsList.next());
+	public static Set<String> getItemNamesFromCursor(Cursor cursor) {
+		Set<String> result = new HashSet<String>();
+		while (cursor.moveToNext()) {
+			String itemName = cursor.getString(cursor
+					.getColumnIndex(ItemTagsOpenHelper.COLUMN_NAME));
+			result.add(itemName);
 		}
-		return sb.toString();
+		return result;
 	}
 
 }

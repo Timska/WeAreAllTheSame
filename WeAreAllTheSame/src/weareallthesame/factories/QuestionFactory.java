@@ -2,8 +2,10 @@ package weareallthesame.factories;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import weareallthesame.db.QuestionContentProvider;
 import weareallthesame.db.QuestionOpenHelper;
@@ -38,16 +40,21 @@ public class QuestionFactory {
 			int numberOfItems) {
 		Cursor cursor = resolver.query(QuestionTagsContentProvider.CONTENT_URI,
 				new String[] { QuestionTagsOpenHelper.COLUMN_QUESTION },
-				getSelectionOfTags(tags), null, null);
+				QuestionTagsOpenHelper.COLUMN_TAG + "=" + tags.next(), null,
+				null);
 
-		List<String> questions = new ArrayList<String>();
-		while (cursor.moveToNext()) {
-			String question = cursor.getString(cursor
-					.getColumnIndex(QuestionTagsOpenHelper.COLUMN_QUESTION));
-			if (!questions.contains(question)) {
-				questions.add(question);
-			}
+		Set<String> questionsSet = getQuestionsFromCursor(cursor);
+
+		while (tags.hasNext()) {
+			cursor = resolver.query(QuestionTagsContentProvider.CONTENT_URI,
+					new String[] { QuestionTagsOpenHelper.COLUMN_QUESTION },
+					QuestionTagsOpenHelper.COLUMN_TAG + "=" + tags.next(),
+					null, null);
+
+			questionsSet.retainAll(getQuestionsFromCursor(cursor));
 		}
+
+		List<String> questions = new ArrayList<String>(questionsSet);
 		Collections.shuffle(questions);
 
 		int size = questions.size();
@@ -73,13 +80,14 @@ public class QuestionFactory {
 		return result.iterator();
 	}
 
-	private static String getSelectionOfTags(Iterator<String> tagsList) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(QuestionTagsOpenHelper.COLUMN_TAG + "=" + tagsList.next());
-		while (tagsList.hasNext()) {
-			sb.append(" or " + QuestionTagsOpenHelper.COLUMN_TAG + "="
-					+ tagsList.next());
+	public static Set<String> getQuestionsFromCursor(Cursor cursor) {
+		Set<String> result = new HashSet<String>();
+		while (cursor.moveToNext()) {
+			String itemName = cursor.getString(cursor
+					.getColumnIndex(QuestionTagsOpenHelper.COLUMN_QUESTION));
+			result.add(itemName);
 		}
-		return sb.toString();
+		return result;
 	}
+
 }

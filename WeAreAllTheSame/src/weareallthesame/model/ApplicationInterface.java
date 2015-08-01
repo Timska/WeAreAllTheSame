@@ -30,6 +30,7 @@ public class ApplicationInterface {
 	public ApplicationInterface(Context context) {
 		FillDatabase.setContext(context);
 		FillDatabase.fillCategories();
+		FillDatabase.fillItems();
 		
 		categoryFactory = new CategoryFactory(context);
 		ItemFactory.setContext(context);
