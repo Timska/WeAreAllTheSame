@@ -20,7 +20,7 @@ public class PagerActivity extends Activity {
 		setContentView(R.layout.activity_pager);
 		
 		this.appInterface = (ApplicationInterface) getIntent().getSerializableExtra("appInterface");
-		
+		int position = getIntent().getExtras().getInt("position");
 		
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		adapter = new ViewPagerAdapter(PagerActivity.this, appInterface.getCategories());

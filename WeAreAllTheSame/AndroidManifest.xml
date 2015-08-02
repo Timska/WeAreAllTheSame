@@ -82,7 +82,8 @@
         </activity>
         <activity
             android:name=".PagerActivity"
-            android:label="@string/title_activity_pager" >
+            android:label="@string/title_activity_pager"
+            android:theme="@style/Theme.Transparent" >
         </activity>
     </application>
 

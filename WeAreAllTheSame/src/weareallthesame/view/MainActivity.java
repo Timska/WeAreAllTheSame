@@ -30,6 +30,7 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 				Intent intent = new Intent(MainActivity.this, PagerActivity.class);
 				intent.putExtra("appInterface", appInterface);
+				intent.putExtra("position", position);
 				startActivity(intent);
 			}
 		});
