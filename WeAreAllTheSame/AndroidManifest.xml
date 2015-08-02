@@ -20,11 +20,7 @@
         <activity
             android:name=".ZoomActivity"
             android:label="@string/title_activity_zoom" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            
         </activity>
         <activity
             android:name=".games.hangmangame.HangmanGameActivity"
@@ -47,8 +43,21 @@
             android:label="@string/title_activity_find_picture_from_picture" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.howmanygame.HowManyObjectsActivity"
+            android:name=".games.howmanygame.HowManyObjectsActivity"
             android:label="@string/title_activity_how_many_objects" >
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PagerActivity"
+            android:label="@string/title_activity_pager" >
         </activity>
     </application>
 

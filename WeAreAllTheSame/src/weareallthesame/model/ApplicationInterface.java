@@ -1,12 +1,16 @@
 package weareallthesame.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import android.content.Context;
 import weareallthesame.db.FillDatabase;
 import weareallthesame.factories.CategoryFactory;
 import weareallthesame.factories.ItemFactory;
 import weareallthesame.factories.QuestionFactory;
+import weareallthesame.model.categories.AbstractCategory;
 import weareallthesame.model.categories.CategoryInterface;
 import weareallthesame.model.exceptions.CategoryDoesNotExistException;
 import weareallthesame.model.exceptions.CategoryNotChosenException;
@@ -21,8 +25,13 @@ import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.games.Game;
 
-public class ApplicationInterface {
+public class ApplicationInterface implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1913534407488804178L;
+	
 	private CategoryFactory categoryFactory;
 	private CategoryInterface currentCategory;
 	private Game currentGame;
@@ -42,13 +51,41 @@ public class ApplicationInterface {
 	 * So ovoj metod ke se dobijat tipovite na site kategorii
 	 * @return tipot na site kategorii
 	 */
-	public Iterator<String> getCategories(){
+	public Iterator<String> getCategoryTypes(){
 		return categoryFactory.getTypes();
 	}
 	
 	/**
+	 * So ovoj metod se dobivaat site kategorii.
+	 * @return lista od kategorii
+	 */
+	public List<AbstractCategory> getCategories() {
+		List<AbstractCategory> resultList = new ArrayList<AbstractCategory>();
+		Iterator<String> categoryTypesIterator = getCategoryTypes();
+		while(categoryTypesIterator.hasNext()){
+			try {
+				AbstractCategory category = getCategory(categoryTypesIterator.next());
+				resultList.add(category);
+			} catch (CategoryDoesNotExistException e) {
+				e.printStackTrace();
+			}
+		}
+		return resultList;
+	}
+	
+	/**
+	 * So ovoj metod za daden tip se dobiva instanca od kategorija.
+	 * @param type tipot na kategorijata
+	 * @return kategorijata
+	 * @throws CategoryDoesNotExistException
+	 */
+	public AbstractCategory getCategory(String type) throws CategoryDoesNotExistException{
+		return categoryFactory.getCategory(type);
+	}
+	
+	/**
 	 * So ovoj metod se dobiva resursot na kategorijata ako e daden nejziniot tip
-	 * @param type tipot na kategorijata, moze da se dobie so {@link ApplicationInterface#getCategories()}
+	 * @param type tipot na kategorijata, moze da se dobie so {@link ApplicationInterface#getCategoryTypes()}
 	 * @return resurs za kategorijata od pusteniot tip
 	 */
 	public String getResourceForCategory(String type){
@@ -57,7 +94,7 @@ public class ApplicationInterface {
 	
 	/**
 	 * So ovoj metod se dobiva imeto na kategorijata ako e daden nejziniot tip
-	 * @param type tipot na kategorijata, moze da se dobie so {@link ApplicationInterface#getCategories()}
+	 * @param type tipot na kategorijata, moze da se dobie so {@link ApplicationInterface#getCategoryTypes()}
 	 * @return imeto na kategorijata od pusteniot tip
 	 */
 	public String getNameForCategory(String type){
@@ -166,4 +203,5 @@ public class ApplicationInterface {
 		}
 		currentGame.undo();
 	}
+
 }

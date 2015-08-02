@@ -34,5 +34,9 @@
     <string name="title_activity_find_picture_from_picture">FindPictureFromPictureActivity</string>
     <string name="find_picture_from_picture_task_description">За соодветната слика, одбери што е точно.</string>
     <string name="title_activity_how_many_objects">HowManyObjectsActivity</string>
-	<string name="how_many_objects_description">Означи колку објекти гледаш на сликата.</string>
+    <string name="how_many_objects_description">Означи колку објекти гледаш на сликата.</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_pager">PagerActivity</string>
+    <string name="content_description_image_pager_item">Слика од категорија</string>
+
 </resources>

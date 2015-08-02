@@ -59,10 +59,6 @@ public class CategoryFactory implements TypeHolder {
 	 */
 	public AbstractCategory getCategory(String type)
 			throws CategoryDoesNotExistException {
-		/*
-		 * TODO ke treba da se doimplementira za dadeniot tip da se kreira
-		 * soodvetnata kategorija. Treba da procita od baza.
-		 */
 
 		if (type.equalsIgnoreCase("letters")) {
 			return new CategoryLetters(getCategoryName(type),
