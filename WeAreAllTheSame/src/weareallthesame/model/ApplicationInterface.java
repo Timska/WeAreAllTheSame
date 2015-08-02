@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import android.content.Context;
 import weareallthesame.db.FillDatabase;
 import weareallthesame.factories.CategoryFactory;
 import weareallthesame.factories.ItemFactory;
@@ -24,13 +23,11 @@ import weareallthesame.model.exceptions.MissingTagException;
 import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.games.Game;
+import android.content.Context;
 
 public class ApplicationInterface implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1913534407488804178L;
+	private static final long serialVersionUID = -2398754556365634431L;
 	
 	private CategoryFactory categoryFactory;
 	private CategoryInterface currentCategory;

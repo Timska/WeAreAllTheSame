@@ -27,11 +27,8 @@ import android.content.Context;
 import android.database.Cursor;
 
 public class CategoryFactory implements TypeHolder, Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -685011375553951276L;
+	
+	private static final long serialVersionUID = 8118492678392408856L;
 	
 	// Contekstot (odnosno Activity) ni treba za da moze ContentResolver-ot da
 	// se inicijalizira
@@ -45,7 +42,7 @@ public class CategoryFactory implements TypeHolder, Serializable {
 	}
 
 	public CategoryFactory() {
-
+		
 	}
 
 	/**
