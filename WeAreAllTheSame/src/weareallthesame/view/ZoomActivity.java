@@ -51,7 +51,7 @@ public class ZoomActivity extends Activity {
 
 			@Override
 			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-				Intent intent = new Intent(ZoomActivity.this, MainActivity.class);
+				Intent intent = new Intent(ZoomActivity.this, MyActivity.class);
 				startActivity(intent);
 				return true;
 			}
