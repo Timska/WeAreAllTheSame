@@ -28,19 +28,19 @@ import android.database.Cursor;
 
 public class CategoryFactory implements TypeHolder, Serializable {
 	
-	private static final long serialVersionUID = 8118492678392408856L;
+	private static final long serialVersionUID = -6939687241390044763L;
 	
 	// Contekstot (odnosno Activity) ni treba za da moze ContentResolver-ot da
 	// se inicijalizira
 	// Namesto da se povikuva konstruktor, moze i kako parametar vo potrebnite
 	// metodi da se pusti
 	// Sluzi za povici do bazata
-	private ContentResolver resolver;
+	private static ContentResolver resolver;
 
-	public CategoryFactory(Context ctx) {
-		resolver = ctx.getContentResolver();
+	public CategoryFactory(Context context) {
+		resolver = context.getContentResolver();
 	}
-
+	
 	public CategoryFactory() {
 		
 	}
