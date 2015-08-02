@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 public class PagerActivity extends Activity {
 
@@ -23,9 +25,17 @@ public class PagerActivity extends Activity {
 		int position = getIntent().getExtras().getInt("position");
 		
 		viewPager = (ViewPager) findViewById(R.id.pager);
-		adapter = new ViewPagerAdapter(PagerActivity.this, appInterface.getCategories());
+		adapter = new ViewPagerAdapter(PagerActivity.this, appInterface.getCategories(), appInterface);
 		viewPager.setAdapter(adapter);
 		viewPager.setCurrentItem(position);
+		viewPager.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(PagerActivity.this, "click", Toast.LENGTH_LONG).show();
+				finish();
+			}
+		});
 	}
 
 	@Override
