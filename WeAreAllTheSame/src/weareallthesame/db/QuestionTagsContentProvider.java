@@ -21,7 +21,7 @@ public class QuestionTagsContentProvider extends ContentProvider {
 	private static final int ITEMS = 1;
 	private static final int ITEM_ID = 2;
 
-	private static final String AUTHORITY = "weareallthesame.db";
+	private static final String AUTHORITY = "weareallthesame.db5";
 	private static final String BASE_PATH = "questions_tags";
 	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
 			+ "/" + BASE_PATH);

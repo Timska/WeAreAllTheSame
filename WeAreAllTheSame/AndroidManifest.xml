@@ -15,27 +15,27 @@
         android:theme="@style/AppTheme" >
         <provider
             android:name="weareallthesame.db.CategoryContentProvider"
-            android:authorities="weareallthesame.db"
+            android:authorities="weareallthesame.db1"
             android:exported="false" >
         </provider>
         <provider
             android:name="weareallthesame.db.ItemContentProvider"
-            android:authorities="weareallthesame.db"
+            android:authorities="weareallthesame.db2"
             android:exported="false" >
         </provider>
         <provider
             android:name="weareallthesame.db.ItemTagsContentProvider"
-            android:authorities="weareallthesame.db"
+            android:authorities="weareallthesame.db3"
             android:exported="false" >
         </provider>
         <provider
             android:name="weareallthesame.db.QuestionContentProvider"
-            android:authorities="weareallthesame.db"
+            android:authorities="weareallthesame.db4"
             android:exported="false" >
         </provider>
         <provider
             android:name="weareallthesame.db.QuestionTagsContentProvider"
-            android:authorities="weareallthesame.db"
+            android:authorities="weareallthesame.db5"
             android:exported="false" >
         </provider>
 
