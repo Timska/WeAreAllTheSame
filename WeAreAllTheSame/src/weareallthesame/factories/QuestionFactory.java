@@ -40,16 +40,16 @@ public class QuestionFactory {
 			int numberOfItems) {
 		Cursor cursor = resolver.query(QuestionTagsContentProvider.CONTENT_URI,
 				new String[] { QuestionTagsOpenHelper.COLUMN_QUESTION },
-				QuestionTagsOpenHelper.COLUMN_TAG + "=" + tags.next(), null,
-				null);
+				QuestionTagsOpenHelper.COLUMN_TAG + "=" + "'" + tags.next()
+						+ "'", null, null);
 
 		Set<String> questionsSet = getQuestionsFromCursor(cursor);
 
 		while (tags.hasNext()) {
 			cursor = resolver.query(QuestionTagsContentProvider.CONTENT_URI,
 					new String[] { QuestionTagsOpenHelper.COLUMN_QUESTION },
-					QuestionTagsOpenHelper.COLUMN_TAG + "=" + tags.next(),
-					null, null);
+					QuestionTagsOpenHelper.COLUMN_TAG + "=" + "'" + tags.next()
+							+ "'", null, null);
 
 			questionsSet.retainAll(getQuestionsFromCursor(cursor));
 		}
@@ -69,7 +69,8 @@ public class QuestionFactory {
 		for (String str : questions) {
 			cursor = resolver.query(QuestionContentProvider.CONTENT_URI,
 					new String[] { QuestionOpenHelper.COLUMN_ANSWER },
-					QuestionOpenHelper.COLUMN_QUESTION + "=" + str, null, null);
+					QuestionOpenHelper.COLUMN_QUESTION + "=" + "'" + str + "'",
+					null, null);
 
 			cursor.moveToFirst();
 			String answer = cursor.getString(cursor

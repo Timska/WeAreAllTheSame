@@ -54,15 +54,16 @@ public class ItemFactory {
 
 		Cursor cursor = resolver.query(ItemTagsContentProvider.CONTENT_URI,
 				new String[] { ItemTagsOpenHelper.COLUMN_NAME },
-				ItemTagsOpenHelper.COLUMN_TAG + "=" + tags.next(), null, null);
+				ItemTagsOpenHelper.COLUMN_TAG + "=" + "'" + tags.next() + "'",
+				null, null);
 
 		Set<String> itemsSet = getItemNamesFromCursor(cursor);
 
 		while (tags.hasNext()) {
 			cursor = resolver.query(ItemTagsContentProvider.CONTENT_URI,
 					new String[] { ItemTagsOpenHelper.COLUMN_NAME },
-					ItemTagsOpenHelper.COLUMN_TAG + "=" + tags.next(), null,
-					null);
+					ItemTagsOpenHelper.COLUMN_TAG + "=" + "'" + tags.next()
+							+ "'", null, null);
 
 			itemsSet.retainAll(getItemNamesFromCursor(cursor));
 		}
@@ -82,7 +83,8 @@ public class ItemFactory {
 		for (String str : items) {
 			cursor = resolver.query(ItemContentProvider.CONTENT_URI,
 					new String[] { ItemOpenHelper.COLUMN_RESOURCE },
-					ItemOpenHelper.COLUMN_NAME + "=" + str, null, null);
+					ItemOpenHelper.COLUMN_NAME + "=" + "'" + str + "'", null,
+					null);
 			List<String> resources = new ArrayList<String>();
 			while (cursor.moveToNext()) {
 				String resourceID = cursor.getString(cursor
