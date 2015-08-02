@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 public class FindTheWordFromThePictureActivity extends Activity implements ChooseItemViewInterface {
 
+	private static final long serialVersionUID = -2816647589304154272L;
+
 	private Item answers;
 	
 	private Button answerOne;

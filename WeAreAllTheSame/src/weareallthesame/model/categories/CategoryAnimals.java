@@ -13,6 +13,8 @@ import weareallthesame.model.games.connectitemsgames.ConnectItemAndResursGame;
 
 public class CategoryAnimals extends AbstractCategory {
 
+	private static final long serialVersionUID = -8026836090450261866L;
+
 	public CategoryAnimals(String name, String resourceName) {
 		super(name, resourceName);
 	}

@@ -6,6 +6,8 @@ import weareallthesame.model.exceptions.GameOverException;
 
 public class ChangeElementPositionCommand extends AbstractCommand {
 
+	private static final long serialVersionUID = -458009379892696000L;
+
 	private OrderElementsInterface game;
 	private int from;
 	private int to;

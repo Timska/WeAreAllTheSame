@@ -13,6 +13,8 @@ import weareallthesame.model.games.connectitemsgames.ConnectItemAndResursGame;
 
 public class CategoryPrepositions extends AbstractCategory {
 
+	private static final long serialVersionUID = -4245111031195344108L;
+
 	public CategoryPrepositions(String name, String resourceName) {
 		super(name, resourceName);
 	}

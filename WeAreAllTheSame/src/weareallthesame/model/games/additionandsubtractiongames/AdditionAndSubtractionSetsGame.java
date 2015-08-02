@@ -10,6 +10,7 @@ import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubtrac
 
 public class AdditionAndSubtractionSetsGame extends AdditionAndSubtractionNumbersGame{
 
+	private static final long serialVersionUID = -4841658647601075370L;
 	private Item item;
 	
 	public AdditionAndSubtractionSetsGame(Iterator<String> tags, Object view, String question) throws InvalidViewTypeException,MissingTagException {

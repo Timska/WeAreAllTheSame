@@ -1,5 +1,7 @@
 package weareallthesame.model.commands;
 
+import java.io.Serializable;
+
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.interfaces.Typable;
@@ -7,7 +9,7 @@ import weareallthesame.model.interfaces.Typable;
 /**
  * Ovoj objekt pretstavuva komanda koja moze da bide izvrsena ili vratena.
  */
-public interface Command extends Typable{
+public interface Command extends Typable, Serializable {
 	/**
 	 * Ja izvrsuva komandata dokolku ne e veke povikana ili dokolku posledno e
 	 * povikan metodot {@link Command#undo()}. Vo sprotivno ne se slucuva nisto.

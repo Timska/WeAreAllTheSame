@@ -6,6 +6,8 @@ import weareallthesame.model.exceptions.GameOverException;
 
 public class ChooseSignCommand extends AbstractCommand{
 
+	private static final long serialVersionUID = 2886814732252564002L;
+
 	private ChooseSignInterface game;
 	private Character sign;
 	

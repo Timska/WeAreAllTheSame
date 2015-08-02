@@ -14,6 +14,8 @@ import weareallthesame.view.games.chooseitemgame.ChooseItemViewInterface;
 
 public class ChooseSimilarItemGame extends AbstractGame implements ChooseItemInterface {
 
+	private static final long serialVersionUID = 7135424773486834920L;
+
 	private ChooseItemViewInterface view;
 	private Item answer;
 	private Item correctItem;

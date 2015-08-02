@@ -1,11 +1,12 @@
 package weareallthesame.view.games.hangmangame;
 
+import java.io.Serializable;
 import java.util.List;
 
 import weareallthesame.model.items.Item;
 
 
-public interface HangmanViewInterface {
+public interface HangmanViewInterface extends Serializable {
 	
 	/**
 	 * Ovoj metod se koristi za da se oznaci tocniot odgovor na igrata.

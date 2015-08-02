@@ -14,6 +14,8 @@ import weareallthesame.model.interfaces.ChooseStringInterface;
 
 public class ChooseStringFromSoundCommandFactory implements CommandFactory {
 
+	private static final long serialVersionUID = -341189746589081861L;
+	
 	private ChooseStringInterface receiver;
 	
 	public ChooseStringFromSoundCommandFactory(ChooseStringInterface receiver) {

@@ -1,9 +1,10 @@
 package weareallthesame.view.games.questiongame;
 
+import java.io.Serializable;
 import java.util.Set;
 
 
-public interface QuestionViewInterface {
+public interface QuestionViewInterface extends Serializable {
 
 	/**
 	 * So ovoj metdo se setira prasanjeto na igrata.

@@ -9,6 +9,8 @@ import weareallthesame.view.games.choosesigngames.ChooseSignBetweenSetsViewInter
 
 public class ChooseSignBetweenSetsGame extends ChooseSignBetweenNumbersGame{
 
+	private static final long serialVersionUID = 6419897194358879707L;
+
 	private Item itemOne;
 	private Item itemTwo;
 	

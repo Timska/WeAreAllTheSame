@@ -18,6 +18,8 @@ import weareallthesame.view.games.connectitemsgames.ConnectItemsViewInterface;
 
 public class ConnectItemsGame extends AbstractGame implements ConnectItemsInterface {
 
+	private static final long serialVersionUID = -8343474527306541230L;
+
 	private ConnectItemsViewInterface view;
 	private List<Item> itemsOne;
 	private List<Item> itemsTwo;

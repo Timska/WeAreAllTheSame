@@ -1,8 +1,9 @@
 package weareallthesame.view.games.additionandsubtractiongames;
 
+import java.io.Serializable;
 import java.util.Set;
 
-public interface AdditionAndSubtractionNumbersViewInterface {
+public interface AdditionAndSubtractionNumbersViewInterface extends Serializable {
 
 	/**
 	 * Ovoj metod se koristi za da se setiraat broevite koi se sobiraat ili odzemaat.

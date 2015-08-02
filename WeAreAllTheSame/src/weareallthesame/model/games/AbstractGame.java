@@ -14,6 +14,9 @@ import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 
 public abstract class AbstractGame implements Game {
+	
+	private static final long serialVersionUID = 2151850131623925971L;
+	
 	private List<String> tags;
 	private CommandFactory commandFactory;
 	private Stack<Command> commands;

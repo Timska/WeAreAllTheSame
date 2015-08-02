@@ -5,6 +5,9 @@ import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.interfaces.Typable;
 
 public abstract class AbstractCommand implements Command, Typable {
+	
+	private static final long serialVersionUID = 818291402355120542L;
+	
 	private boolean executed;
 
 	@Override

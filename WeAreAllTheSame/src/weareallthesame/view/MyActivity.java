@@ -1,9 +1,5 @@
 package weareallthesame.view;
 
-import weareallthesame.view.games.chooseitemgame.FindPictureFromPictureActivity;
-import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheSound;
-import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheWordActivity;
-import weareallthesame.view.games.chooseitemgame.FindTheWordFromThePictureActivity;
 import weareallthesame.view.games.howmanygame.HowManyObjectsActivity;
 import android.app.Activity;
 import android.content.Intent;

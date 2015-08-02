@@ -1,5 +1,7 @@
 package weareallthesame.model.games.hangmangame;
 
+import java.io.Serializable;
+
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 
@@ -9,7 +11,7 @@ import weareallthesame.model.exceptions.GameOverException;
  * @author i5
  *
  */
-public interface HangmanInterface {
+public interface HangmanInterface extends Serializable {
 
 	/**
 	 * Ovoj metod zema edna od ponudenite bukvi i ja smestuva na dadena pozicija vo odgovorot

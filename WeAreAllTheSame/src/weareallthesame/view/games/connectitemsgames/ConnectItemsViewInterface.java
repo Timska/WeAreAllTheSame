@@ -1,10 +1,11 @@
 package weareallthesame.view.games.connectitemsgames;
 
+import java.io.Serializable;
 import java.util.List;
 
 import weareallthesame.model.items.Item;
 
-public interface ConnectItemsViewInterface {
+public interface ConnectItemsViewInterface extends Serializable {
 
 	/**
 	 * So ovoj metod se setiraat dvete listi cii elementi treba da se povrzuvaat.

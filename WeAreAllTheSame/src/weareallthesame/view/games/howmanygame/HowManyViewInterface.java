@@ -1,10 +1,11 @@
 package weareallthesame.view.games.howmanygame;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import weareallthesame.model.items.Item;
 
-public interface HowManyViewInterface {
+public interface HowManyViewInterface extends Serializable{
 
 	/**
 	 * So ovoj metod se setira odgovorot na igrata.

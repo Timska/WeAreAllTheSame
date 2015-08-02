@@ -12,6 +12,8 @@ import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 
 public class ChooseSignCommandFactory implements CommandFactory{
 
+	private static final long serialVersionUID = 288345623567780451L;
+
 	private ChooseSignInterface receiver;
 	
 	public ChooseSignCommandFactory(ChooseSignInterface receiver) {

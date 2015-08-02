@@ -1,8 +1,9 @@
 package weareallthesame.view.games.choosesigngames;
 
+import java.io.Serializable;
 import java.util.Set;
 
-public interface ChooseSignBetweenNumbersViewInterface {
+public interface ChooseSignBetweenNumbersViewInterface extends Serializable {
 
 	/**
 	 * So ovoj metod se setiraat broevite koi se sporeduvaat.

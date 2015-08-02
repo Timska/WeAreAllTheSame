@@ -1,9 +1,11 @@
 package weareallthesame.model.games.chooseitemgame;
 
+import java.io.Serializable;
+
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.items.Item;
 
-public interface ChooseItemInterface {
+public interface ChooseItemInterface extends Serializable {
 
 	/**
 	 * So ovoj metod se izbira eden odgovor.

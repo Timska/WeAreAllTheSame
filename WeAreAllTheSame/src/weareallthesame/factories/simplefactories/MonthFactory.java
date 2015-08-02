@@ -5,7 +5,7 @@ import java.util.Random;
 public class MonthFactory implements SimpleFactoryInterface {
 
 	private static String[] months = {"Јануари", "Февруари", "Март", "Април", "Мај",
-		"Јуни", "Јули", "Август", "Септември", "Октомври", "Ноември", "Декмври"};
+		"Јуни", "Јули", "Август", "Септември", "Октомври", "Ноември", "Декември"};
 
 	@Override
 	public String getOnPosition(int position) {

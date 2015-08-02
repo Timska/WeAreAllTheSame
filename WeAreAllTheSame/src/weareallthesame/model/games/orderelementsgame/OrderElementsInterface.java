@@ -1,9 +1,11 @@
 package weareallthesame.model.games.orderelementsgame;
 
+import java.io.Serializable;
+
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 
-public interface OrderElementsInterface {
+public interface OrderElementsInterface extends Serializable {
 
 	public void setOnPosition(String element, int position) throws CommandException, GameOverException;
 	

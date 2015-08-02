@@ -13,6 +13,8 @@ import weareallthesame.view.games.choosesigngames.ChooseSignBetweenNumbersViewIn
 
 public class ChooseSignBetweenNumbersGame extends AbstractGame implements ChooseSignInterface{
 
+	private static final long serialVersionUID = 3294489516316301348L;
+
 	private ChooseSignBetweenNumbersViewInterface view;
 	private Set<Character> signs;
 	private int numberOne;

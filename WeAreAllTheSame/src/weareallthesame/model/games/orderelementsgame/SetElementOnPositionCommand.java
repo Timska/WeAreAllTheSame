@@ -6,6 +6,8 @@ import weareallthesame.model.exceptions.GameOverException;
 
 public class SetElementOnPositionCommand extends AbstractCommand {
 
+	private static final long serialVersionUID = 6964522172665804055L;
+
 	private OrderElementsInterface game;
 	private int position;
 	private String element;

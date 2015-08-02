@@ -16,6 +16,8 @@ import weareallthesame.view.games.howmanygame.HowManyViewInterface;
 
 public class HowManyGame extends AbstractGame implements ChooseNumberInterface{
 	
+	private static final long serialVersionUID = -3798076972351593038L;
+	
 	private HowManyViewInterface view;
 	private Item item;
 	private int howMany;

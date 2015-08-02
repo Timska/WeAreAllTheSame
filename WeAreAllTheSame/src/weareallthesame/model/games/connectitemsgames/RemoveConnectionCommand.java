@@ -6,6 +6,8 @@ import weareallthesame.model.exceptions.GameOverException;
 
 public class RemoveConnectionCommand extends AbstractCommand {
 
+	private static final long serialVersionUID = 8800967773626149312L;
+
 	private ConnectItemsInterface game;
 	private int positionOne;
 	private int positionTwo;

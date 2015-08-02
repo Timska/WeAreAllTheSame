@@ -15,6 +15,8 @@ import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubtrac
 
 public class AdditionAndSubtractionNumbersGame extends AbstractGame implements ChooseNumberInterface{
 
+	private static final long serialVersionUID = -571230758625520275L;
+
 	private AdditionAndSubtractionNumbersViewInterface view;
 	private int numberOne;
 	private int numberTwo;

@@ -18,6 +18,8 @@ import weareallthesame.view.games.choosecharacterfromsoundgame.ChooseStringFromS
 
 public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStringInterface{
 	
+	private static final long serialVersionUID = 5853982770716637958L;
+	
 	private ChooseStringFromSoundViewInterface view;
 	private Item answer;
 	private Set<String> offeredAnswers;

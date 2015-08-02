@@ -6,6 +6,8 @@ import weareallthesame.model.interfaces.ChooseStringInterface;
 
 public class ChooseStringCommand extends AbstractCommand{
 
+	private static final long serialVersionUID = 7157888600323458156L;
+
 	private ChooseStringInterface game;
 	private String string;
 	

@@ -1,9 +1,11 @@
 package weareallthesame.model.interfaces;
 
+import java.io.Serializable;
+
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 
-public interface ChooseNumberInterface {
+public interface ChooseNumberInterface extends Serializable {
 
 	/**
 	 * So ovoj metod se izbira eden od ponudenite broevi kako odgovor.

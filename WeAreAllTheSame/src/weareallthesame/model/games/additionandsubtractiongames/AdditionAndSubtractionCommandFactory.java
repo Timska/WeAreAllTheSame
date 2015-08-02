@@ -14,6 +14,8 @@ import weareallthesame.model.interfaces.ChooseNumberInterface;
 
 public class AdditionAndSubtractionCommandFactory implements CommandFactory{
 
+	private static final long serialVersionUID = 1455500729026224944L;
+
 	private ChooseNumberInterface receiver;
 	
 	public AdditionAndSubtractionCommandFactory(ChooseNumberInterface receiver) {

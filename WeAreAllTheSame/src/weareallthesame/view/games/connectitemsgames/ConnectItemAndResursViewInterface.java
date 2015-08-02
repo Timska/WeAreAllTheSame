@@ -1,10 +1,11 @@
 package weareallthesame.view.games.connectitemsgames;
 
+import java.io.Serializable;
 import java.util.List;
 
 import weareallthesame.model.items.Item;
 
-public interface ConnectItemAndResursViewInterface {
+public interface ConnectItemAndResursViewInterface extends Serializable {
 
 	
 	/**

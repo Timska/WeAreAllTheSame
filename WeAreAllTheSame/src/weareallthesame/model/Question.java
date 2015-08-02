@@ -1,6 +1,10 @@
 package weareallthesame.model;
 
-public class Question {
+import java.io.Serializable;
+
+public class Question implements Serializable {
+
+	private static final long serialVersionUID = -9157488480650805668L;
 
 	private String question;
 	private String answer;

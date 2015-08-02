@@ -12,6 +12,8 @@ import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 
 public class OrderElementsCommandFactory implements CommandFactory {
 
+	private static final long serialVersionUID = 4281388946274225756L;
+
 	private OrderElementsInterface receiver;
 	
 	public OrderElementsCommandFactory(OrderElementsInterface receiver) {

@@ -6,6 +6,8 @@ import weareallthesame.model.interfaces.ChooseNumberInterface;
 
 public class ChooseNumberCommand extends AbstractCommand {
 
+	private static final long serialVersionUID = -8110169976977012868L;
+
 	private ChooseNumberInterface game;
 	private int number;
 	

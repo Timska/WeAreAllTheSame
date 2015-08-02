@@ -16,6 +16,8 @@ import weareallthesame.view.games.hangmangame.HangmanViewInterface;
 
 public class HangmanGame extends AbstractGame implements HangmanInterface {
 
+	private static final long serialVersionUID = -6299102336837945770L;
+
 	private static final int numberOfOfferedLetters = 20;
 	private Item answer;
 	private List<Character> offeredLetters;

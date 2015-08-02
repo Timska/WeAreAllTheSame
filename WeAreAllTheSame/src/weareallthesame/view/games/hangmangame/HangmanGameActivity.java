@@ -11,6 +11,8 @@ import android.view.MenuItem;
 
 public class HangmanGameActivity extends Activity implements HangmanViewInterface {
 
+	private static final long serialVersionUID = 6373187583074782521L;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -10,6 +10,8 @@ import android.widget.Button;
 
 public class FindThePictureFromTheWordActivity extends Activity implements ChooseItemViewInterface {
 
+	private static final long serialVersionUID = -6326579880175037796L;
+
 	private Item answer; 
 	private Button b;
 	@Override

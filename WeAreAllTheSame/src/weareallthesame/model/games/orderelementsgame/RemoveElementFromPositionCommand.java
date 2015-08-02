@@ -6,6 +6,8 @@ import weareallthesame.model.exceptions.GameOverException;
 
 public class RemoveElementFromPositionCommand extends AbstractCommand {
 
+	private static final long serialVersionUID = 7339346597700119255L;
+
 	private OrderElementsInterface game;
 	private int position;
 	private String element;

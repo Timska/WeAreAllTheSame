@@ -1,9 +1,10 @@
 package weareallthesame.view.games.orderelementsgame;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
-public interface OrderElementsViewInterface {
+public interface OrderElementsViewInterface extends Serializable {
 
 	/**
 	 * So ovoj metod se setiraat elementite koi treba da se podredat.

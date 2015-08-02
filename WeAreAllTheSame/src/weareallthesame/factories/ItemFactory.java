@@ -88,6 +88,8 @@ public class ItemFactory {
 
 			result.add(new Item(str, resources.iterator()) {
 
+				private static final long serialVersionUID = -3020825504350961931L;
+
 			});
 		}
 

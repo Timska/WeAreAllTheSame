@@ -1,12 +1,14 @@
 package weareallthesame.factories;
 
+import java.io.Serializable;
+
 import weareallthesame.model.commands.Command;
 import weareallthesame.model.exceptions.CommandDoesNotExistException;
 import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.interfaces.TypeHolder;
 
-public interface CommandFactory extends TypeHolder {
+public interface CommandFactory extends TypeHolder, Serializable {
 
 	/**
 	 * So povikot na ovoj metod ke se kreira nova komanda vo zavisnost od tipot

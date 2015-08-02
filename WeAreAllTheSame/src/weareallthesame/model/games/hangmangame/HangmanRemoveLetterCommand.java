@@ -5,6 +5,8 @@ import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 
 public class HangmanRemoveLetterCommand extends AbstractCommand {
+	
+	private static final long serialVersionUID = 4091614579984946656L;
 
 	private HangmanInterface game;
 	private int positionFrom;

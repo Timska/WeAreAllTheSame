@@ -16,6 +16,8 @@ import weareallthesame.view.games.questiongame.QuestionViewInterface;
 
 public class QuestionGame extends AbstractGame implements ChooseStringInterface {
 
+	private static final long serialVersionUID = 2012177804732647392L;
+
 	private QuestionViewInterface view;
 	private Question correct;
 	private Set<String> offeredAnswers;

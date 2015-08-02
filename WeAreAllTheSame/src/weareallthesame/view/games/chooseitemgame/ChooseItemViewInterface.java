@@ -1,10 +1,11 @@
 package weareallthesame.view.games.chooseitemgame;
 
+import java.io.Serializable;
 import java.util.List;
 
 import weareallthesame.model.items.Item;
 
-public interface ChooseItemViewInterface {
+public interface ChooseItemViewInterface extends Serializable {
 
 	/**
 	 * So ovoj metod se setira resenieto na igrata.

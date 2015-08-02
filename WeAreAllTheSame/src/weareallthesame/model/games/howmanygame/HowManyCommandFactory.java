@@ -14,6 +14,8 @@ import weareallthesame.model.interfaces.ChooseNumberInterface;
 
 public class HowManyCommandFactory implements CommandFactory{
 
+	private static final long serialVersionUID = -8750615745646906739L;
+
 	private ChooseNumberInterface receiver;
 	
 	public HowManyCommandFactory(ChooseNumberInterface receiver) {

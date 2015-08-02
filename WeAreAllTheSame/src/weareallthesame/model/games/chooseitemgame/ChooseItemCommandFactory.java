@@ -13,6 +13,8 @@ import weareallthesame.model.items.Item;
 
 public class ChooseItemCommandFactory implements CommandFactory {
 
+	private static final long serialVersionUID = 4996968658805346728L;
+
 	private ChooseItemInterface receiver;
 	
 	public ChooseItemCommandFactory(ChooseItemInterface receiver) {

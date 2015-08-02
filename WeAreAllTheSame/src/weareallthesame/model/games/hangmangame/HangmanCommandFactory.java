@@ -12,6 +12,8 @@ import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 
 public class HangmanCommandFactory implements CommandFactory {
 
+	private static final long serialVersionUID = -8769183525936159560L;
+
 	private HangmanInterface receiver;
 
 	public HangmanCommandFactory(HangmanInterface receiver) {

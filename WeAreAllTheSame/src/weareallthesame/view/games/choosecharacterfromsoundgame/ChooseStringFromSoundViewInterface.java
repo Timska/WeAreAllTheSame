@@ -1,10 +1,11 @@
 package weareallthesame.view.games.choosecharacterfromsoundgame;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import weareallthesame.model.items.Item;
 
-public interface ChooseStringFromSoundViewInterface {
+public interface ChooseStringFromSoundViewInterface extends Serializable {
 
 	/**
 	 * Ovoj metod se koristi za da se oznaci tocniot odgovor na igrata.

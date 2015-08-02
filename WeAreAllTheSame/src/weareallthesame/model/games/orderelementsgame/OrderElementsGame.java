@@ -17,6 +17,8 @@ import weareallthesame.view.games.orderelementsgame.OrderElementsViewInterface;
 
 public class OrderElementsGame extends AbstractGame implements OrderElementsInterface {
 
+	private static final long serialVersionUID = 50780739530423282L;
+
 	private OrderElementsViewInterface view;
 	private Set<String> elements;
 	private SimpleFactoryInterface factory;

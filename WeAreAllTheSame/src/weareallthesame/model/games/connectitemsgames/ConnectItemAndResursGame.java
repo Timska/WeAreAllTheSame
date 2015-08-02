@@ -16,6 +16,8 @@ import weareallthesame.view.games.connectitemsgames.ConnectItemAndResursViewInte
 
 public class ConnectItemAndResursGame extends AbstractGame implements ConnectItemsInterface{
 
+	private static final long serialVersionUID = -9106003914918861576L;
+
 	private ConnectItemAndResursViewInterface view;
 	private List<Item> items;
 	private List<String> strings;

@@ -7,6 +7,8 @@ import weareallthesame.model.exceptions.InvalidViewTypeException;
 
 public class HangmanEasyGame extends HangmanGame{
 
+	private static final long serialVersionUID = 2196939800450141217L;
+
 	public HangmanEasyGame(Iterator<String> tags, Object view, String question) throws InvalidViewTypeException {
 		super(tags, view, question);
 		addHelp();

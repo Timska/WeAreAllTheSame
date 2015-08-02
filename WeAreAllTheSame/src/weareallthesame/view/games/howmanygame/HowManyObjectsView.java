@@ -13,6 +13,8 @@ import android.view.View;
 
 public class HowManyObjectsView extends View implements HowManyViewInterface{
 
+	private static final long serialVersionUID = 8469603708744698511L;
+
 	private ArrayList<Item> items;
 	private Paint paint;
 	

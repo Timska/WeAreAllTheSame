@@ -7,13 +7,14 @@ import weareallthesame.view.R;
 import android.app.Activity;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class FindThePictureFromTheSound extends Activity implements ChooseItemViewInterface{
+
+	private static final long serialVersionUID = -1366318460338234441L;
 
 	private Button playSound;
 	private MediaPlayer mMediaPlayer;
