@@ -19,7 +19,7 @@ public class PagerActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pager);
 		
-		this.appInterface = (ApplicationInterface) getIntent().getExtras().get("appInterface");
+		this.appInterface = (ApplicationInterface) getIntent().getSerializableExtra("appInerface");
 		
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		adapter = new ViewPagerAdapter(PagerActivity.this, appInterface.getCategories());

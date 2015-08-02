@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		appInterface = new ApplicationInterface(MainActivity.this);
+		System.out.println("Application interface initialized");
 		
 		GridView gridview = (GridView) findViewById(R.id.categry_gridview);
 		gridview.setAdapter(new CategoryAdapter(this, appInterface.getCategories()));

@@ -1,5 +1,6 @@
 package weareallthesame.model.games;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 import weareallthesame.model.exceptions.CommandDoesNotExistException;
@@ -9,7 +10,7 @@ import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.interfaces.Typable;
 
-public interface Game extends Typable {
+public interface Game extends Typable, Serializable {
 
 	/**
 	 * Za sekoja akcija sto ke se izvrsuva vo igrata ke se povikuva ovoj metod.

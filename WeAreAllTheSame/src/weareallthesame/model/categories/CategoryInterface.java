@@ -1,5 +1,6 @@
 package weareallthesame.model.categories;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 import weareallthesame.model.exceptions.GameDoesNotExistException;
@@ -14,7 +15,7 @@ import weareallthesame.model.interfaces.TypeHolder;
  * @author i5
  *
  */
-public interface CategoryInterface extends TypeHolder, Typable{
+public interface CategoryInterface extends TypeHolder, Typable, Serializable{
 
 	/**
 	 * Ovoj metod ke kreira igra spored tipot.

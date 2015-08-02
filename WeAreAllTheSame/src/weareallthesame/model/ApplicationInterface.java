@@ -37,6 +37,7 @@ public class ApplicationInterface implements Serializable {
 	private Game currentGame;
 	
 	public ApplicationInterface(Context context) {
+		System.out.println("Application Interface constructor");
 		FillDatabase.setContext(context);
 		FillDatabase.fillCategories();
 		FillDatabase.fillItems();

@@ -1,5 +1,6 @@
 package weareallthesame.factories;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,27 +26,26 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
 
-public class CategoryFactory implements TypeHolder {
+public class CategoryFactory implements TypeHolder, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -685011375553951276L;
+	
 	// Contekstot (odnosno Activity) ni treba za da moze ContentResolver-ot da
 	// se inicijalizira
 	// Namesto da se povikuva konstruktor, moze i kako parametar vo potrebnite
 	// metodi da se pusti
-	private Context ctx;
 	// Sluzi za povici do bazata
 	private ContentResolver resolver;
 
 	public CategoryFactory(Context ctx) {
-		this.ctx = ctx;
 		resolver = ctx.getContentResolver();
 	}
 
 	public CategoryFactory() {
 
-	}
-
-	public Context getContext() {
-		return ctx;
 	}
 
 	/**

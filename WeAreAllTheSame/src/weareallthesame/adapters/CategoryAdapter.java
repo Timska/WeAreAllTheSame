@@ -18,6 +18,7 @@ public class CategoryAdapter extends BaseAdapter {
 	public CategoryAdapter(Context c, List<AbstractCategory> categories) {
 		context = c;
 		listCategories = categories;
+		System.out.println("Categories Adapter constructor");
 	}
 
 	public int getCount() {
@@ -45,7 +46,10 @@ public class CategoryAdapter extends BaseAdapter {
 			imageView = (ImageView) convertView;
 		}
 
-		imageView.setImageResource(context.getResources().getIdentifier(listCategories.get(position).getResourceName(), "drawable", "wearellthesame"));
+		System.out.println(listCategories.get(position).getResourceName());
+		int resourceId = context.getResources().getIdentifier(listCategories.get(position).getResourceName(), "drawable", context.getPackageName());
+		System.out.println(resourceId);
+		imageView.setImageResource(resourceId);
 		return imageView;
 	}
 

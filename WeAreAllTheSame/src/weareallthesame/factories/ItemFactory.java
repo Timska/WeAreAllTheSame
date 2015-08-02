@@ -24,17 +24,11 @@ import android.database.Cursor;
  */
 public class ItemFactory {
 
-	// Contekstot (odnosno Activity) ni treba za da moze ContentResolver-ot da
-	// se inicijalizira
-	// Namesto da se povikuva konstruktor, moze i kako parametar vo potrebnite
-	// metodi da se pusti
-	private static Context ctx;
 	// Sluzi za povici do bazata
 	private static ContentResolver resolver;
 
 	public static void setContext(Context context) {
-		ctx = context;
-		resolver = ctx.getContentResolver();
+		resolver = context.getContentResolver();
 	}
 
 	/**

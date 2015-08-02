@@ -18,12 +18,10 @@ import android.database.Cursor;
 
 public class QuestionFactory {
 
-	private static Context ctx;
 	private static ContentResolver resolver;
 
 	public static void setContext(Context context) {
-		ctx = context;
-		resolver = ctx.getContentResolver();
+		resolver = context.getContentResolver();
 	}
 
 	/**
