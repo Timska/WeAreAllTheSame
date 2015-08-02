@@ -13,6 +13,32 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <provider
+            android:name="weareallthesame.db.CategoryContentProvider"
+            android:authorities="weareallthesame.db"
+            android:exported="false" >
+        </provider>
+        <provider
+            android:name="weareallthesame.db.ItemContentProvider"
+            android:authorities="weareallthesame.db"
+            android:exported="false" >
+        </provider>
+        <provider
+            android:name="weareallthesame.db.ItemTagsContentProvider"
+            android:authorities="weareallthesame.db"
+            android:exported="false" >
+        </provider>
+        <provider
+            android:name="weareallthesame.db.QuestionContentProvider"
+            android:authorities="weareallthesame.db"
+            android:exported="false" >
+        </provider>
+        <provider
+            android:name="weareallthesame.db.QuestionTagsContentProvider"
+            android:authorities="weareallthesame.db"
+            android:exported="false" >
+        </provider>
+
         <activity
             android:name=".MyActivity"
             android:label="@string/app_name" >
@@ -20,7 +46,6 @@
         <activity
             android:name=".ZoomActivity"
             android:label="@string/title_activity_zoom" >
-            
         </activity>
         <activity
             android:name=".games.hangmangame.HangmanGameActivity"
