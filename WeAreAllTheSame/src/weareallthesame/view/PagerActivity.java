@@ -26,7 +26,6 @@ public class PagerActivity extends Activity {
 		adapter = new ViewPagerAdapter(PagerActivity.this, appInterface.getCategories());
 		viewPager.setAdapter(adapter);
 		viewPager.setCurrentItem(position);
-		//adapter.setPrimaryItem(this, position, adapter.instantiateItem(viewPager, position));
 	}
 
 	@Override

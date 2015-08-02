@@ -7,7 +7,7 @@
  
     <ImageView
         android:id="@+id/category_image"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@android:color/transparent"
         android:padding="1dp"
@@ -15,10 +15,11 @@
     
     <TextView
         android:id="@+id/category_name"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="50sp"
+        android:textSize="30sp"
+        android:textStyle="bold"
         android:layout_below="@+id/category_image" />
  
 </RelativeLayout>
