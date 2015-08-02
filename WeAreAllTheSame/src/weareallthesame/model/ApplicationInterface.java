@@ -31,6 +31,7 @@ public class ApplicationInterface {
 		FillDatabase.setContext(context);
 		FillDatabase.fillCategories();
 		FillDatabase.fillItems();
+		FillDatabase.fillItemTags();
 		
 		categoryFactory = new CategoryFactory(context);
 		ItemFactory.setContext(context);
