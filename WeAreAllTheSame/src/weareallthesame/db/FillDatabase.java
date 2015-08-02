@@ -14,10 +14,7 @@ public class FillDatabase {
 	}
 
 	public static void fillCategories() {
-		Cursor cursor = resolver
-				.query(CategoryContentProvider.CONTENT_URI,
-						new String[] { CategoryOpenHelper.COLUMN_ID }, null,
-						null, null);
+		Cursor cursor = resolver.query(CategoryContentProvider.CONTENT_URI, null, null, null, null);
 		
 		if (cursor.getCount() == 0) {
 			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("letters", "букви", "letters"));
@@ -44,10 +41,7 @@ public class FillDatabase {
 	}
 
 	public static void fillItems() {
-		Cursor cursor = resolver
-				.query(ItemContentProvider.CONTENT_URI,
-						new String[] { ItemOpenHelper.COLUMN_ID }, null,
-						null, null);
+		Cursor cursor = resolver.query(ItemContentProvider.CONTENT_URI, null, null, null, null);
 		
 		if (cursor.getCount() == 0) {
 			fillFruitsAndVegetables();
@@ -89,10 +83,7 @@ public class FillDatabase {
 	}
 	
 	public static void fillItemTags() {
-		Cursor cursor = resolver
-				.query(ItemTagsContentProvider.CONTENT_URI,
-						new String[] { ItemOpenHelper.COLUMN_ID }, null,
-						null, null);
+		Cursor cursor = resolver.query(ItemTagsContentProvider.CONTENT_URI, null, null, null, null);
 		
 		if (cursor.getCount() == 0) {
 			fillFruitsAndVegetablesTags();
