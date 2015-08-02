@@ -138,7 +138,7 @@ public class CategoryFactory implements TypeHolder {
 		// TODO od baza da se napravi vcituvanje na imeto za dadenata kategorija
 		Cursor cursor = resolver.query(CategoryContentProvider.CONTENT_URI,
 				new String[] { CategoryOpenHelper.COLUMN_NAME },
-				CategoryOpenHelper.COLUMN_TYPE + "=" + type, null, null);
+				CategoryOpenHelper.COLUMN_TYPE + "=" + "'" + type + "'", null, null);
 		if (cursor.moveToFirst()) {
 			return cursor.getString(cursor
 					.getColumnIndex(CategoryOpenHelper.COLUMN_NAME));
