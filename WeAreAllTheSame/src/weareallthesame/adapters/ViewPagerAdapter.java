@@ -23,6 +23,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 	public ViewPagerAdapter(Context context, List<AbstractCategory> categories) {
 		this.context = context;
 		this.categories = categories;
+		System.out.println("In ViewPagerAdapter constructor");
 	}
 	
 	@Override
@@ -47,7 +48,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 		txtName.setText(categories.get(position).getName());
 		
 		imgCategory = (ImageView) itemView.findViewById(R.id.category_image);
-		imgCategory.setImageResource(context.getResources().getIdentifier(categories.get(position).getResourceName(), "drawable", "weareallthesame.view.R"));
+		imgCategory.setImageResource(context.getResources().getIdentifier(categories.get(position).getResourceName(), "drawable", context.getPackageName()));
 		
 		((ViewPager) container).addView(itemView);
 		
