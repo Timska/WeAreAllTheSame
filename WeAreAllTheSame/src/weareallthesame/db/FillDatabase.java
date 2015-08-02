@@ -20,18 +20,18 @@ public class FillDatabase {
 						null, null);
 		
 		if (cursor.getCount() == 0) {
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("letters", "букви", "letters"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("shapes", "форми", "forms"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("numbers", "броеви", "numbers"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("animals", "животни", "animals"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("fruitsandvegetables", "овошје и зеленчук", "fruit_vegetables"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("weather", "временски услови", "weather"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("year", "година", "months_days"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("day", "ден", "day_details"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("colorsandobjects", "бои и предмети", "colors_objects"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("prepositions", "предлози", "prepositions"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("clothesandbodyparts", "облека и делови на тело", "clothes"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("emotions", "емоции", "emotions"));
+			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("letters", "Букви", "letters"));
+			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("shapes", "Форми", "forms"));
+			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("numbers", "Броеви", "numbers"));
+			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("animals", "Животни", "animals"));
+			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("fruitsandvegetables", "Овошје и зеленчук", "fruit_vegetables"));
+			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("weather", "Временски услови", "weather"));
+			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("year", "Година", "months_days"));
+			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("day", "Ден", "day_details"));
+			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("colorsandobjects", "Бои и предмети", "colors_objects"));
+			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("prepositions", "Предлози", "prepositions"));
+			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("clothesandbodyparts", "Облека и делови на тело", "clothes"));
+			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("emotions", "Емоции", "emotions"));
 		}
 	}
 
@@ -51,6 +51,7 @@ public class FillDatabase {
 		
 		if (cursor.getCount() == 0) {
 			fillFruitsAndVegetables();
+			fillAnimals();
 		}
 	}
 	
@@ -81,6 +82,28 @@ public class FillDatabase {
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("цреша", "cresha"));
 	}
 	
+	private static void fillAnimals() {
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("камила", "kamila"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кенгур", "kengur"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кокошка", "kokoshka"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("коњ", "konj"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("крава", "krava"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("куче", "kuche"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лав", "lav"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лисица", "lisica"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("мачка", "machka"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("мечка", "mechka"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("овца", "ovca"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("слон", "slon"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("свиња", "svinja"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("тигар", "tigar"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("верверичка", "ververichka"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("волк", "volk"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зајак", "zajak"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зебра", "zebra"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("жирафа", "zirafa"));
+	}
+	
 	private static ContentValues toItemContentValues(String itemName, String resource) {
 		ContentValues cv = new ContentValues();
 		cv.put(ItemOpenHelper.COLUMN_NAME, itemName);
@@ -96,6 +119,7 @@ public class FillDatabase {
 		
 		if (cursor.getCount() == 0) {
 			fillFruitsAndVegetablesTags();
+			fillAnimalsTags();
 		}
 	}
 	
@@ -149,6 +173,48 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("слива", "fruit"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("смоква", "fruit"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("цреша", "fruit"));
+	}
+	
+	private static void fillAnimalsTags() {
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("камила", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кенгур", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кокошка", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("коњ", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("крава", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("куче", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лав", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лисица", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("мачка", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("мечка", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("овца", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("слон", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("свиња", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("тигар", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("верверичка", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("волк", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зајак", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зебра", "animals"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("жирафа", "animals"));
+		
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("камила", "wild"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кенгур", "wild"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кокошка", "domestic"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("коњ", "domestic"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("крава", "domestic"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("куче", "domestic"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лав", "wild"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лисица", "wild"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("мачка", "domestic"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("мечка", "wild"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("овца", "domestic"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("слон", "wild"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("свиња", "domestic"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("тигар", "wild"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("верверичка", "wild"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("волк", "wild"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зајак", "wild"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зебра", "wild"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("жирафа", "wild"));
 	}
 	
 	private static ContentValues toItemTagsContentValues(String itemName, String tag) {
