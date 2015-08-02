@@ -23,7 +23,6 @@ public class ViewPagerAdapter extends PagerAdapter {
 	public ViewPagerAdapter(Context context, List<AbstractCategory> categories) {
 		this.context = context;
 		this.categories = categories;
-		System.out.println("In ViewPagerAdapter constructor");
 	}
 	
 	@Override
