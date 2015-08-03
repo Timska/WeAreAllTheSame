@@ -20,13 +20,13 @@
         android:id="@+id/find_picture_from_sound_button_play"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="30dp"
         android:text="@string/find_picture_from_sound_button_play_text" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center|bottom"
         android:orientation="horizontal" >
 
@@ -51,8 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom"
-        android:gravity="center|bottom"
+        android:gravity="center"
         android:orientation="horizontal" >
 
         <ImageButton
@@ -71,5 +70,12 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/clothes" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/find_picture_from_sound_drop_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         />
+    
 
 </LinearLayout>
