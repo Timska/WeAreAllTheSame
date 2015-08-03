@@ -38,6 +38,11 @@
             android:authorities="weareallthesame.db5"
             android:exported="false" >
         </provider>
+        <provider
+            android:name="weareallthesame.db.GameContentProvider"
+            android:authorities="weareallthesame.db6"
+            android:exported="false" >
+        </provider>
 
         <activity
             android:name=".MyActivity"
