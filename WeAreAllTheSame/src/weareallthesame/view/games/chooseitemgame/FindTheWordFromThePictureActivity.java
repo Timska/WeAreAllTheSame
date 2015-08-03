@@ -27,10 +27,7 @@ public class FindTheWordFromThePictureActivity extends Activity implements Choos
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_find_the_word_from_the_picture);
 	
-		answerOne=(Button) findViewById(R.id.find_word_from_picture_answer_one);
-		answerTwo=(Button) findViewById(R.id.find_word_from_picture_answer_two);
-		answerThree=(Button) findViewById(R.id.find_word_from_picture_answer_three);
-		answerFour=(Button) findViewById(R.id.find_word_from_picture_answer_four);
+	
 	}
 
 	@Override
