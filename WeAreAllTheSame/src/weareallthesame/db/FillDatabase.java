@@ -224,9 +224,99 @@ public class FillDatabase {
 		return cv;
 	}
 	
+	public static void fillGames() {
+		Cursor cursor = resolver
+				.query(GameContentProvider.CONTENT_URI,
+						new String[] { GameOpenHelper.COLUMN_ID }, null,
+						null, null);
+		
+		if (cursor.getCount() == 0) {
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("letters", "ChooseStringFromSound", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("letters", "HangmanEasy", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("letters", "Hangman", ""));
+			
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("shapes", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("shapes", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("shapes", "ChooseSimilarItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("shapes", "ChooseSimilarItem", ""));
+			
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("numbers", "ChooseStringFromSound", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("numbers", "HowMany", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("numbers", "ChooseSignBetweenNumbers", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("numbers", "ChooseSignBetweenSets", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("numbers", "AdditionAndSubtractionNumbers", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("numbers", "AdditionAndSubtractionSets", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("numbers", "AdditionAndSubtractionNumbers", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("numbers", "AdditionAndSubtractionSets", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("numbers", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("numbers", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("numbers", "OrderElements", ""));
+			
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("animals", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("animals", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("animals", "ConnectItemAndResurs", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("animals", "ItemsClassification", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("animals", "ItemsClassification", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("animals", "ChooseItem", ""));
+			
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("fruitsandvegetables", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("fruitsandvegetables", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("fruitsandvegetables", "ConnectItemAndResurs", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("fruitsandvegetables", "ItemsClassification", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("fruitsandvegetables", "ItemsClassification", ""));
+			
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("weather", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("weather", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("weather", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("weather", "ConnectItemAndResurs", ""));
+			
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("year", "Question", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("year", "OrderElements", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("year", "OrderElements", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("year", "ItemsClassification", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("year", "ConnectItemAndResurs", ""));
+			
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("day", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("day", "OrderElements", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("day", "OrderElements", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("day", "", ""));
+			
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("colorsandobjects", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("colorsandobjects", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("colorsandobjects", "ConnectItemAndResurs", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("colorsandobjects", "ConnectItems", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("colorsandobjects", "ChooseItem", ""));
+			
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("prepositions", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("prepositions", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("prepositions", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("prepositions", "ConnectItemAndResurs", ""));
+			
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("clothesandbodyparts", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("clothesandbodyparts", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("clothesandbodyparts", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("clothesandbodyparts", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("clothesandbodyparts", "ConnectItems", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("clothesandbodyparts", "ConnectItems", ""));
+			
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("emotions", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("emotions", "ChooseItem", ""));
+			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("emotions", "ConnectItemAndResurs", ""));
+		}
+	}
+	
+	private static ContentValues toGameContentValues(String categoryType, String gameType, String gameName) {
+		ContentValues cv = new ContentValues();
+		cv.put(GameOpenHelper.COLUMN_CATTYPE, categoryType);
+		cv.put(GameOpenHelper.COLUMN_GAMETYPE, gameType);
+		cv.put(GameOpenHelper.COLUMN_GAMENAME, gameName);
+		return cv;
+	}
+	
 	public static void fillWholeDatabase() {
 		fillCategories();
 		fillItems();
 		fillItemTags();
+		fillGames();
 	}
 }
