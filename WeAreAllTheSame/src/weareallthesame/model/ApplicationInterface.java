@@ -39,6 +39,7 @@ public class ApplicationInterface implements Serializable {
 		FillDatabase.fillCategories();
 		FillDatabase.fillItems();
 		FillDatabase.fillItemTags();
+		FillDatabase.fillGames();
 		
 		categoryFactory = new CategoryFactory(context);
 		ItemFactory.setContext(context);
