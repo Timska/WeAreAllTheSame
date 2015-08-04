@@ -78,7 +78,7 @@ public class AnswerShapeDrawableSurfaceView extends SurfaceView implements
 
 	private void drawSurface(Canvas canvas) {
 
-		canvas.drawColor(Color.rgb(255, 255, 153));
+		canvas.drawColor(Color.rgb(244, 252, 244));
 
 		for (int k = 0; k < lstDrawables.size(); ++k) {
 
@@ -163,10 +163,10 @@ public class AnswerShapeDrawableSurfaceView extends SurfaceView implements
 
 	public void fillAnswers() {
 
-		lstAnswers.add("ma");
-		lstAnswers.add("hdddd");
-		lstAnswers.add("hahaha");
-		lstAnswers.add("hahahaHhHHHHHH");
+		lstAnswers.add("eden");
+		lstAnswers.add("dva");
+		lstAnswers.add("tri");
+		lstAnswers.add("cetiri");
 
 	}
 
