@@ -96,5 +96,6 @@
     <string name="emotions_chooseWord">Избери збор</string>
     <string name="emotions_choosePicture">Избери слика</string>
     <string name="title_activity_exercise">ExerciseActivity</string>
+    <string name="title_activity_choose_character_from_sound">ChooseCharacterFromSoundActivity</string>
 
 </resources>

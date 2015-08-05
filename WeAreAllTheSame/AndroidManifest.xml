@@ -91,8 +91,12 @@
             android:theme="@style/Theme.Transparent" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.chooseitemgame.ExerciseActivity"
+            android:name=".games.chooseitemgame.ExerciseActivity"
             android:label="@string/title_activity_exercise" >
+        </activity>
+        <activity
+            android:name=".ChooseCharacterFromSoundActivity"
+            android:label="@string/title_activity_choose_character_from_sound" >
         </activity>
     </application>
 
