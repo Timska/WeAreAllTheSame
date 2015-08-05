@@ -90,6 +90,10 @@
             android:label="@string/title_activity_pager"
             android:theme="@style/Theme.Transparent" >
         </activity>
+        <activity
+            android:name="weareallthesame.view.games.chooseitemgame.ExerciseActivity"
+            android:label="@string/title_activity_exercise" >
+        </activity>
     </application>
 
 </manifest>

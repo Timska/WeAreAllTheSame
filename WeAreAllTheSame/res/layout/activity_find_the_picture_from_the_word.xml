@@ -45,14 +45,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
-            android:background="@drawable/clothes" />
+            android:background="@drawable/play_sound_button" />
 
         <ImageButton
             android:id="@+id/find_picture_from_word_answerTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/clothes" />
+            android:background="@drawable/play_sound_button"/>
     </LinearLayout>
 
     <LinearLayout
@@ -67,14 +67,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginRight="10dp"
-            android:background="@drawable/clothes" />
+            android:background="@drawable/play_sound_button" />
 
         <ImageButton
             android:id="@+id/find_picture_from_word_answerFour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@drawable/clothes" />
+            android:background="@drawable/play_sound_button" />
     </LinearLayout>
     
     

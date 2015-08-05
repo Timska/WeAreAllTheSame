@@ -21,7 +21,7 @@
     <string name="body_parts">Делови од тело</string>
     <string name="emotions">Емоции</string>
     <string name="clothes">Облека</string>
-    
+
     <!-- Rest -->
     <string name="title_activity_zoom">ZoomActivity</string>
     <string name="description_zoom_touch_close">Expanded image (touch to close)</string>
@@ -40,17 +40,15 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_pager">PagerActivity</string>
     <string name="content_description_image_pager_item">Слика од категорија</string>
-    
+
     <!-- Game names -->
     <string name="letters_chooseLetter">Избери буква</string>
     <string name="letters_fillLetters">Дополни букви</string>
     <string name="letters_orderLetters">Подреди букви</string>
-    
     <string name="shapes_choosePicture">Избери слика</string>
     <string name="shapes_chooseWord">Избери збор</string>
     <string name="shapes_similarity">Сличност</string>
     <string name="shapes_looksLike">Изгледа како&#8230;</string>
-    
     <string name="numbers_chooseNumber">Избери број</string>
     <string name="numbers_countObjects">Изброј предмети</string>
     <string name="numbers_findSign">Најди знак</string>
@@ -62,49 +60,41 @@
     <string name="numbers_choosePicture">Избери слика</string>
     <string name="numbers_chooseWord">Избери збор</string>
     <string name="numbers_orderNumbers">Подреди броеви</string>
-    
     <string name="animals_chooseAnimal">Избери животно</string>
     <string name="animals_choosePicture">Избери слика</string>
     <string name="animals_connectAnimals">Поврзи животни</string>
     <string name="animals_groupWords">Раздели зборови</string>
     <string name="animals_groupPictures">Раздели слики</string>
     <string name="animals_chooseWord">Избери збор</string>
-    
     <string name="fruitsandvegetables_choosePicture">Избери слика</string>
     <string name="fruitsandvegetables_chooseWord">Избери збор</string>
     <string name="fruitsandvegetables_connectPictures">Поврзи слики</string>
     <string name="fruitsandvegetables_groupWords">Раздели зборови</string>
     <string name="fruitsandvegetables_groupPictures">Раздели слики</string>
-    
     <string name="weather_choosePicture">Избери слика</string>
     <string name="weather_chooseWord">Избери збор</string>
     <string name="weather_outsideWeather">Надвор&#8230;</string>
     <string name="weather_connectPictures">Поврзи слики</string>
-
     <string name="year_questions">Прашања</string>
     <string name="year_orderDays">Подреди денови</string>
     <string name="year_orderMonths">Подреди месеци</string>
     <string name="year_groupWords">Групирај зборови</string>
- 
     <string name="day_whatsTheTime">Колку е часот?</string>
     <string name="day_dayParts">Делови од денот</string>
-    
     <string name="colorsandobjects_chooseColor">Избери боја</string>
     <string name="colorsandobjects_chooseObject">Избери предмет</string>
     <string name="colorsandobjects_connect">Поврзи</string>
-    <string name="colorsandobjects_whatsTheColor">Која е бојата?</string>	
-    
+    <string name="colorsandobjects_whatsTheColor">Која е бојата?</string>
     <string name="prepositions_choosePreposition">Избери предлог</string>
     <string name="prepositions_choosePicture">Избери слика</string>
     <string name="prepositions_connect">Поврзи</string>
-    
     <string name="clothesandbodyparts_chooseBodyPartFromWord">Избери дел од тело од збор</string>
     <string name="clothesandbodyparts_chooseBodyPartFromPicture">Избери дел од тело од слика</string>
     <string name="clothesandbodyparts_chooseClothingFromWord">Избери облека од збор</string>
     <string name="clothesandbodyparts_chooseClothingFromPicture">Избери облека од слика</string>
     <string name="clothesandbodyparts_connect">Поврзи</string>
-    
     <string name="emotions_chooseWord">Избери збор</string>
     <string name="emotions_choosePicture">Избери слика</string>
-    
+    <string name="title_activity_exercise">ExerciseActivity</string>
+
 </resources>
