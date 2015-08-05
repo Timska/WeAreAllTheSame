@@ -7,6 +7,7 @@ import java.util.List;
 
 import weareallthesame.db.FillDatabase;
 import weareallthesame.factories.CategoryFactory;
+import weareallthesame.factories.GameFactory;
 import weareallthesame.factories.ItemFactory;
 import weareallthesame.factories.QuestionFactory;
 import weareallthesame.model.categories.AbstractCategory;
@@ -121,7 +122,7 @@ public class ApplicationInterface implements Serializable {
 	}
 	
 	/**
-	 * So ovoj metod se dobivaat site igri vo momentalno otvorenata kategorija.
+	 * So ovoj metod se dobivaat site iminja na igri vo momentalno otvorenata kategorija.
 	 * @return tipovite na igri vo momentalno otvorenata kategorija
 	 * @throws CategoryNotChosenException nitu edna kategorija ne e momentalno otvorena
 	 */
@@ -129,7 +130,20 @@ public class ApplicationInterface implements Serializable {
 		if(currentCategory == null){
 			throw new CategoryNotChosenException("Ne moze da se dobijat igri bidejki nema izbrano kategorija");
 		}
-		return currentCategory.getTypes();
+		return GameFactory.getGameNamesForCategory(currentCategory.getType());
+	}
+	
+	/**
+	 * So ovoj metod se dobiva tipot na igrata sto pripaga vo momentalno otvorenata kategorija za dadeno ime na igra.
+	 * @param gameName imeto na igrata
+	 * @return tipot na igrata
+	 * @throws CategoryNotChosenException nitu edna kategorija ne e momentalno otvorena
+	 */
+	public String getGameType(String gameName) throws CategoryNotChosenException{
+		if(currentCategory == null){
+			throw new CategoryNotChosenException("Nema izbrano kategorija");
+		}
+		return GameFactory.getGameType(gameName, currentCategory.getType());
 	}
 	
 	/**
