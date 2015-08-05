@@ -45,6 +45,7 @@ public class ApplicationInterface implements Serializable {
 		categoryFactory = new CategoryFactory(context);
 		ItemFactory.setContext(context);
 		QuestionFactory.setContext(context);
+		GameFactory.setContext(context);
 	}
 
 	/**
