@@ -95,8 +95,12 @@
             android:label="@string/title_activity_exercise" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.choosecharacterfromsoundgame.ChooseCharacterFromSoundActivity"
+            android:name=".games.choosecharacterfromsoundgame.ChooseCharacterFromSoundActivity"
             android:label="@string/title_activity_choose_character_from_sound" >
+        </activity>
+        <activity
+            android:name=".GameActivity"
+            android:label="@string/title_activity_game" >
         </activity>
     </application>
 

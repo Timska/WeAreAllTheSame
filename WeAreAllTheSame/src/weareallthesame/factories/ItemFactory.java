@@ -52,6 +52,7 @@ public class ItemFactory {
 				null, null);
 
 		Set<String> itemsSet = getItemNamesFromCursor(cursor);
+		cursor.close();
 
 		while (tags.hasNext()) {
 			cursor = resolver.query(ItemTagsContentProvider.CONTENT_URI,
@@ -60,6 +61,7 @@ public class ItemFactory {
 							+ "'", null, null);
 
 			itemsSet.retainAll(getItemNamesFromCursor(cursor));
+			cursor.close();
 		}
 
 		List<String> items = new ArrayList<String>(itemsSet);
@@ -85,12 +87,12 @@ public class ItemFactory {
 						.getColumnIndex(ItemOpenHelper.COLUMN_RESOURCE));
 				resources.add(resourceID);
 			}
-
 			result.add(new Item(str, resources.iterator()) {
 
 				private static final long serialVersionUID = -3020825504350961931L;
 
 			});
+			cursor.close();
 		}
 
 		return result.iterator();

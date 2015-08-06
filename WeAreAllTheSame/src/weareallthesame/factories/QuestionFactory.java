@@ -42,7 +42,8 @@ public class QuestionFactory {
 						+ "'", null, null);
 
 		Set<String> questionsSet = getQuestionsFromCursor(cursor);
-
+		cursor.close();
+		
 		while (tags.hasNext()) {
 			cursor = resolver.query(QuestionTagsContentProvider.CONTENT_URI,
 					new String[] { QuestionTagsOpenHelper.COLUMN_QUESTION },
@@ -50,6 +51,7 @@ public class QuestionFactory {
 							+ "'", null, null);
 
 			questionsSet.retainAll(getQuestionsFromCursor(cursor));
+			cursor.close();
 		}
 
 		List<String> questions = new ArrayList<String>(questionsSet);
@@ -74,6 +76,7 @@ public class QuestionFactory {
 			String answer = cursor.getString(cursor
 					.getColumnIndex(QuestionOpenHelper.COLUMN_ANSWER));
 			result.add(new Question(str, answer));
+			cursor.close();
 		}
 
 		return result.iterator();

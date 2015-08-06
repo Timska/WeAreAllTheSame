@@ -51,7 +51,7 @@ public class GameFactory {
 					.getColumnIndex(GameOpenHelper.COLUMN_GAMENAME));
 			result.add(gameName);
 		}
-
+		cursor.close();
 		return result.iterator();
 	}
 
@@ -68,7 +68,7 @@ public class GameFactory {
 					.getColumnIndex(GameOpenHelper.COLUMN_GAMETYPE));
 			result.add(gameType);
 		}
-
+		cursor.close();
 		return result.iterator();
 	}
 
@@ -80,8 +80,10 @@ public class GameFactory {
 						+ " and " + GameOpenHelper.COLUMN_GAMENAME + "=" + "'"
 						+ gameName + "'", null, null);
 
-		return cursor.getString(cursor
+		String result = cursor.getString(cursor
 				.getColumnIndex(GameOpenHelper.COLUMN_GAMETYPE));
+		cursor.close();
+		return result;
 	}
 
 	public static Game getGame(String type, Iterator<String> tags, Object view,

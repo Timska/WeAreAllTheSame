@@ -27,9 +27,9 @@ import android.content.Context;
 import android.database.Cursor;
 
 public class CategoryFactory implements TypeHolder, Serializable {
-	
+
 	private static final long serialVersionUID = -6939687241390044763L;
-	
+
 	// Contekstot (odnosno Activity) ni treba za da moze ContentResolver-ot da
 	// se inicijalizira
 	// Namesto da se povikuva konstruktor, moze i kako parametar vo potrebnite
@@ -40,9 +40,9 @@ public class CategoryFactory implements TypeHolder, Serializable {
 	public CategoryFactory(Context context) {
 		resolver = context.getContentResolver();
 	}
-	
+
 	public CategoryFactory() {
-		
+
 	}
 
 	/**
@@ -125,8 +125,13 @@ public class CategoryFactory implements TypeHolder, Serializable {
 				CategoryOpenHelper.COLUMN_TYPE + "=" + "'" + type + "'", null,
 				null);
 		if (cursor.moveToFirst()) {
-			return cursor.getString(cursor
+			String result = cursor.getString(cursor
 					.getColumnIndex(CategoryOpenHelper.COLUMN_RESOURCE));
+			cursor.close();
+			return result;
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
 		}
 		// Se vrakja null ako nema nikakov rezultat
 		return null;
@@ -139,8 +144,13 @@ public class CategoryFactory implements TypeHolder, Serializable {
 				CategoryOpenHelper.COLUMN_TYPE + "=" + "'" + type + "'", null,
 				null);
 		if (cursor.moveToFirst()) {
-			return cursor.getString(cursor
+			String result = cursor.getString(cursor
 					.getColumnIndex(CategoryOpenHelper.COLUMN_NAME));
+			cursor.close();
+			return result;
+		}
+		if (cursor != null && !cursor.isClosed()) {
+			cursor.close();
 		}
 		// Se vrakja null ako nema nikakov rezultat
 		return null;
@@ -161,6 +171,7 @@ public class CategoryFactory implements TypeHolder, Serializable {
 					.getColumnIndex(CategoryOpenHelper.COLUMN_TYPE));
 			types.add(type);
 		}
+		cursor.close();
 		return types.iterator();
 	}
 
