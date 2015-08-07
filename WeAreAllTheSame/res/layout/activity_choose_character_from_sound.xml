@@ -19,10 +19,10 @@
     <RelativeLayout
         android:id="@+id/choose_character_from_sound_answers_pool"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="361dp" >
 
         <Button
-            android:id="@+id/choose_character_from_sound_play_button"
+            android:id="@+id/choose_character_from_sound_play_buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -58,22 +58,17 @@
             android:layout_height="wrap_content"
             android:padding="20dp"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
-      
     </RelativeLayout>
-      <LinearLayout
-            android:id="@+id/choose_character_from_sound_drop_pool"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/red"
-            android:gravity="center"
-            android:orientation="vertical" >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="jdfsdkjflsdjf" />
-        </LinearLayout>
+   <LinearLayout
+        android:id="@+id/choose_character_from_sound_drop_pool"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical" >
+        
+     
+
+    </LinearLayout>
 
 </LinearLayout>
