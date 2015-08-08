@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class AdditionAndSubstractionActivity extends Activity {
+public class AdditionAndSubstractionNumbersActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

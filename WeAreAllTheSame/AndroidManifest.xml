@@ -103,7 +103,7 @@
             android:label="@string/title_activity_game" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionActivity"
+            android:name="weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionNumbersActivity"
             android:label="@string/title_activity_addition_and_substraction" >
         </activity>
     </application>
