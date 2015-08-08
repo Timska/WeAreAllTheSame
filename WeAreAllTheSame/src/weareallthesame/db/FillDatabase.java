@@ -3,7 +3,6 @@ package weareallthesame.db;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 
 public class FillDatabase {
 
@@ -14,26 +13,18 @@ public class FillDatabase {
 	}
 
 	public static void fillCategories() {
-		Cursor cursor = resolver
-				.query(CategoryContentProvider.CONTENT_URI,
-						new String[] { CategoryOpenHelper.COLUMN_ID }, null,
-						null, null);
-		
-		if (cursor.getCount() == 0) {
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Letters", "Букви", "letters"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Shapes", "Форми", "forms"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Numbers", "Броеви", "numbers"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Animals", "Животни", "animals"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("FruitsAndVegetables", "Овошје и зеленчук", "fruit_vegetables"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Weather", "Временски услови", "weather"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Year", "Година", "months_days"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Day", "Ден", "day_details"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("ColorsAndObjects", "Бои и предмети", "colors_objects"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Prepositions", "Предлози", "prepositions"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("ClothesAndBodyParts", "Облека и делови на тело", "clothes"));
-			resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Emotions", "Емоции", "emotions"));
-		}
-		cursor.close();
+		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Letters", "Букви", "letters"));
+		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Shapes", "Форми", "forms"));
+		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Numbers", "Броеви", "numbers"));
+		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Animals", "Животни", "animals"));
+		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("FruitsAndVegetables", "Овошје и зеленчук", "fruit_vegetables"));
+		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Weather", "Временски услови", "weather"));
+		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Year", "Година", "months_days"));
+		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Day", "Ден", "day_details"));
+		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("ColorsAndObjects", "Бои и предмети", "colors_objects"));
+		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Prepositions", "Предлози", "prepositions"));
+		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("ClothesAndBodyParts", "Облека и делови на тело", "clothes"));
+		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Emotions", "Емоции", "emotions"));
 	}
 
 	private static ContentValues toCategoryContentValues(String type, String name, String resource) {
@@ -43,229 +34,415 @@ public class FillDatabase {
 		cv.put(CategoryOpenHelper.COLUMN_RESOURCE, resource);
 		return cv;
 	}
+	
+	public static void fillResources() {
+		fillFruitsAndVegetablesResources();
+		fillAnimalsResources();
+		fillNumbersResources();
+		fillLettersResources();
+	}
+	
+	private static void fillFruitsAndVegetablesResources() {
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(1, "ananas", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(2, "banana", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(3, "brokula", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(4, "grozje", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(5, "dinja", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(6, "domat", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(7, "zelka", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(8, "jabolko", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(9, "jagoda", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(10, "kajsija", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(11, "kivi", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(12, "krastavica", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(13, "kromid", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(14, "limon", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(15, "lubenica", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(16, "malina", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(17, "mandarina", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(18, "morkov", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(19, "piperka", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(20, "portokal", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(21, "praska", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(22, "sliva", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(23, "smokva", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(24, "cresha", "picture"));
+	}
+	
+	private static void fillAnimalsResources() {
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(25, "kamila", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(26, "kengur", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(27, "kokoshka", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(28, "konj", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(29, "krava", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(30, "kuche", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(31, "lav", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(32, "lisica", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(33, "machka", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(34, "mechka", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(35, "ovca", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(36, "slon", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(37, "svinja", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(38, "tigar", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(39, "ververichka", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(40, "volk", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(41, "zajak", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(42, "zebra", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(43, "zirafa", "picture"));
+	}
+	
+	private static void fillNumbersResources() {
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(44, "zero", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(45, "one", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(46, "two", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(47, "three", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(48, "four", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(49, "five", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(50, "six", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(51, "seven", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(52, "eight", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(53, "nine", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(54, "ten", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(55, "eleven", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(56, "twelve", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(57, "thirteen", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(58, "fourteen", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(59, "fifteen", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(60, "sixteen", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(61, "seventeen", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(62, "eighteen", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(63, "nineteen", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(64, "twenty", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(65, "twenty_one", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(66, "twenty_two", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(67, "twenty_three", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(68, "twenty_four", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(69, "twenty_five", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(70, "twenty_six", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(71, "twenty_seven", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(72, "twenty_eight", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(73, "twenty_nine", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(74, "thirty", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(75, "thirty_one", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(76, "thirty_two", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(77, "thirty_three", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(78, "thirty_four", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(79, "thirty_five", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(80, "thirty_six", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(81, "thirty_seven", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(82, "thirty_eight", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(83, "thirty_nine", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(84, "fourty", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(85, "fourty_one", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(86, "fourty_two", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(87, "fourty_three", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(88, "fourty_four", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(89, "fourty_five", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(90, "fourty_six", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(91, "fourty_seven", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(92, "fourty_eight", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(93, "fourty_nine", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(94, "fifty", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(95, "fifty_one", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(96, "fifty_two", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(97, "fifty_three", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(98, "fifty_four", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(99, "fifty_five", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(100, "fifty_six", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(101, "fifty_seven", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(102, "fifty_eight", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(103, "fifty_nine", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(104, "sixty", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(105, "sixty_one", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(106, "sixty_two", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(107, "sixty_three", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(108, "sixty_four", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(109, "sixty_five", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(110, "sixty_six", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(111, "sixty_seven", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(112, "sixty_eight", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(113, "sixty_nine", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(114, "seventy", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(115, "seventy_one", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(116, "seventy_two", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(117, "seventy_three", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(118, "seventy_four", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(119, "seventy_five", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(120, "seventy_six", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(121, "seventy_seven", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(122, "seventy_eight", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(123, "seventy_nine", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(124, "eighty", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(125, "eighty_one", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(126, "eighty_two", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(127, "eighty_three", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(128, "eighty_four", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(129, "eighty_five", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(130, "eighty_six", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(131, "eighty_seven", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(132, "eighty_eight", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(133, "eighty_nine", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(134, "ninety", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(135, "ninety_one", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(136, "ninety_two", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(137, "ninety_three", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(138, "ninety_four", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(139, "ninety_five", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(140, "ninety_six", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(141, "ninety_seven", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(142, "ninety_eight", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(143, "ninety_nine", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(144, "one_hundred", "sound"));
+	}
+	
+	private static void fillLettersResources() {
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(145, "a", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(146, "b", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(147, "v", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(148, "g", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(149, "d", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(150, "gj", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(151, "e", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(152, "zh", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(153, "z", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(154, "dz", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(155, "i", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(156, "j", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(157, "k", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(158, "l", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(159, "lj", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(160, "m", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(161, "n", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(162, "nj", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(163, "o", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(164, "p", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(165, "r", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(166, "s", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(167, "t", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(168, "kj", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(169, "u", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(170, "f", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(171, "h", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(172, "c", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(173, "ch", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(174, "dzh", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(175, "sh", "sound"));
+	}
+	
+	private static ContentValues toResourceContentValues(int id, String name, String type) {
+		ContentValues cv = new ContentValues();
+		cv.put(ResourceOpenHelper.COLUMN_ID, id);
+		cv.put(ResourceOpenHelper.COLUMN_RESNAME, name);
+		cv.put(ResourceOpenHelper.COLUMN_RESTYPE, type);
+		return cv;
+	}
 
 	public static void fillItems() {
-		Cursor cursor = resolver
-				.query(ItemContentProvider.CONTENT_URI,
-						new String[] { ItemOpenHelper.COLUMN_ID }, null,
-						null, null);
-		
-		if (cursor.getCount() == 0) {
-			fillFruitsAndVegetables();
-			fillAnimals();
-			fillNumbers();
-			fillLetters();
-		}
-		cursor.close();
+		fillFruitsAndVegetables();
+		fillAnimals();
+		fillNumbers();
+		fillLetters();
 	}
 	
 	private static void fillFruitsAndVegetables() {
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("ананас", "ananas"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("банана", "banana"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("брокула", "brokula"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("грозје", "grozje"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("диња", "dinja"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("домат", "domat"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зелка", "zelka"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("јаболко", "jabolko"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("јагода", "jagoda"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кајсија", "kajsija"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("киви", "kivi"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("краставица", "krastavica"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кромид", "kromid"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лимон", "limon"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лубеница", "lubenica"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("малина", "malina"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("мандарина", "mandarina"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("морков", "morkov"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("пиперка", "piperka"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("портокал", "portokal"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("праска", "praska"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("слива", "sliva"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("смоква", "smokva"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("цреша", "cresha"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("ананас", 1));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("банана", 2));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("брокула", 3));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("грозје", 4));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("диња", 5));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("домат", 6));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зелка", 7));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("јаболко", 8));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("јагода", 9));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кајсија", 10));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("киви", 11));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("краставица", 12));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кромид", 13));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лимон", 14));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лубеница", 15));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("малина", 16));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("мандарина", 17));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("морков", 18));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("пиперка", 19));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("портокал", 20));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("праска", 21));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("слива", 22));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("смоква", 23));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("цреша", 24));
 	}
 	
 	private static void fillAnimals() {
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("камила", "kamila"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кенгур", "kengur"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кокошка", "kokoshka"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("коњ", "konj"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("крава", "krava"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("куче", "kuche"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лав", "lav"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лисица", "lisica"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("мачка", "machka"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("мечка", "mechka"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("овца", "ovca"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("слон", "slon"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("свиња", "svinja"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("тигар", "tigar"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("верверичка", "ververichka"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("волк", "volk"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зајак", "zajak"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зебра", "zebra"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("жирафа", "zirafa"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("камила", 25));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кенгур", 26));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кокошка", 27));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("коњ", 28));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("крава", 29));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("куче", 30));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лав", 31));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лисица", 32));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("мачка", 33));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("мечка", 34));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("овца", 35));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("слон", 36));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("свиња", 37));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("тигар", 38));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("верверичка", 39));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("волк", 40));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зајак", 41));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зебра", 42));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("жирафа", 43));
 	}
 	
 	private static void fillNumbers() {
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("0", "zero"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("1", "one"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("2", "two"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("3", "three"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("4", "four"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("5", "five"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("6", "six"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("7", "seven"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("8", "eight"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("9", "nine"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("10", "ten"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("11", "eleven"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("12", "twelve"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("13", "thirteen"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("14", "fourteen"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("15", "fifteen"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("16", "sixteen"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("17", "seventeen"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("18", "eighteen"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("19", "ninety"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("20", "twenty"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("21", "twenty_one"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("22", "twenty_two"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("23", "twenty_three"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("24", "twenty_four"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("25", "twenty_five"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("26", "twenty_six"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("27", "twenty_seven"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("28", "twenty_eight"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("29", "twenty_nine"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("30", "thirty"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("31", "thirty_one"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("32", "thirty_two"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("33", "thirty_three"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("34", "thirty_four"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("35", "thirty_five"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("36", "thirty_six"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("37", "thirty_seven"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("38", "thirty_eight"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("39", "thirty_nine"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("40", "fourty"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("41", "fourty_one"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("42", "fourty_two"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("43", "fourty_three"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("44", "fourty_four"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("45", "fourty_five"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("46", "fourty_six"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("47", "fourty_seven"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("48", "fourty_eight"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("49", "fourty_nine"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("50", "fifty"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("51", "fifty_one"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("52", "fifty_two"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("53", "fifty_three"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("54", "fifty_four"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("55", "fifty_five"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("56", "fifty_six"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("57", "fifty_seven"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("58", "fifty_eight"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("59", "fifty_nine"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("60", "sixty"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("61", "sixty_one"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("62", "sixty_two"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("63", "sixty_three"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("64", "sixty_four"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("65", "sixty_five"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("66", "sixty_six"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("67", "sixty_seven"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("68", "sixty_eight"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("69", "sixty_nine"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("70", "seventy"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("71", "seventy_one"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("72", "seventy_two"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("73", "seventy_three"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("74", "seventy_four"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("75", "seventy_five"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("76", "seventy_six"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("77", "seventy_seven"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("78", "seventy_eight"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("79", "seventy_nine"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("80", "eighty"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("81", "eighty_one"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("82", "eighty_two"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("83", "eighty_three"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("84", "eighty_four"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("85", "eighty_five"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("86", "eighty_six"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("87", "eighty_seven"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("88", "eighty_eight"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("89", "eighty_nine"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("90", "ninety"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("91", "ninety_one"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("92", "ninety_two"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("93", "ninety_three"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("94", "ninety_four"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("95", "ninety_five"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("96", "ninety_six"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("97", "ninety_seven"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("98", "ninety_eighty"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("99", "ninety_nine"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("100", "one_hundred"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("0", 44));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("1", 45));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("2", 46));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("3", 47));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("4", 48));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("5", 49));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("6", 50));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("7", 51));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("8", 52));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("9", 53));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("10", 54));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("11", 55));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("12", 56));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("13", 57));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("14", 58));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("15", 59));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("16", 60));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("17", 61));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("18", 62));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("19", 63));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("20", 64));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("21", 65));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("22", 66));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("23", 67));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("24", 68));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("25", 69));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("26", 70));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("27", 71));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("28", 72));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("29", 73));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("30", 74));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("31", 75));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("32", 76));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("33", 77));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("34", 78));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("35", 79));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("36", 80));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("37", 81));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("38", 82));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("39", 83));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("40", 84));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("41", 85));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("42", 86));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("43", 87));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("44", 88));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("45", 89));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("46", 90));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("47", 91));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("48", 92));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("49", 93));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("50", 94));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("51", 95));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("52", 96));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("53", 97));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("54", 98));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("55", 99));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("56", 100));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("57", 101));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("58", 102));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("59", 103));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("60", 104));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("61", 105));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("62", 106));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("63", 107));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("64", 108));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("65", 109));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("66", 110));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("67", 111));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("68", 112));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("69", 113));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("70", 114));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("71", 115));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("72", 116));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("73", 117));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("74", 118));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("75", 119));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("76", 120));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("77", 121));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("78", 122));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("79", 123));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("80", 124));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("81", 125));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("82", 126));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("83", 127));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("84", 128));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("85", 129));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("86", 130));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("87", 131));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("88", 132));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("89", 133));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("90", 134));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("91", 135));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("92", 136));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("93", 137));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("94", 138));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("95", 139));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("96", 140));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("97", 141));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("98", 142));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("99", 143));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("100", 144));
 	}
 	
 	private static void fillLetters() {
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("А", "a"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Б", "b"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("В", "v"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Г", "g"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Д", "d"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ѓ", "gj"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Е", "e"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ж", "zh"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("З", "z"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ѕ", "dz"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("И", "i"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ј", "j"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("К", "k"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Л", "l"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Љ", "lj"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("М", "m"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Н", "n"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Њ", "nj"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("О", "o"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("П", "p"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Р", "r"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("С", "s"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Т", "t"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ќ", "kj"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("У", "u"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ф", "f"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Х", "h"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ц", "c"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ч", "ch"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Џ", "dzh"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ш", "sh"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("А", 145));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Б", 146));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("В", 147));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Г", 148));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Д", 149));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ѓ", 150));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Е", 151));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ж", 152));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("З", 153));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ѕ", 154));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("И", 155));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ј", 156));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("К", 157));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Л", 158));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Љ", 159));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("М", 160));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Н", 161));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Њ", 162));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("О", 163));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("П", 164));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Р", 165));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("С", 166));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Т", 167));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ќ", 168));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("У", 169));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ф", 170));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Х", 171));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ц", 172));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ч", 173));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Џ", 174));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ш", 175));
 	}
 	
-	private static ContentValues toItemContentValues(String itemName, String resource) {
+	private static ContentValues toItemContentValues(String itemName, int resourceID) {
 		ContentValues cv = new ContentValues();
 		cv.put(ItemOpenHelper.COLUMN_NAME, itemName);
-		cv.put(ItemOpenHelper.COLUMN_RESOURCE, resource);
+		cv.put(ItemOpenHelper.COLUMN_RESOURCE, resourceID);
 		return cv;
 	}
 	
 	public static void fillItemTags() {
-		Cursor cursor = resolver
-				.query(ItemTagsContentProvider.CONTENT_URI,
-						new String[] { ItemTagsOpenHelper.COLUMN_ID }, null,
-						null, null);
-		
-		if (cursor.getCount() == 0) {
-			fillFruitsAndVegetablesTags();
-			fillAnimalsTags();
-			fillNumbersTags();
-			fillLettersTags();
-		}
-		cursor.close();
+		fillFruitsAndVegetablesTags();
+		fillAnimalsTags();
+		fillNumbersTags();
+		fillLettersTags();
 	}
 	
 	private static void fillFruitsAndVegetablesTags() {
@@ -508,78 +685,70 @@ public class FillDatabase {
 	}
 	
 	public static void fillGames() {
-		Cursor cursor = resolver
-				.query(GameContentProvider.CONTENT_URI,
-						new String[] { GameOpenHelper.COLUMN_ID }, null,
-						null, null);
-		
-		if (cursor.getCount() == 0) {
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Letters", "ChooseStringFromSound", "letters_chooseLetter"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Letters", "HangmanEasy", "letters_fillLetters"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Letters", "Hangman", "letters_orderLetters"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Letters", "ChooseStringFromSound", "letters_chooseLetter"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Letters", "HangmanEasy", "letters_fillLetters"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Letters", "Hangman", "letters_orderLetters"));
 			
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseItem", "shapes_choosePicture"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseItem", "shapes_chooseWord"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseSimilarItem", "shapes_similarity"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseSimilarItem", "shapes_looksLike"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseItem", "shapes_choosePicture"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseItem", "shapes_chooseWord"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseSimilarItem", "shapes_similarity"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseSimilarItem", "shapes_looksLike"));
 			
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseStringFromSound", "numbers_chooseNumber"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "HowMany", "numbers_countObjects"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseSignBetweenNumbers", "numbers_findSign"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseSignBetweenSets", "numbers_sets"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionNumbers", "numbers_addSets"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionSets", "numbers_addNumbers"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionNumbers", "numbers_substractSets"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionSets", "numbers_substractNumbers"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseItem", "numbers_choosePicture"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseItem", "numbers_chooseWord"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "OrderElements", "numbers_orderNumbers"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseStringFromSound", "numbers_chooseNumber"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "HowMany", "numbers_countObjects"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseSignBetweenNumbers", "numbers_findSign"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseSignBetweenSets", "numbers_sets"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionNumbers", "numbers_addSets"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionSets", "numbers_addNumbers"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionNumbers", "numbers_substractSets"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionSets", "numbers_substractNumbers"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseItem", "numbers_choosePicture"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseItem", "numbers_chooseWord"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "OrderElements", "numbers_orderNumbers"));
 			
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_chooseAnimal"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_choosePicture"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ConnectItemAndResurs", "animals_connectAnimals"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ItemsClassification", "animals_groupWords"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ItemsClassification", "animals_groupPictures"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_chooseWord"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_chooseAnimal"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_choosePicture"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ConnectItemAndResurs", "animals_connectAnimals"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ItemsClassification", "animals_groupWords"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ItemsClassification", "animals_groupPictures"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_chooseWord"));
 			
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ChooseItem", "fruitsandvegetables_choosePicture"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ChooseItem", "fruitsandvegetables_chooseWord"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ConnectItemAndResurs", "fruitsandvegetables_connectPictures"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ItemsClassification", "fruitsandvegetables_groupWords"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ItemsClassification", "fruitsandvegetables_groupPictures"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ChooseItem", "fruitsandvegetables_choosePicture"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ChooseItem", "fruitsandvegetables_chooseWord"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ConnectItemAndResurs", "fruitsandvegetables_connectPictures"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ItemsClassification", "fruitsandvegetables_groupWords"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ItemsClassification", "fruitsandvegetables_groupPictures"));
 			
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Weather", "ChooseItem", "weather_choosePicture"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Weather", "ChooseItem", "weather_chooseWord"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Weather", "ChooseItem", "weather_outsideWeather"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Weather", "ConnectItemAndResurs", "weather_connectPictures"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Weather", "ChooseItem", "weather_choosePicture"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Weather", "ChooseItem", "weather_chooseWord"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Weather", "ChooseItem", "weather_outsideWeather"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Weather", "ConnectItemAndResurs", "weather_connectPictures"));
 			
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Year", "Question", "year_questions"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Year", "OrderElements", "year_orderDays"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Year", "OrderElements", "year_orderMonths"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Year", "ItemsClassification", "year_groupWords"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Year", "Question", "year_questions"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Year", "OrderElements", "year_orderDays"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Year", "OrderElements", "year_orderMonths"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Year", "ItemsClassification", "year_groupWords"));
 			
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Day", "ChooseItem", "day_whatsTheTime"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Day", "OrderElements", "day_dayParts"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Day", "ChooseItem", "day_whatsTheTime"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Day", "OrderElements", "day_dayParts"));
 			
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ChooseItem", "colorsandobjects_chooseColor"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ChooseItem", "colorsandobjects_chooseObject"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ConnectItemAndResurs", "colorsandobjects_connect"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ConnectItems", "colorsandobjects_whatsTheColor"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ChooseItem", "colorsandobjects_chooseColor"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ChooseItem", "colorsandobjects_chooseObject"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ConnectItemAndResurs", "colorsandobjects_connect"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ConnectItems", "colorsandobjects_whatsTheColor"));
 			
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_choosePreposition"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_choosePicture"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_connect"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_choosePreposition"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_choosePicture"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_connect"));
 			
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromWord"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromPicture"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseClothingFromWord"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ConnectItems", "clothesandbodyparts_chooseClothingFromPicture"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ConnectItems", "clothesandbodyparts_connect"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromWord"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromPicture"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseClothingFromWord"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ConnectItems", "clothesandbodyparts_chooseClothingFromPicture"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ConnectItems", "clothesandbodyparts_connect"));
 			
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Emotions", "ChooseItem", "emotions_chooseWord"));
-			resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Emotions", "ChooseItem", "emotions_choosePicture"));
-		}
-		cursor.close();
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Emotions", "ChooseItem", "emotions_chooseWord"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Emotions", "ChooseItem", "emotions_choosePicture"));
 	}
 	
 	private static ContentValues toGameContentValues(String categoryType, String gameType, String gameName) {
@@ -591,6 +760,7 @@ public class FillDatabase {
 	}
 	
 	public static void fillWholeDatabase() {
+		fillResources();
 		fillCategories();
 		fillItems();
 		fillItemTags();

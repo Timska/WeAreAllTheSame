@@ -25,10 +25,12 @@ import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.games.Game;
 import android.content.Context;
+import android.content.SharedPreferences;
 
 public class ApplicationInterface implements Serializable {
 
 	private static final long serialVersionUID = -2398754556365634431L;
+	private static final String PREFS_NAME = "DBSetFile";
 	
 	private CategoryFactory categoryFactory;
 	private CategoryInterface currentCategory;
@@ -36,11 +38,16 @@ public class ApplicationInterface implements Serializable {
 	
 	public ApplicationInterface(Context context) {
 		System.out.println("Application Interface constructor");
-		FillDatabase.setContext(context);
-		FillDatabase.fillCategories();
-		FillDatabase.fillItems();
-		FillDatabase.fillItemTags();
-		FillDatabase.fillGames();
+		
+		SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, 0);
+		if (prefs.getBoolean("isDBFilled", false) == false) {
+			SharedPreferences.Editor editor = prefs.edit();
+			editor.putBoolean("isDBFilled", true);
+			editor.commit();
+			
+			FillDatabase.setContext(context);
+			FillDatabase.fillWholeDatabase();
+		}
 		
 		categoryFactory = new CategoryFactory(context);
 		ItemFactory.setContext(context);
