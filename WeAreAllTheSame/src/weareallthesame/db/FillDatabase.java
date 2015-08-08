@@ -40,6 +40,7 @@ public class FillDatabase {
 		fillAnimalsResources();
 		fillNumbersResources();
 		fillLettersResources();
+		fillWeatherResources();
 	}
 	
 	private static void fillFruitsAndVegetablesResources() {
@@ -89,6 +90,24 @@ public class FillDatabase {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(41, "zajak", "picture"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(42, "zebra", "picture"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(43, "zirafa", "picture"));
+		
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(176, "bear", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(177, "camel", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(178, "cat", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(179, "chicken", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(180, "cow", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(181, "dog", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(182, "elephant", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(183, "fox", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(184, "horse", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(185, "lion", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(186, "pig", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(187, "rabbit", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(188, "sheep", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(189, "squirrel", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(190, "tiger", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(191, "wolf", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(192, "zebra", "sound"));
 	}
 	
 	private static void fillNumbersResources() {
@@ -229,6 +248,13 @@ public class FillDatabase {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(175, "sh", "sound"));
 	}
 	
+	private static void fillWeatherResources() {
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(193, "wind", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(194, "rain", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(195, "rain_thunder", "sound"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(196, "thunder", "sound"));
+	}
+	
 	private static ContentValues toResourceContentValues(int id, String name, String type) {
 		ContentValues cv = new ContentValues();
 		cv.put(ResourceOpenHelper.COLUMN_ID, id);
@@ -242,6 +268,7 @@ public class FillDatabase {
 		fillAnimals();
 		fillNumbers();
 		fillLetters();
+		fillWeather();
 	}
 	
 	private static void fillFruitsAndVegetables() {
@@ -291,6 +318,24 @@ public class FillDatabase {
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зајак", 41));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зебра", 42));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("жирафа", 43));
+		
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("камила", 177));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кокошка", 179));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("коњ", 184));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("крава", 180));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("куче", 181));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лав", 185));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лисица", 183));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("мачка", 178));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("мечка", 176));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("овца", 188));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("слон", 182));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("свиња", 186));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("тигар", 190));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("верверичка", 189));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("волк", 191));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зајак", 187));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зебра", 192));
 	}
 	
 	private static void fillNumbers() {
@@ -431,6 +476,13 @@ public class FillDatabase {
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ш", 175));
 	}
 	
+	private static void fillWeather() {
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("дува ветар", 193));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("врне дожд", 194));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("врне дожд и грми", 195));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("грми", 196));
+	}
+	
 	private static ContentValues toItemContentValues(String itemName, int resourceID) {
 		ContentValues cv = new ContentValues();
 		cv.put(ItemOpenHelper.COLUMN_NAME, itemName);
@@ -443,6 +495,7 @@ public class FillDatabase {
 		fillAnimalsTags();
 		fillNumbersTags();
 		fillLettersTags();
+		fillWeatherTags();
 	}
 	
 	private static void fillFruitsAndVegetablesTags() {
@@ -677,6 +730,13 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Ш", "letters"));
 	}
 	
+	private static void fillWeatherTags() {
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("дува ветар", "weather"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("врне дожд", "weather"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("врне дожд и грми", "weather"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("грми", "weather"));
+	}
+	
 	private static ContentValues toItemTagsContentValues(String itemName, String tag) {
 		ContentValues cv = new ContentValues();
 		cv.put(ItemTagsOpenHelper.COLUMN_NAME, itemName);
@@ -760,8 +820,8 @@ public class FillDatabase {
 	}
 	
 	public static void fillWholeDatabase() {
-		fillResources();
 		fillCategories();
+		fillResources();
 		fillItems();
 		fillItemTags();
 		fillGames();
