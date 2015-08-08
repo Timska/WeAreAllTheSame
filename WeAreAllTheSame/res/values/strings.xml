@@ -101,5 +101,6 @@
     <string name="title_activity_exercise">ExerciseActivity</string>
     <string name="title_activity_choose_character_from_sound">ChooseCharacterFromSoundActivity</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_addition_and_substraction">AdditionAndSubstractionActivity</string>
 
 </resources>
