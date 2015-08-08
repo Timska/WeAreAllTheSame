@@ -1,38 +1,38 @@
 package weareallthesame.view.games.additionandsubtractiongames;
 
 import weareallthesame.view.R;
-import weareallthesame.view.R.id;
-import weareallthesame.view.R.layout;
-import weareallthesame.view.R.menu;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
 
 public class AdditionAndSubstractionSetsActivity extends Activity {
 
+	
+	private AdditionAndSubstractionSetsView setOne;
+	private AdditionAndSubstractionSetsView setTwo;
+	private LinearLayout linLayout;
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_addition_and_substraction_sets);
+		
+		
+		linLayout=(LinearLayout) findViewById(R.id.addition_and_substraction_sets_container);
+		setOne=new AdditionAndSubstractionSetsView(getApplicationContext(), 3);
+		setTwo=new AdditionAndSubstractionSetsView(getApplicationContext(), 2);
+		
+		
+		LayoutParams lp= new LayoutParams(200,200);
+		
+		linLayout.addView(setOne,lp);
+		linLayout.addView(setTwo,lp);
+		//this.addContentView(setOne, null);
+		//this.addContentView(setTwo, null);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.addition_and_substraction_sets, menu);
-		return true;
-	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
 }
