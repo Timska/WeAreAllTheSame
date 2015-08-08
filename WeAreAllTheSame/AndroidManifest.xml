@@ -43,6 +43,11 @@
             android:authorities="weareallthesame.db6"
             android:exported="false" >
         </provider>
+        <provider
+            android:name="weareallthesame.db.ResourceContentProvider"
+            android:authorities="weareallthesame.db7"
+            android:exported="false" >
+        </provider>
 
         <activity
             android:name=".MyActivity"

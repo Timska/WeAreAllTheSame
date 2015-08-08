@@ -2,15 +2,19 @@ package weareallthesame.factories;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import weareallthesame.db.ItemContentProvider;
 import weareallthesame.db.ItemOpenHelper;
 import weareallthesame.db.ItemTagsContentProvider;
 import weareallthesame.db.ItemTagsOpenHelper;
+import weareallthesame.db.ResourceContentProvider;
+import weareallthesame.db.ResourceOpenHelper;
 import weareallthesame.model.items.Item;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -81,17 +85,30 @@ public class ItemFactory {
 					new String[] { ItemOpenHelper.COLUMN_RESOURCE },
 					ItemOpenHelper.COLUMN_NAME + "=" + "'" + str + "'", null,
 					null);
-			List<String> resources = new ArrayList<String>();
+
+			Map<String, String> resources = new HashMap<String, String>();
 			while (cursor.moveToNext()) {
-				String resourceID = cursor.getString(cursor
+				int resourceID = cursor.getInt(cursor
 						.getColumnIndex(ItemOpenHelper.COLUMN_RESOURCE));
-				resources.add(resourceID);
+
+				Cursor resCursor = resolver.query(
+						ResourceContentProvider.CONTENT_URI, new String[] {
+								ResourceOpenHelper.COLUMN_RESNAME,
+								ResourceOpenHelper.COLUMN_RESTYPE },
+						ResourceOpenHelper.COLUMN_ID + "=" + resourceID, null,
+						null);
+
+				String resourceName = resCursor.getString(resCursor
+						.getColumnIndex(ResourceOpenHelper.COLUMN_RESNAME));
+				String resourceType = resCursor.getString(resCursor
+						.getColumnIndex(ResourceOpenHelper.COLUMN_RESTYPE));
+				resources.put(resourceType, resourceName);
+
+				resCursor.close();
 			}
-			/*result.add(new Item(str, resources.iterator()) {
 
-				private static final long serialVersionUID = -3020825504350961931L;
+			result.add(new Item(str, resources));
 
-			});*/
 			cursor.close();
 		}
 
