@@ -1,63 +1,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/how_many_objects_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context="weareallthesame.view.games.howmanygame.HowManyObjectsActivity" >
 
     <TextView
         android:id="@+id/how_many_objects_task_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-         android:layout_above="@+id/how_many_objects_view"
         android:text="@string/how_many_objects_description"
         android:textSize="20sp" />
 
     <view
-        android:id="@+id/how_many_objects_view"
         android:layout_width="match_parent"
-        android:layout_height="175dp"
+        android:layout_height="267dp"
         class="weareallthesame.view.games.howmanygame.HowManyObjectsView" />
 
-     <Button
-        android:id="@+id/how_many_objects_answer_one"
+    <view
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="3dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp" />
+        class="weareallthesame.view.games.howmanygame.ShowAnswersView" />
 
-    <Button
-        android:id="@+id/how_many_objects_answer_two"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-     />
 
-    <Button
-        android:id="@+id/how_many_objects_answer_three"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp" />
-
-    <Button
-        android:id="@+id/how_many_objects_answer_four"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        />
+   
 </LinearLayout>
