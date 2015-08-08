@@ -22,16 +22,8 @@ public class AdditionAndSubstractionSetsActivity extends Activity {
 		
 		
 		linLayout=(LinearLayout) findViewById(R.id.addition_and_substraction_sets_container);
-		setOne=new AdditionAndSubstractionSetsView(getApplicationContext(), 3);
-		setTwo=new AdditionAndSubstractionSetsView(getApplicationContext(), 2);
-		
-		
-		LayoutParams lp= new LayoutParams(200,200);
-		
-		linLayout.addView(setOne,lp);
-		linLayout.addView(setTwo,lp);
-		//this.addContentView(setOne, null);
-		//this.addContentView(setTwo, null);
+		setOne=new AdditionAndSubstractionSetsView(getApplicationContext(), 5, 4, "+", 300, 300);
+		linLayout.addView(setOne);
 	}
 
 
