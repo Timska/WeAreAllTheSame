@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Map;
 
 public class Item implements Serializable {
-	
-	private static final long serialVersionUID = 2451032560633009847L;
-	
+
+	private static final long serialVersionUID = -933780793322111465L;
+
 	private String name;
 	private Map<String, String> resources;
 
