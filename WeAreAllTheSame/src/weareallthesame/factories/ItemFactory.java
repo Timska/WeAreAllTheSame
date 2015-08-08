@@ -87,11 +87,11 @@ public class ItemFactory {
 						.getColumnIndex(ItemOpenHelper.COLUMN_RESOURCE));
 				resources.add(resourceID);
 			}
-			result.add(new Item(str, resources.iterator()) {
+			/*result.add(new Item(str, resources.iterator()) {
 
 				private static final long serialVersionUID = -3020825504350961931L;
 
-			});
+			});*/
 			cursor.close();
 		}
 

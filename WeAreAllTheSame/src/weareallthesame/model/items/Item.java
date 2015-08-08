@@ -1,31 +1,26 @@
 package weareallthesame.model.items;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
 
-public abstract class Item implements Serializable {
+public class Item implements Serializable {
 	
 	private static final long serialVersionUID = 2451032560633009847L;
 	
 	private String name;
-	private List<String> resourceNames;
+	private Map<String, String> resources;
 
-	public Item(String name, Iterator<String> resourceNames) {
+	public Item(String name, Map<String, String> resources) {
 		this.name = name;
-		this.resourceNames = new ArrayList<String>();
-		while (resourceNames.hasNext()) {
-			this.resourceNames.add(resourceNames.next());
-		}
+		this.resources = resources;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public Iterator<String> getResourceNames() {
-		return resourceNames.iterator();
+	public Map<String, String> getResourceNames() {
+		return resources;
 	}
 
 }
