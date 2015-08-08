@@ -1,5 +1,9 @@
-package weareallthesame.view;
+package weareallthesame.view.games.additionandsubtractiongames;
 
+import weareallthesame.view.R;
+import weareallthesame.view.R.id;
+import weareallthesame.view.R.layout;
+import weareallthesame.view.R.menu;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
