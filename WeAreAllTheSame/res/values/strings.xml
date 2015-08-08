@@ -47,7 +47,7 @@
     <string name="title_activity_choose_character_from_sound">ChooseCharacterFromSoundActivity</string>
     <string name="title_activity_game">GameActivity</string>
     <string name="title_activity_addition_and_substraction">AdditionAndSubstractionActivity</string>
-    <string name="addition_and_substraction_task_description">Најди го знакот.</string>
+    <string name="addition_and_substraction_task_description">Најди го резултатот.</string>
 
     <!-- Game names -->
     <string name="letters_chooseLetter">Избери буква</string>
