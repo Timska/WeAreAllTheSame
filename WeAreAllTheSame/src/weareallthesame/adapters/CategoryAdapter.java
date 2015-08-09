@@ -19,6 +19,7 @@ public class CategoryAdapter extends BaseAdapter {
 		context = c;
 		listCategories = categories;
 		System.out.println("Categories Adapter constructor");
+		System.out.println(getCount());
 	}
 
 	public int getCount() {
@@ -33,22 +34,22 @@ public class CategoryAdapter extends BaseAdapter {
 		return 0;
 	}
 
-	// create a new ImageView for each item referenced by the Adapter
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ImageView imageView;
+		GridView grid = (GridView) parent;
+		int size = grid.getColumnWidth();
+		
 		if (convertView == null) {
-			// if it's not recycled, initialize some attributes
 			imageView = new ImageView(context);
-			imageView.setLayoutParams(new GridView.LayoutParams(170, 170));
-			imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-			imageView.setPadding(8, 8, 8, 8);
+			imageView.setLayoutParams(new GridView.LayoutParams(size, size));
+			imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+			imageView.setPadding(10, 10, 10, 10);
 		} else {
 			imageView = (ImageView) convertView;
 		}
 
 		System.out.println(listCategories.get(position).getResourceName());
 		int resourceId = context.getResources().getIdentifier(listCategories.get(position).getResourceName(), "drawable", context.getPackageName());
-		System.out.println(resourceId);
 		imageView.setImageResource(resourceId);
 		return imageView;
 	}

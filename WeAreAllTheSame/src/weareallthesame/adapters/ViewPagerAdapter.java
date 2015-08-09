@@ -14,8 +14,9 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class ViewPagerAdapter extends PagerAdapter {
@@ -38,7 +39,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
 	@Override
 	public boolean isViewFromObject(View view, Object object) {
-		return view == (RelativeLayout) object;
+		return view == (LinearLayout) object;
 	}
 
 	@Override
@@ -50,6 +51,11 @@ public class ViewPagerAdapter extends PagerAdapter {
 		View itemView = inflater.inflate(R.layout.viewpager_item, container, false);
 		
 		txtName = (TextView) itemView.findViewById(R.id.category_name);
+		@SuppressWarnings("deprecation")
+		int screenHeight = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getHeight();
+		float textSize = (float) (screenHeight / 30.0);
+		System.out.println(screenHeight + ", " + textSize);
+		txtName.setTextSize(textSize);
 		txtName.setText(categories.get(position).getName());
 		
 		imgCategory = (ImageView) itemView.findViewById(R.id.category_image);
@@ -77,6 +83,6 @@ public class ViewPagerAdapter extends PagerAdapter {
 	
 	@Override
 	public void destroyItem(ViewGroup container, int position, Object object){
-		((ViewPager) container).removeView((RelativeLayout) object);
+		((ViewPager) container).removeView((LinearLayout) object);
 	}
 }
