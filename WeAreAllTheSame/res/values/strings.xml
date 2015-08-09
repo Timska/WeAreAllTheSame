@@ -48,7 +48,8 @@
     <string name="title_activity_game">GameActivity</string>
     <string name="title_activity_addition_and_substraction">AdditionAndSubstractionActivity</string>
     <string name="addition_and_substraction_task_description">Најди го резултатот.</string>
-
+	<string name="choose_sign_numbers_task_description">Најди го знакот.</string>
+    
     <!-- Game names -->
     <string name="letters_chooseLetter">Избери буква</string>
     <string name="letters_fillLetters">Дополни букви</string>
@@ -104,5 +105,6 @@
     <string name="emotions_chooseWord">Избери збор</string>
     <string name="emotions_choosePicture">Избери слика</string>
     <string name="title_activity_addition_and_substraction_sets">AdditionAndSubstractionSetsActivity</string>
+    <string name="title_activity_choose_the_sign_numbers">ChooseTheSignNumbersActivity</string>
 
 </resources>

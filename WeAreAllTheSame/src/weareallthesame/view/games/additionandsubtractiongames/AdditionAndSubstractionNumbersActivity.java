@@ -37,95 +37,77 @@ import android.widget.TextView;
 
 public class AdditionAndSubstractionNumbersActivity extends Activity {
 
-	
 	private DisplayMetrics displayMetrics;
-	private ArrayList<Rect> boundsRect;
 	private ArrayList<TextView> numbersAndSigns;
 	private ArrayList<TextView> answers;
 	private ArrayList<Integer> colors;
 	private ArrayList<String> answersString;
 	private MediaPlayer mMediaPlayer;
 	private Random r = new Random();
-	private Button playButton;
-	private Animation animation;
-	private LinearLayout linLayout;
-	private TextView dropPlace;
 	private int width, height, rWidth, rHeight;
 
-	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_addition_and_substraction_numbers);
-		
-		
-		
 
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
 		height = displayMetrics.heightPixels;
 
-		
-
 		mMediaPlayer = new MediaPlayer();
 		mMediaPlayer = MediaPlayer.create(this, R.raw.slow_whoop_bubble_pop);
 		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-		
-		
-		answers=new ArrayList<TextView>();
-		boundsRect = new ArrayList<Rect>();
-		numbersAndSigns = new ArrayList<TextView>();
-		animation = AnimationUtils.loadAnimation(this,
-				R.anim.choose_character_from_sound_animation_scaling);
 
-		playButton = (Button) findViewById(R.id.choose_character_from_sound_play_buttons);
-		numbersAndSigns.add((TextView) findViewById(R.id.addition_and_substraction_numbers_additioner_one));
-		numbersAndSigns.add((TextView) findViewById(R.id.addition_and_substraction_numbers_sign));
-		numbersAndSigns.add((TextView) findViewById(R.id.addition_and_substraction_numbers_additioner_two));
-		numbersAndSigns.add((TextView) findViewById(R.id.addition_and_substraction_numbers_equals_sign));
-		numbersAndSigns.add((TextView) findViewById(R.id.addition_and_substraction_numbers_result));
-	
+		answers = new ArrayList<TextView>();
+		numbersAndSigns = new ArrayList<TextView>();
+
+		numbersAndSigns
+				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_additioner_one));
+		numbersAndSigns
+				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_sign));
+		numbersAndSigns
+				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_additioner_two));
+		numbersAndSigns
+				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_equals_sign));
+		numbersAndSigns
+				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_result));
+
 		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_one));
 		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_two));
 		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_three));
 		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_four));
-		
+
 		colors = generateColors();
-		
-		
+
 		setAnswers();
-		
+
 		setTextViews();
 		addAnswers();
-		
-		for(TextView tx:answers){
+
+		for (TextView tx : answers) {
 			tx.setOnLongClickListener(new MyClickListener());
 		}
-		
+
 		numbersAndSigns.get(4).setOnDragListener(new MyDragListener());
-		
-		
+
 	}
+
 	private void setTextViews() {
 
-		for(int i=0;i<numbersAndSigns.size();++i){
-			
-			TextView tx=numbersAndSigns.get(i);
+		for (int i = 0; i < numbersAndSigns.size(); ++i) {
+
+			TextView tx = numbersAndSigns.get(i);
 			tx.setBackground(getGradientDrawable());
-			tx.setHeight(height/10);
+			tx.setHeight(height / 10);
 			tx.setText(answersString.get(i));
 			tx.setTag(answersString.get(i));
-			
-			
+
 		}
 
 	}
 
-	
-
-	
 	private ArrayList<Integer> generateColors() {
 
 		ArrayList<Integer> colors = new ArrayList<Integer>();
@@ -163,23 +145,23 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 		return gd;
 
 	}
-	
-	private void addAnswers(){
-		
-		for(int i=0;i<answers.size();++i){
-			
-			TextView tx=answers.get(i);
-			GradientDrawable gd=getGradientDrawable();
+
+	private void addAnswers() {
+
+		for (int i = 0; i < answers.size(); ++i) {
+
+			TextView tx = answers.get(i);
+			GradientDrawable gd = getGradientDrawable();
 			gd.setShape(GradientDrawable.RECTANGLE);
 			tx.setBackground(gd);
-			tx.setWidth(width/5);
-			tx.setHeight(height/10);
+			tx.setWidth(width / 5);
+			tx.setHeight(height / 10);
 			tx.setText("18");
 			tx.setTag(answersString.get(i));
 		}
 		answers.get(2).setTag("Correct");
 		Collections.shuffle(answers);
-		
+
 	}
 
 	private final class MyClickListener implements OnLongClickListener {
@@ -200,6 +182,7 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 		}
 
 	}
+
 	private final class MyDragListener implements OnDragListener {
 
 		@Override
@@ -217,25 +200,24 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 			case DragEvent.ACTION_DRAG_LOCATION:
 				break;
 			case DragEvent.ACTION_DROP:
-				
-				String tag=(String) draggedTextView.getTag();
-				
-				if(tag.equals("Correct")){
+
+				String tag = (String) draggedTextView.getTag();
+
+				if (tag.equals("Correct")) {
 					ViewGroup draggedImageViewParentLayout = (ViewGroup) draggedTextView
 							.getParent();
 					draggedImageViewParentLayout.removeView(draggedTextView);
-					TextView dropTarget=(TextView) receivingLayoutView;
-					TextView droppedView=(TextView) draggedTextView;
+					TextView dropTarget = (TextView) receivingLayoutView;
+					TextView droppedView = (TextView) draggedTextView;
 					dropTarget.setText(droppedView.getText());
 					mMediaPlayer.start();
 					draggedTextView.setVisibility(View.VISIBLE);
 					return true;
-				}
-				else{
+				} else {
 					draggedTextView.setVisibility(View.VISIBLE);
 					return false;
 				}
-			
+
 			case DragEvent.ACTION_DRAG_ENDED:
 
 				if (!event.getResult()) {
@@ -249,5 +231,5 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 		}
 
 	}
-	
+
 }

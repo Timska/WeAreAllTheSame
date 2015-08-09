@@ -78,8 +78,8 @@ public class AdditionAndSubstractionSetsView extends View  {
 		//canvas.drawColor(0, Mode.CLEAR);
 		//canvas.drawColor(color.holo_red_light);
 		for (int i = 0; i < numberOfObjectsSetOne; ++i) {
-			bounds = boundsBitmapsSetOne.get(i);
-			canvas.drawBitmap(bitmapsSetTwo.get(i), bounds.left, bounds.top, paint);
+			//bounds = boundsBitmapsSetOne.get(i);
+			//canvas.drawBitmap(bitmapsSetTwo.get(i), bounds.left, bounds.top, paint);
 		}
 		canvas.drawRect(0, vHeight/2,vWidth,vHeight/2+15,paint);
 		//for (int i = 0; i < numberOfObjectsSetTwo; ++i) {
@@ -149,7 +149,7 @@ public class AdditionAndSubstractionSetsView extends View  {
 
 		int n = numberOfObjects;
 		Bitmap b = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(
-				getResources(), R.drawable.piperka), 100, 100, true);
+				getResources(), R.drawable.piperka), 50, 50, true);
 
 		for (int i = 0; i < n; ++i) {
 			 bitmaps.add(b);

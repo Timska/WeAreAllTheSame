@@ -112,8 +112,12 @@
             android:label="@string/title_activity_addition_and_substraction" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionSetsActivity"
+            android:name=".games.additionandsubtractiongames.AdditionAndSubstractionSetsActivity"
             android:label="@string/title_activity_addition_and_substraction_sets" >
+        </activity>
+        <activity
+            android:name="weareallthesame.view.games.choosesigngames.ChooseTheSignNumbersActivity"
+            android:label="@string/title_activity_choose_the_sign_numbers" >
         </activity>
     </application>
 

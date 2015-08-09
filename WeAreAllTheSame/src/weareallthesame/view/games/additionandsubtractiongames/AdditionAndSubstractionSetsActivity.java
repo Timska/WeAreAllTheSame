@@ -3,15 +3,16 @@ package weareallthesame.view.games.additionandsubtractiongames;
 import weareallthesame.view.R;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.ViewGroup.LayoutParams;
+import android.view.View;
 import android.widget.LinearLayout;
 
 public class AdditionAndSubstractionSetsActivity extends Activity {
 
 	
-	private AdditionAndSubstractionSetsView setOne;
 	private AdditionAndSubstractionSetsView setTwo;
+	private AdditionAndSubstractionSetView setOne;
 	private LinearLayout linLayout;
+	private View setOneView;
 	
 	
 	
@@ -20,10 +21,11 @@ public class AdditionAndSubstractionSetsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_addition_and_substraction_sets);
 		
+		setOneView=findViewById(R.id.addition_and_substraction_sets_set_one);
+		setOne=new AdditionAndSubstractionSetView(this.getBaseContext(), 2);
+		setOneView=setOne;
 		
-		linLayout=(LinearLayout) findViewById(R.id.addition_and_substraction_sets_container);
-		setOne=new AdditionAndSubstractionSetsView(getApplicationContext(), 5, 4, "+", 300, 300);
-		linLayout.addView(setOne);
+		
 	}
 
 
