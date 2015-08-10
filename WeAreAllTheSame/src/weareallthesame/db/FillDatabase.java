@@ -41,6 +41,8 @@ public class FillDatabase {
 		fillNumbersResources();
 		fillLettersResources();
 		fillWeatherResources();
+		fillClothesAndBodyPartsResources();
+		fillEmotionsResources();
 	}
 	
 	private static void fillFruitsAndVegetablesResources() {
@@ -255,6 +257,36 @@ public class FillDatabase {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(196, "thunder", "sound"));
 	}
 	
+	private static void fillClothesAndBodyPartsResources() {
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(197, "arm", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(198, "ears", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(199, "elbow", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(200, "eyelashes", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(201, "face", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(202, "foot", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(203, "forehead", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(204, "hands", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(205, "head", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(206, "mouth", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(207, "teeth", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(208, "wrist", "picture"));
+	}
+	
+	private static void fillEmotionsResources() {
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(209, "angry", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(210, "confused", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(211, "content", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(212, "excited", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(213, "frightened", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(214, "happy", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(215, "nervous", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(216, "proud", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(217, "sad", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(218, "surprised", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(219, "thoughtful", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(220, "tired", "picture"));
+	}
+	
 	private static ContentValues toResourceContentValues(int id, String name, String type) {
 		ContentValues cv = new ContentValues();
 		cv.put(ResourceOpenHelper.COLUMN_ID, id);
@@ -269,6 +301,8 @@ public class FillDatabase {
 		fillNumbers();
 		fillLetters();
 		fillWeather();
+		fillClothesAndBodyParts();
+		fillEmotions();
 	}
 	
 	private static void fillFruitsAndVegetables() {
@@ -483,6 +517,36 @@ public class FillDatabase {
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("грми", 196));
 	}
 	
+	private static void fillClothesAndBodyParts() {
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("рака", 197));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("уши", 198));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лакт", 199));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("трепки", 200));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("лице", 201));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("стапало", 202));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("чело", 203));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("дланки", 204));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("глава", 205));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("уста", 206));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("заби", 207));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зглоб", 208));
+	}
+	
+	private static void fillEmotions() {
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("изнервирано", 209));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("збунето", 210));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("задоволно", 211));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("возбудено", 212));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("исплашено", 213));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("среќно", 214));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("нервозно", 215));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("гордо", 216));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("тажно", 217));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("изненадено", 218));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("замислено", 219));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("изморено", 220));
+	}
+	
 	private static ContentValues toItemContentValues(String itemName, int resourceID) {
 		ContentValues cv = new ContentValues();
 		cv.put(ItemOpenHelper.COLUMN_NAME, itemName);
@@ -496,6 +560,8 @@ public class FillDatabase {
 		fillNumbersTags();
 		fillLettersTags();
 		fillWeatherTags();
+		fillClothesAndBodyPartsTags();
+		fillEmotionsTags();
 	}
 	
 	private static void fillFruitsAndVegetablesTags() {
@@ -735,6 +801,49 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("врне дожд", "weather"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("врне дожд и грми", "weather"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("грми", "weather"));
+	}
+	
+	private static void fillClothesAndBodyPartsTags() {
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("рака", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("уши", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лакт", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("трепки", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лице", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("стапало", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("чело", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("дланки", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("глава", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("уста", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("заби", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зглоб", "clothesAndBodyParts"));
+	
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("рака", "bodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("уши", "bodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лакт", "bodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("трепки", "bodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лице", "bodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("стапало", "bodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("чело", "bodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("дланки", "bodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("глава", "bodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("уста", "bodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("заби", "bodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зглоб", "bodyParts"));
+	}
+	
+	private static void fillEmotionsTags() {
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("изнервирано", "emotions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("збунето", "emotions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("задоволно", "emotions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("возбудено", "emotions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("исплашено", "emotions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("среќно", "emotions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("нервозно", "emotions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("гордо", "emotions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("тажно", "emotions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("изненадено", "emotions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("замислено", "emotions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("изморено", "emotions"));
 	}
 	
 	private static ContentValues toItemTagsContentValues(String itemName, String tag) {
