@@ -120,8 +120,16 @@
             android:label="@string/title_activity_choose_the_sign_numbers" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.connectitemsgames.ConnectItemsActivity"
+            android:name=".games.connectitemsgames.ConnectItemsActivity"
             android:label="@string/title_activity_connect_items" >
+        </activity>
+        <activity
+            android:name=".games.questiongame.QuestionGameActivity"
+            android:label="@string/title_activity_question_game" >
+        </activity>
+        <activity
+            android:name="weareallthesame.view.games.orderelementsgame.OrderElementsActivity"
+            android:label="@string/title_activity_order_elements" >
         </activity>
     </application>
 

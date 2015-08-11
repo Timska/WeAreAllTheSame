@@ -109,5 +109,7 @@
     <string name="title_activity_addition_and_substraction_sets">AdditionAndSubstractionSetsActivity</string>
     <string name="title_activity_choose_the_sign_numbers">ChooseTheSignNumbersActivity</string>
     <string name="title_activity_connect_items">ConnectItemsActivity</string>
+    <string name="title_activity_question_game">QuestionGameActivity</string>
+    <string name="title_activity_order_elements">OrderElementsActivity</string>
 
 </resources>
