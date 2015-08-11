@@ -2,8 +2,11 @@ package weareallthesame.adapters;
 
 import java.util.List;
 
+import weareallthesame.factories.ViewFactory;
+import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.R;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +19,14 @@ public class GamesAdapter extends ArrayAdapter<String> {
 	private Context context;
 	private LayoutInflater inflater;
 	private List<String> gameList;
+	private ApplicationInterface appInterface;
 
-	public GamesAdapter(Context context, List<String> games) {
+	public GamesAdapter(Context context, List<String> games, ApplicationInterface appInterface) {
 		super(context, R.layout.gamelist_layout, games);
 		this.context = context;
 		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		gameList = games;
+		this.appInterface = appInterface;
 	}
 	
 	private class GameHolder {
@@ -40,8 +45,18 @@ public class GamesAdapter extends ArrayAdapter<String> {
 			convertView.setTag(holder);
 		}
 		holder = (GameHolder) convertView.getTag();
-		int resID = context.getResources().getIdentifier(gameList.get(position), "string", context.getPackageName());
-		holder.gameName.setText(context.getString(resID));
+		final int resID = context.getResources().getIdentifier(gameList.get(position), "string", context.getPackageName());
+		String name = context.getString(resID);
+		holder.gameName.setText(name);
+		
+		convertView.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(context, ViewFactory.getActivityClass(appInterface.getCurrentCategoryType(), context.getString(resID), context));
+				context.startActivity(intent);
+			}
+		});
 		
 		return convertView;
 	}

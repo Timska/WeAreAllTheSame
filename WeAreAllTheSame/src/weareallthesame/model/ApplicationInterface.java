@@ -130,6 +130,14 @@ public class ApplicationInterface implements Serializable {
 	}
 	
 	/**
+	 * So ovoj metod se dobiva tipot na momentalno otvorenata kategorija.
+	 * @return tipot na otvorenata kategorija
+	 */
+	public String getCurrentCategoryType(){
+		return currentCategory.getType();
+	}
+	
+	/**
 	 * So ovoj metod se dobivaat site iminja na igri vo momentalno otvorenata kategorija.
 	 * @return tipovite na igri vo momentalno otvorenata kategorija
 	 * @throws CategoryNotChosenException nitu edna kategorija ne e momentalno otvorena

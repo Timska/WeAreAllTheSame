@@ -23,36 +23,46 @@
     <string name="clothes">Облека</string>
 
     <!-- Rest -->
-    <string name="title_activity_zoom">ZoomActivity</string>
     <string name="description_zoom_touch_close">Expanded image (touch to close)</string>
-    <string name="title_activity_hangman_game">HangmanGameActivity</string>
-    <string name="title_activity_find_the_word_from_the_picture">FindTheWordFromThePictureActivity</string>
     <string name="find_word_from_picture_description">Најди го точниот одговор според сликата.</string>
-    <string name="title_activity_find_the_picture_from_the_word">FindThePictureFromTheWordActivity</string>
     <string name="find_picture_from_word_description">Обележи ја точната слика, според дадениот збор.</string>
-    <string name="title_activity_find_the_picture_from_the_sound">FindThePictureFromTheSound</string>
     <string name="find_picture_from_sound_task_description">Означи го соодветниот одговор според дадениот звук.</string>
     <string name="find_picture_from_sound_button_play_text">Преслушај повторно.</string>
-    <string name="title_activity_find_picture_from_picture">FindPictureFromPictureActivity</string>
     <string name="find_picture_from_picture_task_description">За соодветната слика, одбери што е точно.</string>
-    <string name="title_activity_how_many_objects">HowManyObjectsActivity</string>
     <string name="how_many_objects_description">Означи колку објекти гледаш на сликата.</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_pager">PagerActivity</string>
     <string name="content_description_image_pager_item">Слика од категорија</string>
     <string name="choose_character_from_sound_task_description">Избери ја буквата која ја слушаш.</string>
     <string name="cloudPic_desc">Слика со облак</string>
     <string name="cloud_text">Игра</string>
-    <string name="title_activity_exercise">ExerciseActivity</string>
-    <string name="title_activity_choose_character_from_sound">ChooseCharacterFromSoundActivity</string>
-    <string name="title_activity_game">GameActivity</string>
-    <string name="title_activity_addition_and_substraction">AdditionAndSubstractionActivity</string>
     <string name="addition_and_substraction_task_description">Најди го резултатот.</string>
     <string name="choose_sign_numbers_task_description">Најди го знакот.</string>
     <string name="hangman_game_task_descrtiption">Дополни ги празните места.</string>
     <string name="connect_items_task_description">Поврзи ги елементите.</string>
     <string  name="question_game_task_description">Најди го одговорот.</string>
+    
 
+    <!-- Activity titles -->
+    <string name="title_activity_addition_and_substraction_sets">AdditionAndSubstractionSetsActivity</string>
+    <string name="title_activity_choose_the_sign_numbers">ChooseTheSignNumbersActivity</string>
+    <string name="title_activity_connect_items">ConnectItemsActivity</string>
+    <string name="title_activity_question_game">QuestionGameActivity</string>
+    <string name="title_activity_order_elements">OrderElementsActivity</string>
+    <string name="title_activity_exercise">ExerciseActivity</string>
+    <string name="title_activity_choose_character_from_sound">ChooseCharacterFromSoundActivity</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_addition_and_substraction">AdditionAndSubstractionActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_pager">PagerActivity</string>
+    <string name="title_activity_how_many_objects">HowManyObjectsActivity</string>
+    <string name="title_activity_find_picture_from_picture">FindPictureFromPictureActivity</string>
+    <string name="title_activity_find_the_picture_from_the_word">FindThePictureFromTheWordActivity</string>
+    <string name="title_activity_find_the_picture_from_the_sound">FindThePictureFromTheSound</string>
+    <string name="title_activity_hangman_game">HangmanGameActivity</string>
+    <string name="title_activity_find_the_word_from_the_picture">FindTheWordFromThePictureActivity</string>
+    <string name="title_activity_zoom">ZoomActivity</string>
+    
+    
+    
     <!-- Game names -->
     <string name="letters_chooseLetter">Избери буква</string>
     <string name="letters_fillLetters">Дополни букви</string>
@@ -107,10 +117,6 @@
     <string name="clothesandbodyparts_connect">Поврзи</string>
     <string name="emotions_chooseWord">Избери збор</string>
     <string name="emotions_choosePicture">Избери слика</string>
-    <string name="title_activity_addition_and_substraction_sets">AdditionAndSubstractionSetsActivity</string>
-    <string name="title_activity_choose_the_sign_numbers">ChooseTheSignNumbersActivity</string>
-    <string name="title_activity_connect_items">ConnectItemsActivity</string>
-    <string name="title_activity_question_game">QuestionGameActivity</string>
-    <string name="title_activity_order_elements">OrderElementsActivity</string>
+    
 
 </resources>

@@ -5,7 +5,8 @@ import java.util.List;
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.categories.AbstractCategory;
 import weareallthesame.model.exceptions.CategoryDoesNotExistException;
-import weareallthesame.view.MyActivity;
+import weareallthesame.view.GameActivity;
+import weareallthesame.view.PagerActivity;
 import weareallthesame.view.R;
 import android.content.Context;
 import android.content.Intent;
@@ -50,6 +51,14 @@ public class ViewPagerAdapter extends PagerAdapter {
 		inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View itemView = inflater.inflate(R.layout.viewpager_item, container, false);
 		
+		itemView.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				((PagerActivity) context).finish();
+			}
+		});
+		
 		txtName = (TextView) itemView.findViewById(R.id.category_name);
 		@SuppressWarnings("deprecation")
 		int screenHeight = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getHeight();
@@ -65,7 +74,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(context, MyActivity.class);
+				Intent intent = new Intent(context, GameActivity.class);
 				try {
 					appInterface.openCategory(categories.get(itemIndex).getType());
 				} catch (CategoryDoesNotExistException e) {

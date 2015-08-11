@@ -33,7 +33,7 @@ public class GameActivity extends Activity {
 			while (iterr.hasNext()) {
 				games.add(iterr.next());
 			}
-			gameAdapter = new GamesAdapter(this, games);
+			gameAdapter = new GamesAdapter(this, games, appInterface);
 		} catch (CategoryNotChosenException e) {
 			e.printStackTrace();
 		}
@@ -57,5 +57,15 @@ public class GameActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	public void onBackPressed(){
+		try {
+			super.onBackPressed();
+			appInterface.closeCategory();
+		} catch (CategoryNotChosenException e) {
+			e.printStackTrace();
+		}
 	}
 }
