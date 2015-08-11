@@ -1,6 +1,7 @@
 package weareallthesame.view.games.questiongame;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 import weareallthesame.view.R;
@@ -9,6 +10,7 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable.Orientation;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -16,10 +18,10 @@ import android.util.DisplayMetrics;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class QuestionGameActivity extends Activity {
@@ -83,6 +85,7 @@ public class QuestionGameActivity extends Activity {
 
 		}
 		txtAnswers.get(0).setTag("Correct");
+		Collections.shuffle(txtAnswers);
 	}
 
 	private ArrayList<Integer> generateColors() {
@@ -96,14 +99,24 @@ public class QuestionGameActivity extends Activity {
 		// colors.add(Color.rgb(244, 252, 244));
 		colors.add(Color.rgb(255, 255, 102));
 
+		
 		return colors;
 	}
 
 	private GradientDrawable getGradientDrawable() {
+		
+		/*int colorsInt[]=new int[colors.size()];
+		Collections.shuffle(colors);
+		for(int i=0;i<colors.size()-2;++i){
+			colorsInt[i]=colors.get(i);
+		} */
+		int[] colorsInt={Color.rgb(235, 77, 77),Color.rgb(255, 255, 102)};
 
 		int i = colors.get(r.nextInt(colors.size()));
 		GradientDrawable gd = new GradientDrawable();
-		gd.setColor(i);
+		gd.setOrientation(Orientation.LEFT_RIGHT);
+		gd.setColors(colorsInt);
+		//gd.setColor(i);
 		gd.setCornerRadius(10);
 		gd.setShape(GradientDrawable.RECTANGLE);
 		// gd.setStroke(1, 0xFF000000);
