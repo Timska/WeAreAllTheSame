@@ -1,38 +1,94 @@
 package weareallthesame.view.games.orderelementsgame;
 
+import java.util.ArrayList;
+
 import weareallthesame.view.R;
-import weareallthesame.view.R.id;
-import weareallthesame.view.R.layout;
-import weareallthesame.view.R.menu;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.DragEvent;
+import android.view.View;
+import android.view.View.OnDragListener;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class OrderElementsActivity extends Activity {
 
+	private ArrayList<String> answers;
+	private ArrayList<TextView> txtAnwers;
+	private LinearLayout container;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order_elements);
+		
+		answers=new ArrayList<String>();
+		answers.add("ma");
+		answers.add("al");
+		answers.add("ma");
+		answers.add("zo");
+		answers.add("ig");
+
+		txtAnwers=new ArrayList<TextView>();
+		container=(LinearLayout) findViewById(R.id.order_elements_container);
+		for(int i=0;i<answers.size();++i){
+			//txtAnswers
+		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.order_elements, menu);
-		return true;
-	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+	private final class MyDragListener implements OnDragListener {
+
+		String index;
+		public MyDragListener(String i){
+			this.index=i;
+		}
+		
+		@Override
+		public boolean onDrag(View receivingLayoutView, DragEvent event) {
+			// TODO Auto-generated method stub
+
+			View draggedTextView = (View) event.getLocalState();
+
+			switch (event.getAction()) {
+			case DragEvent.ACTION_DRAG_STARTED:
+				break;
+			case DragEvent.ACTION_DRAG_ENTERED:
+				break;
+			case DragEvent.ACTION_DRAG_LOCATION:
+				break;
+			case DragEvent.ACTION_DROP:
+
+				String tag = (String) draggedTextView.getTag();
+
+				if (tag.equals(index)) {
+					ViewGroup draggedImageViewParentLayout = (ViewGroup) draggedTextView
+							.getParent();
+					draggedImageViewParentLayout.removeView(draggedTextView);
+					TextView dropTarget = (TextView) receivingLayoutView;
+					TextView droppedView = (TextView) draggedTextView;
+					dropTarget.setText(droppedView.getText());
+
+					draggedTextView.setVisibility(View.VISIBLE);
+					return true;
+				} else {
+					draggedTextView.setVisibility(View.VISIBLE);
+					return false;
+				}
+
+			case DragEvent.ACTION_DRAG_ENDED:
+
+				if (!event.getResult()) {
+
+					draggedTextView.setVisibility(View.VISIBLE);
+				}
+			default:
+				break;
+			}
 			return true;
 		}
-		return super.onOptionsItemSelected(item);
+
 	}
+
 }

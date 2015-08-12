@@ -44,7 +44,7 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 	private ArrayList<String> answersString;
 	private MediaPlayer mMediaPlayer;
 	private Random r = new Random();
-	private int width, height, rWidth, rHeight;
+	private int width, height;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
