@@ -45,15 +45,16 @@ public class GamesAdapter extends ArrayAdapter<String> {
 			convertView.setTag(holder);
 		}
 		holder = (GameHolder) convertView.getTag();
-		final int resID = context.getResources().getIdentifier(gameList.get(position), "string", context.getPackageName());
-		String name = context.getString(resID);
+		int resID = context.getResources().getIdentifier(gameList.get(position), "string", context.getPackageName());
+		final String name = context.getString(resID);
 		holder.gameName.setText(name);
 		
 		convertView.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(context, ViewFactory.getActivityClass(appInterface.getCurrentCategoryType(), context.getString(resID), context));
+				System.out.println(name);
+				Intent intent = new Intent(context, ViewFactory.getActivityClass(appInterface.getCurrentCategoryType(), name, context));
 				context.startActivity(intent);
 			}
 		});
