@@ -9,6 +9,7 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.os.Bundle;
 import android.view.DragEvent;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
@@ -40,6 +41,8 @@ public class OrderElementsActivity extends Activity {
 		for(int i=0;i<answers.size();++i){
 			TextView tx=new TextView(getApplicationContext());
 			tx.setText(answers.get(i));
+			tx.setWidth(140);
+			tx.setGravity(Gravity.CENTER);
 			tx.setTag(String.format("%d", i));
 		//	tx.setBackgroundResource(R.drawable.play_button);
 			txtAnswers.add(tx);
@@ -116,9 +119,12 @@ public class OrderElementsActivity extends Activity {
 					String targetText=(String) dropTarget.getText();
 					dropTarget.setText(draggedView.getText());
 					draggedView.setText(targetText);
-					dropTarget.setTag(tagsReceivingTextView[0]+" "+tagsDraggedTextView[1]);
-					draggedView.setTag(tagsDraggedTextView[0] +" "+ tagsReceivingTextView[1]);
-
+					draggedView.setTag(tagsReceivingTextView[0]+" "+tagsDraggedTextView[1]);
+					dropTarget.setTag(tagsDraggedTextView[0] +" "+ tagsReceivingTextView[1]);
+					System.out.println("Changed to>");
+					System.out.println("Dragged text view"+draggedTextView.getTag());
+					System.out.println("Dropping text view" + dropTarget.getTag());
+					//int indexDropTarget=txtAnswers.indexOf(drop)
 					draggedTextView.setVisibility(View.VISIBLE);
 					return true;
 				} else {
