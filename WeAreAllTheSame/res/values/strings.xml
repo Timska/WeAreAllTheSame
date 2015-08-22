@@ -38,8 +38,7 @@
     <string name="choose_sign_numbers_task_description">Најди го знакот.</string>
     <string name="hangman_game_task_descrtiption">Дополни ги празните места.</string>
     <string name="connect_items_task_description">Поврзи ги елементите.</string>
-    <string  name="question_game_task_description">Најди го одговорот.</string>
-    
+    <string name="question_game_task_description">Најди го одговорот.</string>
 
     <!-- Activity titles -->
     <string name="title_activity_addition_and_substraction_sets">AdditionAndSubstractionSetsActivity</string>
@@ -60,9 +59,7 @@
     <string name="title_activity_hangman_game">HangmanGameActivity</string>
     <string name="title_activity_find_the_word_from_the_picture">FindTheWordFromThePictureActivity</string>
     <string name="title_activity_zoom">ZoomActivity</string>
-    
-    
-    
+
     <!-- Game names -->
     <string name="letters_chooseLetter">Избери буква</string>
     <string name="letters_fillLetters">Дополни букви</string>
@@ -117,6 +114,6 @@
     <string name="clothesandbodyparts_connect">Поврзи</string>
     <string name="emotions_chooseWord">Избери збор</string>
     <string name="emotions_choosePicture">Избери слика</string>
-    
+    <string name="title_activity_choose_sign_between_numbers_smaller_bigger">ChooseSignBetweenNumbersSmallerBigger</string>
 
 </resources>

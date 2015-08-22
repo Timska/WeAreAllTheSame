@@ -128,8 +128,12 @@
             android:label="@string/title_activity_question_game" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.orderelementsgame.OrderElementsActivity"
+            android:name=".games.orderelementsgame.OrderElementsActivity"
             android:label="@string/title_activity_order_elements" >
+        </activity>
+        <activity
+            android:name="weareallthesame.view.games.choosesigngames.ChooseSignBetweenNumbersSmallerBigger"
+            android:label="@string/title_activity_choose_sign_between_numbers_smaller_bigger" >
         </activity>
     </application>
 

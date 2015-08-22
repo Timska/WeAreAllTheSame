@@ -1,21 +1,21 @@
 package weareallthesame.view.games.connectitemsgames;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
-import weareallthesame.model.items.Item;
 import weareallthesame.view.R;
 import android.app.Activity;
 import android.graphics.Color;
-import android.graphics.Paint.Align;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.text.style.TextAppearanceSpan;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ConnectItemsActivity extends Activity {
 
@@ -25,12 +25,13 @@ public class ConnectItemsActivity extends Activity {
 	private ArrayList<TextView> listImages;
 	private ArrayList<Integer> colors;
 	private LinearLayout layoutLetters;
-	private LinearLayout layoutSpaces;
+	private LinearLayout layoutImages;
 	private Random r = new Random();
 	private String word = "AVION";
 	private String spaces = "AV_O_";
 	private DisplayMetrics displayMetrics;
-	private int width, height;
+	private int width, height, counts = 0;
+	private TextView firstItem;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class ConnectItemsActivity extends Activity {
 		setTextViews(word, spaces);
 
 		layoutLetters = (LinearLayout) findViewById(R.id.connect_items_layout_letters);
-		layoutSpaces = (LinearLayout) findViewById(R.id.connect_items_layout_images);
+		layoutImages = (LinearLayout) findViewById(R.id.connect_items_layout_images);
 
 		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.MATCH_PARENT,
@@ -66,13 +67,14 @@ public class ConnectItemsActivity extends Activity {
 		layoutParamsSpaces.setMargins(0, 10, width / 7, 0);
 
 		for (int i = 0; i < listLetters.size(); ++i) {
+			listLetters.get(i).setOnClickListener(new MyTouchListener());
+			listImages.get(i).setOnClickListener(new MyTouchListener());
 			layoutLetters.addView(listLetters.get(i), layoutParams);
-			layoutSpaces.addView(listImages.get(i), layoutParamsSpaces);
+			layoutImages.addView(listImages.get(i), layoutParamsSpaces);
+
 		}
 
 	}
-
-	
 
 	private void setTextViews(String word, String spaces) {
 
@@ -135,6 +137,53 @@ public class ConnectItemsActivity extends Activity {
 		gd.setStroke(2, Color.BLACK, 5, 5);
 
 		return gd;
+
+	}
+
+	private class MyTouchListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			TextView view = (TextView) v;
+			ViewGroup draggedImageViewParentLayout = (ViewGroup) view.getParent();
+			if (counts == 0) {
+				
+				if (draggedImageViewParentLayout.equals(layoutLetters)) {
+
+					// draggedImageViewParentLayout.removeView(view);
+					view.setBackgroundColor(Color.BLUE);
+					counts = 1;
+					firstItem = view;
+				} else {
+					Toast.makeText(getApplicationContext(),
+							"Мора да кликнете на еден од зборовите.",
+							Toast.LENGTH_SHORT).show();
+				}
+				
+
+			} else if (counts == 1) {
+
+				if (draggedImageViewParentLayout.equals(layoutImages)) {
+
+					
+					view.setBackgroundColor(Color.BLUE);
+					counts = 0;
+					//draggedImageViewParentLayout.removeView(view);
+					//layoutLetters.removeView(firstItem);
+					
+					
+					
+				} else {
+					Toast.makeText(getApplicationContext(),
+							"Мора да кликнете на една од сликите.",
+							Toast.LENGTH_SHORT).show();
+				}
+
+				// counts=0;
+			}
+
+		}
 
 	}
 }
