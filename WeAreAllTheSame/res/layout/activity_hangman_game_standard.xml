@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="weareallthesame.view.games.hangmangame.HangmanGameActivity" >
+    tools:context="weareallthesame.view.games.hangmangame.HangmanGameStandardActivity" >
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,16 +16,8 @@
         android:layout_marginBottom="10dp"
         android:text="@string/hangman_game_task_descrtiption" />
 
-    <TextView
-        android:id="@+id/hangman_game_picture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp" >
-    </TextView>
-
     <LinearLayout
-        android:id="@+id/hangman_game_layout_spaces"
+        android:id="@+id/hangman_game_standard_layout_word_with_empty_letters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -35,11 +27,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/hangman_game_layout_letters"
+        android:id="@+id/hangman_game_standard_layout_answers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|bottom"
         android:layout_marginTop="10dp"
+        android:layout_gravity="center|bottom"
         android:background="@android:color/background_light"
         android:orientation="horizontal"
         android:textAppearance="?android:attr/textAppearanceLarge" >

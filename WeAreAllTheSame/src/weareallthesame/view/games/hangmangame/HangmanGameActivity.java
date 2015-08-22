@@ -26,6 +26,7 @@ public class HangmanGameActivity extends Activity implements
 	private ArrayList<TextView> listLetters;
 	private ArrayList<TextView> listSpaces;
 	private ArrayList<Integer> colors;
+	private TextView txtPicture;
 	private LinearLayout layoutLetters;
 	private LinearLayout layoutSpaces;
 	private Random r = new Random();
@@ -49,7 +50,9 @@ public class HangmanGameActivity extends Activity implements
 		colors = generateColors();
 
 		setTextViews(word, spaces);
-
+		txtPicture=(TextView) findViewById(R.id.hangman_game_picture);
+		txtPicture.setBackgroundColor(Color.RED);
+		txtPicture.setText("Picture");
 		
 		layoutSpaces = (LinearLayout) findViewById(R.id.hangman_game_layout_spaces);
 		layoutLetters = (LinearLayout) findViewById(R.id.hangman_game_layout_letters);
