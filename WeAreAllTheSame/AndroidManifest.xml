@@ -132,8 +132,12 @@
             android:label="@string/title_activity_order_elements" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.choosesigngames.ChooseSignBetweenNumbersSmallerBigger"
+            android:name=".games.choosesigngames.ChooseSignBetweenNumbersSmallerBigger"
             android:label="@string/title_activity_choose_sign_between_numbers_smaller_bigger" >
+        </activity>
+        <activity
+            android:name=".ClassifyTheElementsActivity"
+            android:label="@string/title_activity_classify_the_elements" >
         </activity>
     </application>
 

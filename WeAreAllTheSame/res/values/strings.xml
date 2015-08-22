@@ -115,5 +115,6 @@
     <string name="emotions_chooseWord">Избери збор</string>
     <string name="emotions_choosePicture">Избери слика</string>
     <string name="title_activity_choose_sign_between_numbers_smaller_bigger">ChooseSignBetweenNumbersSmallerBigger</string>
+    <string name="title_activity_classify_the_elements">ClassifyTheElementsActivity</string>
 
 </resources>
