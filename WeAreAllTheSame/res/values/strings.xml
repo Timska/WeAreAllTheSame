@@ -22,23 +22,27 @@
     <string name="emotions">Емоции</string>
     <string name="clothes">Облека</string>
 
-    <!-- Rest -->
-    <string name="description_zoom_touch_close">Expanded image (touch to close)</string>
-    <string name="find_word_from_picture_description">Најди го точниот одговор според сликата.</string>
-    <string name="find_picture_from_word_description">Обележи ја точната слика, според дадениот збор.</string>
-    <string name="find_picture_from_sound_task_description">Означи го соодветниот одговор според дадениот звук.</string>
-    <string name="find_picture_from_sound_button_play_text">Преслушај повторно.</string>
-    <string name="find_picture_from_picture_task_description">За соодветната слика, одбери што е точно.</string>
-    <string name="how_many_objects_description">Означи колку објекти гледаш на сликата.</string>
-    <string name="content_description_image_pager_item">Слика од категорија</string>
-    <string name="choose_character_from_sound_task_description">Избери ја буквата која ја слушаш.</string>
-    <string name="cloudPic_desc">Слика со облак</string>
-    <string name="cloud_text">Игра</string>
+    <!-- Task descriptions -->
+    <string name="classify_elements_task_description">Групирај ги елементите.</string>
     <string name="addition_and_substraction_task_description">Најди го резултатот.</string>
     <string name="choose_sign_numbers_task_description">Најди го знакот.</string>
     <string name="hangman_game_task_descrtiption">Дополни ги празните места.</string>
     <string name="connect_items_task_description">Поврзи ги елементите.</string>
     <string name="question_game_task_description">Најди го одговорот.</string>
+    <string name="find_word_from_picture_description">Најди го точниот одговор според сликата.</string>
+    <string name="find_picture_from_word_description">Обележи ја точната слика, според дадениот збор.</string>
+    <string name="find_picture_from_sound_task_description">Означи го соодветниот одговор според дадениот звук.</string>
+    <string name="find_picture_from_picture_task_description">За соодветната слика, одбери што е точно.</string>
+    <string name="how_many_objects_description">Означи колку објекти гледаш на сликата.</string>
+    <string name="choose_character_from_sound_task_description">Избери ја буквата која ја слушаш.</string>
+    <string name="order_elements_task_description">Подреди ги елементите.</string>
+  
+    <!-- Rest -->
+    <string name="description_zoom_touch_close">Expanded image (touch to close)</string>
+    <string name="find_picture_from_sound_button_play_text">Преслушај повторно.</string>
+    <string name="content_description_image_pager_item">Слика од категорија</string>
+    <string name="cloudPic_desc">Слика со облак</string>
+    <string name="cloud_text">Игра</string>
 
     <!-- Activity titles -->
     <string name="title_activity_addition_and_substraction_sets">AdditionAndSubstractionSetsActivity</string>
@@ -59,6 +63,9 @@
     <string name="title_activity_hangman_game">HangmanGameActivity</string>
     <string name="title_activity_find_the_word_from_the_picture">FindTheWordFromThePictureActivity</string>
     <string name="title_activity_zoom">ZoomActivity</string>
+    <string name="title_activity_choose_sign_between_numbers_smaller_bigger">ChooseSignBetweenNumbersSmallerBigger</string>
+    <string name="title_activity_classify_the_elements">ClassifyTheElementsActivity</string>
+    <string name="title_activity_hangman_game_standard">HangmanGameStandardActivity</string>
 
     <!-- Game names -->
     <string name="letters_chooseLetter">Избери буква</string>
@@ -114,7 +121,5 @@
     <string name="clothesandbodyparts_connect">Поврзи</string>
     <string name="emotions_chooseWord">Избери збор</string>
     <string name="emotions_choosePicture">Избери слика</string>
-    <string name="title_activity_choose_sign_between_numbers_smaller_bigger">ChooseSignBetweenNumbersSmallerBigger</string>
-    <string name="title_activity_classify_the_elements">ClassifyTheElementsActivity</string>
 
 </resources>

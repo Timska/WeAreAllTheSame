@@ -139,6 +139,10 @@
             android:name=".ClassifyTheElementsActivity"
             android:label="@string/title_activity_classify_the_elements" >
         </activity>
+        <activity
+            android:name="weareallthesame.view.games.hangmangame.HangmanGameStandardActivity"
+            android:label="@string/title_activity_hangman_game_standard" >
+        </activity>
     </application>
 
 </manifest>
