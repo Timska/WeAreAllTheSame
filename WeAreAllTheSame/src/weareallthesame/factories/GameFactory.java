@@ -39,7 +39,7 @@ public class GameFactory {
 	}
 
 	public static Iterator<String> getGameNamesForCategory(String categoryType) {
-		// TODO da se dobijat site razlicni iminja na igrite vo taa kategorija
+		// Da se dobijat site razlicni iminja na igrite vo taa kategorija
 		Cursor cursor = resolver.query(GameContentProvider.CONTENT_URI,
 				new String[] { GameOpenHelper.COLUMN_GAMENAME },
 				GameOpenHelper.COLUMN_CATTYPE + "=" + "'" + categoryType + "'",
@@ -56,7 +56,7 @@ public class GameFactory {
 	}
 
 	public static Iterator<String> getGameTypesForCategory(String categoryType) {
-		// TODO da se dobijat site tipovi na igri za dadenata kategorija
+		// Da se dobijat site tipovi na igri za dadenata kategorija
 		Cursor cursor = resolver.query(GameContentProvider.CONTENT_URI,
 				new String[] { GameOpenHelper.COLUMN_GAMETYPE },
 				GameOpenHelper.COLUMN_CATTYPE + "=" + "'" + categoryType + "'",
@@ -73,7 +73,7 @@ public class GameFactory {
 	}
 
 	public static String getGameType(String gameName, String categoryType) {
-		// TODO za dadeno ime na igra i kategorija da se vrati tipot na igrata
+		// Za dadeno ime na igra i kategorija da se vrati tipot na igrata
 		Cursor cursor = resolver.query(GameContentProvider.CONTENT_URI,
 				new String[] { GameOpenHelper.COLUMN_GAMETYPE },
 				GameOpenHelper.COLUMN_CATTYPE + "=" + "'" + categoryType + "'"
