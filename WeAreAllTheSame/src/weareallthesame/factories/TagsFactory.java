@@ -1,23 +1,9 @@
 package weareallthesame.factories;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.content.Context;
 import weareallthesame.view.R;
-import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionNumbersActivity;
-import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionSetsActivity;
-import weareallthesame.view.games.choosecharacterfromsoundgame.ChooseCharacterFromSoundActivity;
-import weareallthesame.view.games.chooseitemgame.FindPictureFromPictureActivity;
-import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheSound;
-import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheWordActivity;
-import weareallthesame.view.games.chooseitemgame.FindTheWordFromThePictureActivity;
-import weareallthesame.view.games.choosesigngames.ChooseTheSignNumbersActivity;
-import weareallthesame.view.games.connectitemsgames.ConnectItemsActivity;
-import weareallthesame.view.games.hangmangame.HangmanGameActivity;
-import weareallthesame.view.games.howmanygame.HowManyObjectsActivity;
-import weareallthesame.view.games.orderelementsgame.OrderElementsActivity;
-import weareallthesame.view.games.questiongame.QuestionGameActivity;
 
 public class TagsFactory {
 
