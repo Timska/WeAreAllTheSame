@@ -71,8 +71,9 @@
     <!-- Game names -->
     <string name="letters_chooseLetter">Избери буква</string>
     <string name="letters_fillLetters">Дополни букви</string>
-    <string name="letters_orderLetters">Подреди букви</string>
+    <string name="letters_orderWord">Подреди букви</string>
     <string name="letters_hangman">Бесилка</string>
+    <string name="letters_orderLetters">Подреди букви</string>
     <string name="shapes_choosePicture">Избери слика</string>
     <string name="shapes_chooseWord">Избери збор</string>
     <string name="shapes_similarity">Сличност</string>
@@ -91,6 +92,8 @@
     <string name="numbers_chooseWord">Избери збор</string>
     <string name="numbers_orderNumbers">Подреди броеви</string>
     <string name="numbers_classify">Раздели</string>
+    <string name="numbers_chooseOperator">Избери + или -</string>
+    <string name="numbers_chooseOperatorSets">Што прават множествата</string>
     <string name="animals_chooseAnimal">Избери животно</string>
     <string name="animals_choosePicture">Избери слика</string>
     <string name="animals_connectAnimals">Поврзи животни</string>
