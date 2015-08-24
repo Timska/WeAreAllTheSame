@@ -1,5 +1,6 @@
 package weareallthesame.view;
 
+import weareallthesame.view.games.hangmangame.LettersListActivity;
 import weareallthesame.view.games.howmanygame.HowManyObjectsActivity;
 import android.app.Activity;
 import android.content.Intent;
@@ -27,7 +28,7 @@ public class MyActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 			
-				Intent intent=new Intent(MyActivity.this,HowManyObjectsActivity.class);
+				Intent intent=new Intent(MyActivity.this,LettersListActivity.class);
 				startActivity(intent);
 			}
 		});

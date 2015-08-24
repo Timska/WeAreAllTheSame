@@ -1,38 +1,41 @@
 package weareallthesame.view.games.hangmangame;
 
+import java.util.ArrayList;
+
 import weareallthesame.view.R;
-import weareallthesame.view.R.id;
-import weareallthesame.view.R.layout;
-import weareallthesame.view.R.menu;
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class LettersListActivity extends Activity {
+
+	private GridView letters;
+	private ArrayList<TextView> txtLetters;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_letters_list);
+
+		letters = (GridView) findViewById(R.id.letters_container);
+
+		Typeface custom_font = Typeface.createFromAsset(getAssets(),
+				"fonts/amerika_.ttf");
+		letters.setAdapter(new TextViewAdapter(this,custom_font));
+
+		letters.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View v,
+					int position, long id) {
+				Toast.makeText(LettersListActivity.this, "" + position,
+						Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.letters_list, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
 }
