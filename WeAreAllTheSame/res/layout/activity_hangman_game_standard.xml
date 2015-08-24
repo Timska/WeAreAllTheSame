@@ -17,24 +17,30 @@
         android:text="@string/hangman_game_task_descrtiption" />
 
     <LinearLayout
-        android:id="@+id/hangman_game_standard_layout_word_with_empty_letters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:textAppearance="?android:attr/textAppearanceLarge" >
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/hangman_game_standard_layout_word_with_empty_letters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:textAppearance="?android:attr/textAppearanceLarge" >
+        </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <Button
         android:id="@+id/hangman_game_standard_layout_answers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center|bottom"
-        android:background="@android:color/background_light"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
+        android:text="@string/hangman_game_standard_choose_letter"
         android:textAppearance="?android:attr/textAppearanceLarge" >
-    </LinearLayout>
+    </Button>
 
 </LinearLayout>
