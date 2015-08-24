@@ -19,7 +19,10 @@ public class AdditionAndSubtractionSetsGame extends AdditionAndSubtractionNumber
 	}
 	
 	private void setItem() throws InvalidViewTypeException{
-		item = ItemFactory.getItem(this.getTags(), 1).next();
+		Iterator<String> tags = this.getTags();
+		tags.next();
+		tags.remove();
+		item = ItemFactory.getItem(tags, 1).next();
 		AdditionAndSubtractionSetsViewInterface view;
 		if(this.getView() instanceof AdditionAndSubtractionSetsViewInterface){
 			view = (AdditionAndSubtractionSetsViewInterface) this.getView();

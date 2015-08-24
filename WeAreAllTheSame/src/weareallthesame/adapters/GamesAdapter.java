@@ -2,6 +2,7 @@ package weareallthesame.adapters;
 
 import java.util.List;
 
+import weareallthesame.factories.TagsFactory;
 import weareallthesame.factories.ViewFactory;
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.R;
@@ -55,6 +56,13 @@ public class GamesAdapter extends ArrayAdapter<String> {
 			public void onClick(View v) {
 				System.out.println(name);
 				Intent intent = new Intent(context, ViewFactory.getActivityClass(appInterface.getCurrentCategoryType(), name, context));
+				try{
+					intent.putExtra("gameType", appInterface.getGameType(name));
+				}
+				catch(Exception e){
+					e.printStackTrace();
+				}
+				intent.putStringArrayListExtra("gameTags", TagsFactory.getGameTags(appInterface.getCurrentCategoryType(), name, context));
 				context.startActivity(intent);
 			}
 		});
