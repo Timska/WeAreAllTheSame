@@ -36,13 +36,14 @@
     <string name="how_many_objects_description">Означи колку објекти гледаш на сликата.</string>
     <string name="choose_character_from_sound_task_description">Избери ја буквата која ја слушаш.</string>
     <string name="order_elements_task_description">Подреди ги елементите.</string>
-  
+
     <!-- Rest -->
     <string name="description_zoom_touch_close">Expanded image (touch to close)</string>
     <string name="find_picture_from_sound_button_play_text">Преслушај повторно.</string>
     <string name="content_description_image_pager_item">Слика од категорија</string>
     <string name="cloudPic_desc">Слика со облак</string>
     <string name="cloud_text">Игра</string>
+    <string name="hangman_game_standard_choose_letter"></string>
 
     <!-- Activity titles -->
     <string name="title_activity_addition_and_substraction_sets">AdditionAndSubstractionSetsActivity</string>
@@ -71,17 +72,13 @@
     <string name="letters_chooseLetter">Избери буква</string>
     <string name="letters_fillLetters">Дополни букви</string>
     <string name="letters_orderLetters">Подреди букви</string>
-    
     <string name="letters_hangman">Бесилка</string>
-    
     <string name="shapes_choosePicture">Избери слика</string>
     <string name="shapes_chooseWord">Избери збор</string>
     <string name="shapes_similarity">Сличност</string>
     <string name="shapes_looksLike">Изгледа како&#8230;</string>
-    
     <string name="shapes_classifyWords">Раздели зборови</string>
     <string name="shapes_classifyPictures">Раздели слики</string>
-    
     <string name="numbers_chooseNumber">Избери број</string>
     <string name="numbers_countObjects">Изброј предмети</string>
     <string name="numbers_findSign">Најди знак</string>
@@ -93,15 +90,13 @@
     <string name="numbers_choosePicture">Избери слика</string>
     <string name="numbers_chooseWord">Избери збор</string>
     <string name="numbers_orderNumbers">Подреди броеви</string>
-    
     <string name="numbers_classify">Раздели</string>
-    
     <string name="animals_chooseAnimal">Избери животно</string>
     <string name="animals_choosePicture">Избери слика</string>
     <string name="animals_connectAnimals">Поврзи животни</string>
     <string name="animals_groupWords">Раздели зборови</string>
     <string name="animals_groupPictures">Раздели слики</string>
-    <string name="animals_chooseWord">Избери збор</string>    
+    <string name="animals_chooseWord">Избери збор</string>
     <string name="fruitsandvegetables_choosePicture">Избери слика</string>
     <string name="fruitsandvegetables_chooseWord">Избери збор</string>
     <string name="fruitsandvegetables_connectPictures">Поврзи слики</string>
@@ -131,5 +126,6 @@
     <string name="clothesandbodyparts_connect">Поврзи</string>
     <string name="emotions_chooseWord">Избери збор</string>
     <string name="emotions_choosePicture">Избери слика</string>
+    <string name="title_activity_letters_list">LettersListActivity</string>
 
 </resources>

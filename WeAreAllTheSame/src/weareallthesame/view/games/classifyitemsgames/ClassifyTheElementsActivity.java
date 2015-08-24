@@ -1,7 +1,10 @@
-package weareallthesame.view;
+package weareallthesame.view.games.classifyitemsgames;
 
 import java.util.ArrayList;
 
+import weareallthesame.view.R;
+import weareallthesame.view.R.id;
+import weareallthesame.view.R.layout;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.GridView;
