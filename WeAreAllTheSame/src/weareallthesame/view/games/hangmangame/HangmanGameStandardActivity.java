@@ -4,12 +4,13 @@ import java.util.ArrayList;
 
 import weareallthesame.view.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
@@ -55,12 +56,6 @@ public class HangmanGameStandardActivity extends Activity {
 			tx.setGravity(Gravity.CENTER);
 			tx.setTextColor(Color.BLACK);
 			tx.setTextSize(50);
-
-			// Typeface
-			// tf=Typeface.createFromFile("assets/fonts/chochet_pattern.ttf");
-			// Typeface.createFromAsset(getAssets(),
-			// "fonts/chochet_pattern.ttf");
-			// tx.setTypeface(tf);
 			txtWordWithEmptySpaces.add(tx);
 			wordWithEmptySpaces.addView(tx, layParams);
 		}
@@ -76,6 +71,13 @@ public class HangmanGameStandardActivity extends Activity {
 		// gd.setStroke(1, 0xFF000000);
 		gd.setStroke(2, Color.BLACK, 5, 5);
 		return gd;
+	}
+	
+	public void onClickChooseLetter(View view){
+		
+		Intent intent=new Intent(HangmanGameStandardActivity.this, LettersListActivity.class);
+		startActivity(intent);
+		
 	}
 
 }

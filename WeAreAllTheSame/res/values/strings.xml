@@ -43,7 +43,7 @@
     <string name="content_description_image_pager_item">Слика од категорија</string>
     <string name="cloudPic_desc">Слика со облак</string>
     <string name="cloud_text">Игра</string>
-    <string name="hangman_game_standard_choose_letter"></string>
+    <string name="hangman_game_standard_choose_letter">Избери буква.</string>
 
     <!-- Activity titles -->
     <string name="title_activity_addition_and_substraction_sets">AdditionAndSubstractionSetsActivity</string>

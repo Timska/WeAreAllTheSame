@@ -38,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|bottom"
         android:layout_marginTop="10dp"
+        android:onClick="onClickChooseLetter"
         android:orientation="horizontal"
         android:text="@string/hangman_game_standard_choose_letter"
         android:textAppearance="?android:attr/textAppearanceLarge" >
