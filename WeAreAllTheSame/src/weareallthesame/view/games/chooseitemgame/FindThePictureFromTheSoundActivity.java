@@ -1,17 +1,18 @@
 package weareallthesame.view.games.chooseitemgame;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.R;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
-import android.graphics.Color;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.DragEvent;
 import android.view.View;
 import android.view.View.DragShadowBuilder;
@@ -24,7 +25,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class FindThePictureFromTheSound extends Activity implements
+public class FindThePictureFromTheSoundActivity extends Activity implements
 		ChooseItemViewInterface {
 
 	private static final long serialVersionUID = -1366318460338234441L;
@@ -41,12 +42,15 @@ public class FindThePictureFromTheSound extends Activity implements
 	private ImageView answer4;
 	private TextView dropPoint;
 	private LinearLayout dropLayout;
+	private ApplicationInterface appInterface;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_find_the_picture_from_the_sound);
 
+		openGame();
+		
 		mMediaPlayer = new MediaPlayer();
 		mMediaPlayer = MediaPlayer.create(this, R.raw.slow_whoop_bubble_pop);
 		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -85,6 +89,19 @@ public class FindThePictureFromTheSound extends Activity implements
 		dropLayout.setOnDragListener(new MyDragListener());
 		//dropPoint.setOnDragListener(new MyDragListener());
 
+	}
+	
+	private void openGame() {
+		Intent intent = getIntent();
+		String gameType = intent.getStringExtra("gameType");
+		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
+		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
+		try{
+			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	@Override

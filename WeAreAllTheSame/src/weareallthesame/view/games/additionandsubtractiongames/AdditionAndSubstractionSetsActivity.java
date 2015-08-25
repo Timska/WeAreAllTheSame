@@ -3,8 +3,10 @@ package weareallthesame.view.games.additionandsubtractiongames;
 import java.util.ArrayList;
 import java.util.Random;
 
+import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
@@ -28,12 +30,15 @@ public class AdditionAndSubstractionSetsActivity extends Activity {
 	private Random r = new Random();
 	private DisplayMetrics displayMetrics;
 	private int width, height;
+	private ApplicationInterface appInterface;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_addition_and_substraction_sets);
 
+		openGame();
+		
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
@@ -50,6 +55,19 @@ public class AdditionAndSubstractionSetsActivity extends Activity {
 		
 		setTextViews(4, 3);
 
+	}
+	
+	private void openGame() {
+		Intent intent = getIntent();
+		String gameType = intent.getStringExtra("gameType");
+		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
+		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
+		try{
+			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	private void setTextViews(int n,int m){

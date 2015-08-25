@@ -3,12 +3,11 @@ package weareallthesame.view.games.howmanygame;
 import java.util.ArrayList;
 import java.util.Random;
 
+import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.R;
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
@@ -22,12 +21,15 @@ public class HowManyObjectsActivity extends Activity {
 	private DisplayMetrics displayMetrics;
 	private int width,height;
 	private LinearLayout container;
+	private ApplicationInterface appInterface;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_how_many_objects);
 
+		openGame();
+		
 		/*displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
@@ -47,6 +49,19 @@ public class HowManyObjectsActivity extends Activity {
 		
 		
 
+	}
+	
+	private void openGame() {
+		Intent intent = getIntent();
+		String gameType = intent.getStringExtra("gameType");
+		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
+		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
+		try{
+			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	/*private void addImageViews(){

@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Paint.Align;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
-import android.text.style.TextAppearanceSpan;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.widget.LinearLayout;
@@ -34,12 +33,15 @@ public class HangmanGameActivity extends Activity implements
 	private String spaces = "AV_O_";
 	private DisplayMetrics displayMetrics;
 	private int width, height;
+	private ApplicationInterface appInterface;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hangman_game);
 
+		openGame();
+		
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
@@ -77,6 +79,19 @@ public class HangmanGameActivity extends Activity implements
 
 	}
 
+	private void openGame() {
+		Intent intent = getIntent();
+		String gameType = intent.getStringExtra("gameType");
+		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
+		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
+		try{
+			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void gameOver() {
 		// TODO Auto-generated method stub

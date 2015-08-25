@@ -1,44 +1,35 @@
 package weareallthesame.view.games.choosecharacterfromsoundgame;
 
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.R;
 import android.annotation.SuppressLint;
-import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
-import android.content.ClipData;
-import android.content.ClipDescription;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.DragEvent;
-import android.view.Gravity;
 import android.view.View;
-import android.view.View.DragShadowBuilder;
-import android.view.View.OnClickListener;
-import android.view.View.OnDragListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 @SuppressLint("NewApi")
 public class ChooseCharacterFromSoundActivity extends Activity implements
 		ChooseStringFromSoundViewInterface {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7323382117223325759L;
 	public static final int TEXTVIEWCOLOR = Color.rgb(88, 243, 129);
 	private DisplayMetrics displayMetrics;
 	private ArrayList<Rect> boundsRect;
@@ -112,7 +103,6 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 	}
 
 	private void openGame() {
-		// TODO Auto-generated method stub
 		Intent intent = getIntent();
 		String gameType = intent.getStringExtra("gameType");
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");

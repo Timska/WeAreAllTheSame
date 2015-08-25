@@ -5,7 +5,7 @@ import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstra
 import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionSetsActivity;
 import weareallthesame.view.games.choosecharacterfromsoundgame.ChooseCharacterFromSoundActivity;
 import weareallthesame.view.games.chooseitemgame.FindPictureFromPictureActivity;
-import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheSound;
+import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheSoundActivity;
 import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheWordActivity;
 import weareallthesame.view.games.chooseitemgame.FindTheWordFromThePictureActivity;
 import weareallthesame.view.games.choosesigngames.ChooseTheSignNumbersActivity;
@@ -70,7 +70,7 @@ public class ViewFactory {
 		}
 		if(categoryType.equalsIgnoreCase("Animals")){
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.animals_chooseAnimal))){
-				return FindThePictureFromTheSound.class;
+				return FindThePictureFromTheSoundActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.animals_choosePicture))){
 				return FindThePictureFromTheWordActivity.class;
@@ -188,7 +188,7 @@ public class ViewFactory {
 				//TODO ne e gotovo toa activity
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.weather_outsideWeather))){
-				return FindThePictureFromTheSound.class;
+				return FindThePictureFromTheSoundActivity.class;
 			}
 		}
 		if(categoryType.equalsIgnoreCase("Year")){

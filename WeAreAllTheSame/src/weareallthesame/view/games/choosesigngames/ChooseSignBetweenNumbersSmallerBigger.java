@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.R;
-import weareallthesame.view.R.id;
-import weareallthesame.view.R.layout;
-import weareallthesame.view.R.menu;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.media.AudioManager;
@@ -18,8 +17,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.DragEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.DragShadowBuilder;
@@ -37,12 +34,15 @@ public class ChooseSignBetweenNumbersSmallerBigger extends Activity {
 	private MediaPlayer mMediaPlayer;
 	private Random r = new Random();
 	private int width, height, rWidth, rHeight;
+	private ApplicationInterface appInterface;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choose_sign_between_numbers_smaller_bigger);
 
+		openGame();
+		
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
@@ -81,6 +81,20 @@ public class ChooseSignBetweenNumbersSmallerBigger extends Activity {
 		numbersAndSigns.get(1).setOnDragListener(new MyDragListener());
 
 	}
+	
+	private void openGame() {
+		Intent intent = getIntent();
+		String gameType = intent.getStringExtra("gameType");
+		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
+		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
+		try{
+			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	private void setTextViews() {
 		System.out.println("dss" + numbersAndSigns.size());
 

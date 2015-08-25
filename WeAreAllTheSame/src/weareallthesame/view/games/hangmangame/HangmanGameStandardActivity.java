@@ -2,6 +2,7 @@ package weareallthesame.view.games.hangmangame;
 
 import java.util.ArrayList;
 
+import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.R;
 import android.app.Activity;
 import android.content.Intent;
@@ -22,12 +23,15 @@ public class HangmanGameStandardActivity extends Activity {
 	private String word = "M_r_ja";
 	private DisplayMetrics displayMetrics;
 	private int width, height;
+	private ApplicationInterface appInterface;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hangman_game_standard);
 
+		openGame();
+		
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
@@ -42,6 +46,19 @@ public class HangmanGameStandardActivity extends Activity {
 
 		addTextViews(layParams);
 
+	}
+	
+	private void openGame() {
+		Intent intent = getIntent();
+		String gameType = intent.getStringExtra("gameType");
+		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
+		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
+		try{
+			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	private void addTextViews(LayoutParams layParams) {

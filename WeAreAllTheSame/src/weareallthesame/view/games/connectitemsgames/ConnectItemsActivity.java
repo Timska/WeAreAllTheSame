@@ -3,8 +3,10 @@ package weareallthesame.view.games.connectitemsgames;
 import java.util.ArrayList;
 import java.util.Random;
 
+import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -32,12 +34,15 @@ public class ConnectItemsActivity extends Activity {
 	private DisplayMetrics displayMetrics;
 	private int width, height, counts = 0;
 	private TextView firstItem;
+	private ApplicationInterface appInterface;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_connect_items);
 
+		openGame();
+		
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
@@ -76,6 +81,19 @@ public class ConnectItemsActivity extends Activity {
 
 	}
 
+	private void openGame() {
+		Intent intent = getIntent();
+		String gameType = intent.getStringExtra("gameType");
+		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
+		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
+		try{
+			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	private void setTextViews(String word, String spaces) {
 
 		for (int i = 0; i < word.length(); ++i) {

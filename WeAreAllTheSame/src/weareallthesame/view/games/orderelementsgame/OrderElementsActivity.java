@@ -3,10 +3,12 @@ package weareallthesame.view.games.orderelementsgame;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.R;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
@@ -18,7 +20,6 @@ import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -29,12 +30,15 @@ public class OrderElementsActivity extends Activity {
 	private LinearLayout container;
 	private DisplayMetrics displayMetrics;
 	private int width,height;
+	private ApplicationInterface appInterface;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order_elements);
 
+		openGame();
+		
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
@@ -60,6 +64,19 @@ public class OrderElementsActivity extends Activity {
 		setTextViews();
 		addViewsTagsAndListeners(layoutParams);
 
+	}
+	
+	private void openGame() {
+		Intent intent = getIntent();
+		String gameType = intent.getStringExtra("gameType");
+		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
+		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
+		try{
+			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	private void addViewsTagsAndListeners(LinearLayout.LayoutParams layPar) {
