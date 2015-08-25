@@ -2,13 +2,17 @@ package weareallthesame.view.games.choosecharacterfromsoundgame;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Set;
 
+import weareallthesame.model.ApplicationInterface;
+import weareallthesame.model.items.Item;
 import weareallthesame.view.R;
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -32,7 +36,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 @SuppressLint("NewApi")
-public class ChooseCharacterFromSoundActivity extends Activity {
+public class ChooseCharacterFromSoundActivity extends Activity implements ChooseStringFromSoundViewInterface {
 
 	private DisplayMetrics displayMetrics;
 	private ArrayList<Rect> boundsRect;
@@ -46,12 +50,14 @@ public class ChooseCharacterFromSoundActivity extends Activity {
 	private Animation animation;
 	private LinearLayout linLayout;
 	private TextView dropPlace;
+	private ApplicationInterface appInterface;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choose_character_from_sound);
 
+		openGame();
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
@@ -102,6 +108,17 @@ public class ChooseCharacterFromSoundActivity extends Activity {
 
 		linLayout.setOnDragListener(new MyDragListener());
 		//dropPlace.setOnDragListener(new MyDragListener());
+		
+	}
+
+	private void openGame() {
+		// TODO Auto-generated method stub
+		Intent intent=getIntent();
+		String gameType=intent.getStringExtra("gameType");
+		ArrayList<String> gameTags=intent.getStringArrayListExtra("gameTags");
+		//intent.getSerializableExtra("");
+		//ne se sekjavam toa so serializable so trebase da se izvade od intentot
+		//appInterface.openGame(gameType, gameTags.iterator(), this, R.string.choose_character_from_sound_task_description);
 		
 	}
 
@@ -262,5 +279,29 @@ public class ChooseCharacterFromSoundActivity extends Activity {
 			return true;
 		}
 
+	}
+
+	@Override
+	public void setAnswer(Item item) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void gameOver() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void wrongAnswer() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setOfferedAnswers(Set<String> allOfferedLetters) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -1,5 +1,7 @@
 package weareallthesame.view;
 
+import weareallthesame.view.games.choosecharacterfromsoundgame.ChooseCharacterFromSoundActivity;
+import weareallthesame.view.games.choosecharacterfromsoundgame.ChooseStringFromSoundViewInterface;
 import weareallthesame.view.games.hangmangame.HangmanGameStandardActivity;
 import weareallthesame.view.games.hangmangame.LettersListActivity;
 import weareallthesame.view.games.howmanygame.HowManyObjectsActivity;
@@ -29,7 +31,7 @@ public class MyActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 			
-				Intent intent=new Intent(MyActivity.this,HangmanGameStandardActivity.class);
+				Intent intent=new Intent(MyActivity.this,ChooseCharacterFromSoundActivity.class);
 				startActivity(intent);
 			}
 		});
