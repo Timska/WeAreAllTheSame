@@ -46,7 +46,6 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 	private int width, height;
 	private ArrayList<String> answersString;
 	private MediaPlayer mMediaPlayer;
-	private Random r = new Random();
 	private Button playButton;
 	private Animation animation;
 	private TextView dropPlace;
@@ -75,6 +74,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 			answers.get(i).setTag(i + " ");
 			answers.get(i).setOnLongClickListener(new MyClickListener());
 		}
+		answers.get(2).setTag("Correct");
 
 		dropPlace.setOnDragListener(new MyDragListener());
 
