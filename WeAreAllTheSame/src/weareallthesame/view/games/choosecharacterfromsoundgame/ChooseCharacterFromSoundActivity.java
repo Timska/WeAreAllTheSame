@@ -116,12 +116,13 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		Intent intent = getIntent();
 		String gameType = intent.getStringExtra("gameType");
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
-		// intent.getSerializableExtra("");
-		// ne se sekjavam toa so serializable so trebase da se izvade od
-		// intentot
-		// appInterface.openGame(gameType, gameTags.iterator(), this,
-		// R.string.choose_character_from_sound_task_description);
-
+		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
+		try{
+			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	private void setTextViews() {
