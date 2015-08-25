@@ -63,6 +63,7 @@ public class GamesAdapter extends ArrayAdapter<String> {
 					e.printStackTrace();
 				}
 				intent.putStringArrayListExtra("gameTags", TagsFactory.getGameTags(appInterface.getCurrentCategoryType(), name, context));
+				intent.putExtra("appInterface", appInterface);
 				context.startActivity(intent);
 			}
 		});
