@@ -51,7 +51,7 @@
     <!-- Game names -->
     <string name="letters_chooseLetter">Избери буква</string>
     <string name="letters_fillLetters">Дополни букви</string>
-    <string name="letters_orderWord">Подреди букви</string>
+    <string name="letters_orderWord">Подреди збор</string>
     <string name="letters_hangman">Бесилка</string>
     <string name="letters_orderLetters">Подреди букви</string>
     <string name="shapes_choosePicture">Избери слика</string>
