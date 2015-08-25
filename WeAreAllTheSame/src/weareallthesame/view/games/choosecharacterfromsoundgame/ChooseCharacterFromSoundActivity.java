@@ -76,24 +76,15 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 			answers.get(i).setOnLongClickListener(new MyClickListener());
 		}
 
-		// linLayout.setOnDragListener(new MyDragListener());
-		// dropPlace.setOnDragListener(new MyDragListener());
+		dropPlace.setOnDragListener(new MyDragListener());
 
 	}
 
-	public void playButtonOnClick(View v) {
-		mMediaPlayer.start();
-		setTextViews();
-		playButton.startAnimation(animation);
-	}
-
-	private void setButtonSound() {
-
-		mMediaPlayer = new MediaPlayer();
-		mMediaPlayer = MediaPlayer.create(this, R.raw.slow_whoop_bubble_pop);
-		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-		// mMediaPlayer.setLooping(true);
-		mMediaPlayer.start();
+	private void getMetrics() {
+		displayMetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+		width = displayMetrics.widthPixels;
+		height = displayMetrics.heightPixels;
 	}
 
 	private void initiliazeViews() {
@@ -106,11 +97,18 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	}
 
-	private void getMetrics() {
-		displayMetrics = new DisplayMetrics();
-		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-		width = displayMetrics.widthPixels;
-		height = displayMetrics.heightPixels;
+	private void setButtonSound() {
+
+		mMediaPlayer = new MediaPlayer();
+		mMediaPlayer = MediaPlayer.create(this, R.raw.slow_whoop_bubble_pop);
+		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+		mMediaPlayer.start();
+	}
+
+	public void playButtonOnClick(View v) {
+		mMediaPlayer.start();
+		setTextViews();
+		playButton.startAnimation(animation);
 	}
 
 	private void openGame() {
@@ -154,79 +152,6 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		gd.setShape(GradientDrawable.OVAL);
 		gd.setStroke(2, Color.BLACK, 5, 5);
 		return gd;
-
-	}
-
-	private final class MyClickListener implements OnLongClickListener {
-
-		@Override
-		public boolean onLongClick(View v) {
-			// TODO Auto-generated method stub
-			ClipData.Item item = new ClipData.Item((CharSequence) v.getTag());
-			String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-			System.out.println(item.toString());
-			ClipData data = new ClipData(v.getTag().toString(), mimeTypes, item);
-			DragShadowBuilder dsb = new View.DragShadowBuilder(v);
-
-			v.startDrag(data, dsb, v, 0);
-			v.setVisibility(View.INVISIBLE);
-
-			return true;
-		}
-
-	}
-
-	private final class MyDragListener implements OnDragListener {
-
-		@Override
-		public boolean onDrag(View receivingLayoutView, DragEvent event) {
-			// TODO Auto-generated method stub
-
-			View draggedImageView = (View) event.getLocalState();
-
-			switch (event.getAction()) {
-			case DragEvent.ACTION_DRAG_STARTED:
-				break;
-			case DragEvent.ACTION_DRAG_ENTERED:
-				break;
-			case DragEvent.ACTION_DRAG_LOCATION:
-				break;
-			case DragEvent.ACTION_DROP:
-				switch (draggedImageView.getId()) {
-				case R.id.choose_character_from_sound_answer_one:
-					return false;
-				case R.id.choose_character_from_sound_answer_two:
-					ViewGroup draggedImageViewParentLayout = (ViewGroup) draggedImageView
-							.getParent();
-					draggedImageViewParentLayout.removeView(draggedImageView);
-					LinearLayout bottomLinearLayout = (LinearLayout) receivingLayoutView;
-					LayoutParams lp = new LayoutParams(Gravity.CENTER);
-					bottomLinearLayout.setLayoutParams(findViewById(
-							R.id.choose_character_from_sound_drop_pool)
-							.getLayoutParams());
-					bottomLinearLayout.addView(draggedImageView, lp);
-					draggedImageView.setVisibility(View.VISIBLE);
-					mMediaPlayer.start();
-					return true;
-				case R.id.choose_character_from_sound_answer_three:
-					return false;
-				case R.id.choose_character_from_sound_answer_four:
-					return false;
-				default:
-					return false;
-				}
-
-			case DragEvent.ACTION_DRAG_ENDED:
-
-				if (!event.getResult()) {
-
-					draggedImageView.setVisibility(View.VISIBLE);
-				}
-			default:
-				break;
-			}
-			return true;
-		}
 
 	}
 
