@@ -136,7 +136,7 @@
             android:label="@string/title_activity_choose_sign_between_numbers_smaller_bigger" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.classifyitemsgames.ClassifyTheElementsActivity"
+            android:name=".games.classifyitemsgames.ClassifyTheElementsActivity"
             android:label="@string/title_activity_classify_the_elements" >
         </activity>
         <activity
@@ -144,8 +144,12 @@
             android:label="@string/title_activity_hangman_game_standard" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.hangmangame.LettersListActivity"
+            android:name=".games.hangmangame.LettersListActivity"
             android:label="@string/title_activity_letters_list" >
+        </activity>
+        <activity
+            android:name=".GameOverChoiceActivity"
+            android:label="@string/title_activity_game_over_choice" >
         </activity>
     </application>
 

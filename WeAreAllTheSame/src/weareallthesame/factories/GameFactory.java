@@ -17,12 +17,16 @@ import weareallthesame.model.games.additionandsubtractiongames.AdditionAndSubtra
 import weareallthesame.model.games.choosecharacterfromsoundgame.ChooseStringFromSoundGame;
 import weareallthesame.model.games.chooseitemgame.ChooseItemGame;
 import weareallthesame.model.games.chooseitemgame.ChooseSimilarItemGame;
+import weareallthesame.model.games.chooseoperatorgames.ChooseOperatorBetweenNumbersGame;
+import weareallthesame.model.games.chooseoperatorgames.ChooseOperatorBetweenSetsGame;
 import weareallthesame.model.games.choosesigngames.ChooseSignBetweenNumbersGame;
 import weareallthesame.model.games.choosesigngames.ChooseSignBetweenSetsGame;
+import weareallthesame.model.games.classifyitemsgame.ClassifyItemsGame;
 import weareallthesame.model.games.connectitemsgames.ConnectItemAndResursGame;
 import weareallthesame.model.games.connectitemsgames.ConnectItemsGame;
 import weareallthesame.model.games.hangmangame.HangmanEasyGame;
 import weareallthesame.model.games.hangmangame.HangmanGame;
+import weareallthesame.model.games.hangmangame.HangmanStandardGame;
 import weareallthesame.model.games.howmanygame.HowManyGame;
 import weareallthesame.model.games.orderelementsgame.OrderElementsGame;
 import weareallthesame.model.games.questiongame.QuestionGame;
@@ -95,6 +99,9 @@ public class GameFactory {
 		if (type.equalsIgnoreCase("HangmanEasy")) {
 			return new HangmanEasyGame(tags, view, question);
 		}
+		if(type.equalsIgnoreCase("HangmanStandard")){
+			return new HangmanStandardGame(tags, view, question);
+		}
 		if (type.equalsIgnoreCase("ChooseSimilarItem")) {
 			return new ChooseSimilarItemGame(tags, view, question);
 		}
@@ -107,6 +114,9 @@ public class GameFactory {
 		if (type.equalsIgnoreCase("ConnectItems")) {
 			return new ConnectItemsGame(tags, view, question);
 		}
+		if(type.equalsIgnoreCase("ClassifyItems")){
+			return new ClassifyItemsGame(tags, view, question);
+		}
 		if (type.equalsIgnoreCase("ChooseStringFromSound")) {
 			return new ChooseStringFromSoundGame(tags, view, question);
 		}
@@ -118,6 +128,12 @@ public class GameFactory {
 		}
 		if (type.equalsIgnoreCase("ChooseSignBetweenSets")) {
 			return new ChooseSignBetweenSetsGame(tags, view, question);
+		}
+		if(type.equalsIgnoreCase("ChooseOperatorBetweenNumbers")){
+			return new ChooseOperatorBetweenNumbersGame(tags, view, question);
+		}
+		if(type.equalsIgnoreCase("ChooseOperatorBetweenSets")){
+			return new ChooseOperatorBetweenSetsGame(tags, view, question);
 		}
 		if (type.equalsIgnoreCase("AdditionAndSubtractionNumbers")) {
 			return new AdditionAndSubtractionNumbersGame(tags, view, question);
