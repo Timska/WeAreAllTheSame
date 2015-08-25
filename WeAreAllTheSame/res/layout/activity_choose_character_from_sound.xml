@@ -16,59 +16,66 @@
         android:layout_marginBottom="10dp"
         android:text="@string/choose_character_from_sound_task_description" />
 
-    <RelativeLayout
-        android:id="@+id/choose_character_from_sound_answers_pool"
-        android:layout_width="match_parent"
-        android:layout_height="361dp" >
+    <Button
+        android:id="@+id/choose_character_from_sound_play_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/play_sound_button"
+        android:gravity="center_vertical"
+        android:onClick="playButtonOnClick" />
 
-        <Button
-            android:id="@+id/choose_character_from_sound_play_buttons"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/play_sound_button"
-            android:gravity="center_vertical" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/choose_character_from_sound_answer_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:padding="20dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:id="@+id/choose_character_from_sound_answer_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/choose_character_from_sound_answer_four"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:id="@+id/choose_character_from_sound_answer_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-    </RelativeLayout>
+    </LinearLayout>
 
-   <LinearLayout
+    <TextView
         android:id="@+id/choose_character_from_sound_drop_pool"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:orientation="vertical" >
-        
-     
-
-    </LinearLayout>
+        android:layout_height="match_parent" >
+    </TextView>
 
 </LinearLayout>
