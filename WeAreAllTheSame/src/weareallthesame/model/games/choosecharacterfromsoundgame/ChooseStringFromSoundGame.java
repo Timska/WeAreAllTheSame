@@ -1,5 +1,6 @@
 package weareallthesame.model.games.choosecharacterfromsoundgame;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
@@ -61,6 +62,7 @@ public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStr
 	*/
 	
 	private void init(){
+		offeredAnswers = new HashSet<String>();
 		offeredAnswers.add(answer.getName());
 		Random random = new Random();
 		int numOfferedLetters = 0;

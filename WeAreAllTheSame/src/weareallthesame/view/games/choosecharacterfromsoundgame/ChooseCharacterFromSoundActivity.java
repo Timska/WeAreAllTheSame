@@ -53,15 +53,18 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choose_character_from_sound);
 
-		openGame();
 		getMetrics();
 
 		answers = new ArrayList<TextView>();
 		answersString = new ArrayList<String>();
 		animation = AnimationUtils.loadAnimation(this,
 				R.anim.choose_character_from_sound_animation_scaling);
-
+		
+		
 		initiliazeViews();
+		
+		openGame();
+		
 		setButtonSound();
 
 		//setAnswers();
@@ -175,9 +178,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	@Override
 	public void setAnswer(Item item) {
-		System.out.println("Se setira tocniot odgovor");
 		this.correctAnswer = item;
-
 	}
 
 	@Override
@@ -240,6 +241,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		while (it.hasNext()) {
 			answersString.add(it.next());
 		}
+		System.out.println(correctAnswer.getName());
 		int indexOfCorrectAnswer = answersString.indexOf(correctAnswer
 				.getName());
 
