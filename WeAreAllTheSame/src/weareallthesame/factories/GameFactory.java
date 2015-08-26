@@ -83,7 +83,8 @@ public class GameFactory {
 				GameOpenHelper.COLUMN_CATTYPE + "=" + "'" + categoryType + "'"
 						+ " and " + GameOpenHelper.COLUMN_GAMENAME + "=" + "'"
 						+ gameName + "'", null, null);
-
+		
+		cursor.moveToFirst();
 		String result = cursor.getString(cursor
 				.getColumnIndex(GameOpenHelper.COLUMN_GAMETYPE));
 		cursor.close();

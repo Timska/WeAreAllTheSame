@@ -98,6 +98,7 @@ public class ItemFactory {
 						ResourceOpenHelper.COLUMN_ID + "=" + resourceID, null,
 						null);
 
+				resCursor.moveToFirst();
 				String resourceName = resCursor.getString(resCursor
 						.getColumnIndex(ResourceOpenHelper.COLUMN_RESNAME));
 				String resourceType = resCursor.getString(resCursor
