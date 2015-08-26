@@ -26,6 +26,10 @@ import android.widget.TextView;
 
 public class AdditionAndSubstractionNumbersActivity extends Activity {
 
+	public static final int NUMBERSCOLOR=Color.rgb(137, 170, 220);
+	public static final int SIGNCOLOR=Color.rgb(137, 170, 220);
+	public static final int ANSWERSCOLOR=Color.rgb(137, 170, 220);
+	
 	private DisplayMetrics displayMetrics;
 	private ArrayList<TextView> numbersAndSigns;
 	private ArrayList<TextView> answers;
@@ -42,34 +46,13 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 		setContentView(R.layout.activity_addition_and_substraction_numbers);
 
 		openGame();
-		
-		displayMetrics = new DisplayMetrics();
-		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-		width = displayMetrics.widthPixels;
-		height = displayMetrics.heightPixels;
 
-		mMediaPlayer = new MediaPlayer();
-		mMediaPlayer = MediaPlayer.create(this, R.raw.slow_whoop_bubble_pop);
-		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
+		getMetrics();
+		getMediaPlayer();
 		answers = new ArrayList<TextView>();
 		numbersAndSigns = new ArrayList<TextView>();
 
-		numbersAndSigns
-				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_additioner_one));
-		numbersAndSigns
-				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_sign));
-		numbersAndSigns
-				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_additioner_two));
-		numbersAndSigns
-				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_equals_sign));
-		numbersAndSigns
-				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_result));
-
-		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_one));
-		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_two));
-		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_three));
-		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_four));
+		initializeViews();
 
 		colors = generateColors();
 
@@ -85,16 +68,57 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 		numbersAndSigns.get(4).setOnDragListener(new MyDragListener());
 
 	}
-	
+
+	private void getMetrics() {
+		displayMetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+		width = displayMetrics.widthPixels;
+		height = displayMetrics.heightPixels;
+	}
+
+	private void getMediaPlayer() {
+
+		mMediaPlayer = new MediaPlayer();
+		mMediaPlayer = MediaPlayer.create(this, R.raw.slow_whoop_bubble_pop);
+		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+	}
+
+	private void initializeViews() {
+		
+		numbersAndSigns
+				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_additioner_one));
+		numbersAndSigns
+				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_sign));
+		numbersAndSigns
+				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_additioner_two));
+		numbersAndSigns
+				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_equals_sign));
+		numbersAndSigns
+				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_result));
+
+		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_one));
+		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_two));
+		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_three));
+		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_four));
+	}
+
 	private void openGame() {
 		Intent intent = getIntent();
 		String gameType = intent.getStringExtra("gameType");
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
-		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
-		try{
-			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
-		}
-		catch(Exception e){
+		appInterface = (ApplicationInterface) intent
+				.getSerializableExtra("appInterface");
+		try {
+			appInterface
+					.openGame(
+							gameType,
+							gameTags.iterator(),
+							this,
+							this.getResources()
+									.getString(
+											R.string.choose_character_from_sound_task_description));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
