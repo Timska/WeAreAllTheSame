@@ -104,7 +104,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	public void playButtonOnClick(View v) {
 		mMediaPlayer.start();
-		setTextViews();
+		//setTextViews();
 		playButton.startAnimation(animation);
 	}
 
