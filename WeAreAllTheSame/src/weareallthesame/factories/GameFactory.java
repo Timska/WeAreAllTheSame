@@ -78,6 +78,10 @@ public class GameFactory {
 
 	public static String getGameType(String gameName, String categoryType) {
 		// Za dadeno ime na igra i kategorija da se vrati tipot na igrata
+		System.out.println("=================");
+		System.out.println(gameName);
+		System.out.println(categoryType);
+		System.out.println("=================");
 		Cursor cursor = resolver.query(GameContentProvider.CONTENT_URI,
 				new String[] { GameOpenHelper.COLUMN_GAMETYPE },
 				GameOpenHelper.COLUMN_CATTYPE + "=" + "'" + categoryType + "'"
