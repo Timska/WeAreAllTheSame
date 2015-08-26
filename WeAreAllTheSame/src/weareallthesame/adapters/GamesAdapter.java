@@ -58,6 +58,7 @@ public class GamesAdapter extends ArrayAdapter<String> {
 				Intent intent = new Intent(context, ViewFactory.getActivityClass(appInterface.getCurrentCategoryType(), name, context));
 				try{
 					intent.putExtra("gameType", appInterface.getGameType(name));
+					System.out.println("Na klik na igra" + appInterface.getGameType(name));
 				}
 				catch(Exception e){
 					e.printStackTrace();

@@ -173,6 +173,8 @@ public class ApplicationInterface implements Serializable {
 	 * @throws MissingTagException nedostiga tag za definiranje na igrata
 	 */
 	public void openGame(String type, Iterator<String> tags, Object view, String question) throws CategoryNotChosenException, GameDoesNotExistException, InvalidViewTypeException, MissingTagException{
+		System.out.println("Se otvora igra");
+		System.out.println(type);
 		if(currentCategory == null){
 			throw new CategoryNotChosenException("Ne moze da se izberi igra bidejki nema izbrano kategorija");
 		}

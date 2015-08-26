@@ -97,7 +97,8 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 	private void setButtonSound() {
 
 		mMediaPlayer = new MediaPlayer();
-		mMediaPlayer = MediaPlayer.create(this, R.raw.slow_whoop_bubble_pop);
+		System.out.println(correctAnswer.getResourceNames().get("sound"));
+		mMediaPlayer = MediaPlayer.create(this, this.getResources().getIdentifier(correctAnswer.getResourceNames().get("sound"), "raw", this.getPackageName()));
 		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 		mMediaPlayer.start();
 	}
@@ -109,8 +110,9 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 	}
 
 	private void openGame() {
-		Intent intent = getIntent();
-		String gameType = intent.getStringExtra("gameType");
+		Intent intent = this.getIntent();
+		String gameType = intent.getExtras().getString("gameType");
+		System.out.println(gameType);
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
 		appInterface = (ApplicationInterface) intent
 				.getSerializableExtra("appInterface");
@@ -173,6 +175,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	@Override
 	public void setAnswer(Item item) {
+		System.out.println("Se setira tocniot odgovor");
 		this.correctAnswer = item;
 
 	}
@@ -230,6 +233,9 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	@Override
 	public void setOfferedAnswers(Set<String> allOfferedLetters) {
+		
+		System.out.println("Vo offered answers");
+		
 		Iterator<String> it = allOfferedLetters.iterator();
 		while (it.hasNext()) {
 			answersString.add(it.next());
