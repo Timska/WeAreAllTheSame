@@ -233,4 +233,25 @@ public class ApplicationInterface implements Serializable {
 		currentGame.undo();
 	}
 
+	/**
+	 * So ovoj metod se dobivaat tagovte so koi e povikana momentalnata igra.
+	 * @return lista od tagovi
+	 */
+	public ArrayList<String> getCurrentGameTags() {
+		Iterator<String> it = currentGame.getTags();
+		ArrayList<String> tags = new ArrayList<String>();
+		while(it.hasNext()){
+			tags.add(it.next());
+		}
+		return tags;
+	}
+
+	/**
+	 * So ovoj metod se dobiva tipot na momentalno otvorenata igra.
+	 * @return tip na igra
+	 */
+	public String getCurrentGameType() {
+		return currentGame.getType();
+	}
+
 }

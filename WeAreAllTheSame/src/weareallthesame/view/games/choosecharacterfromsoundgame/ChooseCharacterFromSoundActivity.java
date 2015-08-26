@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
+import weareallthesame.factories.TagsFactory;
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
+import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -32,9 +34,9 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 	 */
 	private static final long serialVersionUID = -7323382117223325759L;
 	public static final int TEXTVIEWCOLOR = Color.rgb(88, 243, 129);
-	public static final int DROPPLACECOLOR=Color.rgb(107, 205, 237);
-	public static final String CORRECT="Correct";
-	public static final String WRONG="Wrong";
+	public static final int DROPPLACECOLOR = Color.rgb(107, 205, 237);
+	public static final String CORRECT = "Correct";
+	public static final String WRONG = "Wrong";
 	private DisplayMetrics displayMetrics;
 	private ArrayList<TextView> answers;
 	private int width, height;
@@ -69,7 +71,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 			answers.get(i).setTag(i + " ");
 			answers.get(i).setOnLongClickListener(new MyClickListener());
 		}
-	
+
 		answers.get(2).setTag(CORRECT);
 		dropPlace.setOnDragListener(new MyDragListener(mMediaPlayer));
 
@@ -135,11 +137,12 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 			answers.get(i).setText(answersString.get(i));
 		}
 
-		GradientDrawable gd=getGradientDrawable(DROPPLACECOLOR);
+		GradientDrawable gd = getGradientDrawable(DROPPLACECOLOR);
 		gd.setShape(GradientDrawable.RECTANGLE);
 		dropPlace.setBackground(gd);
-		dropPlace.setText(getResources().getString(R.string.drop_place_description));
-		
+		dropPlace.setText(getResources().getString(
+				R.string.drop_place_description));
+
 	}
 
 	private void setAnswers() {
@@ -164,33 +167,69 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	@Override
 	public void setAnswer(Item item) {
-		// TODO Auto-generated method stub
-		this.correctAnswer=item;
-		
+		this.correctAnswer = item;
+
 	}
 
 	@Override
 	public void gameOver() {
-		// TODO Auto-generated method stub
-		
+		Intent intent = new Intent(this, GameOverChoiceActivity.class);
+		startActivityForResult(intent, 0);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 0) {
+			if (resultCode == RESULT_OK) {
+				String result = data.getExtras().getString("result");
+				if (result.equals("NEW")) {
+					
+					Intent intent = new Intent(this, this.getClass());
+					try{
+						intent.putExtra("gameType", appInterface.getCurrentGameType());
+					}
+					catch(Exception e){
+						e.printStackTrace();
+					}
+					intent.putStringArrayListExtra("gameTags", appInterface.getCurrentGameTags());
+					intent.putExtra("appInterface", appInterface);
+					
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+					startActivity(intent);
+					
+					finish();
+				} else if (result.equals("BACK")) {
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					finish();
+				}
+			}
+		}
 	}
 
 	@Override
 	public void wrongAnswer() {
-		// TODO Auto-generated method stub
-
-		Toast.makeText(getApplicationContext(), "Неточен одговор", Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), "Неточен одговор",
+				Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public void setOfferedAnswers(Set<String> allOfferedLetters) {
-		// TODO Auto-generated method stub
 		Iterator<String> it = allOfferedLetters.iterator();
 		while (it.hasNext()) {
 			answersString.add(it.next());
 		}
-		int indexOfCorrectAnswer=answersString.indexOf(correctAnswer.getName());
-		
+		int indexOfCorrectAnswer = answersString.indexOf(correctAnswer
+				.getName());
+
 		for (int i = 0; i < answers.size(); ++i) {
 			answers.get(i).setWidth(width / 3);
 			answers.get(i).setHeight(height / 8);

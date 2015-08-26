@@ -52,6 +52,7 @@ public abstract class AbstractGame implements Game {
 		return commandFactory.getTypes();
 	}
 	
+	@Override
 	public Iterator<String> getTags(){
 		return this.tags.iterator();
 	}

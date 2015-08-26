@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 		gridview.setAdapter(new CategoryAdapter(this, appInterface.getCategories()));
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-				Intent intent = new Intent(MainActivity.this, MyActivity.class);
+				Intent intent = new Intent(MainActivity.this, PagerActivity.class);
 				intent.putExtra("appInterface", appInterface);
 				intent.putExtra("position", position);
 				startActivity(intent);

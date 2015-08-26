@@ -1,16 +1,51 @@
 package weareallthesame.view;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class GameOverChoiceActivity extends Activity {
 
+	private Button btnNewGame;
+	private Button btnGoBack;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		init();
+		
 		setContentView(R.layout.activity_game_over_choice);
+	}
+	
+	public void init(){
+		btnNewGame = (Button) this.findViewById(R.id.new_game_button);
+		btnNewGame.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent resutlIntent = new Intent();
+				resutlIntent.putExtra("result", "NEW");
+				setResult(RESULT_OK, resutlIntent);
+				finish();
+			}
+		});
+		
+		btnGoBack = (Button) this.findViewById(R.id.go_back_button);
+		btnGoBack.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent resutlIntent = new Intent();
+				resutlIntent.putExtra("result", "BACK");
+				setResult(RESULT_OK, resutlIntent);
+				finish();
+			}
+		});
 	}
 
 	@Override

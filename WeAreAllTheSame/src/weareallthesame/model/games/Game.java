@@ -39,4 +39,10 @@ public interface Game extends Typable, Serializable {
 	 */
 	public Iterator<String> getCommandTypes();
 	
+	/**
+	 * Ovoj metod se koristi za da se dobijat tagovite so koi e startuvana igrata.
+	 * @return iterator od tagovi
+	 */
+	public Iterator<String> getTags();
+	
 }
