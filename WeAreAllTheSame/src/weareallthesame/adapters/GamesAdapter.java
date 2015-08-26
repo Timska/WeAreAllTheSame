@@ -61,7 +61,6 @@ public class GamesAdapter extends ArrayAdapter<String> {
 				try{
 					System.out.println("Igra" + name);
 					intent.putExtra("gameType", appInterface.getGameType(gameList.get(pos)));
-					System.out.println("Na klik na igra" + appInterface.getGameType(name));
 				}
 				catch(Exception e){
 					e.printStackTrace();
