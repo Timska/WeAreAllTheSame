@@ -58,7 +58,7 @@ public class QuestionFactory {
 		Collections.shuffle(questions);
 
 		int size = questions.size();
-		for (int i = size; i >= 0; i--) {
+		for (int i = size - 1; i >= 0; i--) {
 			if (questions.size() <= numberOfItems) {
 				break;
 			}
