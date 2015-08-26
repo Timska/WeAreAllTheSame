@@ -159,6 +159,7 @@ public class ApplicationInterface implements Serializable {
 		if(currentCategory == null){
 			throw new CategoryNotChosenException("Nema izbrano kategorija");
 		}
+		System.out.println(gameName + " " + currentCategory.getType());
 		return GameFactory.getGameType(gameName, currentCategory.getType());
 	}
 	

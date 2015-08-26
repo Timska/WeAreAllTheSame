@@ -46,8 +46,10 @@ public class GamesAdapter extends ArrayAdapter<String> {
 			convertView.setTag(holder);
 		}
 		holder = (GameHolder) convertView.getTag();
+		System.out.println("list" + gameList.get(position));
 		int resID = context.getResources().getIdentifier(gameList.get(position), "string", context.getPackageName());
 		final String name = context.getString(resID);
+		final int pos = position;
 		holder.gameName.setText(name);
 		
 		convertView.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +59,8 @@ public class GamesAdapter extends ArrayAdapter<String> {
 				System.out.println(name);
 				Intent intent = new Intent(context, ViewFactory.getActivityClass(appInterface.getCurrentCategoryType(), name, context));
 				try{
-					intent.putExtra("gameType", appInterface.getGameType(name));
+					System.out.println("Igra" + name);
+					intent.putExtra("gameType", appInterface.getGameType(gameList.get(pos)));
 					System.out.println("Na klik na igra" + appInterface.getGameType(name));
 				}
 				catch(Exception e){
