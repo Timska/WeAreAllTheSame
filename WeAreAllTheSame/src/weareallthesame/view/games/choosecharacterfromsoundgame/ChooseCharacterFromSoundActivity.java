@@ -64,12 +64,12 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		initiliazeViews();
 		setButtonSound();
 
-		//setAnswers();
-		//setTextViews();
+		setAnswers();
+		setTextViews();
 
 		for (int i = 0; i < answers.size(); ++i) {
 			answers.get(i).setTag(i + " ");
-			answers.get(i).setOnLongClickListener(new MyClickListener());
+			answers.get(i).setOnTouchListener(new MyClickListener());
 		}
 
 		answers.get(2).setTag(CORRECT);
