@@ -3,12 +3,12 @@ package weareallthesame.view.games.additionandsubtractiongames;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.R;
+import weareallthesame.view.games.choosecharacterfromsoundgame.MyClickListener;
 import android.app.Activity;
-import android.content.ClipData;
-import android.content.ClipDescription;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -18,13 +18,12 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.DragEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
-import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.TextView;
 
-public class AdditionAndSubstractionNumbersActivity extends Activity {
+public class AdditionAndSubstractionNumbersActivity extends Activity implements AdditionAndSubtractionNumbersViewInterface{
 
 	public static final int NUMBERSCOLOR=Color.rgb(207,194,101);
 	public static final int SIGNCOLOR=Color.rgb(232, 161, 139);
@@ -39,6 +38,7 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 	private Random r = new Random();
 	private int width, height;
 	private ApplicationInterface appInterface;
+	private GridView txtContainer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,12 +57,12 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 		colors = generateColors();
 
 		setAnswers();
-
+		txtContainer.setAdapter(new AdditionAndSubstractionNumberTextViewAdapter(this,answersString));
 		setTextViews();
-		addAnswers();
+		//addAnswers();
 
 		for (TextView tx : answers) {
-			tx.setOnLongClickListener(new MyClickListener());
+			tx.setOnTouchListener(new MyClickListener());
 		}
 
 		numbersAndSigns.get(4).setOnDragListener(new MyDragListener());
@@ -97,10 +97,16 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 		numbersAndSigns
 				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_result));
 
-		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_one));
+		
+		txtContainer=(GridView) findViewById(R.id.addition_and_substraction_numbers_answers_container);
+		
+		
+		/*answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_one));
 		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_two));
 		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_three));
 		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_four));
+	
+	*/
 	}
 
 	private void openGame() {
@@ -193,25 +199,7 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 
 	}
 
-	private final class MyClickListener implements OnLongClickListener {
-
-		@Override
-		public boolean onLongClick(View v) {
-			// TODO Auto-generated method stub
-			ClipData.Item item = new ClipData.Item((CharSequence) v.getTag());
-			String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-			System.out.println(item.toString());
-			ClipData data = new ClipData(v.getTag().toString(), mimeTypes, item);
-			DragShadowBuilder dsb = new View.DragShadowBuilder(v);
-
-			v.startDrag(data, dsb, v, 0);
-			v.setVisibility(View.INVISIBLE);
-
-			return true;
-		}
-
-	}
-
+	
 	private final class MyDragListener implements OnDragListener {
 
 		@Override
@@ -259,6 +247,30 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 			return true;
 		}
 
+	}
+
+	@Override
+	public void setNumbers(int numberOne, int numberTwo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setOfferedAnswers(Set<Integer> answers) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void gameOver() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void wrongAnswer() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
