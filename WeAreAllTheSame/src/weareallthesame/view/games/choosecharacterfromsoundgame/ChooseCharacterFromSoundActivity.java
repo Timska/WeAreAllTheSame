@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
-import weareallthesame.factories.TagsFactory;
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.GameOverChoiceActivity;
@@ -13,6 +12,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -64,8 +64,8 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		initiliazeViews();
 		setButtonSound();
 
-		setAnswers();
-		setTextViews();
+		//setAnswers();
+		//setTextViews();
 
 		for (int i = 0; i < answers.size(); ++i) {
 			answers.get(i).setTag(i + " ");
@@ -104,7 +104,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	public void playButtonOnClick(View v) {
 		mMediaPlayer.start();
-		//setTextViews();
+		// setTextViews();
 		playButton.startAnimation(animation);
 	}
 
@@ -134,6 +134,12 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 			answers.get(i).setWidth(width / 3);
 			answers.get(i).setHeight(height / 8);
 			answers.get(i).setBackground(getGradientDrawable(TEXTVIEWCOLOR));
+
+			Typeface tf = Typeface.createFromAsset(getAssets(),
+					"fonts/amerika_.ttf");
+			answers.get(i).setTypeface(tf);
+			answers.get(i).setTextSize(width/5);
+			answers.get(i).setTextColor(Color.BLUE);
 			answers.get(i).setText(answersString.get(i));
 		}
 
@@ -183,25 +189,26 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 			if (resultCode == RESULT_OK) {
 				String result = data.getExtras().getString("result");
 				if (result.equals("NEW")) {
-					
+
 					Intent intent = new Intent(this, this.getClass());
-					try{
-						intent.putExtra("gameType", appInterface.getCurrentGameType());
-					}
-					catch(Exception e){
+					try {
+						intent.putExtra("gameType",
+								appInterface.getCurrentGameType());
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
-					intent.putStringArrayListExtra("gameTags", appInterface.getCurrentGameTags());
+					intent.putStringArrayListExtra("gameTags",
+							appInterface.getCurrentGameTags());
 					intent.putExtra("appInterface", appInterface);
-					
+
 					try {
 						appInterface.exitGame();
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-					
+
 					startActivity(intent);
-					
+
 					finish();
 				} else if (result.equals("BACK")) {
 					try {
@@ -235,6 +242,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 			answers.get(i).setHeight(height / 8);
 			answers.get(i).setBackground(getGradientDrawable(TEXTVIEWCOLOR));
 			answers.get(i).setText(answersString.get(i));
+
 			answers.get(i).setTag(WRONG);
 		}
 		answers.get(indexOfCorrectAnswer).setTag(CORRECT);
