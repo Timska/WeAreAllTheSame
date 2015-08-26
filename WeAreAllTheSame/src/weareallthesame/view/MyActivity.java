@@ -1,10 +1,17 @@
 package weareallthesame.view;
 
+import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionNumbersActivity;
 import weareallthesame.view.games.choosecharacterfromsoundgame.ChooseCharacterFromSoundActivity;
 import weareallthesame.view.games.choosecharacterfromsoundgame.ChooseStringFromSoundViewInterface;
+import weareallthesame.view.games.choosesigngames.ChooseSignBetweenNumbersSmallerBigger;
+import weareallthesame.view.games.choosesigngames.ChooseTheSignNumbersActivity;
+import weareallthesame.view.games.classifyitemsgames.ClassifyTheElementsActivity;
+import weareallthesame.view.games.connectitemsgames.ConnectItemsActivity;
 import weareallthesame.view.games.hangmangame.HangmanGameStandardActivity;
 import weareallthesame.view.games.hangmangame.LettersListActivity;
 import weareallthesame.view.games.howmanygame.HowManyObjectsActivity;
+import weareallthesame.view.games.orderelementsgame.OrderElementsActivity;
+import weareallthesame.view.games.questiongame.QuestionGameActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

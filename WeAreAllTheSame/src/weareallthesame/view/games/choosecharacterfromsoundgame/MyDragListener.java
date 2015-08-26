@@ -1,12 +1,20 @@
 package weareallthesame.view.games.choosecharacterfromsoundgame;
 
+import android.media.MediaPlayer;
 import android.view.DragEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnDragListener;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class MyDragListener implements OnDragListener {
+
+	private MediaPlayer mediaPlayer;
+
+	public MyDragListener(MediaPlayer mMediaPlayer) {
+
+		this.mediaPlayer = mMediaPlayer;
+	}
 
 	@Override
 	public boolean onDrag(View receivingLayoutView, DragEvent event) {
@@ -30,7 +38,7 @@ public class MyDragListener implements OnDragListener {
 				TextView dropTarget = (TextView) receivingLayoutView;
 				TextView droppedView = (TextView) draggedTextView;
 				dropTarget.setText(droppedView.getText());
-			//mMediaPlayer.start();
+				mediaPlayer.start();
 				draggedTextView.setVisibility(View.VISIBLE);
 				return true;
 			} else {

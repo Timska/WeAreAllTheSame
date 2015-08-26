@@ -1,6 +1,7 @@
 package weareallthesame.view.games.choosecharacterfromsoundgame;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
@@ -10,7 +11,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -21,6 +21,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class ChooseCharacterFromSoundActivity extends Activity implements
@@ -31,10 +32,13 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 	 */
 	private static final long serialVersionUID = -7323382117223325759L;
 	public static final int TEXTVIEWCOLOR = Color.rgb(88, 243, 129);
+	public static final int DROPPLACECOLOR=Color.rgb(107, 205, 237);
+	public static final String CORRECT="Correct";
+	public static final String WRONG="Wrong";
 	private DisplayMetrics displayMetrics;
-	private ArrayList<Rect> boundsRect;
 	private ArrayList<TextView> answers;
 	private int width, height;
+	private Item correctAnswer;
 	private ArrayList<String> answersString;
 	private MediaPlayer mMediaPlayer;
 	private Button playButton;
@@ -50,8 +54,8 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		openGame();
 		getMetrics();
 
-		boundsRect = new ArrayList<Rect>();
 		answers = new ArrayList<TextView>();
+		answersString = new ArrayList<String>();
 		animation = AnimationUtils.loadAnimation(this,
 				R.anim.choose_character_from_sound_animation_scaling);
 
@@ -65,9 +69,9 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 			answers.get(i).setTag(i + " ");
 			answers.get(i).setOnLongClickListener(new MyClickListener());
 		}
-		answers.get(2).setTag("Correct");
-
-		dropPlace.setOnDragListener(new MyDragListener());
+	
+		answers.get(2).setTag(CORRECT);
+		dropPlace.setOnDragListener(new MyDragListener(mMediaPlayer));
 
 	}
 
@@ -106,11 +110,18 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		Intent intent = getIntent();
 		String gameType = intent.getStringExtra("gameType");
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
-		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
-		try{
-			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
-		}
-		catch(Exception e){
+		appInterface = (ApplicationInterface) intent
+				.getSerializableExtra("appInterface");
+		try {
+			appInterface
+					.openGame(
+							gameType,
+							gameTags.iterator(),
+							this,
+							this.getResources()
+									.getString(
+											R.string.choose_character_from_sound_task_description));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -124,6 +135,11 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 			answers.get(i).setText(answersString.get(i));
 		}
 
+		GradientDrawable gd=getGradientDrawable(DROPPLACECOLOR);
+		gd.setShape(GradientDrawable.RECTANGLE);
+		dropPlace.setBackground(gd);
+		dropPlace.setText(getResources().getString(R.string.drop_place_description));
+		
 	}
 
 	private void setAnswers() {
@@ -149,24 +165,39 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 	@Override
 	public void setAnswer(Item item) {
 		// TODO Auto-generated method stub
-
+		this.correctAnswer=item;
+		
 	}
 
 	@Override
 	public void gameOver() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
 	public void wrongAnswer() {
 		// TODO Auto-generated method stub
 
+		Toast.makeText(getApplicationContext(), "Неточен одговор", Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public void setOfferedAnswers(Set<String> allOfferedLetters) {
 		// TODO Auto-generated method stub
-
+		Iterator<String> it = allOfferedLetters.iterator();
+		while (it.hasNext()) {
+			answersString.add(it.next());
+		}
+		int indexOfCorrectAnswer=answersString.indexOf(correctAnswer.getName());
+		
+		for (int i = 0; i < answers.size(); ++i) {
+			answers.get(i).setWidth(width / 3);
+			answers.get(i).setHeight(height / 8);
+			answers.get(i).setBackground(getGradientDrawable(TEXTVIEWCOLOR));
+			answers.get(i).setText(answersString.get(i));
+			answers.get(i).setTag(WRONG);
+		}
+		answers.get(indexOfCorrectAnswer).setTag(CORRECT);
 	}
 }

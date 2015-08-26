@@ -75,7 +75,10 @@
     <TextView
         android:id="@+id/choose_character_from_sound_drop_pool"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:layout_gravity="center|bottom"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" >
     </TextView>
 
 </LinearLayout>
