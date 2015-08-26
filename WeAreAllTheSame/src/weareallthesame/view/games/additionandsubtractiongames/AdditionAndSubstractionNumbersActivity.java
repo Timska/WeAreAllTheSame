@@ -26,9 +26,9 @@ import android.widget.TextView;
 
 public class AdditionAndSubstractionNumbersActivity extends Activity {
 
-	public static final int NUMBERSCOLOR=Color.rgb(137, 170, 220);
-	public static final int SIGNCOLOR=Color.rgb(137, 170, 220);
-	public static final int ANSWERSCOLOR=Color.rgb(137, 170, 220);
+	public static final int NUMBERSCOLOR=Color.rgb(207,194,101);
+	public static final int SIGNCOLOR=Color.rgb(232, 161, 139);
+	public static final int ANSWERSCOLOR=Color.rgb(232, 161, 139);
 	
 	private DisplayMetrics displayMetrics;
 	private ArrayList<TextView> numbersAndSigns;
@@ -128,12 +128,13 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 		for (int i = 0; i < numbersAndSigns.size(); ++i) {
 
 			TextView tx = numbersAndSigns.get(i);
-			tx.setBackground(getGradientDrawable());
+			tx.setBackground(getGradientDrawable(NUMBERSCOLOR));
 			tx.setHeight(height / 10);
 			tx.setText(answersString.get(i));
 			tx.setTag(answersString.get(i));
 
 		}
+		numbersAndSigns.get(4).setBackground(getGradientDrawable(SIGNCOLOR));
 
 	}
 
@@ -161,16 +162,15 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 
 	}
 
-	private GradientDrawable getGradientDrawable() {
+	private GradientDrawable getGradientDrawable(int color) {
 
-		int i = colors.get(r.nextInt(colors.size()));
+		
 		GradientDrawable gd = new GradientDrawable();
-		gd.setColor(i);
+		gd.setColor(color);
 		gd.setCornerRadius(10);
 		gd.setShape(GradientDrawable.OVAL);
 		// gd.setStroke(1, 0xFF000000);
 		gd.setStroke(2, Color.BLACK, 5, 5);
-
 		return gd;
 
 	}
@@ -180,7 +180,7 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 		for (int i = 0; i < answers.size(); ++i) {
 
 			TextView tx = answers.get(i);
-			GradientDrawable gd = getGradientDrawable();
+			GradientDrawable gd = getGradientDrawable(ANSWERSCOLOR);
 			gd.setShape(GradientDrawable.RECTANGLE);
 			tx.setBackground(gd);
 			tx.setWidth(width / 5);
@@ -224,7 +224,7 @@ public class AdditionAndSubstractionNumbersActivity extends Activity {
 			case DragEvent.ACTION_DRAG_STARTED:
 				break;
 			case DragEvent.ACTION_DRAG_ENTERED:
-				receivingLayoutView.setBackground(getGradientDrawable());
+				//receivingLayoutView.setBackground(getGradientDrawable());
 				break;
 			case DragEvent.ACTION_DRAG_LOCATION:
 				break;

@@ -64,8 +64,8 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		initiliazeViews();
 		setButtonSound();
 
-		setAnswers();
-		setTextViews();
+		//setAnswers();
+		//setTextViews();
 
 		for (int i = 0; i < answers.size(); ++i) {
 			answers.get(i).setTag(i + " ");

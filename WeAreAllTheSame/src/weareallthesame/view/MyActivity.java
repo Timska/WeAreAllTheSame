@@ -38,7 +38,7 @@ public class MyActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 			
-				Intent intent=new Intent(MyActivity.this,AdditionAndSubstractionNumbersActivity.class);
+				Intent intent=new Intent(MyActivity.this, ChooseCharacterFromSoundActivity.class);
 				startActivity(intent);
 			}
 		});
