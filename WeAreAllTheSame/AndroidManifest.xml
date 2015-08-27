@@ -93,7 +93,7 @@
         <activity
             android:name=".PagerActivity"
             android:label="@string/title_activity_pager"
-            android:theme="@style/Theme.Transparent" >
+            android:theme="@style/Transparent" >
         </activity>
         <activity
             android:name=".games.chooseitemgame.ExerciseActivity"
@@ -149,7 +149,8 @@
         </activity>
         <activity
             android:name=".GameOverChoiceActivity"
-            android:label="@string/title_activity_game_over_choice" >
+            android:label="@string/title_activity_game_over_choice"
+            android:theme="@style/DarkTransparent">
         </activity>
     </application>
 

@@ -95,7 +95,9 @@ public class ChooseStringFromSoundGame extends AbstractGame implements ChooseStr
 		if(gameOver){
 			throw new GameOverException("Igrata e zavrsena");
 		}
-		if(str.equals(answer.getName().charAt(0))){
+		System.out.println(str);
+		System.out.println(answer.getName());
+		if(str.equals(answer.getName())){
 			gameOver = true;
 			view.gameOver();
 		}

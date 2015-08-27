@@ -16,14 +16,13 @@ public class GameOverChoiceActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_game_over_choice);
 		
 		init();
-		
-		setContentView(R.layout.activity_game_over_choice);
 	}
 	
 	public void init(){
-		btnNewGame = (Button) this.findViewById(R.id.new_game_button);
+		btnNewGame = (Button) findViewById(R.id.new_game_button);
 		btnNewGame.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

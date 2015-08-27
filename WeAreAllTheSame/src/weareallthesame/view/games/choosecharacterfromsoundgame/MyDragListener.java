@@ -1,5 +1,6 @@
 package weareallthesame.view.games.choosecharacterfromsoundgame;
 
+import weareallthesame.model.ApplicationInterface;
 import android.media.MediaPlayer;
 import android.view.DragEvent;
 import android.view.View;
@@ -10,9 +11,10 @@ import android.widget.TextView;
 public class MyDragListener implements OnDragListener {
 
 	private MediaPlayer mediaPlayer;
+	private ApplicationInterface appInterface;
 
-	public MyDragListener(MediaPlayer mMediaPlayer) {
-
+	public MyDragListener(MediaPlayer mMediaPlayer, ApplicationInterface appInterface) {
+		this.appInterface = appInterface;
 		this.mediaPlayer = mMediaPlayer;
 	}
 
@@ -20,7 +22,7 @@ public class MyDragListener implements OnDragListener {
 	public boolean onDrag(View receivingLayoutView, DragEvent event) {
 		// TODO Auto-generated method stub
 
-		View draggedTextView = (View) event.getLocalState();
+		TextView draggedTextView = (TextView) event.getLocalState();
 
 		switch (event.getAction()) {
 		case DragEvent.ACTION_DRAG_STARTED:
@@ -31,6 +33,11 @@ public class MyDragListener implements OnDragListener {
 			break;
 		case DragEvent.ACTION_DROP:
 			String tagDragged = (String) draggedTextView.getTag();
+			try{
+				appInterface.executeCommand("ChooseString", draggedTextView.getText());
+			} catch(Exception e){
+				e.printStackTrace();
+			}
 			if (tagDragged.equals("Correct")) {
 				ViewGroup draggedImageViewParentLayout = (ViewGroup) draggedTextView
 						.getParent();

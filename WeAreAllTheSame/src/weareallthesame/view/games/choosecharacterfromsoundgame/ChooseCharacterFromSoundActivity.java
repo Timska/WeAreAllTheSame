@@ -75,8 +75,8 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 			answers.get(i).setOnTouchListener(new MyClickListener());
 		}
 
-		answers.get(2).setTag(CORRECT);
-		dropPlace.setOnDragListener(new MyDragListener(mMediaPlayer));
+		//answers.get(2).setTag(CORRECT);
+		dropPlace.setOnDragListener(new MyDragListener(mMediaPlayer, appInterface));
 
 	}
 
@@ -228,6 +228,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	@Override
 	public void wrongAnswer() {
+		mMediaPlayer.start();
 		Toast.makeText(getApplicationContext(), "Неточен одговор",
 				Toast.LENGTH_SHORT).show();
 	}
