@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
+import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
 import weareallthesame.view.games.choosecharacterfromsoundgame.MyClickListener;
 import android.app.Activity;
@@ -263,8 +264,47 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements 
 
 	@Override
 	public void gameOver() {
-		// TODO Auto-generated method stub
-		
+		Intent intent = new Intent(this, GameOverChoiceActivity.class);
+		startActivityForResult(intent, 0);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 0) {
+			if (resultCode == RESULT_OK) {
+				String result = data.getExtras().getString("result");
+				if (result.equals("NEW")) {
+
+					Intent intent = new Intent(this, this.getClass());
+					try {
+						intent.putExtra("gameType",
+								appInterface.getCurrentGameType());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					intent.putStringArrayListExtra("gameTags",
+							appInterface.getCurrentGameTags());
+					intent.putExtra("appInterface", appInterface);
+
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					startActivity(intent);
+
+					finish();
+				} else if (result.equals("BACK")) {
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					finish();
+				}
+			}
+		}
 	}
 
 	@Override

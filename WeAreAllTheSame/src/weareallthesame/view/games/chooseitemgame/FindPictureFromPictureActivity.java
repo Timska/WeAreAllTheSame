@@ -1,12 +1,15 @@
 package weareallthesame.view.games.chooseitemgame;
 
+import java.util.List;
+
+import weareallthesame.model.items.Item;
 import weareallthesame.view.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class FindPictureFromPictureActivity extends Activity {
+public class FindPictureFromPictureActivity extends Activity implements ChooseItemViewInterface {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,5 +34,29 @@ public class FindPictureFromPictureActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void setAnswer(Item answer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setOfferedAnswers(List<Item> offeredAnswers) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void gameOver() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void wrongAnswer() {
+		// TODO Auto-generated method stub
+		
 	}
 }
