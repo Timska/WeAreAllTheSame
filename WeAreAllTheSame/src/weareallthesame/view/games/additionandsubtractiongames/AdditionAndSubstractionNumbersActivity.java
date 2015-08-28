@@ -109,6 +109,7 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements
 	private void openGame() {
 		Intent intent = getIntent();
 		String gameType = intent.getStringExtra("gameType");
+		System.out.println(gameType);
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
 		appInterface = (ApplicationInterface) intent
 				.getSerializableExtra("appInterface");

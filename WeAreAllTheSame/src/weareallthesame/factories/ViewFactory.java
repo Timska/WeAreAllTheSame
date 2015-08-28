@@ -33,6 +33,7 @@ public class ViewFactory {
 			
 		}
 		if(categoryType.equalsIgnoreCase("Numbers")){
+			System.out.println("Ime na igra " + gameName);
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_addNumbers))){
 				return AdditionAndSubstractionNumbersActivity.class;
 			}
