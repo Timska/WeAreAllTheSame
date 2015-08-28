@@ -29,12 +29,13 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class AdditionAndSubstractionNumbersActivity extends Activity implements AdditionAndSubtractionNumbersViewInterface{
+public class AdditionAndSubstractionNumbersActivity extends Activity implements
+		AdditionAndSubtractionNumbersViewInterface {
 
-	public static final int NUMBERSCOLOR=Color.rgb(255,131,99);
-	public static final int SIGNCOLOR=Color.rgb(255, 251, 131);
-	public static final int ANSWERSCOLOR=Color.rgb(232, 161, 139);
-	
+	public static final int NUMBERSCOLOR = Color.rgb(255, 131, 99);
+	public static final int SIGNCOLOR = Color.rgb(255, 251, 131);
+	public static final int ANSWERSCOLOR = Color.rgb(232, 161, 139);
+
 	private DisplayMetrics displayMetrics;
 	private ArrayList<TextView> numbersAndSigns;
 	private ArrayList<TextView> answers;
@@ -51,27 +52,25 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_addition_and_substraction_numbers);
 
-		openGame();
-
 		getMetrics();
 		getMediaPlayer();
-		
+
 		numbersAndSigns = new ArrayList<TextView>();
 
 		initializeViews();
 
-		colors = generateColors();
+		openGame();
 
-		//setAnswers();
-		
+		// setAnswers();
+
 		setTextViews();
-		//addAnswers();
+		// addAnswers();
 
-		/*for (TextView tx : answers) {
-			tx.setOnTouchListener(new MyClickListener());
-		}
-*/
-		//numbersAndSigns.get(4).setOnDragListener(new MyDragListener());
+		/*
+		 * for (TextView tx : answers) { tx.setOnTouchListener(new
+		 * MyClickListener()); }
+		 */
+		// numbersAndSigns.get(4).setOnDragListener(new MyDragListener());
 
 	}
 
@@ -91,7 +90,7 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements 
 	}
 
 	private void initializeViews() {
-		
+
 		numbersAndSigns
 				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_additioner_one));
 		numbersAndSigns
@@ -103,16 +102,8 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements 
 		numbersAndSigns
 				.add((TextView) findViewById(R.id.addition_and_substraction_numbers_result));
 
-		
-		answersContainer=(GridView) findViewById(R.id.addition_and_substraction_numbers_answers_container);
-		
-		
-		/*answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_one));
-		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_two));
-		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_three));
-		answers.add((TextView) findViewById(R.id.addition_and_substraction_numbers_answer_four));
-	
-	*/
+		answersContainer = (GridView) findViewById(R.id.addition_and_substraction_numbers_answers_container);
+
 	}
 
 	private void openGame() {
@@ -141,74 +132,31 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements 
 
 			TextView tx = numbersAndSigns.get(i);
 			tx.setBackground(getGradientDrawable(NUMBERSCOLOR));
-			tx.setHeight(height / 10);
-
+			tx.setHeight(height / 11);
+			tx.setTextColor(SIGNCOLOR);
+			tx.setTextSize(30);
 		}
-		
+		numbersAndSigns.get(3).setText("=");
 		numbersAndSigns.get(4).setBackground(getGradientDrawable(SIGNCOLOR));
-
-	}
-
-	private ArrayList<Integer> generateColors() {
-
-		ArrayList<Integer> colors = new ArrayList<Integer>();
-		colors.add(Color.rgb(235, 77, 77));
-		colors.add(Color.rgb(88, 243, 129));
-		colors.add(Color.rgb(192, 142, 213));
-		colors.add(Color.rgb(137, 170, 220));
-		colors.add(Color.rgb(88, 243, 129));
-		// colors.add(Color.rgb(244, 252, 244));
-		colors.add(Color.rgb(255, 255, 102));
-
-		return colors;
-	}
-
-	private void setAnswers() {
-		answersInt = new ArrayList<String>();
-		answersInt.add("5");
-		answersInt.add("+");
-		answersInt.add("4");
-		answersInt.add("=");
-		answersInt.add("");
+		numbersAndSigns.get(4).setTextColor(NUMBERSCOLOR);
 
 	}
 
 	private GradientDrawable getGradientDrawable(int color) {
 
-		
 		GradientDrawable gd = new GradientDrawable();
 		gd.setColor(color);
 		gd.setCornerRadius(10);
 		gd.setShape(GradientDrawable.OVAL);
-		// gd.setStroke(1, 0xFF000000);
 		gd.setStroke(2, Color.BLACK, 5, 5);
 		return gd;
 
 	}
 
-	private void addAnswers() {
-
-		for (int i = 0; i < answers.size(); ++i) {
-
-			TextView tx = answers.get(i);
-			GradientDrawable gd = getGradientDrawable(ANSWERSCOLOR);
-			gd.setShape(GradientDrawable.RECTANGLE);
-			tx.setBackground(gd);
-			tx.setWidth(width / 5);
-			tx.setHeight(height / 10);
-			tx.setText("18");
-			tx.setTag(answersInt.get(i));
-		}
-		answers.get(2).setTag("Correct");
-		Collections.shuffle(answers);
-
-	}
-
-
 	@Override
 	public void setNumbers(int numberOne, int numberTwo) {
 		// TODO Auto-generated method stub
-		System.out.println("Number one"+numberOne+" Number two "+numberTwo);
+
 		numbersAndSigns.get(0).setText(Integer.toString(numberOne));
 		numbersAndSigns.get(2).setText(Integer.toString(numberTwo));
 	}
@@ -217,24 +165,21 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements 
 	public void setOfferedAnswers(Set<Integer> answers) {
 		// TODO Auto-generated method stubso
 		System.out.println(answers.size());
-		Iterator<Integer> it=answers.iterator();
-		answersInt=new ArrayList<String>();
-		while(it.hasNext()){
+		Iterator<Integer> it = answers.iterator();
+		answersInt = new ArrayList<String>();
+		while (it.hasNext()) {
 			answersInt.add(Integer.toString(it.next()));
 		}
-		
-		answersContainer.setAdapter(new AdditionAndSubstractionNumberTextViewAdapter(this,answersInt));
-		
+
 		int txtWidth = width / 4;
 		int txtHeight = height / (answersInt.size() / 4 + 1);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/amerika_.ttf");
 
-		//answersContainer.setAdapter(new CharactersTextViewAdapter(this,
-			//	answersInt, tf, txtWidth, txtHeight));
+		answersContainer
+				.setAdapter(new AdditionAndSubstractionNumberTextViewAdapter(
+						this, answersInt, tf, txtWidth, txtHeight, NUMBERSCOLOR));
 
-		
-		
 		answersContainer.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -242,19 +187,18 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements 
 					int position, long id) {
 				// TODO Auto-generated method stub
 				TextView tx = (TextView) view;
-				/*try {
-					appInterface.executeCommand("ChooseString", tx.getText());
+				int number = Integer.parseInt((String) tx.getText());
+				System.out.println(number);
+
+				try {
+					appInterface.executeCommand("ChooseNumber", number);
 				} catch (Exception e) {
 					e.printStackTrace();
-				} */
-				
-				
-				
+				}
 
 			}
 		});
-		//answersContainer.setOnTouchListener(new MyClickListener());
-		
+		// answersContainer
 	}
 
 	@Override
@@ -305,13 +249,18 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements 
 	@Override
 	public void wrongAnswer() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void setAdditionOperator(boolean addition) {
 		// TODO Auto-generated method stub
-		
+
+		if (addition) {
+			numbersAndSigns.get(1).setText("+");
+		} else {
+			numbersAndSigns.get(1).setText("-");
+		}
 	}
 
 }

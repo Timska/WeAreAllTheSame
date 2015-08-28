@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -17,13 +18,18 @@ public class AdditionAndSubstractionNumberTextViewAdapter extends BaseAdapter {
 	private Context mContext;
 	private Typeface tf;
 	private ArrayList<String> answers;
+	private int height, width;
+	private int textColor;
 
 	public AdditionAndSubstractionNumberTextViewAdapter(Context c,
-			ArrayList<String> answers/*Typeface tf, int width, int height*/) {
+			ArrayList<String> answers, Typeface tf, int width, int height,int color) {
 		mContext = c;
-		//this.tf = tf;
+		this.tf = tf;
 		this.answers = new ArrayList<String>();
 		this.answers = answers;
+		this.height=height;
+		this.width=width;
+		this.textColor=color;
 	}
 
 	public int getCount() {
@@ -52,13 +58,10 @@ public class AdditionAndSubstractionNumberTextViewAdapter extends BaseAdapter {
 
 		textView.setTypeface(tf);
 		textView.setTextSize(30);
-		textView.setTextColor(Color.RED);
-		textView.setBackgroundColor(Color.BLACK);
+		textView.setTextColor(textColor);
+		textView.setGravity(Gravity.CENTER);		
 		textView.setText(answers.get(position));
 		return textView;
 	}
-
-	
-
 
 }
