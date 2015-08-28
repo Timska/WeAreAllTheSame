@@ -47,7 +47,7 @@ public class CharactersTextViewAdapter extends BaseAdapter {
 		if (convertView == null) {
 			textView = new TextView(mContext);
 			textView.setLayoutParams(new GridView.LayoutParams(
-					LayoutParams.WRAP_CONTENT, height));
+					LayoutParams.WRAP_CONTENT,height));
 			textView.setPadding(8, 8, 8, 8);
 			
 

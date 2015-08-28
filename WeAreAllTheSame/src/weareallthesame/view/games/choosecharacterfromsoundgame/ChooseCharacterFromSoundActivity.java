@@ -269,7 +269,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		 * answers.get(i).setTag(WRONG); }
 		 */
 		int txtWidth = width / 4;
-		int txtHeight = height / (answersString.size()/3 + 1);
+		int txtHeight = height / (answersString.size()/4 + 1);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/amerika_.ttf");
 		answersContainer.setAdapter(new CharactersTextViewAdapter(this,

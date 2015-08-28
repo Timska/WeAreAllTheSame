@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
-        android:text="@string/choose_character_from_sound_task_description" />
+        android:text="@string/choose_character_from_sound_task_description"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
         android:id="@+id/choose_character_from_sound_play_buttons"
@@ -28,11 +29,10 @@
 
     <GridView
         android:id="@+id/choose_character_from_sound_answers_container"
-        android:layout_height="wrap_content"
-        
         android:layout_width="match_parent"
-        android:gravity="center|bottom"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:gravity="center|bottom"
         android:numColumns="3"
         android:padding="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge" >
