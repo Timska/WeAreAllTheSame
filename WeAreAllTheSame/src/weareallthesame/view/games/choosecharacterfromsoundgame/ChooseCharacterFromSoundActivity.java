@@ -21,6 +21,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
@@ -272,6 +274,21 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 				"fonts/amerika_.ttf");
 		answersContainer.setAdapter(new CharactersTextViewAdapter(this,
 				answersString, tf, txtWidth, txtHeight));
+		answersContainer.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				TextView tx=(TextView) view;
+				try{
+					appInterface.executeCommand("ChooseString", tx.getText());
+				} catch(Exception e){
+					e.printStackTrace();
+				}
+				
+			}
+		});
 		// answers.get(indexOfCorrectAnswer).setTag(CORRECT);
 	}
 }
