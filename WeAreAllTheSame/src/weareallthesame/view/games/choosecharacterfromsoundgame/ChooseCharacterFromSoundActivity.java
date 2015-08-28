@@ -33,7 +33,8 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		ChooseStringFromSoundViewInterface {
 
 	/**
-	 * 
+	 * Activity za igra vo koja korisnikot bira znak vrz osnova na dadeniot zvuk
+	 *
 	 */
 	private static final long serialVersionUID = -7323382117223325759L;
 	public static final int TEXTVIEWCOLOR = Color.rgb(88, 243, 129);
@@ -41,14 +42,12 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 	public static final String CORRECT = "Correct";
 	public static final String WRONG = "Wrong";
 	private DisplayMetrics displayMetrics;
-	private ArrayList<TextView> answers;
 	private int width, height;
 	private Item correctAnswer;
 	private ArrayList<String> answersString;
 	private MediaPlayer mMediaPlayer;
 	private Button playButton;
 	private Animation animation;
-	private TextView dropPlace;
 	private ApplicationInterface appInterface;
 	private GridView answersContainer;
 
@@ -59,7 +58,6 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 		getMetrics();
 
-		answers = new ArrayList<TextView>();
 		answersString = new ArrayList<String>();
 		animation = AnimationUtils.loadAnimation(this,
 				R.anim.choose_character_from_sound_animation_scaling);
@@ -69,18 +67,6 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		openGame();
 
 		setButtonSound();
-
-		// setAnswers();
-		// setTextViews();
-
-		/*
-		 * for (int i = 0; i < answers.size(); ++i) { answers.get(i).setTag(i +
-		 * " "); answers.get(i).setOnTouchListener(new MyClickListener()); }
-		 */
-
-		// answers.get(2).setTag(CORRECT);
-		// dropPlace.setOnDragListener(new MyDragListener(mMediaPlayer,
-		// appInterface));
 
 	}
 
@@ -93,18 +79,6 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	private void initiliazeViews() {
 		playButton = (Button) findViewById(R.id.choose_character_from_sound_play_buttons);
-		/*
-		 * answers.add((TextView)
-		 * findViewById(R.id.choose_character_from_sound_answer_one));
-		 * answers.add((TextView)
-		 * findViewById(R.id.choose_character_from_sound_answer_two));
-		 * answers.add((TextView)
-		 * findViewById(R.id.choose_character_from_sound_answer_three));
-		 * answers.add((TextView)
-		 * findViewById(R.id.choose_character_from_sound_answer_four));
-		 * dropPlace = (TextView)
-		 * findViewById(R.id.choose_character_from_sound_drop_pool);
-		 */
 		answersContainer = (GridView) findViewById(R.id.choose_character_from_sound_answers_container);
 	}
 
@@ -123,7 +97,6 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	public void playButtonOnClick(View v) {
 		mMediaPlayer.start();
-		// setTextViews();
 		playButton.startAnimation(animation);
 	}
 
@@ -146,49 +119,6 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	private void setTextViews() {
-
-		for (int i = 0; i < answers.size(); ++i) {
-			answers.get(i).setWidth(width / 3);
-			answers.get(i).setHeight(height / 8);
-			answers.get(i).setBackground(getGradientDrawable(TEXTVIEWCOLOR));
-
-			Typeface tf = Typeface.createFromAsset(getAssets(),
-					"fonts/amerika_.ttf");
-			answers.get(i).setTypeface(tf);
-			answers.get(i).setTextSize(width / 5);
-			answers.get(i).setTextColor(Color.BLUE);
-			answers.get(i).setText(answersString.get(i));
-		}
-
-		GradientDrawable gd = getGradientDrawable(DROPPLACECOLOR);
-		gd.setShape(GradientDrawable.RECTANGLE);
-		dropPlace.setBackground(gd);
-		dropPlace.setText(getResources().getString(
-				R.string.drop_place_description));
-
-	}
-
-	private void setAnswers() {
-		answersString = new ArrayList<String>();
-		answersString.add("I");
-		answersString.add("A");
-		answersString.add("M");
-		answersString.add("Z");
-
-	}
-
-	private GradientDrawable getGradientDrawable(int color) {
-
-		GradientDrawable gd = new GradientDrawable();
-		gd.setColor(color);
-		gd.setCornerRadius(10);
-		gd.setShape(GradientDrawable.OVAL);
-		gd.setStroke(2, Color.BLACK, 5, 5);
-		return gd;
-
 	}
 
 	@Override
@@ -257,38 +187,30 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		while (it.hasNext()) {
 			answersString.add(it.next());
 		}
-		/*
-		 * System.out.println(correctAnswer.getName()); int indexOfCorrectAnswer
-		 * = answersString.indexOf(correctAnswer .getName());
-		 * 
-		 * for (int i = 0; i < answers.size(); ++i) {
-		 * answers.get(i).setWidth(width / 3); answers.get(i).setHeight(height /
-		 * 8); answers.get(i).setBackground(getGradientDrawable(TEXTVIEWCOLOR));
-		 * answers.get(i).setText(answersString.get(i));
-		 * 
-		 * answers.get(i).setTag(WRONG); }
-		 */
+
 		int txtWidth = width / 4;
-		int txtHeight = height / (answersString.size()/4 + 1);
+		int txtHeight = height / (answersString.size() / 4 + 1);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/amerika_.ttf");
+
 		answersContainer.setAdapter(new CharactersTextViewAdapter(this,
 				answersString, tf, txtWidth, txtHeight));
+
 		answersContainer.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				TextView tx=(TextView) view;
-				try{
+				TextView tx = (TextView) view;
+				try {
 					appInterface.executeCommand("ChooseString", tx.getText());
-				} catch(Exception e){
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				
+
 			}
 		});
-		// answers.get(indexOfCorrectAnswer).setTag(CORRECT);
+
 	}
 }

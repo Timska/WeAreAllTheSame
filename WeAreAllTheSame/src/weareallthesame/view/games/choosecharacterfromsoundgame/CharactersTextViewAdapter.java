@@ -56,13 +56,11 @@ public class CharactersTextViewAdapter extends BaseAdapter {
 		}
 
 		textView.setTypeface(tf);
-		//textView.setTextAppearance(android.R.style.TextAppearance_DeviceDefault_Large);
 		textView.setTextSize(30);
 		textView.setGravity(Gravity.CENTER);
 		textView.setTextColor(Color.BLUE);
-		//textView.setBackgroundColor(Color.BLACK);
 		textView.setText(answers.get(position));
-
+		
 		return textView;
 	}
 
