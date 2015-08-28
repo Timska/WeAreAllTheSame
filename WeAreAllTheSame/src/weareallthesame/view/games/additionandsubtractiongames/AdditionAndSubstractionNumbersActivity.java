@@ -58,7 +58,7 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements 
 		colors = generateColors();
 
 		setAnswers();
-		txtContainer.setAdapter(new AdditionAndSubstractionNumberTextViewAdapter(this,answersString));
+		//txtContainer.setAdapter(new AdditionAndSubstractionNumberTextViewAdapter(this,answersString));
 		setTextViews();
 		//addAnswers();
 

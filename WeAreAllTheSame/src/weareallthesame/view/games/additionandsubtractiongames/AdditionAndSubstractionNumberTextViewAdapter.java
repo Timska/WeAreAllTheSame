@@ -19,7 +19,7 @@ public class AdditionAndSubstractionNumberTextViewAdapter extends BaseAdapter {
 	private ArrayList<String> answers;
 
 	public AdditionAndSubstractionNumberTextViewAdapter(Context c,
-			ArrayList<String> answers) {
+			ArrayList<String> answers, Typeface tf, int width, int height) {
 		mContext = c;
 		//this.tf = tf;
 		this.answers = new ArrayList<String>();
@@ -43,14 +43,14 @@ public class AdditionAndSubstractionNumberTextViewAdapter extends BaseAdapter {
 		if (convertView == null) {
 			textView = new TextView(mContext);
 			textView.setLayoutParams(new GridView.LayoutParams(
-					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 			textView.setPadding(8, 8, 8, 8);
 
 		} else {
 			textView = (TextView) convertView;
 		}
 
-		//textView.setTypeface(tf);
+		textView.setTypeface(tf);
 		textView.setTextSize(20);
 		textView.setTextColor(Color.RED);
 		textView.setBackgroundColor(Color.BLACK);

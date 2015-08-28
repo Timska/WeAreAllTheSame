@@ -24,7 +24,7 @@ public interface QuestionViewInterface extends Serializable {
 	public void gameOver();
 
 	/**
-	 * So ovoj metod se izvestuva view-to deka korisnikot odgovoril pogresno
+	 * So ovoj metod se izvestuva view-to deka korisnikot odgovoril pogresno.
 	 */
 	public void wrongAnswer();
 }
