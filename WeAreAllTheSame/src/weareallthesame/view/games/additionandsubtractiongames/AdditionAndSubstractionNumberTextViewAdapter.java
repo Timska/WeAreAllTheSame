@@ -19,7 +19,7 @@ public class AdditionAndSubstractionNumberTextViewAdapter extends BaseAdapter {
 	private ArrayList<String> answers;
 
 	public AdditionAndSubstractionNumberTextViewAdapter(Context c,
-			ArrayList<String> answers, Typeface tf, int width, int height) {
+			ArrayList<String> answers/*Typeface tf, int width, int height*/) {
 		mContext = c;
 		//this.tf = tf;
 		this.answers = new ArrayList<String>();
