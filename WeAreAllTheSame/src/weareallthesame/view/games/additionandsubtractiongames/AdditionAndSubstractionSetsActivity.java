@@ -201,4 +201,10 @@ public class AdditionAndSubstractionSetsActivity extends Activity implements Add
 		
 	}
 
+	@Override
+	public void setAdditionOperator(boolean addition) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

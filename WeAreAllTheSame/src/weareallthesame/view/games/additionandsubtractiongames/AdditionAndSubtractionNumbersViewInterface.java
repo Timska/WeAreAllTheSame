@@ -27,4 +27,10 @@ public interface AdditionAndSubtractionNumbersViewInterface extends Serializable
 	 * So ovoj metod se izvestuva view-to deka korisnikot odgovoril pogresno.
 	 */
 	public void wrongAnswer();
+
+	/**
+	 * So ovoj metod se setira koj operator ke se koristi vo igrata.
+	 * @param addition ako e true togas e sobiranje, ako e false togas e odzemanje
+	 */
+	public void setAdditionOperator(boolean addition);
 }

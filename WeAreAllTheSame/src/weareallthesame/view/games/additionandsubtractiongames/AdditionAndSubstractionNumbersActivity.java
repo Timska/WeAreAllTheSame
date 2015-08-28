@@ -308,4 +308,10 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements 
 		
 	}
 
+	@Override
+	public void setAdditionOperator(boolean addition) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

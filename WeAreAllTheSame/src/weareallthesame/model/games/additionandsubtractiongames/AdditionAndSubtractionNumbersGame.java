@@ -82,6 +82,7 @@ public class AdditionAndSubtractionNumbersGame extends AbstractGame implements C
 				flag = true;
 			}
 		}
+		view.setAdditionOperator(addition);
 		if(!flag){
 			throw new MissingTagException("Nedostiga tag za definiranje na igrata");
 		}
