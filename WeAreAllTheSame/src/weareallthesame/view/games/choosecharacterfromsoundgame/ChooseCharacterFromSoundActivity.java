@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 	private Animation animation;
 	private TextView dropPlace;
 	private ApplicationInterface appInterface;
+	private GridView answersContainer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,24 +61,24 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 		answersString = new ArrayList<String>();
 		animation = AnimationUtils.loadAnimation(this,
 				R.anim.choose_character_from_sound_animation_scaling);
-		
-		
+
 		initiliazeViews();
-		
+
 		openGame();
-		
+
 		setButtonSound();
 
-		//setAnswers();
-		//setTextViews();
+		// setAnswers();
+		// setTextViews();
 
-		for (int i = 0; i < answers.size(); ++i) {
-			answers.get(i).setTag(i + " ");
-			answers.get(i).setOnTouchListener(new MyClickListener());
-		}
+		/*
+		 * for (int i = 0; i < answers.size(); ++i) { answers.get(i).setTag(i +
+		 * " "); answers.get(i).setOnTouchListener(new MyClickListener()); }
+		 */
 
-		//answers.get(2).setTag(CORRECT);
-		dropPlace.setOnDragListener(new MyDragListener(mMediaPlayer, appInterface));
+		// answers.get(2).setTag(CORRECT);
+		// dropPlace.setOnDragListener(new MyDragListener(mMediaPlayer,
+		// appInterface));
 
 	}
 
@@ -89,19 +91,30 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	private void initiliazeViews() {
 		playButton = (Button) findViewById(R.id.choose_character_from_sound_play_buttons);
-		answers.add((TextView) findViewById(R.id.choose_character_from_sound_answer_one));
-		answers.add((TextView) findViewById(R.id.choose_character_from_sound_answer_two));
-		answers.add((TextView) findViewById(R.id.choose_character_from_sound_answer_three));
-		answers.add((TextView) findViewById(R.id.choose_character_from_sound_answer_four));
-		dropPlace = (TextView) findViewById(R.id.choose_character_from_sound_drop_pool);
-
+		/*
+		 * answers.add((TextView)
+		 * findViewById(R.id.choose_character_from_sound_answer_one));
+		 * answers.add((TextView)
+		 * findViewById(R.id.choose_character_from_sound_answer_two));
+		 * answers.add((TextView)
+		 * findViewById(R.id.choose_character_from_sound_answer_three));
+		 * answers.add((TextView)
+		 * findViewById(R.id.choose_character_from_sound_answer_four));
+		 * dropPlace = (TextView)
+		 * findViewById(R.id.choose_character_from_sound_drop_pool);
+		 */
+		answersContainer = (GridView) findViewById(R.id.choose_character_from_sound_answers_container);
 	}
 
 	private void setButtonSound() {
 
 		mMediaPlayer = new MediaPlayer();
 		System.out.println(correctAnswer.getResourceNames().get("sound"));
-		mMediaPlayer = MediaPlayer.create(this, this.getResources().getIdentifier(correctAnswer.getResourceNames().get("sound"), "raw", this.getPackageName()));
+		mMediaPlayer = MediaPlayer.create(
+				this,
+				this.getResources().getIdentifier(
+						correctAnswer.getResourceNames().get("sound"), "raw",
+						this.getPackageName()));
 		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 		mMediaPlayer.start();
 	}
@@ -143,7 +156,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 			Typeface tf = Typeface.createFromAsset(getAssets(),
 					"fonts/amerika_.ttf");
 			answers.get(i).setTypeface(tf);
-			answers.get(i).setTextSize(width/5);
+			answers.get(i).setTextSize(width / 5);
 			answers.get(i).setTextColor(Color.BLUE);
 			answers.get(i).setText(answersString.get(i));
 		}
@@ -235,25 +248,30 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	@Override
 	public void setOfferedAnswers(Set<String> allOfferedLetters) {
-		
+
 		System.out.println("Vo offered answers");
-		
+
 		Iterator<String> it = allOfferedLetters.iterator();
 		while (it.hasNext()) {
 			answersString.add(it.next());
 		}
-		System.out.println(correctAnswer.getName());
-		int indexOfCorrectAnswer = answersString.indexOf(correctAnswer
-				.getName());
-
-		for (int i = 0; i < answers.size(); ++i) {
-			answers.get(i).setWidth(width / 3);
-			answers.get(i).setHeight(height / 8);
-			answers.get(i).setBackground(getGradientDrawable(TEXTVIEWCOLOR));
-			answers.get(i).setText(answersString.get(i));
-
-			answers.get(i).setTag(WRONG);
-		}
-		answers.get(indexOfCorrectAnswer).setTag(CORRECT);
+		/*
+		 * System.out.println(correctAnswer.getName()); int indexOfCorrectAnswer
+		 * = answersString.indexOf(correctAnswer .getName());
+		 * 
+		 * for (int i = 0; i < answers.size(); ++i) {
+		 * answers.get(i).setWidth(width / 3); answers.get(i).setHeight(height /
+		 * 8); answers.get(i).setBackground(getGradientDrawable(TEXTVIEWCOLOR));
+		 * answers.get(i).setText(answersString.get(i));
+		 * 
+		 * answers.get(i).setTag(WRONG); }
+		 */
+		int txtWidth = width / 4;
+		int txtHeight = height / (answersString.size()/3 + 1);
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+				"fonts/amerika_.ttf");
+		answersContainer.setAdapter(new CharactersTextViewAdapter(this,
+				answersString, tf, txtWidth, txtHeight));
+		// answers.get(indexOfCorrectAnswer).setTag(CORRECT);
 	}
 }
