@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class FindPictureFromPictureActivity extends Activity implements ChooseItemViewInterface {
 
@@ -57,6 +58,7 @@ public class FindPictureFromPictureActivity extends Activity implements ChooseIt
 	@Override
 	public void wrongAnswer() {
 		// TODO Auto-generated method stub
-		
+		Toast.makeText(getApplicationContext(), "Неточен одговор",
+				Toast.LENGTH_SHORT).show();
 	}
 }

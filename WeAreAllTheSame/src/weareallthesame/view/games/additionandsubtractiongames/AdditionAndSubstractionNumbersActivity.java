@@ -27,6 +27,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class AdditionAndSubstractionNumbersActivity extends Activity implements
@@ -38,14 +39,13 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements
 
 	private DisplayMetrics displayMetrics;
 	private ArrayList<TextView> numbersAndSigns;
-	private ArrayList<TextView> answers;
-	private ArrayList<Integer> colors;
 	private ArrayList<String> answersInt;
 	private MediaPlayer mMediaPlayer;
 	private Random r = new Random();
 	private int width, height;
 	private ApplicationInterface appInterface;
 	private GridView answersContainer;
+	private int clickedNumber;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,16 +61,7 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements
 
 		openGame();
 
-		// setAnswers();
-
 		setTextViews();
-		// addAnswers();
-
-		/*
-		 * for (TextView tx : answers) { tx.setOnTouchListener(new
-		 * MyClickListener()); }
-		 */
-		// numbersAndSigns.get(4).setOnDragListener(new MyDragListener());
 
 	}
 
@@ -165,6 +156,7 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements
 	@Override
 	public void setOfferedAnswers(Set<Integer> answers) {
 		// TODO Auto-generated method stubso
+		// numbersAndSigns.get(4).setBackgroundColor(SIGNCOLOR);
 		System.out.println(answers.size());
 		Iterator<Integer> it = answers.iterator();
 		answersInt = new ArrayList<String>();
@@ -189,7 +181,9 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements
 				// TODO Auto-generated method stub
 				TextView tx = (TextView) view;
 				int number = Integer.parseInt((String) tx.getText());
+				numbersAndSigns.get(4).setText(Integer.toString(number));
 				System.out.println(number);
+				clickedNumber = number;
 
 				try {
 					appInterface.executeCommand("ChooseNumber", number);
@@ -204,8 +198,13 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements
 
 	@Override
 	public void gameOver() {
+		mMediaPlayer.start();
+		numbersAndSigns.get(4).setBackground(getGradientDrawable(NUMBERSCOLOR));
+		numbersAndSigns.get(4).setText(Integer.toString(clickedNumber));
+		numbersAndSigns.get(4).setTextColor(SIGNCOLOR);
 		Intent intent = new Intent(this, GameOverChoiceActivity.class);
 		startActivityForResult(intent, 0);
+
 	}
 
 	@Override
@@ -250,6 +249,9 @@ public class AdditionAndSubstractionNumbersActivity extends Activity implements
 	@Override
 	public void wrongAnswer() {
 		// TODO Auto-generated method stub
+
+		Toast.makeText(getApplicationContext(), "Неточен одговор",
+				Toast.LENGTH_SHORT).show();
 
 	}
 

@@ -5,73 +5,30 @@
     android:orientation="vertical"
     tools:context="weareallthesame.view.games.chooseitemgame.FindPictureFromPictureActivity" >
 
-   <TextView
+    <TextView
         android:id="@+id/find_picture_from_picture_task_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/find_picture_from_picture_task_description"
-        android:textSize="20sp" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ImageView
         android:id="@+id/find_picture_from_picture_picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp" 
-        android:background="@drawable/clothes"/>
-    
-     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:background="@drawable/clothes" />
+
+    <GridView
+        android:id="@+id/find_the_picture_from_the_picture_answers_container"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:gravity="center|bottom"
-        android:orientation="horizontal" >
-
-        <ImageButton
-            android:id="@+id/find_picture_from_picture_answerOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/clothes" />
-
-        <ImageButton
-            android:id="@+id/find_picture_from_picture_answerTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/clothes" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:gravity="center|bottom"
-        android:orientation="horizontal" >
-
-        <ImageButton
-            android:id="@+id/find_picture_from_picture_answerThree"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/clothes" />
-
-        <ImageButton
-            android:id="@+id/find_picture_from_sound_answerFour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/clothes" />
-    </LinearLayout>
-    
-    
+        android:numColumns="3"
+        android:padding="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" >
+    </GridView>
 
 </LinearLayout>
