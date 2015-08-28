@@ -26,8 +26,8 @@ import android.widget.TextView;
 
 public class AdditionAndSubstractionNumbersActivity extends Activity implements AdditionAndSubtractionNumbersViewInterface{
 
-	public static final int NUMBERSCOLOR=Color.rgb(207,194,101);
-	public static final int SIGNCOLOR=Color.rgb(232, 161, 139);
+	public static final int NUMBERSCOLOR=Color.rgb(255,131,99);
+	public static final int SIGNCOLOR=Color.rgb(255, 251, 131);
 	public static final int ANSWERSCOLOR=Color.rgb(232, 161, 139);
 	
 	private DisplayMetrics displayMetrics;

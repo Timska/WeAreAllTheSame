@@ -51,11 +51,10 @@ public class AdditionAndSubstractionNumberTextViewAdapter extends BaseAdapter {
 		}
 
 		textView.setTypeface(tf);
-		textView.setTextSize(20);
+		textView.setTextSize(30);
 		textView.setTextColor(Color.RED);
 		textView.setBackgroundColor(Color.BLACK);
 		textView.setText(answers.get(position));
-
 		return textView;
 	}
 
