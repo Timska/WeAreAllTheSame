@@ -7,17 +7,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="weareallthesame.view.games.choosesigngames.ChooseTheSignNumbersActivity" >
+    tools:context="weareallthesame.view.games.chooseoperatorgames.ChooseTheSignNumbersActivity" >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
-        android:text="@string/choose_sign_numbers_task_description" />
+        android:text="@string/choose_operator_numbers_task_description" />
 
     <TextView
-        android:id="@+id/choose_sign_numbers_element_one"
+        android:id="@+id/choose_operator_numbers_element_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
@@ -25,7 +25,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/choose_sign_numbers_sign"
+        android:id="@+id/choose_operator_numbers_operator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
@@ -33,7 +33,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/choose_sign_numbers_element_two"
+        android:id="@+id/choose_operator_numbers_element_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
@@ -41,7 +41,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/choose_sign_numbers_equals_sign"
+        android:id="@+id/choose_operator_numbers_equals_operator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
@@ -49,51 +49,22 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/choose_sign_numbers_result"
+        android:id="@+id/choose_operator_numbers_result"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <LinearLayout
+     <GridView
+        android:id="@+id/choose_operator_numbers_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center|bottom"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/choose_sign_numbers_answer_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/choose_sign_numbers_answer_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/choose_sign_numbers_answer_three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/choose_sign_numbers_answer_four"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-    </LinearLayout>
+        android:numColumns="3"
+        android:padding="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" >
+    </GridView>
 
 </LinearLayout>

@@ -1,8 +1,9 @@
-package weareallthesame.view.games.choosesigngames;
+package weareallthesame.view.games.chooseoperatorgames;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.R;
@@ -22,19 +23,24 @@ import android.view.ViewGroup;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
+import android.widget.GridView;
 import android.widget.TextView;
 
-public class ChooseTheSignNumbersActivity extends Activity {
+public class ChooseTheSignNumbersActivity extends Activity implements
+		ChooseOperatorBetweenNumbersViewInterface {
+
+	private static final int COLORNUMBERS = Color.rgb(162, 177, 235);
+	private static final int COLORSIGNS = Color.rgb(249, 246, 63);
 
 	private DisplayMetrics displayMetrics;
 	private ArrayList<TextView> numbersAndSigns;
-	private ArrayList<TextView> answers;
-	private ArrayList<Integer> colors;
-	private ArrayList<String> answersString;
+	private ArrayList<String> answersOperators;
 	private MediaPlayer mMediaPlayer;
 	private Random r = new Random();
-	private int width, height, rWidth, rHeight;
+	private int width, height;
 	private ApplicationInterface appInterface;
+	private GridView answersContainer;
+	private int clickedNumber;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,19 +48,28 @@ public class ChooseTheSignNumbersActivity extends Activity {
 		setContentView(R.layout.activity_choose_the_sign_numbers);
 
 		openGame();
-		
+
+		getMetrics();
+		getMediaPlayer();
+
+		numbersAndSigns = new ArrayList<TextView>();
+
+		initializeViews();
+
+		openGame();
+
+		setTextViews();
+
+	}
+
+	private void getMetrics() {
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
 		height = displayMetrics.heightPixels;
+	}
 
-		mMediaPlayer = new MediaPlayer();
-		mMediaPlayer = MediaPlayer.create(this, R.raw.slow_whoop_bubble_pop);
-		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
-		answers = new ArrayList<TextView>();
-		numbersAndSigns = new ArrayList<TextView>();
-
+	private void initializeViews() {
 		numbersAndSigns
 				.add((TextView) findViewById(R.id.choose_sign_numbers_element_one));
 		numbersAndSigns
@@ -66,110 +81,64 @@ public class ChooseTheSignNumbersActivity extends Activity {
 		numbersAndSigns
 				.add((TextView) findViewById(R.id.choose_sign_numbers_result));
 
-		answers.add((TextView) findViewById(R.id.choose_sign_numbers_answer_one));
-		answers.add((TextView) findViewById(R.id.choose_sign_numbers_answer_two));
-		answers.add((TextView) findViewById(R.id.choose_sign_numbers_answer_three));
-		answers.add((TextView) findViewById(R.id.choose_sign_numbers_answer_four));
+	}
 
-		colors = generateColors();
+	private void getMediaPlayer() {
 
-		setAnswers();
-
-		setTextViews();
-		addAnswers();
-
-		for (TextView tx : answers) {
-			tx.setOnLongClickListener(new MyClickListener());
-		}
-
-		numbersAndSigns.get(1).setOnDragListener(new MyDragListener());
+		mMediaPlayer = new MediaPlayer();
+		mMediaPlayer = MediaPlayer.create(this, R.raw.slow_whoop_bubble_pop);
+		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
 	}
-	
+
 	private void openGame() {
 		Intent intent = getIntent();
 		String gameType = intent.getStringExtra("gameType");
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
-		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
-		try{
-			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
-		}
-		catch(Exception e){
+		appInterface = (ApplicationInterface) intent
+				.getSerializableExtra("appInterface");
+		try {
+			appInterface
+					.openGame(
+							gameType,
+							gameTags.iterator(),
+							this,
+							this.getResources()
+									.getString(
+											R.string.choose_character_from_sound_task_description));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	private void setTextViews() {
-		System.out.println("dss" + numbersAndSigns.size());
 
 		for (int i = 0; i < numbersAndSigns.size(); ++i) {
 
 			TextView tx = numbersAndSigns.get(i);
-
-			tx.setBackground(getGradientDrawable());
-			tx.setHeight(height / 10);
-			tx.setText(answersString.get(i));
-			tx.setTag(answersString.get(i));
-
+			tx.setBackground(getGradientDrawable(COLORNUMBERS));
+			tx.setHeight(height / 11);
+			tx.setTextColor(COLORSIGNS);
+			tx.setTextSize(30);
 		}
+		numbersAndSigns.get(3).setText("=");
+		numbersAndSigns.get(4).setBackground(getGradientDrawable(COLORSIGNS));
+		numbersAndSigns.get(4).setTextColor(COLORNUMBERS);
 
 	}
 
-	private ArrayList<Integer> generateColors() {
+	private GradientDrawable getGradientDrawable(int color) {
 
-		ArrayList<Integer> colors = new ArrayList<Integer>();
-		colors.add(Color.rgb(235, 77, 77));
-		colors.add(Color.rgb(88, 243, 129));
-		colors.add(Color.rgb(192, 142, 213));
-		colors.add(Color.rgb(137, 170, 220));
-		colors.add(Color.rgb(88, 243, 129));
-		// colors.add(Color.rgb(244, 252, 244));
-		colors.add(Color.rgb(255, 255, 102));
-
-		return colors;
-	}
-
-	private void setAnswers() {
-		answersString = new ArrayList<String>();
-		answersString.add("5");
-		answersString.add("");
-		answersString.add("4");
-		answersString.add("=");
-		answersString.add("9");
-
-	}
-
-	private GradientDrawable getGradientDrawable() {
-
-		int i = colors.get(r.nextInt(colors.size()));
 		GradientDrawable gd = new GradientDrawable();
-		gd.setColor(i);
+		gd.setColor(color);
 		gd.setCornerRadius(10);
 		gd.setShape(GradientDrawable.OVAL);
-		// gd.setStroke(1, 0xFF000000);
 		gd.setStroke(2, Color.BLACK, 5, 5);
-
 		return gd;
 
 	}
 
-	private void addAnswers() {
-
-		for (int i = 0; i < answers.size(); ++i) {
-
-			TextView tx = answers.get(i);
-			GradientDrawable gd = getGradientDrawable();
-			gd.setShape(GradientDrawable.RECTANGLE);
-			tx.setBackground(gd);
-			tx.setWidth(width / 5);
-			tx.setHeight(height / 10);
-			tx.setText("9");
-			tx.setTag(answersString.get(i));
-		}
-		answers.get(2).setTag("Correct");
-		Collections.shuffle(answers);
-
-	}
+	
 
 	private final class MyClickListener implements OnLongClickListener {
 
@@ -202,7 +171,7 @@ public class ChooseTheSignNumbersActivity extends Activity {
 			case DragEvent.ACTION_DRAG_STARTED:
 				break;
 			case DragEvent.ACTION_DRAG_ENTERED:
-				receivingLayoutView.setBackground(getGradientDrawable());
+				//receivingLayoutView.setBackground(getGradientDrawable());
 				break;
 			case DragEvent.ACTION_DRAG_LOCATION:
 				break;
@@ -236,6 +205,31 @@ public class ChooseTheSignNumbersActivity extends Activity {
 			}
 			return true;
 		}
+
+	}
+
+	@Override
+	public void setOfferedOperators(Set<Character> operators) {
+		// TODO Auto-generated method stub
+		
+
+	}
+
+	@Override
+	public void setNumbers(int numberOne, int numberTwo, int result) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void gameOver() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void wrongAnswer() {
+		// TODO Auto-generated method stub
 
 	}
 

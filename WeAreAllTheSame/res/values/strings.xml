@@ -25,7 +25,7 @@
     <!-- Task descriptions -->
     <string name="classify_elements_task_description">Групирај ги елементите.</string>
     <string name="addition_and_substraction_task_description">Најди го резултатот.</string>
-    <string name="choose_sign_numbers_task_description">Најди го знакот.</string>
+    <string name="choose_operator_numbers_task_description">Најди го знакот.</string>
     <string name="hangman_game_task_descrtiption">Дополни ги празните места.</string>
     <string name="connect_items_task_description">Поврзи ги елементите.</string>
     <string name="question_game_task_description">Најди го одговорот.</string>
