@@ -43,18 +43,19 @@ public class ChooseItemImageViewAdapter extends BaseAdapter {
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		TextView imageView;
+		ImageView imageView;
 		if (convertView == null) {
-			imageView = new TextView(mContext);
+			imageView = new ImageView(mContext);
 			imageView.setLayoutParams(new GridView.LayoutParams(
 					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-			imageView.setPadding(8, 8, 8, 8);
+			imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+			imageView.setPadding(30, 30, 30, 30);
 
 		} else {
-			imageView = (TextView) convertView;
+			imageView = (ImageView) convertView;
 		}
 
-		imageView.setGravity(Gravity.CENTER);
+		//imageView.setGravity(Gravity.CENTER);
 		// imageView.setHeight(height);
 		// imageView.setWidth(width);
 		imageView.setBackgroundResource(answers.get(position));
