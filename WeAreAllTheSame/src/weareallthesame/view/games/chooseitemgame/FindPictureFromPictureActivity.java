@@ -40,6 +40,7 @@ public class FindPictureFromPictureActivity extends Activity implements ChooseIt
 		initializeViews();
 		offeredImagesResources=new ArrayList<Integer>();
 		offeredAnswersImages=new ArrayList<ImageView>();
+		openGame();
 	}
 
 	private void getMetrics() {

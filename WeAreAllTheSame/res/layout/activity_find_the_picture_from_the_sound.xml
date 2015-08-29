@@ -14,7 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:text="@string/find_picture_from_sound_task_description" />
+        android:text="@string/find_picture_from_sound_task_description"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
         android:id="@+id/find_picture_from_sound_button_play"
@@ -22,64 +23,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/play_sound_button" />
+        android:background="@drawable/play_sound_button"
+        android:onClick="onPlayButtonClick" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <GridView
+        android:id="@+id/find_picture_from_sound_answers_container"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_gravity="bottom"
         android:gravity="center|bottom"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:id="@+id/find_picture_from_sound_answerOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/clothes" />
-
-        <ImageView
-            android:id="@+id/find_picture_from_sound_answerTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/clothes" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal" >
-
-        <ImageView
-            android:id="@+id/find_picture_from_sound_answerThree"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/clothes" />
-
-        <ImageView
-            android:id="@+id/find_picture_from_sound_answerFour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/clothes" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/find_picture_from_sound_drop_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/yellow"
-        android:orientation="vertical" >
-        
-    </LinearLayout>
+        android:numColumns="auto_fit"
+        android:padding="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge" >
+    </GridView>
 
 </LinearLayout>

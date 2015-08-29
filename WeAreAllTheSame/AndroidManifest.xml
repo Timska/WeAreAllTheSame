@@ -70,7 +70,7 @@
             android:label="@string/title_activity_find_the_picture_from_the_word" >
         </activity>
         <activity
-            android:name=".games.chooseitemgame.FindThePictureFromTheSound"
+            android:name=".games.chooseitemgame.FindThePictureFromTheSoundActivity"
             android:label="@string/title_activity_find_the_picture_from_the_sound" >
         </activity>
         <activity
