@@ -116,7 +116,7 @@
             android:label="@string/title_activity_addition_and_substraction_sets" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.chooseoperatorgames.ChooseTheSignNumbersActivity"
+            android:name="weareallthesame.view.games.chooseoperatorgames.ChooseOperatorNumbersActivity"
             android:label="@string/title_activity_choose_the_sign_numbers" >
         </activity>
         <activity

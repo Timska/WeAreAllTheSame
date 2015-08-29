@@ -26,7 +26,7 @@ import android.view.View.OnLongClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
 
-public class ChooseTheSignNumbersActivity extends Activity implements
+public class ChooseOperatorNumbersActivity extends Activity implements
 		ChooseOperatorBetweenNumbersViewInterface {
 
 	private static final int COLORNUMBERS = Color.rgb(162, 177, 235);

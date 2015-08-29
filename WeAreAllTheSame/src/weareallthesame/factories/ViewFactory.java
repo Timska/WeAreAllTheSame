@@ -8,7 +8,7 @@ import weareallthesame.view.games.chooseitemgame.FindPictureFromPictureActivity;
 import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheSoundActivity;
 import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheWordActivity;
 import weareallthesame.view.games.chooseitemgame.FindTheWordFromThePictureActivity;
-import weareallthesame.view.games.chooseoperatorgames.ChooseTheSignNumbersActivity;
+import weareallthesame.view.games.chooseoperatorgames.ChooseOperatorNumbersActivity;
 import weareallthesame.view.games.connectitemsgames.ConnectItemsActivity;
 import weareallthesame.view.games.hangmangame.HangmanGameActivity;
 import weareallthesame.view.games.howmanygame.HowManyObjectsActivity;
@@ -56,7 +56,7 @@ public class ViewFactory {
 				return OrderElementsActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_findSign))){
-				return ChooseTheSignNumbersActivity.class;
+				return ChooseOperatorNumbersActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_sets))){
 				//TODO go nema uste konkretnoto activity
