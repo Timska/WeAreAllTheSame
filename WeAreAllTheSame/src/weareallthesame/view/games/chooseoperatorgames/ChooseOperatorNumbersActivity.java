@@ -2,16 +2,20 @@ package weareallthesame.view.games.chooseoperatorgames;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
+import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
+import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionNumberTextViewAdapter;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -23,8 +27,11 @@ import android.view.ViewGroup;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class ChooseOperatorNumbersActivity extends Activity implements
 		ChooseOperatorBetweenNumbersViewInterface {
@@ -34,7 +41,7 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 
 	private DisplayMetrics displayMetrics;
 	private ArrayList<TextView> numbersAndSigns;
-	private ArrayList<String> answersOperators;
+	private ArrayList<Character> answersOperators;
 	private MediaPlayer mMediaPlayer;
 	private Random r = new Random();
 	private int width, height;
@@ -47,7 +54,7 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_choose_the_sign_numbers);
 
-		openGame();
+		// openGame();
 
 		getMetrics();
 		getMediaPlayer();
@@ -71,15 +78,17 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 
 	private void initializeViews() {
 		numbersAndSigns
-				.add((TextView) findViewById(R.id.choose_sign_numbers_element_one));
+				.add((TextView) findViewById(R.id.choose_operator_numbers_element_one));
 		numbersAndSigns
-				.add((TextView) findViewById(R.id.choose_sign_numbers_sign));
+				.add((TextView) findViewById(R.id.choose_operator_numbers_operator));
 		numbersAndSigns
-				.add((TextView) findViewById(R.id.choose_sign_numbers_element_two));
+				.add((TextView) findViewById(R.id.choose_operator_numbers_element_two));
 		numbersAndSigns
-				.add((TextView) findViewById(R.id.choose_sign_numbers_equals_sign));
+				.add((TextView) findViewById(R.id.choose_operator_numbers_equals_operator));
 		numbersAndSigns
-				.add((TextView) findViewById(R.id.choose_sign_numbers_result));
+				.add((TextView) findViewById(R.id.choose_operator_numbers_result));
+
+		answersContainer = (GridView) findViewById(R.id.choose_operator_answers_container);
 
 	}
 
@@ -138,8 +147,6 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 
 	}
 
-	
-
 	private final class MyClickListener implements OnLongClickListener {
 
 		@Override
@@ -171,7 +178,7 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 			case DragEvent.ACTION_DRAG_STARTED:
 				break;
 			case DragEvent.ACTION_DRAG_ENTERED:
-				//receivingLayoutView.setBackground(getGradientDrawable());
+				// receivingLayoutView.setBackground(getGradientDrawable());
 				break;
 			case DragEvent.ACTION_DRAG_LOCATION:
 				break;
@@ -211,7 +218,39 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 	@Override
 	public void setOfferedOperators(Set<Character> operators) {
 		// TODO Auto-generated method stub
-		
+		Iterator<Character> it = operators.iterator();
+		answersOperators = new ArrayList<Character>();
+		while (it.hasNext()) {
+			answersOperators.add(it.next());
+		}
+
+		int txtWidth = width / 4;
+		int txtHeight = height / (answersOperators.size() / 4 + 1);
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+				"fonts/amerika_.ttf");
+
+		answersContainer.setAdapter(new ChooseOperatorTextViewAdapter(this,
+				answersOperators, tf, txtWidth, txtHeight, COLORNUMBERS));
+
+		answersContainer.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				TextView tx = (TextView) view;
+				char operator = tx.getText().charAt(0);
+				numbersAndSigns.get(4).setText(operator);
+				System.out.println(operator);
+
+				try {
+					appInterface.executeCommand("ChooseOperator", operator);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
 
 	}
 
@@ -219,17 +258,68 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 	public void setNumbers(int numberOne, int numberTwo, int result) {
 		// TODO Auto-generated method stub
 
+		numbersAndSigns.get(0).setText(Integer.toString(numberOne));
+		numbersAndSigns.get(2).setText(Integer.toString(numberTwo));
+		numbersAndSigns.get(4).setText(Integer.toString(result));
+
 	}
 
 	@Override
 	public void gameOver() {
-		// TODO Auto-generated method stub
+		mMediaPlayer.start();
+		numbersAndSigns.get(4).setBackground(getGradientDrawable(COLORNUMBERS));
+		numbersAndSigns.get(4).setText(Integer.toString(clickedNumber));
+		numbersAndSigns.get(4).setTextColor(COLORSIGNS);
+		Intent intent = new Intent(this, GameOverChoiceActivity.class);
+		startActivityForResult(intent, 0);
 
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 0) {
+			if (resultCode == RESULT_OK) {
+				String result = data.getExtras().getString("result");
+				if (result.equals("NEW")) {
+
+					Intent intent = new Intent(this, this.getClass());
+					try {
+						intent.putExtra("gameType",
+								appInterface.getCurrentGameType());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					intent.putStringArrayListExtra("gameTags",
+							appInterface.getCurrentGameTags());
+					intent.putExtra("appInterface", appInterface);
+
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					startActivity(intent);
+
+					finish();
+				} else if (result.equals("BACK")) {
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					finish();
+				}
+			}
+		}
 	}
 
 	@Override
 	public void wrongAnswer() {
 		// TODO Auto-generated method stub
+
+		Toast.makeText(getApplicationContext(), "Неточен одговор",
+				Toast.LENGTH_SHORT).show();
 
 	}
 
