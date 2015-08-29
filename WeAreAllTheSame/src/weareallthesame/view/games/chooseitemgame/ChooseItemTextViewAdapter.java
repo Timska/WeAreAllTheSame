@@ -22,10 +22,9 @@ public class ChooseItemTextViewAdapter extends BaseAdapter {
 	private int height, width;
 	private int textColor;
 	private String longestString;
-	
 
 	public ChooseItemTextViewAdapter(Context c, ArrayList<String> answers,
-			Typeface tf, int width, int height, int color,String longestString) {
+			Typeface tf, int width, int height, int color, String longestString) {
 		mContext = c;
 		this.tf = tf;
 		this.answers = new ArrayList<String>();
@@ -33,7 +32,7 @@ public class ChooseItemTextViewAdapter extends BaseAdapter {
 		this.height = height;
 		this.width = width;
 		this.textColor = color;
-		this.longestString=longestString;
+		this.longestString = longestString;
 	}
 
 	public int getCount() {
@@ -52,41 +51,26 @@ public class ChooseItemTextViewAdapter extends BaseAdapter {
 		TextView textView;
 		if (convertView == null) {
 			textView = new TextView(mContext);
-			GridView.LayoutParams lp=new GridView.LayoutParams(
+			GridView.LayoutParams lp = new GridView.LayoutParams(
 					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-			
+
 			textView.setLayoutParams(lp);
-			//textView.setPadding(10, 10, 10, 10);
-			
 
 		} else {
 			textView = (TextView) convertView;
 		}
-		
-		String text=answers.get(position);
-		
-		Paint paint=new Paint();
-		float size=paint.measureText(longestString);
 
+		String text = answers.get(position);
+		Paint paint = new Paint();
+		float size = paint.measureText(longestString);
 		textView.setTypeface(tf);
 		textView.setTextSize(18);
 		textView.setTextColor(textColor);
-		textView.setWidth((int)size+20);
+		textView.setWidth((int) size + 20);
 		textView.setHeight(height);
 		textView.setGravity(Gravity.CENTER);
 		textView.setText(text);
 		return textView;
-	}
-
-	private GradientDrawable getGradientDrawable(int color) {
-
-		GradientDrawable gd = new GradientDrawable();
-		gd.setColor(color);
-		gd.setCornerRadius(10);
-		gd.setShape(GradientDrawable.RECTANGLE);
-		//gd.setStroke(2, Color.BLACK, 5, 5);
-		return gd;
-
 	}
 
 }
