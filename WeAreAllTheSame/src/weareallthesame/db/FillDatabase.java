@@ -1087,8 +1087,8 @@ public class FillDatabase {
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseItem", "numbers_chooseWord"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "OrderElements", "numbers_orderNumbers"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ClassifyItems", "numbers_classify"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "numbers_chooseOperator", "ChooseOperatorBetweenNumbers"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "numbers_chooseOperatorSets", "ChooseOperatorBetweenSets"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseOperatorBetweenNumbers", "numbers_chooseOperator"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseOperatorBetweenSets", "numbers_chooseOperatorSets"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_chooseAnimal"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_choosePicture"));
