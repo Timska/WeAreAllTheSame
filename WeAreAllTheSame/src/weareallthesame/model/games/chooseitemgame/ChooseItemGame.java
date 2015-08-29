@@ -52,7 +52,10 @@ public class ChooseItemGame extends AbstractGame implements ChooseItemInterface{
 		}
 		Iterator<Item> offeredItems = ItemFactory.getItem(this.getTags(), numOfferedAnswers - 1);
 		while(offeredItems.hasNext()){
-			offeredAnswers.add(offeredItems.next());
+			Item item = offeredItems.next();
+			if(!answer.getName().equals(item.getName())){
+				offeredAnswers.add(item);
+			}
 		}
 		
 		view.setOfferedAnswers(offeredAnswers);
