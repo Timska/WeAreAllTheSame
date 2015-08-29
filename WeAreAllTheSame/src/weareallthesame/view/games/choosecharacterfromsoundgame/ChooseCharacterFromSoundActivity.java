@@ -197,7 +197,6 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 				answersString, tf, txtWidth, txtHeight));
 
 		answersContainer.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {

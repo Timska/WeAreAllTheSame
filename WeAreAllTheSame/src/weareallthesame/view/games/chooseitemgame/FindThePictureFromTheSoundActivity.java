@@ -195,7 +195,6 @@ public class FindThePictureFromTheSoundActivity extends Activity implements
 
 	@Override
 	public void wrongAnswer() {
-		
 		Toast.makeText(getApplicationContext(), "Неточен одговор",
 				Toast.LENGTH_SHORT).show();
 	}

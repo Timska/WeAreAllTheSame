@@ -14,15 +14,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
-
 public class ChooseItemImageViewAdapter extends BaseAdapter {
 
 	private Context mContext;
 	private ArrayList<Integer> answers;
 	private int height, width;
 
-	public ChooseItemImageViewAdapter(Context c, ArrayList<Integer> resourcePaths,
-			int width, int height) {
+	public ChooseItemImageViewAdapter(Context c,
+			ArrayList<Integer> resourcePaths, int width, int height) {
 		mContext = c;
 		this.answers = new ArrayList<Integer>();
 		this.answers = resourcePaths;
@@ -48,7 +47,7 @@ public class ChooseItemImageViewAdapter extends BaseAdapter {
 		if (convertView == null) {
 			imageView = new TextView(mContext);
 			imageView.setLayoutParams(new GridView.LayoutParams(
-					width, LayoutParams.WRAP_CONTENT));
+					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 			imageView.setPadding(8, 8, 8, 8);
 
 		} else {
@@ -56,8 +55,8 @@ public class ChooseItemImageViewAdapter extends BaseAdapter {
 		}
 
 		imageView.setGravity(Gravity.CENTER);
-		//imageView.setHeight(height);
-		//imageView.setWidth(width);
+		// imageView.setHeight(height);
+		// imageView.setWidth(width);
 		imageView.setBackgroundResource(answers.get(position));
 		return imageView;
 	}
