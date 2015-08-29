@@ -8,7 +8,7 @@ import weareallthesame.view.games.chooseitemgame.FindPictureFromPictureActivity;
 import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheSoundActivity;
 import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheWordActivity;
 import weareallthesame.view.games.chooseitemgame.FindTheWordFromThePictureActivity;
-import weareallthesame.view.games.choosesigngames.ChooseTheSignNumbersActivity;
+import weareallthesame.view.games.chooseoperatorgames.ChooseTheSignNumbersActivity;
 import weareallthesame.view.games.connectitemsgames.ConnectItemsActivity;
 import weareallthesame.view.games.hangmangame.HangmanGameActivity;
 import weareallthesame.view.games.howmanygame.HowManyObjectsActivity;
