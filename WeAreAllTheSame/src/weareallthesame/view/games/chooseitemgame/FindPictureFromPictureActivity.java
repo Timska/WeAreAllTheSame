@@ -3,6 +3,7 @@ package weareallthesame.view.games.chooseitemgame;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
@@ -93,17 +94,6 @@ public class FindPictureFromPictureActivity extends Activity implements ChooseIt
 	}
 
 	@Override
-	public void setOfferedAnswers(List<Item> offeredAnswers) {
-		// TODO Auto-generated method stub
-		Iterator<Item> it=offeredAnswers.iterator();
-		while(it.hasNext()){
-			offeredImagesResources.add(getResources().getIdentifier(it.next().getResourceNames().get("picture"), "raw", this.getPackageName()));
-		}
-		answersContainer.setAdapter(new ChooseItemImageViewAdapter(this,offeredImagesResources,width,height));
-		
-	}
-
-	@Override
 	public void gameOver() {
 		Intent intent = new Intent(this, GameOverChoiceActivity.class);
 		startActivityForResult(intent, 0);
@@ -152,5 +142,16 @@ public class FindPictureFromPictureActivity extends Activity implements ChooseIt
 		// TODO Auto-generated method stub
 		Toast.makeText(getApplicationContext(), "Неточен одговор",
 				Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void setOfferedAnswers(Set<Item> offeredAnswers) {
+		// TODO Auto-generated method stub
+		Iterator<Item> it=offeredAnswers.iterator();
+		while(it.hasNext()){
+			offeredImagesResources.add(getResources().getIdentifier(it.next().getResourceNames().get("picture"), "raw", this.getPackageName()));
+		}
+		answersContainer.setAdapter(new ChooseItemImageViewAdapter(this,offeredImagesResources,width,height));
+		
 	}
 }

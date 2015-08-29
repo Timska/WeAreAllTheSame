@@ -2,6 +2,7 @@ package weareallthesame.view.games.chooseitemgame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
@@ -57,7 +58,7 @@ public class FindTheWordFromThePictureActivity extends Activity implements Choos
 	}
 
 	@Override
-	public void setOfferedAnswers(List<Item> offeredAnswers) {
+	public void setOfferedAnswers(Set<Item> offeredAnswers) {
 		// TODO Auto-generated method stub
 		
 	}

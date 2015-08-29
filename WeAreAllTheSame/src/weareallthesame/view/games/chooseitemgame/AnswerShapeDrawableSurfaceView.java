@@ -3,6 +3,7 @@ package weareallthesame.view.games.chooseitemgame;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import weareallthesame.model.items.Item;
 import android.content.Context;
@@ -198,12 +199,6 @@ public class AnswerShapeDrawableSurfaceView extends SurfaceView implements
 	}
 
 	@Override
-	public void setOfferedAnswers(List<Item> offeredAnswers) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void gameOver() {
 		// TODO Auto-generated method stub
 
@@ -223,6 +218,12 @@ public class AnswerShapeDrawableSurfaceView extends SurfaceView implements
 		int yposition = (int) event.getY();
 
 		return isHitted(xposition, yposition);
+	}
+
+	@Override
+	public void setOfferedAnswers(Set<Item> offeredAnswers) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

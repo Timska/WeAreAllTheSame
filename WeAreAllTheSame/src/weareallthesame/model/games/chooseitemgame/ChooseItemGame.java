@@ -1,9 +1,11 @@
 package weareallthesame.model.games.chooseitemgame;
 
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import weareallthesame.factories.ItemFactory;
 import weareallthesame.model.exceptions.GameOverException;
@@ -18,7 +20,7 @@ public class ChooseItemGame extends AbstractGame implements ChooseItemInterface{
 
 	private ChooseItemViewInterface view;
 	private Item answer;
-	private List<Item> offeredAnswers;
+	private Set<Item> offeredAnswers;
 	private boolean gameOver;
 	
 	public ChooseItemGame(Iterator<String> tags, Object view, String question) throws InvalidViewTypeException {
@@ -41,7 +43,7 @@ public class ChooseItemGame extends AbstractGame implements ChooseItemInterface{
 	}
 	
 	private void init(){
-		offeredAnswers = new ArrayList<Item>();
+		offeredAnswers = new HashSet<Item>();
 		offeredAnswers.add(answer);
 		Random random = new Random();
 		int numOfferedAnswers = 0;
@@ -52,6 +54,7 @@ public class ChooseItemGame extends AbstractGame implements ChooseItemInterface{
 		while(offeredItems.hasNext()){
 			offeredAnswers.add(offeredItems.next());
 		}
+		
 		view.setOfferedAnswers(offeredAnswers);
 	}
 
