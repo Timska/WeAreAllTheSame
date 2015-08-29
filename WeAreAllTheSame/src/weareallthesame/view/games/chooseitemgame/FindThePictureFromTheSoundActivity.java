@@ -116,12 +116,14 @@ public class FindThePictureFromTheSoundActivity extends Activity implements
 	public void setOfferedAnswers(Set<Item> offeredAnswers) {
 		// TODO Auto-generated method stub
 		answerResources = new ArrayList<Integer>();
-		answers=(ArrayList<Item>) offeredAnswers;
+		answers = new ArrayList<Item>();
 		Iterator<Item> it = offeredAnswers.iterator();
 		while (it.hasNext()) {
+			Item item = it.next();
 			answerResources.add(getResources().getIdentifier(
-					it.next().getResourceNames().get("picture"), "drawable",
+					item.getResourceNames().get("picture"), "drawable",
 					this.getPackageName()));
+			answers.add(item);
 		}
 		int imgWidth = width / 3;
 		int imgHeight = height / (offeredAnswers.size() / 3 + 1);
@@ -134,7 +136,7 @@ public class FindThePictureFromTheSoundActivity extends Activity implements
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				// TODO Auto-generated method stub
-				TextView tx = (TextView) view;
+
 				clickedItem = answers.get(position);
 				try {
 					appInterface.executeCommand("ChooseItem", clickedItem);
@@ -193,81 +195,11 @@ public class FindThePictureFromTheSoundActivity extends Activity implements
 
 	@Override
 	public void wrongAnswer() {
-		mMediaPlayer.start();
+		
 		Toast.makeText(getApplicationContext(), "Неточен одговор",
 				Toast.LENGTH_SHORT).show();
 	}
 
-	// private final class MyClickListener implements OnLongClickListener {
-	//
-	// @Override
-	// public boolean onLongClick(View v) {
-	// // TODO Auto-generated method stub
-	// ClipData.Item item = new ClipData.Item((CharSequence) v.getTag());
-	// String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
-	// System.out.println(item.toString());
-	// ClipData data = new ClipData(v.getTag().toString(), mimeTypes, item);
-	// DragShadowBuilder dsb = new View.DragShadowBuilder(v);
-	//
-	// v.startDrag(data, dsb, v, 0);
-	// v.setVisibility(View.INVISIBLE);
-	//
-	// return true;
-	// }
-	//
-	// }
 
-	// private final class MyDragListener implements OnDragListener {
-	//
-	// @Override
-	// public boolean onDrag(View receivingLayoutView, DragEvent event) {
-	// // TODO Auto-generated method stub
-	//
-	// View draggedImageView = (View) event.getLocalState();
-	//
-	// switch (event.getAction()) {
-	// case DragEvent.ACTION_DRAG_STARTED:
-	// receivingLayoutView.setBackgroundColor(R.color.red);
-	// break;
-	// case DragEvent.ACTION_DRAG_ENTERED:
-	// receivingLayoutView.setBackgroundColor(R.color.red);
-	// break;
-	// case DragEvent.ACTION_DRAG_LOCATION:
-	// receivingLayoutView.setBackgroundColor(R.color.red);
-	// break;
-	// case DragEvent.ACTION_DROP:
-	// switch (draggedImageView.getId()) {
-	// case R.id.find_picture_from_sound_answerOne:
-	// return false;
-	// case R.id.find_picture_from_sound_answerTwo:
-	// ViewGroup draggedImageViewParentLayout = (ViewGroup) draggedImageView
-	// .getParent();
-	// draggedImageViewParentLayout.removeView(draggedImageView);
-	// LinearLayout bottomLinearLayout = (LinearLayout) receivingLayoutView;
-	// bottomLinearLayout.addView(draggedImageView);
-	// draggedImageView.setVisibility(View.VISIBLE);
-	// receivingLayoutView.setBackgroundColor(R.color.yellow);
-	// return true;
-	// case R.id.find_picture_from_sound_answerThree:
-	// return false;
-	// case R.id.find_picture_from_sound_answerFour:
-	// return false;
-	// default:
-	// return false;
-	// }
-	//
-	// case DragEvent.ACTION_DRAG_ENDED:
-	// receivingLayoutView.setBackgroundColor(R.color.yellow);
-	// if (!event.getResult()) {
-	//
-	// draggedImageView.setVisibility(View.VISIBLE);
-	// }
-	// default:
-	// break;
-	// }
-	// return true;
-	// }
-	//
-	// }
 
 }
