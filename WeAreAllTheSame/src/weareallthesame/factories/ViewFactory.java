@@ -1,5 +1,7 @@
 package weareallthesame.factories;
 
+import weareallthesame.model.games.chooseoperatorgames.ChooseOperatorBetweenSetsGame;
+import weareallthesame.model.games.choosesigngames.ChooseSignBetweenNumbersGame;
 import weareallthesame.view.R;
 import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionNumbersActivity;
 import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionSetsActivity;
@@ -9,6 +11,7 @@ import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheSoundActiv
 import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheWordActivity;
 import weareallthesame.view.games.chooseitemgame.FindTheWordFromThePictureActivity;
 import weareallthesame.view.games.chooseoperatorgames.ChooseOperatorNumbersActivity;
+import weareallthesame.view.games.choosesigngames.ChooseSignBetweenNumbersSmallerBigger;
 import weareallthesame.view.games.connectitemsgames.ConnectItemsActivity;
 import weareallthesame.view.games.hangmangame.HangmanGameActivity;
 import weareallthesame.view.games.howmanygame.HowManyObjectsActivity;
@@ -56,7 +59,7 @@ public class ViewFactory {
 				return OrderElementsActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_findSign))){
-				return ChooseOperatorNumbersActivity.class;
+				return ChooseSignBetweenNumbersSmallerBigger.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_sets))){
 				//TODO go nema uste konkretnoto activity
@@ -66,6 +69,12 @@ public class ViewFactory {
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_substractSets))){
 				return AdditionAndSubstractionSetsActivity.class;
+			}
+			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_chooseOperator))){
+				return ChooseOperatorNumbersActivity.class;
+			}
+			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_chooseOperatorSets))){
+				//
 			}
 			
 		}

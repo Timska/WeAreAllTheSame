@@ -77,6 +77,13 @@ public class TagsFactory {
 				tags.add("even");
 				return tags;
 			}
+			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_chooseOperator))){
+				return tags;
+			}
+			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_chooseOperatorSets))){
+				tags.add("set");
+				return tags;
+			}
 			
 		}
 		if(categoryType.equalsIgnoreCase("Animals")){
