@@ -64,7 +64,7 @@ public class ClassifyItemsTextViewAdapter extends BaseAdapter {
 		Paint paint = new Paint();
 		float size = paint.measureText(longestString);
 		textView.setTypeface(tf);
-		textView.setTag(text);
+		textView.setTag("Correct");
 		textView.setTextSize(18);
 		textView.setTextColor(textColor);
 		textView.setWidth((int) size + 20);

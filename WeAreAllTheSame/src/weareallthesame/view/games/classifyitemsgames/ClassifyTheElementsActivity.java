@@ -17,8 +17,11 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.DragEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.DragShadowBuilder;
+import android.view.View.OnDragListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -43,6 +46,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 	private int width, height;
 	private String longestAnswer;
 	private LinearLayout.LayoutParams params;
+	private TextView groupOneDescription, groupTwoDescription;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 		getMetrics();
 		initializeViews();
-		elements = new ArrayList<String>();
+		// elements = new ArrayList<String>();
 		elementsGroupOne = new ArrayList<String>();
 		elementsGroupTwo = new ArrayList<String>();
 		openGame();
@@ -72,6 +76,8 @@ public class ClassifyTheElementsActivity extends Activity implements
 		params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
 				LayoutParams.WRAP_CONTENT);
 		params.setMargins(5, 5, 5, 5);
+		groupOneDescription=(TextView) findViewById(R.id.classify_elements_group_one_description);
+		groupTwoDescription=(TextView) findViewById(R.id.classify_elements_group_two_description);
 
 	}
 
@@ -113,7 +119,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 		int txtHeight = this.height / 10;
 
 		container.setAdapter(new ClassifyItemsTextViewAdapter(this, elements,
-				tf, txtWidth, txtHeight, COLORGROUPONE, longestAnswer));
+				tf, txtWidth, txtHeight, COLOROFFEREDELEMENTS, longestAnswer));
 
 		container
 				.setOnItemLongClickListener((OnItemLongClickListener) new MyLongClickListener());
@@ -128,22 +134,36 @@ public class ClassifyTheElementsActivity extends Activity implements
 		int i = 0;
 		Set<Item> groupOneItems = null;
 		Set<Item> groupTwoItems = null;
+		String nameGroupOne = "";
+		String nameGroupTwo = "";
 		while (it.hasNext()) {
 			if (i == 0) {
-				groupOneItems = it.next().getValue();
+				Entry<String, Set<Item>> element = it.next();
+				groupOneItems = element.getValue();
+				nameGroupOne = element.getKey();
+
 			} else {
-				groupTwoItems = it.next().getValue();
+				Entry<String, Set<Item>> element = it.next();
+				groupTwoItems = element.getValue();
+				nameGroupTwo = element.getKey();
 			}
+			++i;
 		}
+
+		groupOneDescription.setText(nameGroupOne);
+		groupTwoDescription.setText(nameGroupTwo);
+		groupOne.addView(createTextView(nameGroupOne, COLORGROUPONE), params);
+		groupTwo.addView(createTextView(nameGroupTwo, COLORGROUPTWO), params);
+
 		Iterator<Item> itemsOneIterator = groupOneItems.iterator();
 		while (it.hasNext()) {
 			String text = itemsOneIterator.next().getName();
-			groupOne.addView(createTextView(text), params);
+			groupOne.addView(createTextView(text, COLORGROUPONE), params);
 		}
 		Iterator<Item> itemsTwoIterator = groupTwoItems.iterator();
 		while (it.hasNext()) {
 			String text = itemsTwoIterator.next().getName();
-			groupOne.addView(createTextView(text), params);
+			groupOne.addView(createTextView(text, COLORGROUPTWO), params);
 		}
 
 	}
@@ -160,10 +180,11 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 	}
 
-	private TextView createTextView(String text) {
+	private TextView createTextView(String text, int color) {
 
 		TextView tx = new TextView(this);
-		tx.setTextColor(COLORGROUPONE);
+		tx.setTextColor(color);
+		tx.setTag("Correct");
 		return tx;
 
 	}
@@ -184,6 +205,55 @@ public class ClassifyTheElementsActivity extends Activity implements
 			v.startDrag(data, dsb, v, 0);
 			v.setVisibility(View.INVISIBLE);
 			return false;
+		}
+
+	}
+
+	private class MyDragListener implements OnDragListener {
+		@Override
+		public boolean onDrag(View receivingLayoutView, DragEvent event) {
+			// TODO Auto-generated method stub
+
+			TextView draggedTextView = (TextView) event.getLocalState();
+
+			switch (event.getAction()) {
+			case DragEvent.ACTION_DRAG_STARTED:
+				break;
+			case DragEvent.ACTION_DRAG_ENTERED:
+				break;
+			case DragEvent.ACTION_DRAG_LOCATION:
+				break;
+			case DragEvent.ACTION_DROP:
+				String tagDragged = (String) draggedTextView.getTag();
+				try {
+					appInterface.executeCommand("ChooseString",
+							draggedTextView.getText());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if (tagDragged.equals("Correct")) {
+					ViewGroup draggedImageViewParentLayout = (ViewGroup) draggedTextView
+							.getParent();
+					draggedImageViewParentLayout.removeView(draggedTextView);
+					LinearLayout receiving = (LinearLayout) receivingLayoutView;
+					receiving.addView(draggedImageViewParentLayout);
+					draggedTextView.setVisibility(View.VISIBLE);
+					return true;
+				} else {
+					draggedTextView.setVisibility(View.VISIBLE);
+					return false;
+				}
+
+			case DragEvent.ACTION_DRAG_ENDED:
+
+				if (!event.getResult()) {
+
+					draggedTextView.setVisibility(View.VISIBLE);
+				}
+			default:
+				break;
+			}
+			return true;
 		}
 
 	}
