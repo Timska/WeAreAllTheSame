@@ -10,6 +10,7 @@ import weareallthesame.model.commands.Command;
 import weareallthesame.model.exceptions.CommandDoesNotExistException;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.exceptions.ObjectDoesNotBelongInSetException;
 import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 
@@ -33,7 +34,7 @@ public abstract class AbstractGame implements Game {
 	}
 
 	@Override
-	public void execute(String type, Object... arguments) throws GameOverException, CommandException, CommandDoesNotExistException, WrongNumberOfArgumentsException, WrongArgumentTypeException {
+	public void execute(String type, Object... arguments) throws GameOverException, CommandException, CommandDoesNotExistException, WrongNumberOfArgumentsException, WrongArgumentTypeException, ObjectDoesNotBelongInSetException {
 		Command command = commandFactory.getCommand(type, arguments);
 		command.execute();
 		commands.add(command);

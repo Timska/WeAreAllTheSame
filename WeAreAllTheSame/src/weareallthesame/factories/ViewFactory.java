@@ -1,7 +1,5 @@
 package weareallthesame.factories;
 
-import weareallthesame.model.games.chooseoperatorgames.ChooseOperatorBetweenSetsGame;
-import weareallthesame.model.games.choosesigngames.ChooseSignBetweenNumbersGame;
 import weareallthesame.view.R;
 import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionNumbersActivity;
 import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionSetsActivity;

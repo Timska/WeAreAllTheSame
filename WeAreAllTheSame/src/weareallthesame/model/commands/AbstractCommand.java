@@ -2,6 +2,7 @@ package weareallthesame.model.commands;
 
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.exceptions.ObjectDoesNotBelongInSetException;
 import weareallthesame.model.interfaces.Typable;
 
 public abstract class AbstractCommand implements Command, Typable {
@@ -11,14 +12,14 @@ public abstract class AbstractCommand implements Command, Typable {
 	private boolean executed;
 
 	@Override
-	public final void execute() throws GameOverException, CommandException {
+	public final void execute() throws GameOverException, CommandException, ObjectDoesNotBelongInSetException {
 		if (!executed) {
 			executed = true;
 			executeNow();
 		}
 	}
 	
-	public abstract void executeNow() throws GameOverException, CommandException;
+	public abstract void executeNow() throws GameOverException, CommandException, ObjectDoesNotBelongInSetException;
 
 	@Override
 	public final void undo() throws GameOverException, CommandException {

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.exceptions.ObjectDoesNotBelongInSetException;
 import weareallthesame.model.interfaces.Typable;
 
 /**
@@ -15,8 +16,9 @@ public interface Command extends Typable, Serializable {
 	 * povikan metodot {@link Command#undo()}. Vo sprotivno ne se slucuva nisto.
 	 * @throws CommandException se javuva greska pri izvrsuvanje na komandata
 	 * @throws GameOverException komandata ne moze da se izvrsi bidejki igrata e zavrsena
+	 * @throws ObjectDoesNotBelongInSetException 
 	 */
-	public void execute() throws GameOverException, CommandException;
+	public void execute() throws GameOverException, CommandException, ObjectDoesNotBelongInSetException;
 
 	/**
 	 * Pravi revert na komandata dokolku posledno e izvrsen metodot execute. Vo

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import weareallthesame.model.exceptions.CommandDoesNotExistException;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.exceptions.ObjectDoesNotBelongInSetException;
 import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.interfaces.Typable;
@@ -21,8 +22,9 @@ public interface Game extends Typable, Serializable {
 	 * @throws CommandDoesNotExistException 
 	 * @throws WrongArgumentTypeException 
 	 * @throws WrongNumberOfArgumentsException 
+	 * @throws ObjectDoesNotBelongInSetException 
 	 */
-	public void execute(String type, Object... arguments) throws GameOverException, CommandException, CommandDoesNotExistException, WrongNumberOfArgumentsException, WrongArgumentTypeException;
+	public void execute(String type, Object... arguments) throws GameOverException, CommandException, CommandDoesNotExistException, WrongNumberOfArgumentsException, WrongArgumentTypeException, ObjectDoesNotBelongInSetException;
 	
 	/**
 	 * Ovoj metod e povrzan so {@link Game#execute(String, Object...)} metodot i dokolku se povika pravi revert na posledno 
