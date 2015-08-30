@@ -9,6 +9,7 @@ import java.util.Set;
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.exceptions.ObjectDoesNotBelongInSetException;
 import weareallthesame.model.items.Item;
+import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
 import android.app.Activity;
 import android.content.ClipData;
@@ -31,6 +32,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ClassifyTheElementsActivity extends Activity implements
 		ClassifyItemsViewInterface {
@@ -60,7 +62,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 		getMetrics();
 		initializeViews();
-		// elements = new ArrayList<String>();
+		 elements = new ArrayList<String>();
 		elementsGroupOne = new ArrayList<String>();
 		elementsGroupTwo = new ArrayList<String>();
 		tf = Typeface.createFromAsset(getAssets(), "fonts/amerika_.ttf");
@@ -131,22 +133,25 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 		int txtWidth = this.width / 3;
 		int txtHeight = this.height / 10;
+		System.out.println("djhfkfhs"+elements.size());
 
 		container.setAdapter(new ClassifyItemsTextViewAdapter(this, elements,
 				tf, txtWidth, txtHeight, COLOROFFEREDELEMENTS, longestAnswer));
 
 		container
 				.setOnItemLongClickListener((OnItemLongClickListener) new MyLongClickListener());
-		
+
 	}
 
 	@Override
 	public void setOrUpdateClassElements(Map<String, Set<Item>> classSetMap) {
 		// TODO Auto-generated method stub
+		
 		System.out.println(classSetMap.size());
 		Set<Entry<String, Set<Item>>> entryset = classSetMap.entrySet();
 		Iterator<Entry<String, Set<Item>>> it = entryset.iterator();
 		int i = 0;
+		
 		Set<Item> groupOneItems = null;
 		Set<Item> groupTwoItems = null;
 		String nameGroupOne = "";
@@ -167,13 +172,16 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 		groupOneDescription.setText(nameGroupOne);
 		groupTwoDescription.setText(nameGroupTwo);
-		
+
+		// System.out.println(elements.size());
 
 		longestAnswer = "";
 		Iterator<Item> itemsOneIterator = groupOneItems.iterator();
 		while (it.hasNext()) {
+
 			String text = itemsOneIterator.next().getName();
 			elementsGroupOne.add(text);
+			elements.add(text);
 			if (text.length() > longestAnswer.length()) {
 				longestAnswer = text;
 			}
@@ -181,16 +189,27 @@ public class ClassifyTheElementsActivity extends Activity implements
 		containerGroupOne.setAdapter(new ClassifyItemsTextViewAdapter(this,
 				elementsGroupOne, tf, 0, 0, COLORGROUPONE, longestAnswer));
 		longestAnswer = "";
+
 		Iterator<Item> itemsTwoIterator = groupTwoItems.iterator();
 		while (it.hasNext()) {
 			String text = itemsTwoIterator.next().getName();
-			elementsGroupTwo.add(text);
+			elementsGroupOne.add(text);
+			elements.add(text);
+			if (text.length() > longestAnswer.length()) {
+				longestAnswer = text;
+			}
 
 		}
-		containerGroupOne.setOnDragListener(new MyDragListener(elements,
-				elementsGroupOne, longestAnswer, COLORGROUPONE, nameGroupOne));
-		containerGroupTwo.setOnDragListener(new MyDragListener(elements,
-				elementsGroupTwo, longestAnswer, COLORGROUPTWO, nameGroupTwo));
+		containerGroupTwo.setAdapter(new ClassifyItemsTextViewAdapter(this,
+				elementsGroupTwo, tf, 0, 0, COLORGROUPTWO, longestAnswer));
+
+		System.out.println("Elements" + elements.size());
+		containerGroupOne.setOnDragListener(new MyDragListener(
+				containerGroupOne, elements, elementsGroupOne, longestAnswer,
+				COLORGROUPONE, nameGroupOne));
+		containerGroupTwo.setOnDragListener(new MyDragListener(
+				containerGroupTwo, elements, elementsGroupTwo, longestAnswer,
+				COLORGROUPTWO, nameGroupTwo));
 
 	}
 
@@ -198,12 +217,55 @@ public class ClassifyTheElementsActivity extends Activity implements
 	public void wrongChoice() {
 		// TODO Auto-generated method stub
 
+		Toast.makeText(getApplicationContext(), "Неточен одговор",
+				Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public void gameOver() {
-		// TODO Auto-generated method stub
 
+		Intent intent = new Intent(this, GameOverChoiceActivity.class);
+		startActivityForResult(intent, 0);
+
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 0) {
+			if (resultCode == RESULT_OK) {
+				String result = data.getExtras().getString("result");
+				if (result.equals("NEW")) {
+
+					Intent intent = new Intent(this, this.getClass());
+					try {
+						intent.putExtra("gameType",
+								appInterface.getCurrentGameType());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					intent.putStringArrayListExtra("gameTags",
+							appInterface.getCurrentGameTags());
+					intent.putExtra("appInterface", appInterface);
+
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					startActivity(intent);
+
+					finish();
+				} else if (result.equals("BACK")) {
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					finish();
+				}
+			}
+		}
 	}
 
 	private TextView createTextView(String text, int color) {
@@ -237,17 +299,17 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 	private class MyDragListener implements OnDragListener {
 
-		GridView containerFrom;
-		ArrayList<String> listFrom=new ArrayList<String>();
-		ArrayList<String> listTo=new ArrayList<String>();
+		GridView containerTo;
+		ArrayList<String> listFrom = new ArrayList<String>();
+		ArrayList<String> listTo = new ArrayList<String>();
 		String longestString;
 		String category;
 		int color;
 
-		public MyDragListener(ArrayList<String> listFrom,
-				ArrayList<String> listTwo, String longest, int color,
+		public MyDragListener(GridView containerTo, ArrayList<String> listFrom,
+				ArrayList<String> listTo, String longest, int color,
 				String category) {
-			this.containerFrom = containerFrom;
+			this.containerTo = containerTo;
 			this.listFrom = listFrom;
 			this.listTo = listTo;
 			this.longestString = longest;
@@ -283,18 +345,23 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 				String text = draggedTextView.getText().toString();
 				System.out.println(text);
-				
-				if(listFrom.contains(text))
+
+				if (listFrom.contains(text))
 					listFrom.remove(text);
-				
+
+				//container.removeAllViews();
+				System.out.println("List from size" + listFrom.size());
 				container.setAdapter(new ClassifyItemsTextViewAdapter(
 						getApplicationContext(), listFrom, tf, 0, 0,
 						COLOROFFEREDELEMENTS, longestString));
+
+				System.out.println("List to size"+ listTo.size());
 				listTo.add(text);
-				container.setAdapter(new ClassifyItemsTextViewAdapter(
+				//containerTo.removeAllViews();
+				containerTo.setAdapter(new ClassifyItemsTextViewAdapter(
 						getApplicationContext(), listTo, tf, 0, 0, color,
 						longestString));
-				// draggedTextView.setVisibility(View.VISIBLE);
+
 				return true;
 
 			case DragEvent.ACTION_DRAG_ENDED:
