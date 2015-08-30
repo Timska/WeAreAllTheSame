@@ -161,13 +161,15 @@ public class ClassifyTheElementsActivity extends Activity implements
 				Entry<String, Set<Item>> element = it.next();
 				groupOneItems = element.getValue();
 				nameGroupOne = element.getKey();
+				i=1;
 
 			} else {
 				Entry<String, Set<Item>> element = it.next();
 				groupTwoItems = element.getValue();
 				nameGroupTwo = element.getKey();
+				i=0;
 			}
-			++i;
+			
 		}
 
 		groupOneDescription.setText(nameGroupOne);

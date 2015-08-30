@@ -17,16 +17,4 @@
         android:text="@string/how_many_objects_description"
         android:textSize="20sp" />
 
-    <view
-        android:layout_width="match_parent"
-        android:layout_height="267dp"
-        class="weareallthesame.view.games.howmanygame.HowManyObjectsView" />
-
-    <view
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        class="weareallthesame.view.games.howmanygame.ShowAnswersView" />
-
-
-   
 </LinearLayout>

@@ -27,18 +27,22 @@ public class HowManyObjectsView extends View implements HowManyViewInterface {
 	private ArrayList<Bitmap> bitmaps;
 	private ArrayList<Rect> boundsBitmaps;
 	private Random r = new Random();
-	private DisplayMetrics displayMetrics;
-	private int vWidth = 500, vHeight = 300;
+	private int vWidth, vHeight,howMany;
 	private Rect bounds;
 	private Paint paint = new Paint();
 	private SurfaceHolder surfaceHolder;
+	private int id;
 
-	public HowManyObjectsView(Context context) {
+	public HowManyObjectsView(Context context, int howMany, int width,
+			int height, int id) {
 		super(context);
 		// TODO Auto-generated constructor stub
 		bitmaps = new ArrayList<Bitmap>();
 		boundsBitmaps = new ArrayList<Rect>();
-
+		this.vHeight = height;
+		this.vWidth = width;
+		this.howMany=howMany;
+		this.id=id;
 		addScaledBitmaps();
 		addBitmaps();
 		paint.setStyle(Paint.Style.STROKE);
@@ -61,27 +65,24 @@ public class HowManyObjectsView extends View implements HowManyViewInterface {
 		// TODO Auto-generated method stub
 
 		super.onDraw(canvas);
-		//canvas.onDraw(canvas);
-		//canvas.drawColor(0, Mode.CLEAR);
-		//canvas.drawColor(color.holo_red_light);
+		// canvas.onDraw(canvas);
+		// canvas.drawColor(0, Mode.CLEAR);
+		// canvas.drawColor(color.holo_red_light);
 		for (int i = 0; i < bitmaps.size(); ++i) {
 			bounds = boundsBitmaps.get(i);
 			canvas.drawBitmap(bitmaps.get(i), bounds.left, bounds.top, paint);
 		}
-		
+
 	}
 
 	public int c = 0; // c is a counter of frames
 
-	/*@Override
-	public void draw(Canvas canvas) {
-		c++;
-		if (c >= 2 && c <= 4) { // change it to your own condition, the goal is
-								// to draw it only two times(2 passes), every
-								// time you need to "refresh" the screen
-			canvas.drawColor(Color.TRANSPARENT, Mode.CLEAR);
-		}
-	} */
+	/*
+	 * @Override public void draw(Canvas canvas) { c++; if (c >= 2 && c <= 4) {
+	 * // change it to your own condition, the goal is // to draw it only two
+	 * times(2 passes), every // time you need to "refresh" the screen
+	 * canvas.drawColor(Color.TRANSPARENT, Mode.CLEAR); } }
+	 */
 
 	private void drawSurface(Canvas canvas) {
 
@@ -128,9 +129,9 @@ public class HowManyObjectsView extends View implements HowManyViewInterface {
 
 	private void addScaledBitmaps() {
 
-		int n = r.nextInt(10) + 1;
+		int n = howMany;
 		Bitmap b = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(
-				getResources(), R.drawable.piperka), 100, 100, true);
+				getResources(), id), 100, 100, true);
 
 		for (int i = 0; i < n; ++i) {
 			bitmaps.add(b);
