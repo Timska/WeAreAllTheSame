@@ -45,9 +45,8 @@
     <string name="cloud_text">Игра</string>
     <string name="hangman_game_standard_choose_letter">Избери буква.</string>
     <string name="new_game">Нова игра</string>
-	<string name="go_back">Врати се назад</string>
-	<string name="drop_place_description">Стави го одговорот овде.</string>
-	
+    <string name="go_back">Врати се назад</string>
+    <string name="drop_place_description">Стави го одговорот овде.</string>
 
     <!-- Game names -->
     <string name="letters_chooseLetter">Избери буква</string>
@@ -110,8 +109,7 @@
     <string name="clothesandbodyparts_connect">Поврзи</string>
     <string name="emotions_chooseWord">Избери збор</string>
     <string name="emotions_choosePicture">Избери слика</string>
-    
-    
+
     <!-- Activity titles -->
     <string name="title_activity_addition_and_substraction_sets">AdditionAndSubstractionSetsActivity</string>
     <string name="title_activity_choose_the_sign_numbers">ChooseTheSignNumbersActivity</string>
@@ -136,5 +134,6 @@
     <string name="title_activity_hangman_game_standard">HangmanGameStandardActivity</string>
     <string name="title_activity_letters_list">LettersListActivity</string>
     <string name="title_activity_game_over_choice">GameOverChoiceActivity</string>
+    <string name="title_activity_classify_items_images">ClassifyItemsImagesActivity</string>
 
 </resources>

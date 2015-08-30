@@ -116,7 +116,7 @@
             android:label="@string/title_activity_addition_and_substraction_sets" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.chooseoperatorgames.ChooseOperatorNumbersActivity"
+            android:name=".games.chooseoperatorgames.ChooseOperatorNumbersActivity"
             android:label="@string/title_activity_choose_the_sign_numbers" >
         </activity>
         <activity
@@ -150,7 +150,11 @@
         <activity
             android:name=".GameOverChoiceActivity"
             android:label="@string/title_activity_game_over_choice"
-            android:theme="@style/DarkTransparent">
+            android:theme="@style/DarkTransparent" >
+        </activity>
+        <activity
+            android:name="weareallthesame.view.games.classifyitemsgames.ClassifyItemsImagesActivity"
+            android:label="@string/title_activity_classify_items_images" >
         </activity>
     </application>
 
