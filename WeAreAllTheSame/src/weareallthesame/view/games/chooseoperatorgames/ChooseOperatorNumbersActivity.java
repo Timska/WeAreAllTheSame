@@ -1,7 +1,6 @@
 package weareallthesame.view.games.chooseoperatorgames;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
@@ -9,7 +8,6 @@ import java.util.Set;
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
-import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstractionNumberTextViewAdapter;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
@@ -23,15 +21,16 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.DragEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.DragShadowBuilder;
+import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
 
 public class ChooseOperatorNumbersActivity extends Activity implements
 		ChooseOperatorBetweenNumbersViewInterface {
@@ -47,7 +46,8 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 	private int width, height;
 	private ApplicationInterface appInterface;
 	private GridView answersContainer;
-	private int clickedNumber;
+	private String operator;
+	private TextView answerOne, answerTwo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +89,8 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 				.add((TextView) findViewById(R.id.choose_operator_numbers_result));
 
 		answersContainer = (GridView) findViewById(R.id.choose_operator_answers_container);
+		answerOne = (TextView) findViewById(R.id.choose_operator_numbers_answer_one);
+		answerTwo = (TextView) findViewById(R.id.choose_operator_numbers_answer_two);
 
 	}
 
@@ -131,9 +133,17 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 			tx.setTextSize(30);
 		}
 		numbersAndSigns.get(3).setText("=");
-		numbersAndSigns.get(4).setBackground(getGradientDrawable(COLORSIGNS));
-		numbersAndSigns.get(4).setTextColor(COLORNUMBERS);
+		numbersAndSigns.get(1).setBackground(getGradientDrawable(COLORSIGNS));
+		numbersAndSigns.get(1).setTextColor(COLORNUMBERS);
 
+		answerOne.setHeight(height/10);
+		answerTwo.setHeight(height/10);
+		answerOne.setWidth(width/3);
+		answerTwo.setWidth(width/3);
+		answerOne.setBackground(getGradientDrawable(COLORSIGNS));
+		answerTwo.setBackground(getGradientDrawable(COLORSIGNS));
+		answerTwo.setTextColor(COLORNUMBERS);
+		answerOne.setTextColor(COLORNUMBERS);
 	}
 
 	private GradientDrawable getGradientDrawable(int color) {
@@ -214,17 +224,46 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 		}
 
 	}
+	
+	private final class MyTouchListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			TextView tx=(TextView) v;
+			operator=(String) tx.getText();
+			try {
+				appInterface.executeCommand("ChooseOperator",
+						operator.charAt(0));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
 
 	@Override
 	public void setOfferedOperators(Set<Character> operators) {
 		// TODO Auto-generated method stub
 		Iterator<Character> it = operators.iterator();
+		System.out.println(operators.size());
 		answersOperators = new ArrayList<Character>();
 		while (it.hasNext()) {
-			answersOperators.add(it.next());
+			Character c = it.next();
+			System.out.println(c);
+			answersOperators.add(c);
 		}
 
-		int txtWidth = width / 4;
+		answerOne.setText(Character.toString(answersOperators.get(0)));
+
+		answerTwo.setText(Character.toString(answersOperators.get(1)));
+		
+		answerOne.setOnClickListener(new MyTouchListener());
+		answerTwo.setOnClickListener(new MyTouchListener());
+		
+		
+		/*int txtWidth = width / 4;
 		int txtHeight = height / (answersOperators.size() / 4 + 1);
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/amerika_.ttf");
@@ -239,19 +278,19 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 					int position, long id) {
 				// TODO Auto-generated method stub
 				TextView tx = (TextView) view;
-				char operator = tx.getText().charAt(0);
-				numbersAndSigns.get(4).setText(operator);
-				System.out.println(operator);
+				operator = (String) tx.getText();
+				// numbersAndSigns.get(1).setText(operator);
 
 				try {
-					appInterface.executeCommand("ChooseOperator", operator);
+					appInterface.executeCommand("ChooseOperator",
+							operator.charAt(0));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 
 			}
 		});
-
+ */
 	}
 
 	@Override
@@ -267,9 +306,10 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 	@Override
 	public void gameOver() {
 		mMediaPlayer.start();
-		numbersAndSigns.get(4).setBackground(getGradientDrawable(COLORNUMBERS));
-		numbersAndSigns.get(4).setText(Integer.toString(clickedNumber));
-		numbersAndSigns.get(4).setTextColor(COLORSIGNS);
+		numbersAndSigns.get(1).setBackground(getGradientDrawable(COLORNUMBERS));
+		numbersAndSigns.get(1).setText(operator);
+		numbersAndSigns.get(1).setTextColor(COLORSIGNS);
+		mMediaPlayer.start();
 		Intent intent = new Intent(this, GameOverChoiceActivity.class);
 		startActivityForResult(intent, 0);
 

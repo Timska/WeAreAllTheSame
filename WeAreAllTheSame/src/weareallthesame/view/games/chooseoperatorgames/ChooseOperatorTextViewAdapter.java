@@ -63,11 +63,12 @@ public class ChooseOperatorTextViewAdapter extends BaseAdapter {
 
 		char text = answers.get(position);
 		textView.setTypeface(tf);
-		textView.setTextSize(18);
+		textView.setTextSize(30);
 		textView.setTextColor(textColor);
-		textView.setHeight(height);
+	//	textView.setHeight(height);
 		textView.setGravity(Gravity.CENTER);
-		textView.setText(text);
+		System.out.println(text);
+		textView.setText(Character.toString(text));
 		return textView;
 	}
 
