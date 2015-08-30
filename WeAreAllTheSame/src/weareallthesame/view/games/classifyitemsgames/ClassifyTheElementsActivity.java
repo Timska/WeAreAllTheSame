@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
+import weareallthesame.model.exceptions.ObjectDoesNotBelongInSetException;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.R;
 import android.app.Activity;
@@ -15,6 +16,8 @@ import android.content.ClipDescription;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
+import android.nfc.cardemulation.OffHostApduService;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.DragEvent;
@@ -35,18 +38,20 @@ public class ClassifyTheElementsActivity extends Activity implements
 	private final static int COLORGROUPONE = Color.rgb(247, 129, 129);
 	private final static int COLORGROUPTWO = Color.rgb(129, 185, 248);
 	private final static int COLOROFFEREDELEMENTS = Color.rgb(244, 236, 95);
+	private ArrayList<Item> answers;
 	private ArrayList<String> elements;
 	private ArrayList<String> elementsGroupOne;
 	private ArrayList<String> elementsGroupTwo;
-	private LinearLayout groupOne;
-	private LinearLayout groupTwo;
-	private GridView container;
+	private GridView container, containerGroupOne, containerGroupTwo;
 	private ApplicationInterface appInterface;
 	private DisplayMetrics displayMetrics;
 	private int width, height;
 	private String longestAnswer;
-	private LinearLayout.LayoutParams params;
+	private GridView.LayoutParams params;
 	private TextView groupOneDescription, groupTwoDescription;
+	private Typeface tf;
+	private Item clickedItem;
+	private String categoryOne, categoryTwo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 		// elements = new ArrayList<String>();
 		elementsGroupOne = new ArrayList<String>();
 		elementsGroupTwo = new ArrayList<String>();
+		tf = Typeface.createFromAsset(getAssets(), "fonts/amerika_.ttf");
 		openGame();
 
 	}
@@ -71,13 +77,18 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 	private void initializeViews() {
 		container = (GridView) findViewById(R.id.classify_elements_container);
-		//groupOne = (LinearLayout) findViewById(R.id.classify_elements_group_one);
-		//groupTwo = (LinearLayout) findViewById(R.id.classify_elements_group_two);
-		params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
-				LayoutParams.WRAP_CONTENT);
-		params.setMargins(5, 5, 5, 5);
-		//groupOneDescription=(TextView) findViewById(R.id.classify_elements_group_one_description);
-		//groupTwoDescription=(TextView) findViewById(R.id.classify_elements_group_two_description);
+		containerGroupOne = (GridView) findViewById(R.id.classify_elements_group_one_container);
+		containerGroupTwo = (GridView) findViewById(R.id.classify_elements_group_two_container);
+		ViewGroup.LayoutParams layoutParams = container.getLayoutParams();
+		layoutParams.height = height / 4; // this is in pixels
+		container.setLayoutParams(layoutParams);
+		containerGroupOne.setLayoutParams(layoutParams);
+		containerGroupTwo.setLayoutParams(layoutParams);
+		container.setBackground(getGradientDrawable(COLOROFFEREDELEMENTS));
+		containerGroupOne.setBackground(getGradientDrawable(COLORGROUPONE));
+		containerGroupTwo.setBackground(getGradientDrawable(COLORGROUPTWO));
+		groupOneDescription = (TextView) findViewById(R.id.classify_elements_group_one_description);
+		groupTwoDescription = (TextView) findViewById(R.id.classify_elements_group_two_description);
 
 	}
 
@@ -103,18 +114,21 @@ public class ClassifyTheElementsActivity extends Activity implements
 	public void setOrUpdate(Set<Item> offeredItems) {
 		// TODO Auto-generated method stub
 
+		answers = new ArrayList<Item>();
 		elements = new ArrayList<String>();
 		longestAnswer = "";
 		Iterator<Item> it = offeredItems.iterator();
 		while (it.hasNext()) {
-			String text = it.next().getName();
+
+			Item item = it.next();
+			answers.add(item);
+			String text = item.getName();
 			elements.add(text);
 			if (text.length() > longestAnswer.length()) {
 				longestAnswer = text;
 			}
 		}
-		Typeface tf = Typeface.createFromAsset(getAssets(),
-				"fonts/amerika_.ttf");
+
 		int txtWidth = this.width / 3;
 		int txtHeight = this.height / 10;
 
@@ -123,6 +137,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 		container
 				.setOnItemLongClickListener((OnItemLongClickListener) new MyLongClickListener());
+		
 	}
 
 	@Override
@@ -150,22 +165,33 @@ public class ClassifyTheElementsActivity extends Activity implements
 			++i;
 		}
 
-		/*groupOneDescription.setText(nameGroupOne);
+		groupOneDescription.setText(nameGroupOne);
 		groupTwoDescription.setText(nameGroupTwo);
-		groupOne.addView(createTextView(nameGroupOne, COLORGROUPONE), params);
-		groupTwo.addView(createTextView(nameGroupTwo, COLORGROUPTWO), params);
+		
 
+		longestAnswer = "";
 		Iterator<Item> itemsOneIterator = groupOneItems.iterator();
 		while (it.hasNext()) {
 			String text = itemsOneIterator.next().getName();
-			groupOne.addView(createTextView(text, COLORGROUPONE), params);
+			elementsGroupOne.add(text);
+			if (text.length() > longestAnswer.length()) {
+				longestAnswer = text;
+			}
 		}
+		containerGroupOne.setAdapter(new ClassifyItemsTextViewAdapter(this,
+				elementsGroupOne, tf, 0, 0, COLORGROUPONE, longestAnswer));
+		longestAnswer = "";
 		Iterator<Item> itemsTwoIterator = groupTwoItems.iterator();
 		while (it.hasNext()) {
 			String text = itemsTwoIterator.next().getName();
-			groupOne.addView(createTextView(text, COLORGROUPTWO), params);
+			elementsGroupTwo.add(text);
+
 		}
- */
+		containerGroupOne.setOnDragListener(new MyDragListener(elements,
+				elementsGroupOne, longestAnswer, COLORGROUPONE, nameGroupOne));
+		containerGroupTwo.setOnDragListener(new MyDragListener(elements,
+				elementsGroupTwo, longestAnswer, COLORGROUPTWO, nameGroupTwo));
+
 	}
 
 	@Override
@@ -195,7 +221,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 		public boolean onItemLongClick(AdapterView<?> parent, View v,
 				int position, long id) {
 			// TODO Auto-generated method stub
-
+			clickedItem = answers.get(position);
 			ClipData.Item item = new ClipData.Item((CharSequence) v.getTag());
 			String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
 			System.out.println(item.toString());
@@ -210,6 +236,25 @@ public class ClassifyTheElementsActivity extends Activity implements
 	}
 
 	private class MyDragListener implements OnDragListener {
+
+		GridView containerFrom;
+		ArrayList<String> listFrom=new ArrayList<String>();
+		ArrayList<String> listTo=new ArrayList<String>();
+		String longestString;
+		String category;
+		int color;
+
+		public MyDragListener(ArrayList<String> listFrom,
+				ArrayList<String> listTwo, String longest, int color,
+				String category) {
+			this.containerFrom = containerFrom;
+			this.listFrom = listFrom;
+			this.listTo = listTo;
+			this.longestString = longest;
+			this.color = color;
+			this.category = category;
+		}
+
 		@Override
 		public boolean onDrag(View receivingLayoutView, DragEvent event) {
 			// TODO Auto-generated method stub
@@ -224,25 +269,33 @@ public class ClassifyTheElementsActivity extends Activity implements
 			case DragEvent.ACTION_DRAG_LOCATION:
 				break;
 			case DragEvent.ACTION_DROP:
-				String tagDragged = (String) draggedTextView.getTag();
 				try {
-					appInterface.executeCommand("ChooseString",
-							draggedTextView.getText());
+					appInterface.executeCommand("classifyitem", clickedItem,
+							category);
+
 				} catch (Exception e) {
 					e.printStackTrace();
-				}
-				if (tagDragged.equals("Correct")) {
-					ViewGroup draggedImageViewParentLayout = (ViewGroup) draggedTextView
-							.getParent();
-					draggedImageViewParentLayout.removeView(draggedTextView);
-					LinearLayout receiving = (LinearLayout) receivingLayoutView;
-					receiving.addView(draggedImageViewParentLayout);
-					draggedTextView.setVisibility(View.VISIBLE);
-					return true;
-				} else {
+					// if(e instanceof ObjectDoesNotBelongInSetException){
 					draggedTextView.setVisibility(View.VISIBLE);
 					return false;
+					// }
 				}
+
+				String text = draggedTextView.getText().toString();
+				System.out.println(text);
+				
+				if(listFrom.contains(text))
+					listFrom.remove(text);
+				
+				container.setAdapter(new ClassifyItemsTextViewAdapter(
+						getApplicationContext(), listFrom, tf, 0, 0,
+						COLOROFFEREDELEMENTS, longestString));
+				listTo.add(text);
+				container.setAdapter(new ClassifyItemsTextViewAdapter(
+						getApplicationContext(), listTo, tf, 0, 0, color,
+						longestString));
+				// draggedTextView.setVisibility(View.VISIBLE);
+				return true;
 
 			case DragEvent.ACTION_DRAG_ENDED:
 
@@ -255,6 +308,17 @@ public class ClassifyTheElementsActivity extends Activity implements
 			}
 			return true;
 		}
+
+	}
+
+	private GradientDrawable getGradientDrawable(int color) {
+
+		GradientDrawable gd = new GradientDrawable();
+		// gd.setColor(color);
+		gd.setCornerRadius(10);
+		gd.setShape(GradientDrawable.RECTANGLE);
+		gd.setStroke(2, color, 5, 5);
+		return gd;
 
 	}
 
