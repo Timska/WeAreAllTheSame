@@ -113,13 +113,13 @@ public class ChooseSignBetweenNumbersSmallerBigger extends Activity implements
 		}
 		numbersAndSigns.get(1).setBackground(getGradientDrawable(COLORSIGNS));
 		numbersAndSigns.get(1).setTextColor(COLORNUMBERS);
-		for(int i=0;i<answers.size();++i){
-		
-			TextView tx=answers.get(i);
+		for (int i = 0; i < answers.size(); ++i) {
+
+			TextView tx = answers.get(i);
 			tx.setBackground(getGradientDrawable(COLORSIGNS));
 			tx.setTextColor(COLORNUMBERS);
 			tx.setHeight(height / 10);
-			tx.setWidth(width/4);
+			tx.setWidth(width / 4);
 		}
 
 	}
@@ -151,7 +151,7 @@ public class ChooseSignBetweenNumbersSmallerBigger extends Activity implements
 		System.out.println(signs.size());
 		while (it.hasNext()) {
 			Character c = it.next();
-			System.out.println("char "+c);
+			System.out.println("char " + c);
 			signsAnswers.add(c);
 		}
 		System.out.println(signsAnswers.size());
@@ -166,7 +166,7 @@ public class ChooseSignBetweenNumbersSmallerBigger extends Activity implements
 	public void gameOver() {
 		mMediaPlayer.start();
 		numbersAndSigns.get(1).setBackground(getGradientDrawable(COLORNUMBERS));
-		// numbersAndSigns.get(1).setText(operator);
+		numbersAndSigns.get(1).setText(operator);
 		numbersAndSigns.get(1).setTextColor(COLORSIGNS);
 		mMediaPlayer.start();
 		Intent intent = new Intent(this, GameOverChoiceActivity.class);
