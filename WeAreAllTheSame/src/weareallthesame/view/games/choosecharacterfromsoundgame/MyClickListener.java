@@ -19,7 +19,6 @@ public class MyClickListener implements OnTouchListener {
 		System.out.println(item.toString());
 		ClipData data = new ClipData(v.getTag().toString(), mimeTypes, item);
 		DragShadowBuilder dsb = new View.DragShadowBuilder(v);
-
 		v.startDrag(data, dsb, v, 0);
 		v.setVisibility(View.INVISIBLE);
 		return false;
