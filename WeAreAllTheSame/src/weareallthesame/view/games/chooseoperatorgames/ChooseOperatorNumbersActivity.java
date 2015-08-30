@@ -256,7 +256,6 @@ public class ChooseOperatorNumbersActivity extends Activity implements
 		}
 
 		answerOne.setText(Character.toString(answersOperators.get(0)));
-
 		answerTwo.setText(Character.toString(answersOperators.get(1)));
 		
 		answerOne.setOnClickListener(new MyTouchListener());
