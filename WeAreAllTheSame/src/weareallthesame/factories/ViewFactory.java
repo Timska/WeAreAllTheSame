@@ -12,6 +12,8 @@ import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheWordActivi
 import weareallthesame.view.games.chooseitemgame.FindTheWordFromThePictureActivity;
 import weareallthesame.view.games.chooseoperatorgames.ChooseOperatorNumbersActivity;
 import weareallthesame.view.games.choosesigngames.ChooseSignBetweenNumbersSmallerBigger;
+import weareallthesame.view.games.classifyitemsgames.ClassifyItemsImagesActivity;
+import weareallthesame.view.games.classifyitemsgames.ClassifyTheElementsActivity;
 import weareallthesame.view.games.connectitemsgames.ConnectItemsActivity;
 import weareallthesame.view.games.hangmangame.HangmanGameActivity;
 import weareallthesame.view.games.howmanygame.HowManyObjectsActivity;
@@ -92,10 +94,10 @@ public class ViewFactory {
 				//TODO go nema toa activity seuste
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.animals_groupPictures))){
-				//TODO go nema toa activity
+				return ClassifyItemsImagesActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.animals_groupWords))){
-				//TODO go nema toa activity
+				return ClassifyTheElementsActivity.class;
 			}
 		}
 		if(categoryType.equalsIgnoreCase("ClothesAndBodyParts")){
