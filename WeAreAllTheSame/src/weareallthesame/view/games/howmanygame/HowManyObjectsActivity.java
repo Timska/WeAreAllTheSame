@@ -1,29 +1,31 @@
 package weareallthesame.view.games.howmanygame;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Iterator;
 import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.R;
+import weareallthesame.view.games.chooseitemgame.ChooseItemImageViewAdapter;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Rect;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.GridView;
 
-public class HowManyObjectsActivity extends Activity implements HowManyViewInterface{
+public class HowManyObjectsActivity extends Activity implements
+		HowManyViewInterface {
 
-	private ArrayList<ImageView> objects;
-	private ArrayList<Rect> rectBounds;
-	private Random r = new Random();
+	private final static int COLORGROUPONE = Color.rgb(247, 129, 129);
 	private DisplayMetrics displayMetrics;
 	private int width, height;
-	private LinearLayout container;
+	private GridView container, answerContainer;
 	private ApplicationInterface appInterface;
+	private ArrayList<String> answers;
+	private Typeface tf;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,7 @@ public class HowManyObjectsActivity extends Activity implements HowManyViewInter
 		setContentView(R.layout.activity_how_many_objects);
 
 		getMetrics();
-
+		initializeViews();
 		openGame();
 
 	}
@@ -43,9 +45,10 @@ public class HowManyObjectsActivity extends Activity implements HowManyViewInter
 		height = displayMetrics.heightPixels;
 
 	}
-	private void initializeViews(){
-		container=(LinearLayout) findViewById(R.id.how_many_objects_container);
-		
+
+	private void initializeViews() {
+		container = (GridView) findViewById(R.id.how_many_objects_container);
+		answerContainer = (GridView) findViewById(R.id.how_many_objects_answer_container);
 	}
 
 	private void openGame() {
@@ -69,67 +72,53 @@ public class HowManyObjectsActivity extends Activity implements HowManyViewInter
 	@Override
 	public void setAnswer(Item item, int howMany) {
 		// TODO Auto-generated method stub
-		HowManyObjectsView view=new HowManyObjectsView(this, howMany, width, height/3, getResources().getIdentifier(item.getResourceNames().get("picture"), "drawable", this.getPackageName()));
-		container.addView(view);
+		// System.out.println(getResources().getIdentifier(
+		// item.getResourceNames().get("picture"), "drawable",
+		// this.getPackageName()));
+		// HowManyObjectsView view = new HowManyObjectsView(this, howMany,
+		// width,
+		// height / 3, getResources().getIdentifier(
+		// item.getResourceNames().get("picture"), "drawable",
+		// this.getPackageName()));
+		// container.addView(view);
+
+		int i = 0;
+		ArrayList<Integer> offeredImagesResources = new ArrayList<Integer>();
+
+		while (i < howMany) {
+			//offeredImagesResources.add(getResources().getIdentifier(
+			//		item.getResourceNames().get("picture"), "raw",
+			//		this.getPackageName()));
+		}
+		//container.setAdapter(new ChooseItemImageViewAdapter(this,
+				//offeredImagesResources, width, height));
 	}
 
 	@Override
 	public void setOfferedAnswers(Set<Integer> offeredAnswers) {
 		// TODO Auto-generated method stub
-		
+		Iterator<Integer> it = offeredAnswers.iterator();
+		answers = new ArrayList<String>();
+		while (it.hasNext()) {
+			answers.add(Integer.toString(it.next()));
+		}
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+				"fonts/amerika_.ttf");
+		answerContainer.setAdapter(new HowManyObjectsTextViewAdapter(this,
+				answers, tf, width, height, COLORGROUPONE));
+
 	}
 
 	@Override
 	public void gameOver() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void wrongAnswer() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	/*
-	 * private void addImageViews(){
-	 * 
-	 * int i=0; while(rectBounds.size()<objects.size()){
-	 * 
-	 * int x=r.nextInt(width/2); int y=r.nextInt(height/3);
-	 * 
-	 * int w=200; int h=200;
-	 * 
-	 * if(!isColiding(x, y, w, h)){ rectBounds.add(new Rect(x,y,x+w,y+h));
-	 * objects.get(i).setX(x); objects.get(i).setY(y); ++i; }
-	 * 
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 * 
-	 * 
-	 * }
-	 * 
-	 * 
-	 * private void fillObjects(){
-	 * 
-	 * int n=r.nextInt(10)+1; int i=0; while(i<n){ ImageView img=new
-	 * ImageView(this); Bitmap
-	 * b=Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
-	 * R.drawable.piperka), 100, 100,true);
-	 * 
-	 * //img.setBackgroundResource(b); objects.add(img); }
-	 * 
-	 * 
-	 * 
-	 * } private boolean isColiding(int x, int y, int width, int height) {
-	 * 
-	 * for (Rect bounds : rectBounds) {
-	 * 
-	 * if (bounds.left < x + width && bounds.left + bounds.width() > x &&
-	 * bounds.top < y + height && bounds.height() + bounds.top > y) { return
-	 * true; } } return false; }
-	 */
 }
