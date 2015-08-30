@@ -31,6 +31,7 @@ public class OrderElementsActivity extends Activity implements
 		OrderElementsViewInterface {
 
 	private ArrayList<String> answers;
+	private ArrayList<String> ordered;
 	private ArrayList<TextView> txtAnswers;
 	private LinearLayout container;
 	private DisplayMetrics displayMetrics;
@@ -53,16 +54,15 @@ public class OrderElementsActivity extends Activity implements
 		txtAnswers = new ArrayList<TextView>();
 
 		container = (LinearLayout) findViewById(R.id.order_elements_container);
-	
-		
+
 		openGame();
-		//setTextViews();
-		//LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-				//LinearLayout.LayoutParams.MATCH_PARENT,
-				//LinearLayout.LayoutParams.WRAP_CONTENT);
-		//container.setOrientation(LinearLayout.VERTICAL);
-		//layoutParams.setMargins(0, 5, 0, 5);
-		//addViewsTagsAndListeners(layoutParams);
+		setTextViews();
+		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.MATCH_PARENT,
+				LinearLayout.LayoutParams.WRAP_CONTENT);
+		container.setOrientation(LinearLayout.VERTICAL);
+		layoutParams.setMargins(0, 5, 0, 5);
+		addViewsTagsAndListeners(layoutParams);
 
 	}
 
@@ -214,35 +214,26 @@ public class OrderElementsActivity extends Activity implements
 
 	@Override
 	public void setElements(Set<String> elements) {
-		// TODO Auto-generated method stub
-		
-	//	System.out.println(elements.size());
-//		answers = new ArrayList<String>();
-//		Iterator<String> it = elements.iterator();
-//		while (it.hasNext()) {
-//
-//			String answer = it.next();
-//			System.out.println(answer);
-//			answers.add(answer);
-//		}
-		//Collections.sort(answers);
-		
+		// System.out.println(elements.size());
+		answers = new ArrayList<String>();
+		Iterator<String> it = elements.iterator();
+		while (it.hasNext()) {
+			String answer = it.next();
+			answers.add(answer);
+		}
+		// Collections.sort(answers);
 	}
 
 	@Override
 	public void setOrdered(List<String> orderedElements) {
-		// TODO Auto-generated method stub
+		ordered = new ArrayList<String>();
+		Iterator<String> it = orderedElements.iterator();
+		while (it.hasNext()) {
+			String answer = it.next();
+			System.out.println(answer);
+			ordered.add(answer);
+		}
 
-		//System.out.println(elements.size());
-		//answers = new ArrayList<String>();
-		//Iterator<String> it = orderedElements.iterator();
-		//while (it.hasNext()) {
-
-			//String answer = it.next();
-			//System.out.println(answer);
-			//answers.add(answer);
-		
-		
 	}
 
 	@Override
