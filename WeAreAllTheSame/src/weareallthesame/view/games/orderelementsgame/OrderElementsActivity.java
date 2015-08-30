@@ -2,6 +2,9 @@ package weareallthesame.view.games.orderelementsgame;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.R;
@@ -12,6 +15,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
+import android.nfc.cardemulation.OffHostApduService;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.DragEvent;
@@ -23,13 +27,14 @@ import android.view.View.OnLongClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class OrderElementsActivity extends Activity {
+public class OrderElementsActivity extends Activity implements
+		OrderElementsViewInterface {
 
 	private ArrayList<String> answers;
 	private ArrayList<TextView> txtAnswers;
 	private LinearLayout container;
 	private DisplayMetrics displayMetrics;
-	private int width,height;
+	private int width, height;
 	private ApplicationInterface appInterface;
 
 	@Override
@@ -37,44 +42,52 @@ public class OrderElementsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_order_elements);
 
-		openGame();
-		
-		displayMetrics = new DisplayMetrics();
-		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-		width = displayMetrics.widthPixels;
-		height = displayMetrics.heightPixels;
-		
-		
-		answers = new ArrayList<String>();
-		answers.add("igor");
-		answers.add("zorica");
-		answers.add("marija");
-		answers.add("aleksandra");
-		answers.add("martin");
+		getMetrics();
+
+		/*
+		 * answers = new ArrayList<String>(); answers.add("igor");
+		 * answers.add("zorica"); answers.add("marija");
+		 * answers.add("aleksandra"); answers.add("martin");
+		 */
 
 		txtAnswers = new ArrayList<TextView>();
 
 		container = (LinearLayout) findViewById(R.id.order_elements_container);
-		LinearLayout.LayoutParams layoutParams= new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.MATCH_PARENT,
-				LinearLayout.LayoutParams.WRAP_CONTENT);
-		container.setOrientation(LinearLayout.VERTICAL);
-		layoutParams.setMargins(0, 5, 0, 5);
-
-		setTextViews();
-		addViewsTagsAndListeners(layoutParams);
+	
+		
+		openGame();
+		//setTextViews();
+		//LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+				//LinearLayout.LayoutParams.MATCH_PARENT,
+				//LinearLayout.LayoutParams.WRAP_CONTENT);
+		//container.setOrientation(LinearLayout.VERTICAL);
+		//layoutParams.setMargins(0, 5, 0, 5);
+		//addViewsTagsAndListeners(layoutParams);
 
 	}
-	
+
+	private void getMetrics() {
+		displayMetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+		width = displayMetrics.widthPixels;
+		height = displayMetrics.heightPixels;
+
+	}
+
 	private void openGame() {
 		Intent intent = getIntent();
 		String gameType = intent.getStringExtra("gameType");
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
-		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
-		try{
-			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
-		}
-		catch(Exception e){
+		appInterface = (ApplicationInterface) intent
+				.getSerializableExtra("appInterface");
+		try {
+			appInterface.openGame(
+					gameType,
+					gameTags.iterator(),
+					this,
+					this.getResources().getString(
+							R.string.order_elements_task_description));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
@@ -84,18 +97,18 @@ public class OrderElementsActivity extends Activity {
 			String tag = (String) txtAnswers.get(i).getTag();
 			tag += " " + i;
 			txtAnswers.get(i).setTag(tag);
-			container.addView(txtAnswers.get(i),layPar);
+			container.addView(txtAnswers.get(i), layPar);
 			txtAnswers.get(i).setOnLongClickListener(new MyClickListener());
 			txtAnswers.get(i).setOnDragListener(new MyDragListener());
 		}
-		
+
 	}
 
 	private void setTextViews() {
 		for (int i = 0; i < answers.size(); ++i) {
 			TextView tx = new TextView(getApplicationContext());
 			tx.setText(answers.get(i));
-			tx.setHeight(height/(answers.size()+2));
+			tx.setHeight(height / (answers.size() + 3));
 			tx.setGravity(Gravity.CENTER);
 			tx.setTag(String.format("%d", i));
 			tx.setTextColor(Color.BLACK);
@@ -196,6 +209,51 @@ public class OrderElementsActivity extends Activity {
 			}
 			return true;
 		}
+
+	}
+
+	@Override
+	public void setElements(Set<String> elements) {
+		// TODO Auto-generated method stub
+		
+	//	System.out.println(elements.size());
+//		answers = new ArrayList<String>();
+//		Iterator<String> it = elements.iterator();
+//		while (it.hasNext()) {
+//
+//			String answer = it.next();
+//			System.out.println(answer);
+//			answers.add(answer);
+//		}
+		//Collections.sort(answers);
+		
+	}
+
+	@Override
+	public void setOrdered(List<String> orderedElements) {
+		// TODO Auto-generated method stub
+
+		//System.out.println(elements.size());
+		//answers = new ArrayList<String>();
+		//Iterator<String> it = orderedElements.iterator();
+		//while (it.hasNext()) {
+
+			//String answer = it.next();
+			//System.out.println(answer);
+			//answers.add(answer);
+		
+		
+	}
+
+	@Override
+	public void wrongAnswer() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void gameOver() {
+		// TODO Auto-generated method stub
 
 	}
 
