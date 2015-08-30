@@ -71,13 +71,13 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 	private void initializeViews() {
 		container = (GridView) findViewById(R.id.classify_elements_container);
-		groupOne = (LinearLayout) findViewById(R.id.classify_elements_group_one);
-		groupTwo = (LinearLayout) findViewById(R.id.classify_elements_group_two);
+		//groupOne = (LinearLayout) findViewById(R.id.classify_elements_group_one);
+		//groupTwo = (LinearLayout) findViewById(R.id.classify_elements_group_two);
 		params = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
 				LayoutParams.WRAP_CONTENT);
 		params.setMargins(5, 5, 5, 5);
-		groupOneDescription=(TextView) findViewById(R.id.classify_elements_group_one_description);
-		groupTwoDescription=(TextView) findViewById(R.id.classify_elements_group_two_description);
+		//groupOneDescription=(TextView) findViewById(R.id.classify_elements_group_one_description);
+		//groupTwoDescription=(TextView) findViewById(R.id.classify_elements_group_two_description);
 
 	}
 
@@ -150,7 +150,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 			++i;
 		}
 
-		groupOneDescription.setText(nameGroupOne);
+		/*groupOneDescription.setText(nameGroupOne);
 		groupTwoDescription.setText(nameGroupTwo);
 		groupOne.addView(createTextView(nameGroupOne, COLORGROUPONE), params);
 		groupTwo.addView(createTextView(nameGroupTwo, COLORGROUPTWO), params);
@@ -165,7 +165,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 			String text = itemsTwoIterator.next().getName();
 			groupOne.addView(createTextView(text, COLORGROUPTWO), params);
 		}
-
+ */
 	}
 
 	@Override

@@ -12,42 +12,42 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/classify_elements_task_description" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <LinearLayout
-            android:id="@+id/classify_elements_group_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/classify_elements_group_one_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/wild" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/classify_elements_group_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/classify_elements_group_two_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/domestic" />
-        </LinearLayout>
-    </LinearLayout>
 
     <GridView
         android:id="@+id/classify_elements_container"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_gravity="bottom" 
+        android:background="@drawable/background_find_picture_from_word"
+        android:numColumns="2" >
+    </GridView>
+
+    <TextView
+        android:id="@+id/classify_elements_group_one_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/wild" />
+
+    <GridView
+        android:id="@+id/classify_elements_group_one_container"
+        android:layout_width="wrap_content"
+        android:layout_height="160dp"
+        android:layout_gravity="bottom"
+        android:numColumns="2" >
+    </GridView>
+
+    <TextView
+        android:id="@+id/classify_elements_group_two_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/domestic" />
+
+    <GridView
+        android:id="@+id/classify_elements_group_two_container"
         android:layout_width="wrap_content"
         android:layout_height="160dp"
         android:layout_gravity="bottom"
