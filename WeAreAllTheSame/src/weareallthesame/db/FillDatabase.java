@@ -255,6 +255,11 @@ public class FillDatabase {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(194, "rain", "sound"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(195, "rain_thunder", "sound"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(196, "thunder", "sound"));
+		
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(234, "wind", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(235, "rain", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(236, "rain_thunder", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(237, "thunder", "picture"));
 	}
 	
 	private static void fillClothesAndBodyPartsResources() {
@@ -317,6 +322,7 @@ public class FillDatabase {
 		fillWeather();
 		fillClothesAndBodyParts();
 		fillEmotions();
+		fillYear();
 	}
 	
 	private static void fillFruitsAndVegetables() {
@@ -529,6 +535,11 @@ public class FillDatabase {
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("врне дожд", 194));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("врне дожд и грми", 195));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("грми", 196));
+		
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("дува ветар", 234));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("врне дожд", 235));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("врне дожд и грми", 236));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("грми", 237));
 	}
 	
 	private static void fillClothesAndBodyParts() {
@@ -575,14 +586,38 @@ public class FillDatabase {
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("изморено", 220));
 	}
 	
+	private static void fillYear() {
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Понеделник", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Вторник", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Среда", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Четврток", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Петок", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Сабота", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Недела", 0));
+		
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Јануари", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Февруари", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Март", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Април", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Мај", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Јуни", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Јули", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Август", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Септември", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Октомври", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Ноември", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Декември", 0));
+		
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Пролет", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Лето", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Есен", 0));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Зима", 0));
+	}
+	
 	private static ContentValues toItemContentValues(String itemName, int resourceID) {
 		ContentValues cv = new ContentValues();
 		cv.put(ItemOpenHelper.COLUMN_NAME, itemName);
-		if (resourceID == -1) {
-			cv.putNull(ItemOpenHelper.COLUMN_RESOURCE);
-		} else {
-			cv.put(ItemOpenHelper.COLUMN_RESOURCE, resourceID);
-		}
+		cv.put(ItemOpenHelper.COLUMN_RESOURCE, resourceID);
 		return cv;
 	}
 	
@@ -594,6 +629,7 @@ public class FillDatabase {
 		fillWeatherTags();
 		fillClothesAndBodyPartsTags();
 		fillEmotionsTags();
+		fillYearTags();
 	}
 	
 	private static void fillFruitsAndVegetablesTags() {
@@ -1126,6 +1162,34 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("изненадено", "emotions"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("замислено", "emotions"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("изморено", "emotions"));
+	}
+	
+	private static void fillYearTags() {
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Понеделник", "day"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Вторник", "day"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Среда", "day"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Четврток", "day"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Петок", "day"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Сабота", "day"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Недела", "day"));
+		
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Јануари", "month"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Февруари", "month"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Март", "month"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Април", "month"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Мај", "month"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Јуни", "month"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Јули", "month"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Август", "month"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Септември", "month"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Октомври", "month"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Ноември", "month"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Декември", "month"));
+
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Пролет", "season"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Лето", "season"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Есен", "season"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Зима", "season"));
 	}
 	
 	private static ContentValues toItemTagsContentValues(String itemName, String tag) {
