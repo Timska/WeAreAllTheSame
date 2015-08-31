@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
+import weareallthesame.model.exceptions.GameNotOpenException;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
@@ -15,15 +16,18 @@ import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstra
 import weareallthesame.view.games.additionandsubtractiongames.DrawSetsView;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -40,10 +44,11 @@ public class ChooseSignSetsActivity extends Activity implements
 	private LinearLayout setOneLayout;
 	private LinearLayout setTwoLayout;
 	private GridView answersContainer;
-	private TextView equalsSign, sign, txtResult;
+	private TextView answerOne, answerTwo, answerThree, sign, txtResult;
 	private DisplayMetrics displayMetrics;
 	private int width, height;
 	private Item itemOne, itemTwo;
+	private int numberOne,numberTwo;
 	private String signString;
 	private ApplicationInterface appInterface;
 
@@ -53,6 +58,7 @@ public class ChooseSignSetsActivity extends Activity implements
 		setContentView(R.layout.activity_choose_sign_sets);
 		getMetrics();
 		initializeViews();
+		openGame();
 	}
 
 	private void getMetrics() {
@@ -66,28 +72,54 @@ public class ChooseSignSetsActivity extends Activity implements
 	private void initializeViews() {
 		setOneLayout = (LinearLayout) findViewById(R.id.choose_sign_sets_set_one);
 		setTwoLayout = (LinearLayout) findViewById(R.id.choose_sign_sets_set_two);
-		answersContainer = (GridView) findViewById(R.id.choose_sign_sets_answers_container);
+		answerOne = (TextView) findViewById(R.id.choose_sign_sets_answer_one);
+		answerTwo = (TextView) findViewById(R.id.choose_sign_sets_answer_two);
+		answerThree = (TextView) findViewById(R.id.choose_sign_sets_answer_three);
 		sign = (TextView) findViewById(R.id.choose_sign_sets_sign);
 		LinearLayout.LayoutParams lp = new LayoutParams(
 				LayoutParams.MATCH_PARENT, height / 4);
 		setOneLayout.setLayoutParams(lp);
 		setTwoLayout.setLayoutParams(lp);
-		sign.setTextColor(COLORANSWERS);
+		sign.setBackground(getGradientDrawable(COLORANSWERS));
+		sign.setWidth(width / 5);
+		sign.setTextColor(Color.WHITE);
 		sign.setTextSize(30);
+		answerOne.setBackground(getGradientDrawable(COLORANSWERS));
+		answerOne.setTextColor(Color.WHITE);
+		answerOne.setWidth(width / 5);
+		answerThree.setBackground(getGradientDrawable(COLORANSWERS));
+		answerThree.setTextColor(Color.WHITE);
+		answerTwo.setWidth(width / 5);
+		answerTwo.setBackground(getGradientDrawable(COLORANSWERS));
+		answerTwo.setTextColor(Color.WHITE);
+		answerThree.setWidth(width / 5);
 
+	}
+
+	private void openGame() {
+		Intent intent = getIntent();
+		String gameType = intent.getStringExtra("gameType");
+		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
+		appInterface = (ApplicationInterface) intent
+				.getSerializableExtra("appInterface");
+		try {
+			appInterface.openGame(
+					gameType,
+					gameTags.iterator(),
+					this,
+					this.getResources().getString(
+							R.string.choose_operator_numbers_task_description));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void setNumbers(int numOne, int numTwo) {
 		// TODO Auto-generated method stub
-		Bitmap b = Bitmap.createScaledBitmap(
-				BitmapFactory.decodeResource(getResources(), R.drawable.limon),
-				100, 100, true);
-
-		DrawSetsView view = new DrawSetsView(this, 5, width, height / 4, b);
-		setOneLayout.addView(view);
-		view = new DrawSetsView(this, 5, width, height / 4, b);
-		setTwoLayout.addView(view);
+		this.numberOne=numOne;
+		this.numberTwo=numTwo;
+		
 
 	}
 
@@ -102,36 +134,47 @@ public class ChooseSignSetsActivity extends Activity implements
 			System.out.println(c);
 			answersString.add(Character.toString(c));
 		}
+		answerOne.setText(answersString.get(0));
+		answerTwo.setText(answersString.get(1));
+		answerThree.setText(answersString.get(2));
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/amerika_.ttf");
-		answersContainer
-				.setAdapter(new AdditionAndSubstractionNumberTextViewAdapter(
-						this, answersString, tf, width, height, COLORANSWERS));
-
-		answersContainer.setOnItemClickListener(new OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// TODO Auto-generated method stub
-				TextView tx = (TextView) view;
-				int number = Integer.parseInt((String) tx.getText());
-
-				try {
-					appInterface.executeCommand("ChooseNumber", number);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-			}
-		});
+		/*
+		 * answersContainer .setAdapter(new
+		 * AdditionAndSubstractionNumberTextViewAdapter( this, answersString,
+		 * tf, width, height, COLORANSWERS));
+		 * 
+		 * answersContainer.setOnItemClickListener(new OnItemClickListener() {
+		 * 
+		 * @Override public void onItemClick(AdapterView<?> parent, View view,
+		 * int position, long id) { // TODO Auto-generated method stub TextView
+		 * tx = (TextView) view; int number = Integer.parseInt((String)
+		 * tx.getText());
+		 * 
+		 * try { appInterface.executeCommand("ChooseNumber", number); } catch
+		 * (Exception e) { e.printStackTrace(); }
+		 * 
+		 * } });
+		 */
+		
+		answerOne.setOnClickListener(new MyTouchListener());
+		answerTwo.setOnClickListener(new MyTouchListener());
+		answerThree.setOnClickListener(new MyTouchListener());
 
 	}
 
 	@Override
 	public void gameOver() {
+	
 		Intent intent = new Intent(this, GameOverChoiceActivity.class);
 		startActivityForResult(intent, 0);
+		/*try {
+			appInterface.exitGame();
+		} catch (GameNotOpenException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} */
+
 	}
 
 	@Override
@@ -186,6 +229,46 @@ public class ChooseSignSetsActivity extends Activity implements
 		// TODO Auto-generated method stub
 		this.itemOne = itemOne;
 		this.itemTwo = itemTwo;
+		
+		int idOne = getResources().getIdentifier(itemOne.getResourceNames().get("picture"), "drawable",this.getPackageName());
+		int idTwo = getResources().getIdentifier(itemTwo.getResourceNames().get("picture"), "drawable",this.getPackageName());
+		
+		Bitmap b = Bitmap.createScaledBitmap(
+				BitmapFactory.decodeResource(getResources(), idOne),
+				100, 100, true);
+
+		DrawSetsView view = new DrawSetsView(this, 3, width, height / 4, b);
+		setOneLayout.addView(view);
+		view = new DrawSetsView(this, 3, width, height / 4, b);
+		setTwoLayout.addView(view);
+
+	}
+
+	private GradientDrawable getGradientDrawable(int color) {
+
+		GradientDrawable gd = new GradientDrawable();
+		gd.setColor(color);
+		gd.setCornerRadius(10);
+		gd.setShape(GradientDrawable.RECTANGLE);
+		gd.setStroke(2, Color.BLACK, 5, 5);
+		return gd;
+
+	}
+
+	private final class MyTouchListener implements OnClickListener {
+
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			TextView tx = (TextView) v;
+			signString = (String) tx.getText();
+			try {
+				appInterface.executeCommand("ChooseSign", signString.charAt(0));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
 
 	}
 
