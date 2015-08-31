@@ -72,7 +72,7 @@ public class FindThePictureFromTheWordActivity extends Activity implements
 		txtWord.setHeight(height/10);
 		txtWord.setBackground(gd);
 		txtWord.setTextSize(30);
-		txtWord.setText(correctAnswer.getName());
+		
 	}
 
 	private void openGame() {
@@ -100,6 +100,7 @@ public class FindThePictureFromTheWordActivity extends Activity implements
 		// TODO Auto-generated method stub
 
 		correctAnswer = answer;
+		txtWord.setText(correctAnswer.getName());
 	}
 
 	@Override

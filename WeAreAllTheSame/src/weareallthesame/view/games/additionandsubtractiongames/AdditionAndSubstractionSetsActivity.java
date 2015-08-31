@@ -42,6 +42,7 @@ public class AdditionAndSubstractionSetsActivity extends Activity implements
 	private Item answer;
 	private String signString;
 	private ApplicationInterface appInterface;
+	private int numberOne, numberTwo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -103,19 +104,13 @@ public class AdditionAndSubstractionSetsActivity extends Activity implements
 	public void setNumbers(int numberOne, int numberTwo) {
 		// TODO Auto-generated method stub
 
-		//int id = getResources().getIdentifier(
-			//	answer.getResourceNames().get("picture"), "drawable",
-				//this.getPackageName());
+		// int id = getResources().getIdentifier(
+		// answer.getResourceNames().get("picture"), "drawable",
+		// this.getPackageName());
 
 		// R.drawable.limon
-		Bitmap b = Bitmap.createScaledBitmap(
-				BitmapFactory.decodeResource(getResources(), R.drawable.limon),
-				100, 100, true);
-
-		DrawSetsView view = new DrawSetsView(this, 5, width, height / 4, b);
-		setOneLayout.addView(view);
-		view = new DrawSetsView(this, 5, width, height / 4, b);
-		setTwoLayout.addView(view);
+		this.numberOne = numberOne;
+		this.numberTwo = numberTwo;
 
 	}
 
@@ -210,6 +205,18 @@ public class AdditionAndSubstractionSetsActivity extends Activity implements
 	public void setItem(Item item) {
 		// TODO Auto-generated method stub
 		this.answer = item;
+		int id = getResources().getIdentifier(
+				answer.getResourceNames().get("picture"), "drawable",
+				this.getPackageName());
+
+		Bitmap b = Bitmap.createScaledBitmap(
+				BitmapFactory.decodeResource(getResources(), id), 100, 100,
+				true);
+
+		DrawSetsView view = new DrawSetsView(this, numberOne, width, height / 4, b);
+		setOneLayout.addView(view);
+		view = new DrawSetsView(this, numberTwo, width, height / 4, b);
+		setTwoLayout.addView(view);
 	}
 
 	@Override

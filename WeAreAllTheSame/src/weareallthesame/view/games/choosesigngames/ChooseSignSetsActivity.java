@@ -237,9 +237,9 @@ public class ChooseSignSetsActivity extends Activity implements
 				BitmapFactory.decodeResource(getResources(), idOne),
 				100, 100, true);
 
-		DrawSetsView view = new DrawSetsView(this, 3, width, height / 4, b);
+		DrawSetsView view = new DrawSetsView(this, 6, width, height / 4, b);
 		setOneLayout.addView(view);
-		view = new DrawSetsView(this, 3, width, height / 4, b);
+		view = new DrawSetsView(this, 6, width, height / 4, b);
 		setTwoLayout.addView(view);
 
 	}
