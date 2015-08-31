@@ -1411,23 +1411,24 @@ public class FillDatabase {
 	}
 	
 	private static void fillQuestions() {
-		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues("Како се вика дечкото на Вики?", "Ацко"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(1, "Како се вика дечкото на Вики?", "Ацко"));
 	}
 	
-	private static ContentValues toQuestionContentValues(String question, String answer) {
+	private static ContentValues toQuestionContentValues(int questionId, String question, String answer) {
 		ContentValues cv = new ContentValues();
+		cv.put(QuestionOpenHelper.COLUMN_ID, questionId);
 		cv.put(QuestionOpenHelper.COLUMN_QUESTION, question);
 		cv.put(QuestionOpenHelper.COLUMN_ANSWER, answer);
 		return cv;
 	}
 	
 	private static void fillQuestionsTags() {
-		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues("Како се вика дечкото на Вики?", "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(1, "question"));
 	}
 	
-	private static ContentValues toQuestionTagsContentValues(String question, String tag) {
+	private static ContentValues toQuestionTagsContentValues(int questionId, String tag) {
 		ContentValues cv = new ContentValues();
-		cv.put(QuestionTagsOpenHelper.COLUMN_QUESTION, question);
+		cv.put(QuestionTagsOpenHelper.COLUMN_QUESTION, questionId);
 		cv.put(QuestionTagsOpenHelper.COLUMN_TAG, tag);
 		return cv;
 	}

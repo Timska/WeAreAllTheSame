@@ -17,7 +17,7 @@ public class QuestionTagsOpenHelper extends SQLiteOpenHelper {
 	private static final String DATABASE_NAME_EXPRESSION = "QuestionTagsDatabase.db";
 
 	private static final String DATABASE_CREATE = String
-			.format("create table %s (%s integer primary key autoincrement, %s text not null, %s text not null);",
+			.format("create table %s (%s integer primary key autoincrement, %s integer not null, %s text not null);",
 					TABLE_NAME, COLUMN_ID, COLUMN_QUESTION, COLUMN_TAG);
 
 	public QuestionTagsOpenHelper(Context context) {
