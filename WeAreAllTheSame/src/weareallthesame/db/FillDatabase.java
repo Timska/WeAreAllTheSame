@@ -43,6 +43,7 @@ public class FillDatabase {
 		fillWeatherResources();
 		fillClothesAndBodyPartsResources();
 		fillEmotionsResources();
+		fillPrepositionsResources();
 	}
 	
 	private static void fillFruitsAndVegetablesResources() {
@@ -306,6 +307,15 @@ public class FillDatabase {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(220, "tired", "picture"));
 	}
 	
+	private static void fillPrepositionsResources() {
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(238, "behind", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(239, "in", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(240, "in_front_of", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(241, "next_to", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(242, "on_top_of", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(243, "under", "picture"));
+	}
+	
 	private static ContentValues toResourceContentValues(int id, String name, String type) {
 		ContentValues cv = new ContentValues();
 		cv.put(ResourceOpenHelper.COLUMN_ID, id);
@@ -323,6 +333,7 @@ public class FillDatabase {
 		fillClothesAndBodyParts();
 		fillEmotions();
 		fillYear();
+		fillPrepositions();
 	}
 	
 	private static void fillFruitsAndVegetables() {
@@ -614,6 +625,15 @@ public class FillDatabase {
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Зима", 0));
 	}
 	
+	private static void fillPrepositions() {
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Позади", 238));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Во", 239));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Пред", 240));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("До", 241));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Над", 242));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Под", 243));
+	}
+	
 	private static ContentValues toItemContentValues(String itemName, int resourceID) {
 		ContentValues cv = new ContentValues();
 		cv.put(ItemOpenHelper.COLUMN_NAME, itemName);
@@ -630,6 +650,7 @@ public class FillDatabase {
 		fillClothesAndBodyPartsTags();
 		fillEmotionsTags();
 		fillYearTags();
+		fillPrepositionsTags();
 	}
 	
 	private static void fillFruitsAndVegetablesTags() {
@@ -1190,6 +1211,15 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Лето", "season"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Есен", "season"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Зима", "season"));
+	}
+	
+	private static void fillPrepositionsTags() {
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Позади", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Во", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Пред", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("До", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Над", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Под", "prepositions"));
 	}
 	
 	private static ContentValues toItemTagsContentValues(String itemName, String tag) {
