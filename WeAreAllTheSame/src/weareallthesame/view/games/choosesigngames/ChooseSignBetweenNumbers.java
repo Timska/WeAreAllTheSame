@@ -29,7 +29,7 @@ import android.view.View.OnLongClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ChooseSignBetweenNumbersSmallerBigger extends Activity implements
+public class ChooseSignBetweenNumbers extends Activity implements
 		ChooseSignBetweenNumbersViewInterface {
 
 	private final static int COLORNUMBERS = Color.rgb(254, 154, 46);
@@ -46,7 +46,7 @@ public class ChooseSignBetweenNumbersSmallerBigger extends Activity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_choose_sign_between_numbers_smaller_bigger);
+		setContentView(R.layout.activity_choose_sign_numbers);
 
 		getMetrics();
 		getMediaPlayer();

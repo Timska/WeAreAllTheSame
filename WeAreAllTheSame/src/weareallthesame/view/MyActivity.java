@@ -4,7 +4,7 @@ import weareallthesame.view.games.additionandsubtractiongames.AdditionAndSubstra
 import weareallthesame.view.games.choosecharacterfromsoundgame.ChooseCharacterFromSoundActivity;
 import weareallthesame.view.games.choosecharacterfromsoundgame.ChooseStringFromSoundViewInterface;
 import weareallthesame.view.games.chooseoperatorgames.ChooseOperatorNumbersActivity;
-import weareallthesame.view.games.choosesigngames.ChooseSignBetweenNumbersSmallerBigger;
+import weareallthesame.view.games.choosesigngames.ChooseSignBetweenNumbers;
 import weareallthesame.view.games.classifyitemsgames.ClassifyTheElementsActivity;
 import weareallthesame.view.games.connectitemsgames.ConnectItemsActivity;
 import weareallthesame.view.games.hangmangame.HangmanGameStandardActivity;

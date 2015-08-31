@@ -138,5 +138,6 @@
     <string name="title_activity_game_over_choice">GameOverChoiceActivity</string>
     <string name="title_activity_classify_items_images">ClassifyItemsImagesActivity</string>
     <string name="title_activity_choose_operator_sets">ChooseOperatorSetsActivity</string>
+    <string name="title_activity_choose_sign_sets">ChooseSignSetsActivity</string>
 
 </resources>

@@ -157,8 +157,12 @@
             android:label="@string/title_activity_classify_items_images" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.chooseoperatorgames.ChooseOperatorSetsActivity"
+            android:name=".games.chooseoperatorgames.ChooseOperatorSetsActivity"
             android:label="@string/title_activity_choose_operator_sets" >
+        </activity>
+        <activity
+            android:name=".ChooseSignSetsActivity"
+            android:label="@string/title_activity_choose_sign_sets" >
         </activity>
     </application>
 
