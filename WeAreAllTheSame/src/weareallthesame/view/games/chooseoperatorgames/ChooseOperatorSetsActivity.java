@@ -56,7 +56,7 @@ public class ChooseOperatorSetsActivity extends Activity implements
 		setOneLayout = (LinearLayout) findViewById(R.id.choose_operator_sets_set_one);
 		setTwoLayout = (LinearLayout) findViewById(R.id.choose_operator_sets_set_two);
 		answersContainer = (GridView) findViewById(R.id.choose_operator_sets_answers_container);
-		equalsSign=findViewById(R.id.choose_operator_sets_equals_sign);
+		equalsSign=(TextView) findViewById(R.id.choose_operator_sets_equals_sign);
 		sign = (TextView) findViewById(R.id.choose_operator_sets_sign);
 		LinearLayout.LayoutParams lp = new LayoutParams(
 				LayoutParams.MATCH_PARENT, height / 4);
