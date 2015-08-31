@@ -41,7 +41,6 @@ public class AdditionAndSubstractionSetsActivity extends Activity implements
 	private int width, height;
 	private Item answer;
 	private String signString;
-
 	private ApplicationInterface appInterface;
 
 	@Override

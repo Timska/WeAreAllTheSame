@@ -153,8 +153,12 @@
             android:theme="@style/DarkTransparent" >
         </activity>
         <activity
-            android:name="weareallthesame.view.games.classifyitemsgames.ClassifyItemsImagesActivity"
+            android:name=".games.classifyitemsgames.ClassifyItemsImagesActivity"
             android:label="@string/title_activity_classify_items_images" >
+        </activity>
+        <activity
+            android:name="weareallthesame.view.games.chooseoperatorgames.ChooseOperatorSetsActivity"
+            android:label="@string/title_activity_choose_operator_sets" >
         </activity>
     </application>
 
