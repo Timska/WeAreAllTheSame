@@ -1395,7 +1395,7 @@ public class FillDatabase {
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromWord"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromPicture"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseClothingFromWord"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ConnectItems", "clothesandbodyparts_chooseClothingFromPicture"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseClothingFromPicture"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ConnectItems", "clothesandbodyparts_connect"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Emotions", "ChooseItem", "emotions_chooseWord"));

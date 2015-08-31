@@ -16,6 +16,7 @@ import weareallthesame.view.games.classifyitemsgames.ClassifyItemsImagesActivity
 import weareallthesame.view.games.classifyitemsgames.ClassifyTheElementsActivity;
 import weareallthesame.view.games.connectitemsgames.ConnectItemsActivity;
 import weareallthesame.view.games.hangmangame.HangmanGameActivity;
+import weareallthesame.view.games.hangmangame.HangmanGameStandardActivity;
 import weareallthesame.view.games.howmanygame.HowManyObjectsActivity;
 import weareallthesame.view.games.orderelementsgame.OrderElementsActivity;
 import weareallthesame.view.games.questiongame.QuestionGameActivity;
@@ -33,7 +34,13 @@ public class ViewFactory {
 				return HangmanGameActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.letters_orderLetters))){
+				return OrderElementsActivity.class;
+			}
+			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.letters_orderWord))){
 				return HangmanGameActivity.class;
+			}
+			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.letters_hangman))){
+				return HangmanGameStandardActivity.class;
 			}
 			
 		}
@@ -78,6 +85,9 @@ public class ViewFactory {
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_chooseOperatorSets))){
 				return ChooseOperatorSetsActivity.class;
 			}
+			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_classify))){
+				return ClassifyTheElementsActivity.class;
+			}
 			
 		}
 		if(categoryType.equalsIgnoreCase("Animals")){
@@ -91,7 +101,7 @@ public class ViewFactory {
 				return FindTheWordFromThePictureActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.animals_connectAnimals))){
-				//TODO go nema toa activity seuste
+				return ConnectItemsActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.animals_groupPictures))){
 				return ClassifyItemsImagesActivity.class;
@@ -125,7 +135,7 @@ public class ViewFactory {
 				return FindThePictureFromTheWordActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.colorsandobjects_connect))){
-				//TODO nema takvo activity
+				return ConnectItemsActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.colorsandobjects_whatsTheColor))){
 				return ConnectItemsActivity.class;
@@ -155,13 +165,13 @@ public class ViewFactory {
 				return FindTheWordFromThePictureActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.fruitsandvegetables_connectPictures))){
-				//TODO go nema toa activity
+				return ConnectItemsActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.fruitsandvegetables_groupPictures))){
-				//TODO go nema toa activity
+				return ClassifyItemsImagesActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.fruitsandvegetables_groupWords))){
-				//TODO go nema toa activity
+				return ClassifyTheElementsActivity.class;
 			}
 		}
 		if(categoryType.equalsIgnoreCase("Prepositions")){
@@ -172,7 +182,7 @@ public class ViewFactory {
 				return FindTheWordFromThePictureActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.prepositions_connect))){
-				//TODO go nema toa activity
+				return ConnectItemsActivity.class;
 			}
 		}
 		if(categoryType.equalsIgnoreCase("Shapes")){
@@ -188,6 +198,12 @@ public class ViewFactory {
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.shapes_similarity))){
 				return FindPictureFromPictureActivity.class;
 			}
+			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.shapes_classifyPictures))){
+				return ClassifyItemsImagesActivity.class;
+			}
+			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.shapes_classifyWords))){
+				return ClassifyTheElementsActivity.class;
+			}
 		}
 		if(categoryType.equalsIgnoreCase("Weather")){
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.weather_choosePicture))){
@@ -197,7 +213,7 @@ public class ViewFactory {
 				return FindTheWordFromThePictureActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.weather_connectPictures))){
-				//TODO ne e gotovo toa activity
+				return ConnectItemsActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.weather_outsideWeather))){
 				return FindThePictureFromTheSoundActivity.class;
@@ -205,7 +221,7 @@ public class ViewFactory {
 		}
 		if(categoryType.equalsIgnoreCase("Year")){
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.year_groupWords))){
-				//TODO ne e gotovo toa activity.
+				return ClassifyTheElementsActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.year_orderDays))){
 				return OrderElementsActivity.class;
