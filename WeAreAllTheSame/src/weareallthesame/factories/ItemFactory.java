@@ -85,27 +85,30 @@ public class ItemFactory {
 					new String[] { ItemOpenHelper.COLUMN_RESOURCE },
 					ItemOpenHelper.COLUMN_NAME + "=" + "'" + str + "'", null,
 					null);
-
+			
 			Map<String, String> resources = new HashMap<String, String>();
 			while (cursor.moveToNext()) {
 				int resourceID = cursor.getInt(cursor
 						.getColumnIndex(ItemOpenHelper.COLUMN_RESOURCE));
+				
+				if (resourceID != 0) {
+					Cursor resCursor = resolver.query(
+							ResourceContentProvider.CONTENT_URI, new String[] {
+									ResourceOpenHelper.COLUMN_RESNAME,
+									ResourceOpenHelper.COLUMN_RESTYPE },
+							ResourceOpenHelper.COLUMN_ID + "=" + resourceID, null,
+							null);
 
-				Cursor resCursor = resolver.query(
-						ResourceContentProvider.CONTENT_URI, new String[] {
-								ResourceOpenHelper.COLUMN_RESNAME,
-								ResourceOpenHelper.COLUMN_RESTYPE },
-						ResourceOpenHelper.COLUMN_ID + "=" + resourceID, null,
-						null);
-
-				resCursor.moveToFirst();
-				String resourceName = resCursor.getString(resCursor
-						.getColumnIndex(ResourceOpenHelper.COLUMN_RESNAME));
-				String resourceType = resCursor.getString(resCursor
-						.getColumnIndex(ResourceOpenHelper.COLUMN_RESTYPE));
-				resources.put(resourceType, resourceName);
-
-				resCursor.close();
+					resCursor.moveToFirst();
+					String resourceName = resCursor.getString(resCursor
+							.getColumnIndex(ResourceOpenHelper.COLUMN_RESNAME));
+					String resourceType = resCursor.getString(resCursor
+							.getColumnIndex(ResourceOpenHelper.COLUMN_RESTYPE));
+					resources.put(resourceType, resourceName);
+					
+					resCursor.close();
+				}
+				
 			}
 
 			result.add(new Item(str, resources));
