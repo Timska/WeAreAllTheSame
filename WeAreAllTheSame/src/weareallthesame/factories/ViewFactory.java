@@ -9,7 +9,9 @@ import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheSoundActiv
 import weareallthesame.view.games.chooseitemgame.FindThePictureFromTheWordActivity;
 import weareallthesame.view.games.chooseitemgame.FindTheWordFromThePictureActivity;
 import weareallthesame.view.games.chooseoperatorgames.ChooseOperatorNumbersActivity;
+import weareallthesame.view.games.chooseoperatorgames.ChooseOperatorSetsActivity;
 import weareallthesame.view.games.choosesigngames.ChooseSignBetweenNumbers;
+import weareallthesame.view.games.choosesigngames.ChooseSignSetsActivity;
 import weareallthesame.view.games.classifyitemsgames.ClassifyItemsImagesActivity;
 import weareallthesame.view.games.classifyitemsgames.ClassifyTheElementsActivity;
 import weareallthesame.view.games.connectitemsgames.ConnectItemsActivity;
@@ -62,7 +64,7 @@ public class ViewFactory {
 				return ChooseSignBetweenNumbers.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_sets))){
-				//TODO go nema uste konkretnoto activity
+				return ChooseSignSetsActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_substractNumbers))){
 				return AdditionAndSubstractionNumbersActivity.class;
@@ -74,7 +76,7 @@ public class ViewFactory {
 				return ChooseOperatorNumbersActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_chooseOperatorSets))){
-				//
+				return ChooseOperatorSetsActivity.class;
 			}
 			
 		}

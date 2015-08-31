@@ -132,7 +132,7 @@
             android:label="@string/title_activity_order_elements" >
         </activity>
         <activity
-            android:name=".games.choosesigngames.ChooseSignBetweenNumbersSmallerBigger"
+            android:name=".games.choosesigngames.ChooseSignBetweenNumbers"
             android:label="@string/title_activity_choose_sign_between_numbers_smaller_bigger" >
         </activity>
         <activity
