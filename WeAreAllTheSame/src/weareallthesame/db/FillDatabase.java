@@ -44,6 +44,7 @@ public class FillDatabase {
 		fillClothesAndBodyPartsResources();
 		fillEmotionsResources();
 		fillPrepositionsResources();
+		fillShapesResources();
 	}
 	
 	private static void fillFruitsAndVegetablesResources() {
@@ -316,6 +317,23 @@ public class FillDatabase {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(243, "under", "picture"));
 	}
 	
+	private static void fillShapesResources() {
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(244, "elipsa", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(245, "krug", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(246, "kvadrat", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(247, "osumagolnik", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(248, "petoagolnik", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(249, "pravoagolnik", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(250, "shestoagolnik", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(251, "triagolnik", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(252, "cilindar", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(253, "kocka", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(254, "konus", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(255, "kvadar", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(256, "piramida", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(257, "topka", "picture"));
+	}
+	
 	private static ContentValues toResourceContentValues(int id, String name, String type) {
 		ContentValues cv = new ContentValues();
 		cv.put(ResourceOpenHelper.COLUMN_ID, id);
@@ -334,6 +352,7 @@ public class FillDatabase {
 		fillEmotions();
 		fillYear();
 		fillPrepositions();
+		fillShapes();
 	}
 	
 	private static void fillFruitsAndVegetables() {
@@ -626,12 +645,29 @@ public class FillDatabase {
 	}
 	
 	private static void fillPrepositions() {
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Позади", 238));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Во", 239));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Пред", 240));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("До", 241));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Над", 242));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("Под", 243));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("позади", 238));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("во", 239));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("пред", 240));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("до", 241));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("над", 242));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("под", 243));
+	}
+	
+	private static void fillShapes() {
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("елипса", 244));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("круг", 245));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("квадрат", 246));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("осумаголник", 247));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("петоаголник", 248));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("правоаголник", 249));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("шестоаголник", 250));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("триаголник", 251));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("цилиндар", 252));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("коцка", 253));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("конус", 254));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("квадар", 255));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("пирамида", 256));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("топка", 257));
 	}
 	
 	private static ContentValues toItemContentValues(String itemName, int resourceID) {
@@ -651,6 +687,7 @@ public class FillDatabase {
 		fillEmotionsTags();
 		fillYearTags();
 		fillPrepositionsTags();
+		fillShapesTags();
 	}
 	
 	private static void fillFruitsAndVegetablesTags() {
@@ -1214,12 +1251,74 @@ public class FillDatabase {
 	}
 	
 	private static void fillPrepositionsTags() {
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Позади", "prepositions"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Во", "prepositions"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Пред", "prepositions"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("До", "prepositions"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Над", "prepositions"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("Под", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("позади", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("во", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пред", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("до", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("над", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("под", "prepositions"));
+	}
+	
+	private static void fillShapesTags() {
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("елипса", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("круг", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадрат", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("осумаголник", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("петоаголник", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("правоаголник", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("шестоаголник", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("триаголник", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("цилиндар", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("коцка", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("конус", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадар", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пирамида", "shapes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("топка", "shapes"));
+		
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("елипса", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("круг", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадрат", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("осумаголник", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("петоаголник", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("правоаголник", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("шестоаголник", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("триаголник", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("цилиндар", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("коцка", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("конус", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадар", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пирамида", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("топка", "hangman"));
+		
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("елипса", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("круг", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадрат", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("осумаголник", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("петоаголник", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("правоаголник", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("шестоаголник", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("триаголник", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("цилиндар", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("коцка", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("конус", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадар", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пирамида", "set"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("топка", "set"));
+		
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("елипса", "2d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("круг", "2d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадрат", "2d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("осумаголник", "2d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("петоаголник", "2d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("правоаголник", "2d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("шестоаголник", "2d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("триаголник", "2d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("цилиндар", "3d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("коцка", "3d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("конус", "3d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадар", "3d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пирамида", "3d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("топка", "3d"));
 	}
 	
 	private static ContentValues toItemTagsContentValues(String itemName, String tag) {
