@@ -20,17 +20,16 @@ import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.View;
 
-public class HowManyObjectsView extends View implements HowManyViewInterface {
+public class HowManyObjectsView extends View {
 
 	private static final long serialVersionUID = 8469603708744698511L;
-
+	private static final int PICTURESIZE = 120;
 	private ArrayList<Bitmap> bitmaps;
 	private ArrayList<Rect> boundsBitmaps;
 	private Random r = new Random();
-	private int vWidth, vHeight,howMany;
+	private int vWidth, vHeight, howMany;
 	private Rect bounds;
 	private Paint paint = new Paint();
-	private SurfaceHolder surfaceHolder;
 	private int id;
 
 	public HowManyObjectsView(Context context, int howMany, int width,
@@ -40,9 +39,9 @@ public class HowManyObjectsView extends View implements HowManyViewInterface {
 		bitmaps = new ArrayList<Bitmap>();
 		boundsBitmaps = new ArrayList<Rect>();
 		this.vHeight = height;
-		this.vWidth = width;
-		this.howMany=howMany;
-		this.id=id;
+		this.vWidth = width - PICTURESIZE;
+		this.howMany = howMany;
+		this.id = id;
 		addScaledBitmaps();
 		addBitmaps();
 		paint.setStyle(Paint.Style.STROKE);
@@ -84,16 +83,6 @@ public class HowManyObjectsView extends View implements HowManyViewInterface {
 	 * canvas.drawColor(Color.TRANSPARENT, Mode.CLEAR); } }
 	 */
 
-	private void drawSurface(Canvas canvas) {
-
-		canvas.drawColor(color.holo_red_light, Mode.CLEAR);
-		for (int i = 0; i < bitmaps.size(); ++i) {
-			bounds = boundsBitmaps.get(i);
-			canvas.drawBitmap(bitmaps.get(i), bounds.left, bounds.top, paint);
-		}
-
-	}
-
 	private boolean isColiding(int x, int y, int width, int height) {
 
 		for (Rect bounds : boundsBitmaps) {
@@ -112,12 +101,12 @@ public class HowManyObjectsView extends View implements HowManyViewInterface {
 		int i = 0;
 		while (boundsBitmaps.size() < bitmaps.size()) {
 
-			int x = r.nextInt(vWidth - 110);
-			int y = r.nextInt(vHeight - 110);
+			int x = r.nextInt(vWidth - PICTURESIZE);
+			int y = r.nextInt(vHeight - PICTURESIZE);
 
-			if (!isColiding(x, y, 110, 110)) {
+			if (!isColiding(x, y, PICTURESIZE, PICTURESIZE)) {
 
-				bounds = new Rect(x, y, x + 110, y + 110);
+				bounds = new Rect(x, y, x + PICTURESIZE, y + PICTURESIZE);
 				boundsBitmaps.add(bounds);
 
 				++i;
@@ -130,36 +119,13 @@ public class HowManyObjectsView extends View implements HowManyViewInterface {
 	private void addScaledBitmaps() {
 
 		int n = howMany;
-		Bitmap b = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(
-				getResources(), id), 100, 100, true);
+		Bitmap b = Bitmap.createScaledBitmap(
+				BitmapFactory.decodeResource(getResources(), id), 100, 100,
+				true);
 
 		for (int i = 0; i < n; ++i) {
 			bitmaps.add(b);
 		}
-
-	}
-
-	@Override
-	public void setAnswer(Item item, int howMany) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setOfferedAnswers(Set<Integer> offeredAnswers) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void gameOver() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void wrongAnswer() {
-		// TODO Auto-generated method stub
 
 	}
 

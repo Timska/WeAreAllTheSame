@@ -62,7 +62,7 @@ public class HowManyObjectsTextViewAdapter extends BaseAdapter {
 		String text = answers.get(position);
 		Paint paint = new Paint();
 		textView.setTypeface(tf);
-		textView.setTextSize(18);
+		textView.setTextSize(30);
 		textView.setTextColor(textColor);
 		textView.setGravity(Gravity.CENTER);
 		textView.setText(text);

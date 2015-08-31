@@ -7,7 +7,6 @@ import java.util.Set;
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.R;
-import weareallthesame.view.games.chooseitemgame.ChooseItemImageViewAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,6 +14,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 
 public class HowManyObjectsActivity extends Activity implements
 		HowManyViewInterface {
@@ -25,6 +26,7 @@ public class HowManyObjectsActivity extends Activity implements
 	private GridView container, answerContainer;
 	private ApplicationInterface appInterface;
 	private ArrayList<String> answers;
+	private LinearLayout linLayout;
 	private Typeface tf;
 
 	@Override
@@ -47,8 +49,11 @@ public class HowManyObjectsActivity extends Activity implements
 	}
 
 	private void initializeViews() {
-		container = (GridView) findViewById(R.id.how_many_objects_container);
+		//container = (GridView) findViewById(R.id.how_many_objects_container);
 		answerContainer = (GridView) findViewById(R.id.how_many_objects_answer_container);
+		linLayout=(LinearLayout)findViewById(R.id.how_many_objects_linea_layout_container);
+		LinearLayout.LayoutParams lp=new LayoutParams(LayoutParams.MATCH_PARENT,height/2);
+		linLayout.setLayoutParams(lp);
 	}
 
 	private void openGame() {
@@ -72,26 +77,27 @@ public class HowManyObjectsActivity extends Activity implements
 	@Override
 	public void setAnswer(Item item, int howMany) {
 		// TODO Auto-generated method stub
-		// System.out.println(getResources().getIdentifier(
-		// item.getResourceNames().get("picture"), "drawable",
-		// this.getPackageName()));
-		// HowManyObjectsView view = new HowManyObjectsView(this, howMany,
-		// width,
-		// height / 3, getResources().getIdentifier(
-		// item.getResourceNames().get("picture"), "drawable",
-		// this.getPackageName()));
-		// container.addView(view);
+		System.out.println(getResources().getIdentifier(
+				item.getResourceNames().get("picture"), "drawable",
+				this.getPackageName()));
+		HowManyObjectsView view = new HowManyObjectsView(this, 5, width,
+				height / 2, getResources().getIdentifier(
+						item.getResourceNames().get("picture"), "drawable",
+						this.getPackageName()));
+		linLayout.addView(view);
 
-		int i = 0;
-		ArrayList<Integer> offeredImagesResources = new ArrayList<Integer>();
-
-		while (i < howMany) {
-			//offeredImagesResources.add(getResources().getIdentifier(
-			//		item.getResourceNames().get("picture"), "raw",
-			//		this.getPackageName()));
-		}
-		//container.setAdapter(new ChooseItemImageViewAdapter(this,
-				//offeredImagesResources, width, height));
+		/*
+		 * int i = 0; ArrayList<Integer> offeredImagesResources = new
+		 * ArrayList<Integer>(); while (i < 5) {
+		 * offeredImagesResources.add(getResources().getIdentifier(
+		 * item.getResourceNames().get("picture"), "raw",
+		 * 
+		 * this.getPackageName())); }
+		 * 
+		 * container.setAdapter(new ChooseItemImageViewAdapter(this,
+		 * 
+		 * offeredImagesResources, width, height));
+		 */
 	}
 
 	@Override
