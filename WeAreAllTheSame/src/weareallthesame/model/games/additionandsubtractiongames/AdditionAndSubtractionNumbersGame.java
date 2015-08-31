@@ -58,7 +58,7 @@ public class AdditionAndSubtractionNumbersGame extends AbstractGame implements C
 		Random random = new Random();
 		numberOne = random.nextInt(10) + 1;
 		if(addition){
-			numberTwo = random.nextInt(10) + 1;
+			numberTwo = random.nextInt(11 - numberOne) + 1;
 			result = numberOne + numberTwo;
 		}
 		else{

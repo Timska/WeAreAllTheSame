@@ -1,6 +1,8 @@
 package weareallthesame.model.games.additionandsubtractiongames;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import weareallthesame.factories.ItemFactory;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
@@ -21,8 +23,9 @@ public class AdditionAndSubtractionSetsGame extends AdditionAndSubtractionNumber
 	private void setItem() throws InvalidViewTypeException{
 		Iterator<String> tags = this.getTags();
 		tags.next();
-		tags.remove();
-		item = ItemFactory.getItem(tags, 1).next();
+		List<String> itemTags = new ArrayList<String>();
+		itemTags.add(tags.next());
+		item = ItemFactory.getItem(itemTags.iterator(), 1).next();
 		AdditionAndSubtractionSetsViewInterface view;
 		if(this.getView() instanceof AdditionAndSubtractionSetsViewInterface){
 			view = (AdditionAndSubtractionSetsViewInterface) this.getView();

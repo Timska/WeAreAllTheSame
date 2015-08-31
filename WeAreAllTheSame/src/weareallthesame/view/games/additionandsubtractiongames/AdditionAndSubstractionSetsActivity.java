@@ -160,6 +160,7 @@ public class AdditionAndSubstractionSetsActivity extends Activity implements
 			if (resultCode == RESULT_OK) {
 				String result = data.getExtras().getString("result");
 				if (result.equals("NEW")) {
+					System.out.println("In new");
 
 					Intent intent = new Intent(this, this.getClass());
 					try {
@@ -168,8 +169,16 @@ public class AdditionAndSubstractionSetsActivity extends Activity implements
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
+					
+					ArrayList<String> tags = appInterface.getCurrentGameTags();
+					for(int i=0;i<tags.size();++i){
+						System.out.println(tags.get(i));
+					}
 					intent.putStringArrayListExtra("gameTags",
-							appInterface.getCurrentGameTags());
+							tags);
+					
+					
+					
 					intent.putExtra("appInterface", appInterface);
 
 					try {
