@@ -255,6 +255,11 @@ public class FillDatabase {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(194, "rain", "sound"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(195, "rain_thunder", "sound"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(196, "thunder", "sound"));
+		
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(234, "wind", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(235, "rain", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(236, "rain_thunder", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(237, "thunder", "picture"));
 	}
 	
 	private static void fillClothesAndBodyPartsResources() {
@@ -530,6 +535,11 @@ public class FillDatabase {
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("врне дожд", 194));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("врне дожд и грми", 195));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("грми", 196));
+		
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("дува ветар", 234));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("врне дожд", 235));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("врне дожд и грми", 236));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("грми", 237));
 	}
 	
 	private static void fillClothesAndBodyParts() {
