@@ -1,6 +1,7 @@
 package weareallthesame.view.games.additionandsubtractiongames;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.Set;
 
@@ -8,31 +9,39 @@ import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
+import weareallthesame.view.games.howmanygame.HowManyObjectsTextViewAdapter;
+import weareallthesame.view.games.howmanygame.HowManyObjectsView;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.LinearLayout.LayoutParams;
 
-public class AdditionAndSubstractionSetsActivity extends Activity implements AdditionAndSubtractionSetsViewInterface {
+public class AdditionAndSubstractionSetsActivity extends Activity implements
+		AdditionAndSubtractionSetsViewInterface {
 
-	public static final int IMAGEWIDTH = 100;
-	private ArrayList<TextView> setOne;
-	private ArrayList<TextView> setTwo;
-	private ArrayList<Rect> boundsSetOne;
-	private ArrayList<Rect> boundsSetTwo;
-	private LinearLayout linLayout;
+	public static final int COLORANSWERS = Color.rgb(4, 180, 49);
+	private ArrayList<String> answersString;
 	private LinearLayout setOneLayout;
 	private LinearLayout setTwoLayout;
-	private Random r = new Random();
+	private GridView answersContainer;
+	private TextView equalsSign, sign;
 	private DisplayMetrics displayMetrics;
 	private int width, height;
+	private Item answer;
+	private String signString;
+
 	private ApplicationInterface appInterface;
 
 	@Override
@@ -40,108 +49,109 @@ public class AdditionAndSubstractionSetsActivity extends Activity implements Add
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_addition_and_substraction_sets);
 
+		getMetrics();
+		initializeViews();
 		openGame();
-		
+
+	}
+
+	private void getMetrics() {
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
 		height = displayMetrics.heightPixels;
+	}
+
+	private void initializeViews() {
 
 		setOneLayout = (LinearLayout) findViewById(R.id.addition_and_substraction_sets_one);
 		setTwoLayout = (LinearLayout) findViewById(R.id.addition_and_substraction_sets_two);
-
-		setOne = new ArrayList<TextView>();
-		setTwo = new ArrayList<TextView>();
-		
-		boundsSetOne=new ArrayList<Rect>();
-		boundsSetTwo=new ArrayList<Rect>();
-		
-		setTextViews(4, 3);
-
+		answersContainer = (GridView) findViewById(R.id.addition_and_substraction_sets_answers_container);
+		equalsSign = (TextView) findViewById(R.id.addition_and_substraction_sets_equals_sign);
+		sign = (TextView) findViewById(R.id.addition_and_substraction_sets_sign);
+		LinearLayout.LayoutParams lp = new LayoutParams(
+				LayoutParams.MATCH_PARENT, height / 4);
+		setOneLayout.setLayoutParams(lp);
+		setTwoLayout.setLayoutParams(lp);
+		equalsSign.setText("=");
+		equalsSign.setTextColor(COLORANSWERS);
+		sign.setTextColor(COLORANSWERS);
+		sign.setTextSize(30);
+		equalsSign.setTextSize(30);
 	}
-	
+
 	private void openGame() {
 		Intent intent = getIntent();
 		String gameType = intent.getStringExtra("gameType");
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
-		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
-		try{
-			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
-		}
-		catch(Exception e){
+		appInterface = (ApplicationInterface) intent
+				.getSerializableExtra("appInterface");
+		try {
+			appInterface
+					.openGame(
+							gameType,
+							gameTags.iterator(),
+							this,
+							this.getResources()
+									.getString(
+											R.string.addition_and_substraction_task_description));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	private void setTextViews(int n,int m){
-		addTextViews(setOne, n, boundsSetOne);
-		addTextViews(setTwo,m,boundsSetTwo);
-		
-		for(int i=0;i<n;++i){
-			setOneLayout.addView(setOne.get(i));
-		}
-		for(int i=0;i<m;++i){
-			setTwoLayout.addView(setTwo.get(i));
-		}
-	}
-
-	private boolean isColiding(int x, int y, int width, int height,
-			ArrayList<Rect> boundsSet) {
-
-		for (Rect bounds : boundsSet) {
-
-			if (bounds.left < x + width && bounds.left + bounds.width() > x
-					&& bounds.top < y + height
-					&& bounds.height() + bounds.top > y) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	private void addTextViews(ArrayList<TextView> set, int n,
-			ArrayList<Rect> boundsSet) {
-
-		int i = 0;
-		while (set.size() < n) {
-
-			int x = r.nextInt(width / 4 - IMAGEWIDTH);
-			int y = r.nextInt(height / 4 - IMAGEWIDTH);
-
-			if (!isColiding(x, y, IMAGEWIDTH, IMAGEWIDTH, boundsSet)) {
-
-				Rect bounds = new Rect(x, y, x + IMAGEWIDTH, y + IMAGEWIDTH);
-				boundsSet.add(bounds);
-				TextView tx = new TextView(getApplicationContext());
-				tx.setBackgroundResource(R.drawable.kajsija);
-				tx.setX(x);
-				tx.setY(y);
-				set.add(tx);
-				++i;
-			}
-
-		}
-
-	}
-
-	public Drawable resizeImage(int id) {
-		BitmapDrawable bd = (BitmapDrawable) this.getResources()
-				.getDrawable(id);
-		Bitmap bMap = BitmapFactory.decodeResource(getResources(), id);
-		Bitmap scaled = bMap.createScaledBitmap(bMap, 100, 100, false);
-		return new BitmapDrawable(getResources(), scaled);
 	}
 
 	@Override
 	public void setNumbers(int numberOne, int numberTwo) {
 		// TODO Auto-generated method stub
-		
+
+		int id = getResources().getIdentifier(
+				answer.getResourceNames().get("picture"), "drawable",
+				this.getPackageName());
+
+		// R.drawable.limon
+		Bitmap b = Bitmap.createScaledBitmap(
+				BitmapFactory.decodeResource(getResources(), R.drawable.limon),
+				100, 100, true);
+
+		DrawSetsView view = new DrawSetsView(this, 5, width, height / 4, b);
+		setOneLayout.addView(view);
+		view = new DrawSetsView(this, 5, width, height / 4, b);
+		setTwoLayout.addView(view);
+
 	}
 
 	@Override
 	public void setOfferedAnswers(Set<Integer> answers) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stuIterator<Integer> it =
+		// offeredAnswers.iterator();
+		answersString = new ArrayList<String>();
+		Iterator<Integer> it = answers.iterator();
+		while (it.hasNext()) {
+			answersString.add(Integer.toString(it.next()));
+		}
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+				"fonts/amerika_.ttf");
+		answersContainer
+				.setAdapter(new AdditionAndSubstractionNumberTextViewAdapter(
+						this, answersString, tf, width, height, COLORANSWERS));
+
+		answersContainer.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				// TODO Auto-generated method stub
+				TextView tx = (TextView) view;
+				int number = Integer.parseInt((String) tx.getText());
+
+				try {
+					appInterface.executeCommand("ChooseNumber", number);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
 	}
 
 	@Override
@@ -192,19 +202,32 @@ public class AdditionAndSubstractionSetsActivity extends Activity implements Add
 	@Override
 	public void wrongAnswer() {
 		// TODO Auto-generated method stub
-		
+		Toast.makeText(getApplicationContext(), "Неточен одговор",
+				Toast.LENGTH_SHORT).show();
+
 	}
 
 	@Override
 	public void setItem(Item item) {
 		// TODO Auto-generated method stub
-		
+		this.answer = item;
 	}
 
 	@Override
 	public void setAdditionOperator(boolean addition) {
 		// TODO Auto-generated method stub
-		
+
+		if (addition) {
+
+			this.signString = "+";
+			sign.setText(signString);
+		}
+
+		else {
+			this.signString = "-";
+			sign.setText(signString);
+		}
+
 	}
 
 }
