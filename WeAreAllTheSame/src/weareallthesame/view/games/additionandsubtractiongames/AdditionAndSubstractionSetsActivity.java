@@ -104,9 +104,9 @@ public class AdditionAndSubstractionSetsActivity extends Activity implements
 	public void setNumbers(int numberOne, int numberTwo) {
 		// TODO Auto-generated method stub
 
-		int id = getResources().getIdentifier(
-				answer.getResourceNames().get("picture"), "drawable",
-				this.getPackageName());
+		//int id = getResources().getIdentifier(
+			//	answer.getResourceNames().get("picture"), "drawable",
+				//this.getPackageName());
 
 		// R.drawable.limon
 		Bitmap b = Bitmap.createScaledBitmap(
