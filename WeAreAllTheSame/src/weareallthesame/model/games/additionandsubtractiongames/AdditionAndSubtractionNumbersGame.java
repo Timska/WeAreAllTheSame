@@ -65,6 +65,7 @@ public class AdditionAndSubtractionNumbersGame extends AbstractGame implements C
 			numberTwo = random.nextInt(numberOne) + 1;
 			result = numberOne - numberTwo;
 		}
+		System.out.println("numOne: " + numberOne + ", numTwo: " + numberTwo);
 		view.setNumbers(numberOne, numberTwo);
 	}
 	
