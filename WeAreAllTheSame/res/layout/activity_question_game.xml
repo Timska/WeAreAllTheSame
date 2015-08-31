@@ -24,56 +24,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"
         android:layout_margin="5dp"
+        android:gravity="center"
         android:padding="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <LinearLayout
+    <GridView
+        android:id="@+id/question_game_answers_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom|center"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/question_game_answer_one"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/question_game_answer_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/question_game_answer_three"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/question_game_answer_four"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-    </LinearLayout>
+        android:layout_gravity="bottom"
+        android:gravity="center|bottom"
+        android:numColumns="auto_fit"
+        android:padding="10dp" >
+    </GridView>
 
 </LinearLayout>
