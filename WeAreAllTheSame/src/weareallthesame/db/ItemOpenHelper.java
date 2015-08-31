@@ -17,7 +17,7 @@ public class ItemOpenHelper extends SQLiteOpenHelper {
 	private static final String DATABASE_NAME_EXPRESSION = "ItemsDatabase.db";
 
 	private static final String DATABASE_CREATE = String
-			.format("create table %s (%s integer primary key autoincrement, %s text not null, %s integer not null);",
+			.format("create table %s (%s integer primary key autoincrement, %s text not null, %s integer);",
 					TABLE_NAME, COLUMN_ID, COLUMN_NAME, COLUMN_RESOURCE);
 
 	public ItemOpenHelper(Context context) {

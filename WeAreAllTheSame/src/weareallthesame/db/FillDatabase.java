@@ -578,7 +578,11 @@ public class FillDatabase {
 	private static ContentValues toItemContentValues(String itemName, int resourceID) {
 		ContentValues cv = new ContentValues();
 		cv.put(ItemOpenHelper.COLUMN_NAME, itemName);
-		cv.put(ItemOpenHelper.COLUMN_RESOURCE, resourceID);
+		if (resourceID == -1) {
+			cv.putNull(ItemOpenHelper.COLUMN_RESOURCE);
+		} else {
+			cv.put(ItemOpenHelper.COLUMN_RESOURCE, resourceID);
+		}
 		return cv;
 	}
 	
