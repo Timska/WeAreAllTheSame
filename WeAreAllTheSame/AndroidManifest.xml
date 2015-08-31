@@ -161,7 +161,7 @@
             android:label="@string/title_activity_choose_operator_sets" >
         </activity>
         <activity
-            android:name=".ChooseSignSetsActivity"
+            android:name="weareallthesame.view.games.choosesigngames.ChooseSignSetsActivity"
             android:label="@string/title_activity_choose_sign_sets" >
         </activity>
     </application>

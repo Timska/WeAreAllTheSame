@@ -1,4 +1,4 @@
-package weareallthesame.view.games.chooseoperatorgames;
+package weareallthesame.view.games.choosesigngames;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -32,32 +32,31 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout.LayoutParams;
 
-public class ChooseOperatorSetsActivity extends Activity implements
-		ChooseOperatorBetweenSetsViewInterface {
+public class ChooseSignSetsActivity extends Activity implements
+		ChooseSignBetweenSetsViewInterface {
 
 	public static final int COLORANSWERS = Color.rgb(4, 180, 49);
 	private ArrayList<String> answersString;
 	private LinearLayout setOneLayout;
 	private LinearLayout setTwoLayout;
 	private GridView answersContainer;
-	private TextView equalsSign, sign,txtResult;
+	private TextView equalsSign, sign, txtResult;
 	private DisplayMetrics displayMetrics;
 	private int width, height;
-	private Item answer;
+	private Item itemOne, itemTwo;
 	private String signString;
 	private ApplicationInterface appInterface;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_choose_operator_sets);
-
+		setContentView(R.layout.activity_choose_sign_sets);
 		getMetrics();
 		initializeViews();
-		openGame();
 	}
 
 	private void getMetrics() {
+
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
@@ -65,50 +64,38 @@ public class ChooseOperatorSetsActivity extends Activity implements
 	}
 
 	private void initializeViews() {
-
-		setOneLayout = (LinearLayout) findViewById(R.id.choose_operator_sets_set_one);
-		setTwoLayout = (LinearLayout) findViewById(R.id.choose_operator_sets_set_two);
-		answersContainer = (GridView) findViewById(R.id.choose_operator_sets_answers_container);
-		equalsSign = (TextView) findViewById(R.id.choose_operator_sets_equals_sign);
-		sign = (TextView) findViewById(R.id.choose_operator_sets_sign);
-		txtResult=(TextView) findViewById(R.id.choose_operator_sets_result);
+		setOneLayout = (LinearLayout) findViewById(R.id.choose_sign_sets_set_one);
+		setTwoLayout = (LinearLayout) findViewById(R.id.choose_sign_sets_set_two);
+		answersContainer = (GridView) findViewById(R.id.choose_sign_sets_answers_container);
+		sign = (TextView) findViewById(R.id.choose_sign_sets_sign);
 		LinearLayout.LayoutParams lp = new LayoutParams(
 				LayoutParams.MATCH_PARENT, height / 4);
 		setOneLayout.setLayoutParams(lp);
 		setTwoLayout.setLayoutParams(lp);
-		equalsSign.setText("=");
-		equalsSign.setTextColor(COLORANSWERS);
 		sign.setTextColor(COLORANSWERS);
 		sign.setTextSize(30);
-		equalsSign.setTextSize(30);
-	}
 
-	private void openGame() {
-		Intent intent = getIntent();
-		String gameType = intent.getStringExtra("gameType");
-		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
-		appInterface = (ApplicationInterface) intent
-				.getSerializableExtra("appInterface");
-		try {
-			appInterface
-					.openGame(
-							gameType,
-							gameTags.iterator(),
-							this,
-							this.getResources()
-									.getString(
-											R.string.addition_and_substraction_task_description));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
-	public void setOfferedOperators(Set<Character> operators) {
+	public void setNumbers(int numOne, int numTwo) {
 		// TODO Auto-generated method stub
+		Bitmap b = Bitmap.createScaledBitmap(
+				BitmapFactory.decodeResource(getResources(), R.drawable.limon),
+				100, 100, true);
 
-		Iterator<Character> it = operators.iterator();
-		System.out.println(operators.size());
+		DrawSetsView view = new DrawSetsView(this, 5, width, height / 4, b);
+		setOneLayout.addView(view);
+		view = new DrawSetsView(this, 5, width, height / 4, b);
+		setTwoLayout.addView(view);
+
+	}
+
+	@Override
+	public void setOfferedSigns(Set<Character> signs) {
+		// TODO Auto-generated method stub
+		Iterator<Character> it = signs.iterator();
+		System.out.println(signs.size());
 		answersString = new ArrayList<String>();
 		while (it.hasNext()) {
 			Character c = it.next();
@@ -138,22 +125,6 @@ public class ChooseOperatorSetsActivity extends Activity implements
 
 			}
 		});
-	}
-
-	@Override
-	public void setNumbers(int numberOne, int numberTwo, int result) {
-		// TODO Auto-generated method stub
-		
-		Bitmap b = Bitmap.createScaledBitmap(
-				BitmapFactory.decodeResource(getResources(), R.drawable.limon),
-				100, 100, true);
-
-		DrawSetsView view = new DrawSetsView(this, 5, width, height / 4, b);
-		setOneLayout.addView(view);
-		view = new DrawSetsView(this, 5, width, height / 4, b);
-		setTwoLayout.addView(view);
-		txtResult.setText(Integer.toString(result));
-		
 
 	}
 
@@ -205,14 +176,17 @@ public class ChooseOperatorSetsActivity extends Activity implements
 	@Override
 	public void wrongAnswer() {
 		// TODO Auto-generated method stub
+
 		Toast.makeText(getApplicationContext(), "Неточен одговор",
 				Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
-	public void setItem(Item item) {
+	public void setItems(Item itemOne, Item itemTwo) {
 		// TODO Auto-generated method stub
+		this.itemOne = itemOne;
+		this.itemTwo = itemTwo;
 
-		this.answer = item;
 	}
+
 }
