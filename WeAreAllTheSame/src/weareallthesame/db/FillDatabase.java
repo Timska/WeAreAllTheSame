@@ -1410,11 +1410,35 @@ public class FillDatabase {
 		return cv;
 	}
 	
+	private static void fillQuestions() {
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues("Како се вика дечкото на Вики?", "Ацко"));
+	}
+	
+	private static ContentValues toQuestionContentValues(String question, String answer) {
+		ContentValues cv = new ContentValues();
+		cv.put(QuestionOpenHelper.COLUMN_QUESTION, question);
+		cv.put(QuestionOpenHelper.COLUMN_ANSWER, answer);
+		return cv;
+	}
+	
+	private static void fillQuestionsTags() {
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues("Како се вика дечкото на Вики?", "question"));
+	}
+	
+	private static ContentValues toQuestionTagsContentValues(String question, String tag) {
+		ContentValues cv = new ContentValues();
+		cv.put(QuestionTagsOpenHelper.COLUMN_QUESTION, question);
+		cv.put(QuestionTagsOpenHelper.COLUMN_TAG, tag);
+		return cv;
+	}
+	
 	public static void fillWholeDatabase() {
 		fillCategories();
 		fillResources();
 		fillItems();
 		fillItemTags();
 		fillGames();
+		fillQuestions();
+		fillQuestionsTags();
 	}
 }
