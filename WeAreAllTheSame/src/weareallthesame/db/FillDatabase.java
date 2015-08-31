@@ -270,6 +270,20 @@ public class FillDatabase {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(206, "mouth", "picture"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(207, "teeth", "picture"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(208, "wrist", "picture"));
+		
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(221, "bluza", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(222, "chizmi", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(223, "corapi", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(224, "dukserka", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(225, "dzemper", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(226, "fustan", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(227, "koshula", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(228, "maica", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(229, "patiki", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(230, "rakavici", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(231, "trenerki", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(232, "vratovrska", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(233, "zdolnishte", "picture"));
 	}
 	
 	private static void fillEmotionsResources() {
@@ -530,6 +544,20 @@ public class FillDatabase {
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("уста", 206));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("заби", 207));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зглоб", 208));
+		
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("блуза", 221));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("чизми", 222));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("чорапи", 223));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("дуксерка", 224));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("џемпер", 225));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("фустан", 226));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кошула", 227));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("маица", 228));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("патики", 229));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("ракавици", 230));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("тренерки", 231));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("вратоврска", 232));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("здолниште", 233));
 	}
 	
 	private static void fillEmotions() {
@@ -1036,7 +1064,49 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("глава", "hangman"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("уста", "hangman"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("заби", "hangman"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зглоб", "hangman	"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зглоб", "hangman"));
+		
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("блуза", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("чизми", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("чорапи", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("дуксерка", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("џемпер", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("фустан", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кошула", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("маица", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("патики", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("ракавици", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("тренерки", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("вратоврска", "clothesAndBodyParts"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("здолниште", "clothesAndBodyParts"));
+		
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("блуза", "clothes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("чизми", "clothes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("чорапи", "clothes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("дуксерка", "clothes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("џемпер", "clothes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("фустан", "clothes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кошула", "clothes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("маица", "clothes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("патики", "clothes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("ракавици", "clothes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("тренерки", "clothes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("вратоврска", "clothes"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("здолниште", "clothes"));
+		
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("блуза", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("чизми", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("чорапи", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("дуксерка", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("џемпер", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("фустан", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кошула", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("маица", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("патики", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("ракавици", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("тренерки", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("вратоврска", "hangman"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("здолниште", "hangman"));
 	}
 	
 	private static void fillEmotionsTags() {
