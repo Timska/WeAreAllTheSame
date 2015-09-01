@@ -49,6 +49,7 @@
     <string name="drop_place_description">Стави го одговорот овде.</string>
     <string name="domestic">Домашни</string>
     <string name="wild">Диви</string>
+    <string name="find_word_from_picture_prepositions">ГЛУВЧЕТО Е ____________ КУТИЈАТА. </string>
 
     <!-- Game names -->
     <string name="letters_chooseLetter">Избери буква</string>

@@ -8,15 +8,21 @@ import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
+import weareallthesame.view.games.chooseitemgame.ChooseItemTextViewAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class HangmanGameActivity extends Activity implements
 		HangmanViewInterface {
@@ -26,17 +32,15 @@ public class HangmanGameActivity extends Activity implements
 
 	private ArrayList<TextView> listLetters;
 	private ArrayList<TextView> listSpaces;
-	private ArrayList<Integer> colors;
 	private TextView txtPicture;
-	private LinearLayout layoutLetters;
 	private LinearLayout layoutSpaces;
-	private Random r = new Random();
 	private String spaces;
 	private DisplayMetrics displayMetrics;
 	private int width, height;
 	private ApplicationInterface appInterface;
-	private Item answer;
+	private ArrayList<String> answerString;
 	LinearLayout.LayoutParams layoutParamsSpaces;
+	private GridView answersContainer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +72,12 @@ public class HangmanGameActivity extends Activity implements
 		// txtPicture.setText("Picture");
 
 		layoutSpaces = (LinearLayout) findViewById(R.id.hangman_game_layout_spaces);
-		layoutLetters = (LinearLayout) findViewById(R.id.hangman_game_layout_letters);
+		
+		answersContainer=(GridView) findViewById(R.id.hangman_game_answers_container);
 
 		layoutParamsSpaces = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.WRAP_CONTENT,
-				LinearLayout.LayoutParams.WRAP_CONTENT);
+				height/15);
 		layoutSpaces.setOrientation(LinearLayout.VERTICAL);
 		layoutParamsSpaces.setMargins(0, 5, 0, 5);
 
@@ -152,22 +157,52 @@ public class HangmanGameActivity extends Activity implements
 		// TODO Auto-generated method stub
 		// ako e true ne ja postavuvaj, ako e false, da
 
+		answerString=new ArrayList<String>();
+		
 		for (int i = 0; i < usedLettersFlagged.size(); ++i) {
 
+			if(!usedLettersFlagged.get(i)){
+				answerString.add(Character.toString(allOfferedLetters.get(i)));
+				System.out.println(Character.toString(allOfferedLetters.get(i)));
+			}
+		}
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+				"fonts/amerika_.ttf");
+		answersContainer
+		.setAdapter(new HangmanGameTextViewAdapter(this, answerString, tf,
+				 COLORSPACES));
+
+/*answersContainer.setOnItemClickListener(new OnItemClickListener() {
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view,
+			int position, long id) {
+		// TODO Auto-generated method stub
+
+		Item clickedItem = items.get(position);
+		try {
+			appInterface.executeCommand("ChooseItem", clickedItem);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}
+}); */
+}
+
+	
 
 	@Override
 	public void setOrUpdateUserAnswer(List<Character> userAnswer) {
 		// TODO Auto-generated method stub
+		System.out.println("Inside");
 		spaces = "";
 		for (int i = 0; i < userAnswer.size(); ++i) {
 			spaces += userAnswer.get(i);
 		}
 		System.out.println(spaces);
 		setTextViews(spaces);
-		for (int i = 0; i < listLetters.size(); ++i) {
+		for (int i = 0; i < listSpaces.size(); ++i) {
 			layoutSpaces.addView(listSpaces.get(i), layoutParamsSpaces);
 			// layoutLetters.addView(listLetters.get(i), layoutParamsLetters);
 
@@ -215,7 +250,7 @@ public class HangmanGameActivity extends Activity implements
 			txS.setWidth(width / 3);
 
 			// txLetter.setHeight(height / 10);
-			txS.setHeight(height / 10);
+			txS.setHeight(height / (15));
 
 			// listLetters.add(txLetter);
 			listSpaces.add(txS);

@@ -36,6 +36,7 @@ public class FindTheWordFromThePictureActivity extends Activity implements
 	private ArrayList<Item> items;
 	private ImageView imgPicture;
 	private String longestString;
+	private TextView description;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class FindTheWordFromThePictureActivity extends Activity implements
 
 		answersContainer = (GridView) findViewById(R.id.find_word_from_picture_answers_container);
 		imgPicture = (ImageView) findViewById(R.id.find_word_from_picture_picture);
+		description = (TextView) findViewById(R.id.find_word_from_picture_prepositions_description);
 	}
 
 	private void openGame() {
@@ -93,6 +95,12 @@ public class FindTheWordFromThePictureActivity extends Activity implements
 	public void setOfferedAnswers(Set<Item> offeredAnswers) {
 		// TODO Auto-generated method stub
 
+		String type = appInterface.getCurrentCategoryType();
+		System.out.println(type);
+		if (type.equals("Prepositions")) {
+			description.setText(R.string.find_word_from_picture_prepositions);
+			description.setTextColor(COLORTEXTVIEWS);
+		}
 		longestString = "";
 		answers = new ArrayList<String>();
 		items = new ArrayList<Item>();
