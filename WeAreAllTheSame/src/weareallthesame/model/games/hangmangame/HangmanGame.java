@@ -20,7 +20,7 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 
 	private static final long serialVersionUID = -6299102336837945770L;
 
-	private static final int numberOfOfferedLetters = 20;
+	private static final int numberOfOfferedLetters = 10;
 	private Item answer;
 	private List<Character> offeredLetters;
 	private List<Character> userAnswer;
@@ -44,7 +44,11 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 	private void setAnswer(){
 		List<String> itemTags = new ArrayList<String>();
 		itemTags.add(this.getTags().next());
-		answer = ItemFactory.getItem(itemTags.iterator(), 1).next(); 
+		boolean start = true;
+		while(start || answer.getName().length() > 8){
+			start = false;
+			answer = ItemFactory.getItem(itemTags.iterator(), 1).next(); 
+		}
 		view.setAnswer(answer);
 	}
 	
