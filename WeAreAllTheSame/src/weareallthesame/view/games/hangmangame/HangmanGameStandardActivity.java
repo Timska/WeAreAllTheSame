@@ -1,6 +1,7 @@
 package weareallthesame.view.games.hangmangame;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.view.R;
@@ -16,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 
-public class HangmanGameStandardActivity extends Activity {
+public class HangmanGameStandardActivity extends Activity implements HangmanStandardViewInterface {
 
 	private LinearLayout wordWithEmptySpaces;
 	private ArrayList<TextView> txtWordWithEmptySpaces;
@@ -94,6 +95,42 @@ public class HangmanGameStandardActivity extends Activity {
 		
 		Intent intent=new Intent(HangmanGameStandardActivity.this, LettersListActivity.class);
 		startActivity(intent);
+		
+	}
+
+	@Override
+	public void setAnswer(String answer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setOrUpdateUsedLetters(List<Character> usedLetters) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setOrUpdateUserAnswer(List<Character> userAnswer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void usedLetter(Character letter) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void letterNotFound() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void gameOver() {
+		// TODO Auto-generated method stub
 		
 	}
 

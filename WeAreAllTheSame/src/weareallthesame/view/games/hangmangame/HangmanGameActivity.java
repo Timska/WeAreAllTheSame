@@ -22,6 +22,7 @@ public class HangmanGameActivity extends Activity implements
 		HangmanViewInterface {
 
 	private static final long serialVersionUID = 6373187583074782521L;
+	private static final int COLORSPACES = Color.rgb(192, 142, 213);
 
 	private ArrayList<TextView> listLetters;
 	private ArrayList<TextView> listSpaces;
@@ -30,12 +31,12 @@ public class HangmanGameActivity extends Activity implements
 	private LinearLayout layoutLetters;
 	private LinearLayout layoutSpaces;
 	private Random r = new Random();
-	private String word = "AVION";
-	private String spaces = "AV_O_";
+	private String spaces;
 	private DisplayMetrics displayMetrics;
 	private int width, height;
 	private ApplicationInterface appInterface;
 	private Item answer;
+	LinearLayout.LayoutParams layoutParamsSpaces;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +46,8 @@ public class HangmanGameActivity extends Activity implements
 		getMetrics();
 		initializeViews();
 		openGame();
-		
-		
 
-		
-		//layoutParamsLetters.gravity = Gravity.CENTER | Gravity.BOTTOM;
-
-		
+		// layoutParamsLetters.gravity = Gravity.CENTER | Gravity.BOTTOM;
 
 	}
 
@@ -60,23 +56,21 @@ public class HangmanGameActivity extends Activity implements
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
 		height = displayMetrics.heightPixels;
-		
-		
+
 	}
-	private void initializeViews(){
+
+	private void initializeViews() {
 		listLetters = new ArrayList<TextView>();
 		listSpaces = new ArrayList<TextView>();
-		colors = generateColors();
 
-		setTextViews(word, spaces);
-		txtPicture=(TextView) findViewById(R.id.hangman_game_picture);
+		txtPicture = (TextView) findViewById(R.id.hangman_game_picture);
 		txtPicture.setBackgroundColor(Color.RED);
-		txtPicture.setText("Picture");
-		
+		// txtPicture.setText("Picture");
+
 		layoutSpaces = (LinearLayout) findViewById(R.id.hangman_game_layout_spaces);
 		layoutLetters = (LinearLayout) findViewById(R.id.hangman_game_layout_letters);
 
-		LinearLayout.LayoutParams layoutParamsSpaces = new LinearLayout.LayoutParams(
+		layoutParamsSpaces = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.WRAP_CONTENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT);
 		layoutSpaces.setOrientation(LinearLayout.VERTICAL);
@@ -86,26 +80,27 @@ public class HangmanGameActivity extends Activity implements
 				LinearLayout.LayoutParams.WRAP_CONTENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT);
 		layoutParamsLetters.setMargins(5, 0, 5, 0);
-		for (int i = 0; i < listLetters.size(); ++i) {
-			layoutSpaces.addView(listSpaces.get(i), layoutParamsSpaces);
-			layoutLetters.addView(listLetters.get(i), layoutParamsLetters);
 
-		}
 	}
 
 	private void openGame() {
 		Intent intent = getIntent();
 		String gameType = intent.getStringExtra("gameType");
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
-		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
-		try{
-			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.hangman_game_task_descrtiption));
-		}
-		catch(Exception e){
+		appInterface = (ApplicationInterface) intent
+				.getSerializableExtra("appInterface");
+		try {
+			appInterface.openGame(
+					gameType,
+					gameTags.iterator(),
+					this,
+					this.getResources().getString(
+							R.string.hangman_game_task_descrtiption));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void gameOver() {
 		Intent intent = new Intent(this, GameOverChoiceActivity.class);
@@ -151,88 +146,90 @@ public class HangmanGameActivity extends Activity implements
 		}
 	}
 
-
 	@Override
 	public void setOrUpdateOfferedLettersAndUsedLetters(
 			List<Character> allOfferedLetters, List<Boolean> usedLettersFlagged) {
 		// TODO Auto-generated method stub
+		// ako e true ne ja postavuvaj, ako e false, da
+
+		for (int i = 0; i < usedLettersFlagged.size(); ++i) {
+
+		}
 
 	}
 
 	@Override
 	public void setOrUpdateUserAnswer(List<Character> userAnswer) {
 		// TODO Auto-generated method stub
+		spaces = "";
+		for (int i = 0; i < userAnswer.size(); ++i) {
+			spaces += userAnswer.get(i);
+		}
+		System.out.println(spaces);
+		setTextViews(spaces);
+		for (int i = 0; i < listLetters.size(); ++i) {
+			layoutSpaces.addView(listSpaces.get(i), layoutParamsSpaces);
+			// layoutLetters.addView(listLetters.get(i), layoutParamsLetters);
 
+		}
 	}
 
 	@Override
 	public void setAnswer(Item item) {
 		// TODO Auto-generated method stub
+		int id = getResources().getIdentifier(
+				item.getResourceNames().get("picture"), "drawable",
+				this.getPackageName());
+		txtPicture.setBackgroundResource(id);
 
 	}
 
-	private void setTextViews(String word, String spaces) {
+	private void setTextViews(String spaces) {
 
-		for (int i = 0; i < word.length(); ++i) {
+		for (int i = 0; i < spaces.length(); ++i) {
 
-			TextView txLetter = new TextView(getApplicationContext());
-	
+			// TextView txLetter = new TextView(getApplicationContext());
+
 			TextView txS = new TextView(getApplicationContext());
 
-			txS.setBackground(getGradientDrawable());
-			GradientDrawable gd=getGradientDrawable();
-			gd.setShape(GradientDrawable.OVAL);
-			txLetter.setBackground(gd);
+			txS.setBackground(getGradientDrawable(COLORSPACES));
+			// GradientDrawable gd=getGradientDrawable();
+			// gd.setShape(GradientDrawable.OVAL);
+			// txLetter.setBackground(gd);
 
-			txLetter.setText(word.charAt(i) + " ");
+			// txLetter.setText(word.charAt(i) + " ");
 			txS.setText(spaces.charAt(i) + " ");
 
-			txLetter.setTextAppearance(getApplicationContext(),
-					android.R.style.TextAppearance_Large);
+			// txLetter.setTextAppearance(getApplicationContext(),
+			// android.R.style.TextAppearance_Large);
 			txS.setTextAppearance(getApplicationContext(),
 					android.R.style.TextAppearance_Large);
 
-			txLetter.setGravity(Gravity.CENTER);
+			// txLetter.setGravity(Gravity.CENTER);
 			txS.setGravity(Gravity.CENTER);
 
-			txLetter.setTextColor(Color.BLACK);
+			// txLetter.setTextColor(Color.BLACK);
 			txS.setTextColor(Color.BLACK);
 
-			txLetter.setWidth(width / (spaces.length() + 1));
+			// txLetter.setWidth(width / (spaces.length() + 1));
 			txS.setWidth(width / 3);
 
-			txLetter.setHeight(height / 10);
+			// txLetter.setHeight(height / 10);
 			txS.setHeight(height / 10);
-			
 
-			listLetters.add(txLetter);
+			// listLetters.add(txLetter);
 			listSpaces.add(txS);
 		}
-		for(int k=0;k<listLetters.size();++k){
+		for (int k = 0; k < listLetters.size(); ++k) {
 			System.out.println(listSpaces.get(k).getText());
 		}
 
 	}
 
-	private ArrayList<Integer> generateColors() {
+	private GradientDrawable getGradientDrawable(int color) {
 
-		ArrayList<Integer> colors = new ArrayList<Integer>();
-		colors.add(Color.rgb(235, 77, 77));
-		colors.add(Color.rgb(88, 243, 129));
-		colors.add(Color.rgb(192, 142, 213));
-		colors.add(Color.rgb(137, 170, 220));
-		colors.add(Color.rgb(88, 243, 129));
-		// colors.add(Color.rgb(244, 252, 244));
-		colors.add(Color.rgb(255, 255, 102));
-
-		return colors;
-	}
-
-	private GradientDrawable getGradientDrawable() {
-
-		int i = colors.get(r.nextInt(colors.size()));
 		GradientDrawable gd = new GradientDrawable();
-		gd.setColor(i);
+		gd.setColor(color);
 		gd.setCornerRadius(10);
 		gd.setShape(GradientDrawable.RECTANGLE);
 		// gd.setStroke(1, 0xFF000000);
