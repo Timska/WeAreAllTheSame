@@ -1,9 +1,11 @@
 package weareallthesame.view.games.connectitemsgames;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import weareallthesame.model.ApplicationInterface;
+import weareallthesame.model.items.Item;
 import weareallthesame.view.R;
 import android.app.Activity;
 import android.content.Intent;
@@ -19,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ConnectItemsActivity extends Activity {
+public class ConnectItemsActivity extends Activity implements ConnectItemAndResursViewInterface {
 
 	private static final long serialVersionUID = 6373187583074782521L;
 
@@ -41,13 +43,25 @@ public class ConnectItemsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_connect_items);
 
+		getMetrics();
+		initializeViews();
 		openGame();
 		
+		
+		
+		
+
+		
+	}
+
+	private void getMetrics() {
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
 		height = displayMetrics.heightPixels;
-
+		
+	}
+	private void initializeViews(){
 		listLetters = new ArrayList<TextView>();
 		listImages = new ArrayList<TextView>();
 		colors = generateColors();
@@ -87,7 +101,7 @@ public class ConnectItemsActivity extends Activity {
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
 		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
 		try{
-			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
+			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.connect_items_task_description));
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -203,5 +217,29 @@ public class ConnectItemsActivity extends Activity {
 
 		}
 
+	}
+
+	@Override
+	public void initArrays(List<Item> items, List<String> strings) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void initConnections(int[] connections) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void wrongAnswer() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void gameOver() {
+		// TODO Auto-generated method stub
+		
 	}
 }
