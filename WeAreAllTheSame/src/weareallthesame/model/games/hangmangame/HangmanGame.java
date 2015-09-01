@@ -40,7 +40,9 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 	}
 	
 	private void setAnswer(){
-		answer = ItemFactory.getItem(this.getTags(), 1).next(); 
+		List<String> itemTags = new ArrayList<String>();
+		itemTags.add(this.getTags().next());
+		answer = ItemFactory.getItem(itemTags.iterator(), 1).next(); 
 		view.setAnswer(answer);
 	}
 	
