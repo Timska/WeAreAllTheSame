@@ -19,10 +19,14 @@ public class TagsFactory {
 				return tags;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.letters_orderLetters))){
-				tags.add("hangman");
+				tags.add("letters");
 				return tags;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.letters_hangman))){
+				tags.add("hangman");
+				return tags;
+			}
+			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.letters_orderWord))){
 				tags.add("hangman");
 				return tags;
 			}
