@@ -34,9 +34,8 @@ public class ConnectItemsActivity extends Activity implements
 	private DisplayMetrics displayMetrics;
 	private int width, height, counts = 0;
 	private ApplicationInterface appInterface;
-	private LinearLayout.LayoutParams layoutParamsSpaces,layoutParams;
+	private LinearLayout.LayoutParams layoutParamsSpaces, layoutParams;
 
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,10 +60,6 @@ public class ConnectItemsActivity extends Activity implements
 		listImages = new ArrayList<ImageView>();
 		layoutLetters = (LinearLayout) findViewById(R.id.connect_items_layout_letters);
 		layoutImages = (LinearLayout) findViewById(R.id.connect_items_layout_images);
-
-		
-
-		
 
 	}
 
@@ -91,29 +86,27 @@ public class ConnectItemsActivity extends Activity implements
 		for (int i = 0; i < words.size(); ++i) {
 
 			TextView txL = new TextView(getApplicationContext());
-			//TextView txS = new TextView(getApplicationContext());
+			// TextView txS = new TextView(getApplicationContext());
 
 			txL.setBackground(getGradientDrawable(COLOR));
-			//txS.setBackground(getGradientDrawable());
+			// txS.setBackground(getGradientDrawable());
 
 			txL.setText(words.get(i));
-		
 
-		
 			txL.setGravity(Gravity.CENTER);
-			//.setGravity(Gravity.CENTER);
+			// .setGravity(Gravity.CENTER);
 
 			txL.setTextColor(Color.BLACK);
-			//txS.setTextColor(Color.BLACK);
+			// txS.setTextColor(Color.BLACK);
 
 			txL.setWidth(width / 4);
-			//txS.setWidth(width / 4);
+			// txS.setWidth(width / 4);
 
 			txL.setHeight(height / 16);
-			//txS.setHeight(height / 10);
+			// txS.setHeight(height / 10);
 
 			listWords.add(txL);
-			//listImages.add(txS);
+			// listImages.add(txS);
 		}
 
 	}
@@ -122,34 +115,33 @@ public class ConnectItemsActivity extends Activity implements
 
 		for (int i = 0; i < items.size(); ++i) {
 
-		ImageView txL = new ImageView(getApplicationContext());
-			//TextView txS = new TextView(getApplicationContext());
+			ImageView txL = new ImageView(getApplicationContext());
+			// TextView txS = new TextView(getApplicationContext());
 
 			txL.setBackground(getGradientDrawable(COLOR));
-			//txS.setBackground(getGradientDrawable());
+			// txS.setBackground(getGradientDrawable());
 
-			int id=getResources().getIdentifier(
+			int id = getResources().getIdentifier(
 					items.get(i).getResourceNames().get("picture"), "drawable",
 					this.getPackageName());
 			txL.setScaleType(ImageView.ScaleType.FIT_CENTER);
 			txL.setBackgroundResource(id);
-			
-		
-			//txL.setGravity(Gravity.CENTER);
-			//.setGravity(Gravity.CENTER);
 
-			//txL.setTextColor(Color.BLACK);
-			//txS.setTextColor(Color.BLACK);
+			// txL.setGravity(Gravity.CENTER);
+			// .setGravity(Gravity.CENTER);
 
-			//txL.setWidth(width / 4);
-			//txS.setWidth(width / 4);
+			// txL.setTextColor(Color.BLACK);
+			// txS.setTextColor(Color.BLACK);
 
-			//txL.setHeight(height / 16);
-			//txS.setHeight(height / 10);
+			// txL.setWidth(width / 4);
+			// txS.setWidth(width / 4);
+
+			// txL.setHeight(height / 16);
+			// txS.setHeight(height / 10);
 
 			System.out.println("lalala");
 			listImages.add(txL);
-			//listImages.add(txS);
+			// listImages.add(txS);
 		}
 
 	}
@@ -182,7 +174,7 @@ public class ConnectItemsActivity extends Activity implements
 					// draggedImageViewParentLayout.removeView(view);
 					view.setBackgroundColor(Color.BLUE);
 					counts = 1;
-					
+
 				} else {
 					Toast.makeText(getApplicationContext(),
 							"Мора да кликнете на еден од зборовите.",
@@ -214,38 +206,35 @@ public class ConnectItemsActivity extends Activity implements
 	@Override
 	public void initArrays(List<Item> items, List<String> strings) {
 		// TODO Auto-generated method stub
-		
+
 		layoutParams = new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.MATCH_PARENT,
-				items.size()+2);
+				LinearLayout.LayoutParams.MATCH_PARENT, height
+						/ (items.size() + 2));
 
 		layoutParams.setMargins(width / 7, 10, width / 7, 0);
 		layoutParams.gravity = Gravity.CENTER;
 
 		layoutParams.setMargins(width / 7, 10, width / 7, 0);
 
-		
 		layoutParamsSpaces = new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.MATCH_PARENT,
-				items.size()+2);
+				LinearLayout.LayoutParams.MATCH_PARENT, height
+						/ (items.size() + 2));
 		layoutParamsSpaces.setMargins(0, 10, width / 7, 0);
 		setTextViews((ArrayList<String>) strings);
 		setTextViewsBackgrounds((ArrayList<Item>) items);
 		for (int i = 0; i < listWords.size(); ++i) {
-			//listWords.get(i).setOnClickListener(new MyTouchListener());
-			//listImages.get(i).setOnClickListener(new MyTouchListener());
+			// listWords.get(i).setOnClickListener(new MyTouchListener());
+			// listImages.get(i).setOnClickListener(new MyTouchListener());
 			layoutLetters.addView(listWords.get(i), layoutParams);
 			layoutImages.addView(listImages.get(i), layoutParamsSpaces);
 
 		}
-		
-	
+
 	}
 
 	@Override
 	public void initConnections(int[] connections) {
 		// TODO Auto-generated method stub
-		
 
 	}
 
