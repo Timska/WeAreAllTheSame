@@ -268,7 +268,7 @@ public class TagsFactory {
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.year_groupWords))){
 				tags.add("day");
 				tags.add("month");
-				tags.add("season");
+				//tags.add("season");
 				return tags;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.year_orderDays))){
