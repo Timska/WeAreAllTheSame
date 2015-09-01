@@ -138,7 +138,7 @@ public class ViewFactory {
 				return ConnectItemsActivity.class;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.colorsandobjects_whatsTheColor))){
-				return ConnectItemsActivity.class;
+				return FindTheWordFromThePictureActivity.class;
 			}
 		}
 		if(categoryType.equalsIgnoreCase("Day")){

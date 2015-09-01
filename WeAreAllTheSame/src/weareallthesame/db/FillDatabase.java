@@ -20,7 +20,7 @@ public class FillDatabase {
 		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("FruitsAndVegetables", "Овошје и зеленчук", "fruit_vegetables"));
 		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Weather", "Временски услови", "weather"));
 		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Year", "Година", "months_days"));
-		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Day", "Ден", "day_details"));
+		//resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Day", "Ден", "day_details"));
 		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("ColorsAndObjects", "Бои и предмети", "colors_objects"));
 		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("Prepositions", "Предлози", "prepositions"));
 		resolver.insert(CategoryContentProvider.CONTENT_URI, toCategoryContentValues("ClothesAndBodyParts", "Облека и делови на тело", "clothes"));
@@ -1386,7 +1386,7 @@ public class FillDatabase {
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ChooseItem", "colorsandobjects_chooseColor"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ChooseItem", "colorsandobjects_chooseObject"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ConnectItemAndResurs", "colorsandobjects_connect"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ConnectItems", "colorsandobjects_whatsTheColor"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ColorsAndObjects", "ChooseItem", "colorsandobjects_whatsTheColor"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_choosePreposition"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_choosePicture"));
@@ -1396,7 +1396,7 @@ public class FillDatabase {
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromPicture"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseClothingFromWord"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseClothingFromPicture"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ConnectItems", "clothesandbodyparts_connect"));
+		//resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ConnectItems", "clothesandbodyparts_connect"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Emotions", "ChooseItem", "emotions_chooseWord"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Emotions", "ChooseItem", "emotions_choosePicture"));
@@ -1411,7 +1411,62 @@ public class FillDatabase {
 	}
 	
 	private static void fillQuestions() {
-		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(1, "Како се вика дечкото на Вики?", "Ацко"));
+		
+		//Кој ден е после..
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(1, "Кој ден е после понеделник?", "Вторник"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(2, "Кој ден е после вторник?", "Среда"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(3, "Кој ден е после среда?", "Четврток"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(4, "Кој ден е после четврток?", "Петок"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(5, "Кој ден е после петок?", "Сабота"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(6, "Кој ден е после сабота?", "Недела"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(7, "Кој ден е после недела?", "Понеделник"));
+		
+		//Кој ден е пред..
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(8, "Кој ден е пред понеделник?", "Недела"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(9, "Кој ден е пред вторник?", "Понеделник"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(10, "Кој ден е пред среда?", "Вторник"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(11, "Кој ден е пред четврток?", "Среда"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(12, "Кој ден е пред петок?", "Четврток"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(13, "Кој ден е пред сабота?", "Петок"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(14, "Кој ден е пред недела?", "Сабота"));
+		
+		//Колку..
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(15, "Колку денови има една недела?", "7"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(16, "Колку месеци има една година?", "12"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(17, "Колку часови има еден ден?", "24"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(18, "Колку минути има еден час?", "60"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(19, "Колку секунди има една минута?", "60"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(20, "Колку годишни времиња има една година?", "4"));
+		
+		//Кој месец е после..
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(21, "Кој месец е после јануари?", "Февруари"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(22, "Кој месец е после февруари?", "Март"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(23, "Кој месец е после март?", "Април"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(24, "Кој месец е после април?", "Мај"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(25, "Кој месец е после мај?", "Јуни"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(26, "Кој месец е после јуни?", "Јули"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(27, "Кој месец е после јули?", "Август"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(28, "Кој месец е после август?", "Септември"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(29, "Кој месец е после септември?", "Октомври"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(30, "Кој месец е после октомври?", "Ноември"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(31, "Кој месец е после ноември?", "Декември"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(32, "Кој месец е после декември?", "Јануари"));
+		
+		//Кој месец е пред..
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(33, "Кој месец е пред јануари?", "Декември"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(34, "Кој месец е пред февруари?", "Јануари"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(35, "Кој месец е пред март?", "Февруари"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(36, "Кој месец е пред април?", "Март"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(37, "Кој месец е пред мај?", "Април"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(38, "Кој месец е пред јуни?", "Мај"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(39, "Кој месец е пред јули?", "Јуни"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(40, "Кој месец е пред август?", "Јули"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(41, "Кој месец е пред септември?", "Септември"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(42, "Кој месец е пред октомври?", "Октомври"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(43, "Кој месец е пред ноември?", "Ноември"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(44, "Кој месец е пред декември?", "Декември"));
+				
+		
 	}
 	
 	private static ContentValues toQuestionContentValues(int questionId, String question, String answer) {
@@ -1424,6 +1479,51 @@ public class FillDatabase {
 	
 	private static void fillQuestionsTags() {
 		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(1, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(2, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(3, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(4, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(5, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(6, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(7, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(8, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(9, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(10, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(11, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(12, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(13, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(14, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(15, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(16, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(17, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(18, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(19, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(20, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(21, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(22, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(23, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(24, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(25, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(26, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(27, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(28, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(29, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(30, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(31, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(32, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(33, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(34, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(35, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(36, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(37, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(38, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(39, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(40, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(41, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(42, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(43, "question"));
+		resolver.insert(QuestionTagsContentProvider.CONTENT_URI, toQuestionTagsContentValues(44, "question"));
+		
+		
 	}
 	
 	private static ContentValues toQuestionTagsContentValues(int questionId, String tag) {
