@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="word_color_find_picture_from_word">#B45F04</color>
-    <color name="yellow">#F5F6CE</color>
-    <color name="red">#2B1CE3</color>
-   	<color name="dark_transparent">#00000000</color>
+    <color name="dark_transparent">#00000000</color>
+   	
+   	<!-- Colors for colors category -->
+   	<color name="black">#000000</color>
+   	<color name="white">#FFFFFF</color>
+   	<color name="red">#FF0000</color>
+   	<color name="blue">#0000FF</color>
+   	<color name="green">#00FF00</color>
+   	<color name="yellow">#FFFF00</color>
+   	<color name="magenta">#FF00FF</color>
+   	<color name="orange">#FF8800</color>
+   	<color name="pink">#FF0088</color>
+   	<color name="brown">#6D430E</color>
+   	<color name="gray">#888888</color>
+   	
 </resources>

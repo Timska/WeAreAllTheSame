@@ -45,8 +45,8 @@ public class ChooseItemGame extends AbstractGame implements ChooseItemInterface{
 		offeredAnswers.add(answer);
 		Random random = new Random();
 		int numOfferedAnswers = 0;
-		while(numOfferedAnswers < 5){
-			numOfferedAnswers = random.nextInt(10);
+		while(numOfferedAnswers < 4){
+			numOfferedAnswers = random.nextInt(6) + 1;
 		}
 		Iterator<Item> offeredItems = ItemFactory.getItem(this.getTags(), numOfferedAnswers - 1);
 		while(offeredItems.hasNext()){

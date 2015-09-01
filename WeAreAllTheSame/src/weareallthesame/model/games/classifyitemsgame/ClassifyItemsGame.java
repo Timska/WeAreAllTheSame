@@ -47,7 +47,7 @@ public class ClassifyItemsGame extends AbstractGame implements ClassifyItemsInte
 		offeredItems = new HashSet<Item>();
 		classSetMap = new HashMap<String, Set<Item>>();
 		itemClassMap = new HashMap<Item, String>();
-		int sum = 15;
+		int sum = 8;
 		gameOver = false;
 		
 		Iterator<String> tags = this.getTags();

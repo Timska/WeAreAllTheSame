@@ -40,7 +40,7 @@ public class HowManyGame extends AbstractGame implements ChooseNumberInterface{
 	private void setAnswer(){
 		item = ItemFactory.getItem(this.getTags(), 1).next();
 		Random random = new Random();
-		howMany = random.nextInt(20) + 1;
+		howMany = random.nextInt(10) + 1;
 		view.setAnswer(item, howMany);
 	}
 
@@ -50,7 +50,7 @@ public class HowManyGame extends AbstractGame implements ChooseNumberInterface{
 		Random random = new Random();
 		int numOfferedAnswers = 0;
 		while(numOfferedAnswers < 5){
-			numOfferedAnswers = random.nextInt(10);
+			numOfferedAnswers = random.nextInt(8) + 2;
 		}
 		while(offeredAnswers.size() < numOfferedAnswers){
 			offeredAnswers.add(random.nextInt(30));
