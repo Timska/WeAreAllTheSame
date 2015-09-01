@@ -50,7 +50,7 @@ public class HowManyGame extends AbstractGame implements ChooseNumberInterface{
 		Random random = new Random();
 		int numOfferedAnswers = 0;
 		while(numOfferedAnswers < 5){
-			numOfferedAnswers = random.nextInt(10);
+			numOfferedAnswers = random.nextInt(8) + 2;
 		}
 		while(offeredAnswers.size() < numOfferedAnswers){
 			offeredAnswers.add(random.nextInt(30));
