@@ -13,7 +13,7 @@ import weareallthesame.factories.ItemFactory;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
-import weareallthesame.model.exceptions.ObjectDoesNotBelongInSetException;
+import weareallthesame.model.exceptions.WrongAnswerException;
 import weareallthesame.model.games.AbstractGame;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.games.classifyitemsgames.ClassifyItemsViewInterface;
@@ -78,7 +78,7 @@ public class ClassifyItemsGame extends AbstractGame implements ClassifyItemsInte
 	}
 
 	@Override
-	public void classifyItem(Item item, String category) throws GameOverException, CommandException, ObjectDoesNotBelongInSetException {
+	public void classifyItem(Item item, String category) throws GameOverException, CommandException, WrongAnswerException {
 		if(gameOver){
 			throw new GameOverException("Igrata e zavrsena");
 		}
@@ -90,7 +90,7 @@ public class ClassifyItemsGame extends AbstractGame implements ClassifyItemsInte
 		}
 		if(!itemClassMap.get(item).equalsIgnoreCase(category)){
 			view.wrongChoice();
-			throw new ObjectDoesNotBelongInSetException();
+			throw new WrongAnswerException();
 		}
 		Set<Item> set = classSetMap.get(category);
 		set.add(item);

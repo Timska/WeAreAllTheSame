@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.exceptions.WrongAnswerException;
 
 
 /**
@@ -19,9 +20,10 @@ public interface HangmanInterface extends Serializable {
 	 * @param positionTo na koja pozicija vo odgovorot da se smesti dadenata bukva
 	 * @throws GameOverException ne moze da se povika metodot ako igrata e zavrsena
 	 * @throws CommandException 
+	 * @throws WrongAnswerException 
 	 * 
 	 */
-	public void setLetter(int positionFrom, int positionTo) throws GameOverException, CommandException;
+	public void setLetter(int positionFrom, int positionTo) throws GameOverException, CommandException, WrongAnswerException;
 	
 	/**
 	 * Ovoj metod trga veke postavena bukva od odgovorot

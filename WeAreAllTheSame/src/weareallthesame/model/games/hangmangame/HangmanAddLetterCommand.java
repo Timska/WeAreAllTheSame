@@ -3,6 +3,7 @@ package weareallthesame.model.games.hangmangame;
 import weareallthesame.model.commands.AbstractCommand;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.exceptions.WrongAnswerException;
 
 public class HangmanAddLetterCommand extends AbstractCommand{
 
@@ -19,7 +20,7 @@ public class HangmanAddLetterCommand extends AbstractCommand{
 	}
 
 	@Override
-	public void executeNow() throws GameOverException, CommandException {
+	public void executeNow() throws GameOverException, CommandException, WrongAnswerException {
 		game.setLetter(positionFrom, positionTo);
 	}
 

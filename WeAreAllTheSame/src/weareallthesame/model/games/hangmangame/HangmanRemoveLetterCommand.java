@@ -3,6 +3,7 @@ package weareallthesame.model.games.hangmangame;
 import weareallthesame.model.commands.AbstractCommand;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.exceptions.WrongAnswerException;
 
 public class HangmanRemoveLetterCommand extends AbstractCommand {
 	
@@ -29,7 +30,7 @@ public class HangmanRemoveLetterCommand extends AbstractCommand {
 	}
 
 	@Override
-	public void undoNow() throws GameOverException, CommandException {
+	public void undoNow() throws GameOverException, CommandException, WrongAnswerException {
 		game.setLetter(positionTo, positionFrom);
 	}
 

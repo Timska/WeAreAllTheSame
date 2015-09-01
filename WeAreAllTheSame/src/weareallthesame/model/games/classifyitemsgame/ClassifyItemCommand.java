@@ -3,7 +3,7 @@ package weareallthesame.model.games.classifyitemsgame;
 import weareallthesame.model.commands.AbstractCommand;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
-import weareallthesame.model.exceptions.ObjectDoesNotBelongInSetException;
+import weareallthesame.model.exceptions.WrongAnswerException;
 import weareallthesame.model.items.Item;
 
 public class ClassifyItemCommand extends AbstractCommand {
@@ -29,7 +29,7 @@ public class ClassifyItemCommand extends AbstractCommand {
 	}
 
 	@Override
-	public void executeNow() throws GameOverException, CommandException, ObjectDoesNotBelongInSetException {
+	public void executeNow() throws GameOverException, CommandException, WrongAnswerException {
 		game.classifyItem(item, category);
 	}
 

@@ -6,7 +6,7 @@ import java.util.Iterator;
 import weareallthesame.model.exceptions.CommandDoesNotExistException;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
-import weareallthesame.model.exceptions.ObjectDoesNotBelongInSetException;
+import weareallthesame.model.exceptions.WrongAnswerException;
 import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.interfaces.Typable;
@@ -22,9 +22,9 @@ public interface Game extends Typable, Serializable {
 	 * @throws CommandDoesNotExistException 
 	 * @throws WrongArgumentTypeException 
 	 * @throws WrongNumberOfArgumentsException 
-	 * @throws ObjectDoesNotBelongInSetException 
+	 * @throws WrongAnswerException 
 	 */
-	public void execute(String type, Object... arguments) throws GameOverException, CommandException, CommandDoesNotExistException, WrongNumberOfArgumentsException, WrongArgumentTypeException, ObjectDoesNotBelongInSetException;
+	public void execute(String type, Object... arguments) throws GameOverException, CommandException, CommandDoesNotExistException, WrongNumberOfArgumentsException, WrongArgumentTypeException, WrongAnswerException;
 	
 	/**
 	 * Ovoj metod e povrzan so {@link Game#execute(String, Object...)} metodot i dokolku se povika pravi revert na posledno 
@@ -32,8 +32,9 @@ public interface Game extends Typable, Serializable {
 	 * na onolku komandi kolku sto pati e povikan.
 	 * @throws CommandException 
 	 * @throws GameOverException 
+	 * @throws WrongAnswerException 
 	 */
-	public void undo() throws GameOverException, CommandException;
+	public void undo() throws GameOverException, CommandException, WrongAnswerException;
 	
 	/**
 	 * Ovoj metod se koristi za da se dobijat site tipovi na komandi koi mozat da se izvrsat vo igrata.

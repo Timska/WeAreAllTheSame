@@ -21,7 +21,7 @@ import weareallthesame.model.exceptions.GameNotOpenException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
 import weareallthesame.model.exceptions.MissingTagException;
-import weareallthesame.model.exceptions.ObjectDoesNotBelongInSetException;
+import weareallthesame.model.exceptions.WrongAnswerException;
 import weareallthesame.model.exceptions.WrongArgumentTypeException;
 import weareallthesame.model.exceptions.WrongNumberOfArgumentsException;
 import weareallthesame.model.games.Game;
@@ -216,9 +216,9 @@ public class ApplicationInterface implements Serializable {
 	 * @throws CommandDoesNotExistException ne postoi takva komanda za aktivnata igra
 	 * @throws WrongArgumentTypeException  pogresen broj na isprateni argumenti
 	 * @throws WrongNumberOfArgumentsException nekoj od argumentite e od pogresen tip
-	 * @throws ObjectDoesNotBelongInSetException 
+	 * @throws WrongAnswerException 
 	 */
-	public void executeCommand(String type, Object... arguments) throws GameNotOpenException, GameOverException, CommandException, CommandDoesNotExistException, WrongNumberOfArgumentsException, WrongArgumentTypeException, ObjectDoesNotBelongInSetException {
+	public void executeCommand(String type, Object... arguments) throws GameNotOpenException, GameOverException, CommandException, CommandDoesNotExistException, WrongNumberOfArgumentsException, WrongArgumentTypeException, WrongAnswerException {
 		if(currentGame == null){
 			throw new GameNotOpenException("Ne moze da se izvrsi komanda bidejki nema aktivna igra");
 		}
@@ -230,8 +230,9 @@ public class ApplicationInterface implements Serializable {
 	 * @throws GameNotOpenException nema aktivna igra
 	 * @throws GameOverException igrata e zavrsena
 	 * @throws CommandException greska pri vrakanje na prethodnata sostojba na igrata
+	 * @throws WrongAnswerException 
 	 */
-	public void undoLastCommand() throws GameNotOpenException, GameOverException, CommandException{
+	public void undoLastCommand() throws GameNotOpenException, GameOverException, CommandException, WrongAnswerException{
 		if(currentGame == null){
 			throw new GameNotOpenException("Ne moze da se ponisti poslednata komanda bidejki nema aktivna igra");
 		}

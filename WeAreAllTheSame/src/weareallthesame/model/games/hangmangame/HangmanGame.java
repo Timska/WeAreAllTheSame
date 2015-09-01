@@ -11,6 +11,7 @@ import weareallthesame.factories.simplefactories.SimpleFactoryInterface;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
+import weareallthesame.model.exceptions.WrongAnswerException;
 import weareallthesame.model.games.AbstractGame;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.games.hangmangame.HangmanViewInterface;
@@ -86,13 +87,17 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 		view.setOrUpdateUserAnswer(userAnswer);
 	}
 
-	public void setLetter(int positionFrom, int positionTo) throws GameOverException, CommandException{
+	public void setLetter(int positionFrom, int positionTo) throws GameOverException, CommandException, WrongAnswerException{
 		if(gameOver){
 			throw new GameOverException("Igrata zavrsi");
 		}
 		if(offeredLettersUsed.get(positionFrom)){
 			throw new CommandException(String.format("Ponudenata bukva %c na pozicija %d veke e iskoristena.",offeredLetters.get(positionFrom), positionFrom));
 		}
+		if(offeredLetters.get(positionFrom).equals(answer.getName().charAt(positionTo))){
+			throw new WrongAnswerException();
+		}
+		
 		userAnswer.set(positionTo, offeredLetters.get(positionFrom));
 		offeredLettersUsed.set(positionFrom, true);
 		

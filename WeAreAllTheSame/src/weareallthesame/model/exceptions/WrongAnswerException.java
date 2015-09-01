@@ -1,27 +1,27 @@
 package weareallthesame.model.exceptions;
 
-public class ObjectDoesNotBelongInSetException extends Exception {
+public class WrongAnswerException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7714947218551919921L;
 
-	public ObjectDoesNotBelongInSetException() {
+	public WrongAnswerException() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ObjectDoesNotBelongInSetException(String detailMessage) {
+	public WrongAnswerException(String detailMessage) {
 		super(detailMessage);
 		// TODO Auto-generated constructor stub
 	}
 
-	public ObjectDoesNotBelongInSetException(Throwable throwable) {
+	public WrongAnswerException(Throwable throwable) {
 		super(throwable);
 		// TODO Auto-generated constructor stub
 	}
 
-	public ObjectDoesNotBelongInSetException(String detailMessage,
+	public WrongAnswerException(String detailMessage,
 			Throwable throwable) {
 		super(detailMessage, throwable);
 		// TODO Auto-generated constructor stub
