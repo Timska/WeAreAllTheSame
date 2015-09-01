@@ -82,7 +82,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 		containerGroupOne = (GridView) findViewById(R.id.classify_elements_group_one_container);
 		containerGroupTwo = (GridView) findViewById(R.id.classify_elements_group_two_container);
 		ViewGroup.LayoutParams layoutParams = container.getLayoutParams();
-		layoutParams.height = height / 4; // this is in pixels
+		layoutParams.height = height / 7; // this is in pixels
 		container.setLayoutParams(layoutParams);
 		containerGroupOne.setLayoutParams(layoutParams);
 		containerGroupTwo.setLayoutParams(layoutParams);
@@ -188,6 +188,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 				longestAnswer = text;
 			}
 		}
+		System.out.println(elementsGroupOne.size()+"Elements one size");
 		containerGroupOne.setAdapter(new ClassifyItemsTextViewAdapter(this,
 				elementsGroupOne, tf, 0, 0, COLORGROUPONE, longestAnswer));
 		longestAnswer = "";
@@ -336,7 +337,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 				try {
 					appInterface.executeCommand("classifyitem", clickedItem,
 							category);
-
+					return true;
 				} catch (Exception e) {
 					e.printStackTrace();
 					// if(e instanceof ObjectDoesNotBelongInSetException){
@@ -345,26 +346,8 @@ public class ClassifyTheElementsActivity extends Activity implements
 					// }
 				}
 
-				String text = draggedTextView.getText().toString();
-				System.out.println(text);
 
-				if (listFrom.contains(text))
-					listFrom.remove(text);
-
-				//container.removeAllViews();
-				System.out.println("List from size" + listFrom.size());
-				container.setAdapter(new ClassifyItemsTextViewAdapter(
-						getApplicationContext(), listFrom, tf, 0, 0,
-						COLOROFFEREDELEMENTS, longestString));
-
-				System.out.println("List to size"+ listTo.size());
-				listTo.add(text);
-				//containerTo.removeAllViews();
-				containerTo.setAdapter(new ClassifyItemsTextViewAdapter(
-						getApplicationContext(), listTo, tf, 0, 0, color,
-						longestString));
-
-				return true;
+				
 
 			case DragEvent.ACTION_DRAG_ENDED:
 
