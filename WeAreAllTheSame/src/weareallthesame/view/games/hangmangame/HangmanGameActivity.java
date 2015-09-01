@@ -6,6 +6,7 @@ import java.util.Random;
 
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
+import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
 import android.app.Activity;
 import android.content.Intent;
@@ -34,19 +35,35 @@ public class HangmanGameActivity extends Activity implements
 	private DisplayMetrics displayMetrics;
 	private int width, height;
 	private ApplicationInterface appInterface;
+	private Item answer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hangman_game);
 
+		getMetrics();
+		initializeViews();
 		openGame();
 		
+		
+
+		
+		//layoutParamsLetters.gravity = Gravity.CENTER | Gravity.BOTTOM;
+
+		
+
+	}
+
+	private void getMetrics() {
 		displayMetrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
 		height = displayMetrics.heightPixels;
-
+		
+		
+	}
+	private void initializeViews(){
 		listLetters = new ArrayList<TextView>();
 		listSpaces = new ArrayList<TextView>();
 		colors = generateColors();
@@ -69,14 +86,11 @@ public class HangmanGameActivity extends Activity implements
 				LinearLayout.LayoutParams.WRAP_CONTENT,
 				LinearLayout.LayoutParams.WRAP_CONTENT);
 		layoutParamsLetters.setMargins(5, 0, 5, 0);
-		//layoutParamsLetters.gravity = Gravity.CENTER | Gravity.BOTTOM;
-
 		for (int i = 0; i < listLetters.size(); ++i) {
 			layoutSpaces.addView(listSpaces.get(i), layoutParamsSpaces);
 			layoutLetters.addView(listLetters.get(i), layoutParamsLetters);
 
 		}
-
 	}
 
 	private void openGame() {
@@ -85,7 +99,7 @@ public class HangmanGameActivity extends Activity implements
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
 		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
 		try{
-			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.choose_character_from_sound_task_description));
+			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.hangman_game_task_descrtiption));
 		}
 		catch(Exception e){
 			e.printStackTrace();
@@ -94,9 +108,49 @@ public class HangmanGameActivity extends Activity implements
 	
 	@Override
 	public void gameOver() {
-		// TODO Auto-generated method stub
-
+		Intent intent = new Intent(this, GameOverChoiceActivity.class);
+		startActivityForResult(intent, 0);
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 0) {
+			if (resultCode == RESULT_OK) {
+				String result = data.getExtras().getString("result");
+				if (result.equals("NEW")) {
+
+					Intent intent = new Intent(this, this.getClass());
+					try {
+						intent.putExtra("gameType",
+								appInterface.getCurrentGameType());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					intent.putStringArrayListExtra("gameTags",
+							appInterface.getCurrentGameTags());
+					intent.putExtra("appInterface", appInterface);
+
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					startActivity(intent);
+
+					finish();
+				} else if (result.equals("BACK")) {
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					finish();
+				}
+			}
+		}
+	}
+
 
 	@Override
 	public void setOrUpdateOfferedLettersAndUsedLetters(
