@@ -1,6 +1,7 @@
 package weareallthesame.model.games.hangmangame;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -58,6 +59,7 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 			}
 			offeredLettersUsed.add(false);
 		}
+		Collections.shuffle(offeredLetters);
 		
 		userAnswer = new ArrayList<Character>();
 		for(int i=0;i<answer.getName().length();++i){
