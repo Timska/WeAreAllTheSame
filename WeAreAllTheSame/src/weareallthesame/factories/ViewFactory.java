@@ -55,12 +55,6 @@ public class ViewFactory {
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_chooseNumber))){
 				return ChooseCharacterFromSoundActivity.class;
 			}
-			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_choosePicture))){
-				return FindThePictureFromTheWordActivity.class;
-			}
-			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_chooseWord))){
-				return FindTheWordFromThePictureActivity.class;
-			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_countObjects))){
 				return HowManyObjectsActivity.class;
 			}

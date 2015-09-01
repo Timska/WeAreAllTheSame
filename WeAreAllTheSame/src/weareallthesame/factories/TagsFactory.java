@@ -47,12 +47,6 @@ public class TagsFactory {
 				tags.add("numbers");
 				return tags;
 			}
-			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_choosePicture))){
-				// TODO nema zborovi za broevite
-			}
-			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_chooseWord))){
-				// TODO nema zborovi za broevite
-			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.numbers_countObjects))){
 				tags.add("set");
 				return tags;
