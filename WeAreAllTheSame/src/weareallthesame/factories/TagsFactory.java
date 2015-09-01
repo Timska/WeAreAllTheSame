@@ -279,6 +279,7 @@ public class TagsFactory {
 				return tags;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.year_questions))){
+				tags.add("question");
 				return tags;
 			}
 		}
