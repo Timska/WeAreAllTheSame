@@ -29,6 +29,7 @@ public class TagsFactory {
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.letters_orderWord))){
 				tags.add("hangman");
+				tags.add("letters");
 				return tags;
 			}
 			
