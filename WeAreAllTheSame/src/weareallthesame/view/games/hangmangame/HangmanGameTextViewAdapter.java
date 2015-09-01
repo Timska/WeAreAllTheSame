@@ -18,16 +18,16 @@ public class HangmanGameTextViewAdapter extends BaseAdapter {
 
 	private Context mContext;
 	private Typeface tf;
-	private ArrayList<String> answers;
+	private ArrayList<Character> answers;
 	private int height, width;
 	private int textColor;
 	private String longestString;
 
-	public HangmanGameTextViewAdapter(Context c, ArrayList<String> answers,
+	public HangmanGameTextViewAdapter(Context c, ArrayList<Character> answers,
 			Typeface tf, int color) {
 		mContext = c;
 		this.tf = tf;
-		this.answers = new ArrayList<String>();
+		this.answers = new ArrayList<Character>();
 		this.answers = answers;
 		this.textColor = color;
 
@@ -58,12 +58,14 @@ public class HangmanGameTextViewAdapter extends BaseAdapter {
 			textView = (TextView) convertView;
 		}
 
-		String text = answers.get(position);
+		char text = answers.get(position);
 		textView.setTypeface(tf);
-		textView.setTextSize(18);
+		textView.setTextSize(30);
 		textView.setTextColor(textColor);
+		// textView.setHeight(height);
 		textView.setGravity(Gravity.CENTER);
-		textView.setText(text);
+		System.out.println(text);
+		textView.setText(Character.toString(text));
 		return textView;
 	}
 

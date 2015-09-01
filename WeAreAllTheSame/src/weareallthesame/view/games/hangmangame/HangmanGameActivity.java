@@ -38,7 +38,7 @@ public class HangmanGameActivity extends Activity implements
 	private DisplayMetrics displayMetrics;
 	private int width, height;
 	private ApplicationInterface appInterface;
-	private ArrayList<String> answerString;
+	private ArrayList<Character> answerString;
 	LinearLayout.LayoutParams layoutParamsSpaces;
 	private GridView answersContainer;
 
@@ -64,6 +64,7 @@ public class HangmanGameActivity extends Activity implements
 	}
 
 	private void initializeViews() {
+		answersContainer = (GridView) findViewById(R.id.hangman_game_answers_container);
 		listLetters = new ArrayList<TextView>();
 		listSpaces = new ArrayList<TextView>();
 
@@ -72,14 +73,11 @@ public class HangmanGameActivity extends Activity implements
 		// txtPicture.setText("Picture");
 
 		layoutSpaces = (LinearLayout) findViewById(R.id.hangman_game_layout_spaces);
-		
-		answersContainer=(GridView) findViewById(R.id.hangman_game_answers_container);
 
 		layoutParamsSpaces = new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.WRAP_CONTENT,
-				height/15);
+				LinearLayout.LayoutParams.WRAP_CONTENT, height / 20);
 		layoutSpaces.setOrientation(LinearLayout.VERTICAL);
-		layoutParamsSpaces.setMargins(0, 5, 0, 5);
+		layoutParamsSpaces.setMargins(0, 2, 0, 2);
 
 		LinearLayout.LayoutParams layoutParamsLetters = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -157,40 +155,36 @@ public class HangmanGameActivity extends Activity implements
 		// TODO Auto-generated method stub
 		// ako e true ne ja postavuvaj, ako e false, da
 
-		answerString=new ArrayList<String>();
-		
+		answerString = new ArrayList<Character>();
+
 		for (int i = 0; i < usedLettersFlagged.size(); ++i) {
 
-			if(!usedLettersFlagged.get(i)){
-				answerString.add(Character.toString(allOfferedLetters.get(i)));
-				System.out.println(Character.toString(allOfferedLetters.get(i)));
+			if (!usedLettersFlagged.get(i)) {
+				System.out.println("Pecati");
+				answerString.add(allOfferedLetters.get(i));
+				System.out
+						.println(Character.toString(allOfferedLetters.get(i)));
 			}
 		}
+		System.out.println(answerString.size());
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/amerika_.ttf");
-		answersContainer
-		.setAdapter(new HangmanGameTextViewAdapter(this, answerString, tf,
-				 COLORSPACES));
+		answersContainer.setAdapter(new HangmanGameTextViewAdapter(this,
+				answerString, tf, COLORSPACES));
 
-/*answersContainer.setOnItemClickListener(new OnItemClickListener() {
-
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view,
-			int position, long id) {
-		// TODO Auto-generated method stub
-
-		Item clickedItem = items.get(position);
-		try {
-			appInterface.executeCommand("ChooseItem", clickedItem);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+		/*
+		 * answersContainer.setOnItemClickListener(new OnItemClickListener() {
+		 * 
+		 * @Override public void onItemClick(AdapterView<?> parent, View view,
+		 * int position, long id) { // TODO Auto-generated method stub
+		 * 
+		 * Item clickedItem = items.get(position); try {
+		 * appInterface.executeCommand("ChooseItem", clickedItem); } catch
+		 * (Exception e) { e.printStackTrace(); }
+		 * 
+		 * } });
+		 */
 	}
-}); */
-}
-
-	
 
 	@Override
 	public void setOrUpdateUserAnswer(List<Character> userAnswer) {
