@@ -7,7 +7,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
-import weareallthesame.model.exceptions.ObjectDoesNotBelongInSetException;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
