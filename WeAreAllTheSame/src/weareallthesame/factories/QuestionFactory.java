@@ -41,9 +41,9 @@ public class QuestionFactory {
 				QuestionTagsOpenHelper.COLUMN_TAG + "=" + "'" + tags.next()
 						+ "'", null, null);
 
-		Set<String> questionsSet = getQuestionsFromCursor(cursor);
+		Set<Integer> questionsSet = getQuestionsFromCursor(cursor);
 		cursor.close();
-		
+
 		while (tags.hasNext()) {
 			cursor = resolver.query(QuestionTagsContentProvider.CONTENT_URI,
 					new String[] { QuestionTagsOpenHelper.COLUMN_QUESTION },
@@ -54,7 +54,7 @@ public class QuestionFactory {
 			cursor.close();
 		}
 
-		List<String> questions = new ArrayList<String>(questionsSet);
+		List<Integer> questions = new ArrayList<Integer>(questionsSet);
 		Collections.shuffle(questions);
 
 		int size = questions.size();
@@ -66,26 +66,28 @@ public class QuestionFactory {
 		}
 
 		List<Question> result = new ArrayList<Question>();
-		for (String str : questions) {
+		for (Integer q : questions) {
 			cursor = resolver.query(QuestionContentProvider.CONTENT_URI,
-					new String[] { QuestionOpenHelper.COLUMN_ANSWER },
-					QuestionOpenHelper.COLUMN_QUESTION + "=" + "'" + str + "'",
-					null, null);
+					new String[] { QuestionOpenHelper.COLUMN_QUESTION,
+							QuestionOpenHelper.COLUMN_ANSWER },
+					QuestionOpenHelper.COLUMN_ID + "=" + q, null, null);
 
 			cursor.moveToFirst();
+			String question = cursor.getString(cursor
+					.getColumnIndex(QuestionOpenHelper.COLUMN_QUESTION));
 			String answer = cursor.getString(cursor
 					.getColumnIndex(QuestionOpenHelper.COLUMN_ANSWER));
-			result.add(new Question(str, answer));
+			result.add(new Question(question, answer));
 			cursor.close();
 		}
 
 		return result.iterator();
 	}
 
-	public static Set<String> getQuestionsFromCursor(Cursor cursor) {
-		Set<String> result = new HashSet<String>();
+	public static Set<Integer> getQuestionsFromCursor(Cursor cursor) {
+		Set<Integer> result = new HashSet<Integer>();
 		while (cursor.moveToNext()) {
-			String itemName = cursor.getString(cursor
+			Integer itemName = cursor.getInt(cursor
 					.getColumnIndex(QuestionTagsOpenHelper.COLUMN_QUESTION));
 			result.add(itemName);
 		}
