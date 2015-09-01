@@ -46,8 +46,8 @@ public class ConnectItemsGame extends AbstractGame implements ConnectItemsInterf
 		correctMapping = new HashMap<String, String>();
 		Random random = new Random();
 		int numberOfItems = random.nextInt(10);
-		while(numberOfItems < 5){
-			numberOfItems = random.nextInt(10);
+		while(numberOfItems < 4){
+			numberOfItems = random.nextInt(6) + 1;
 		}
 		Iterator<Item> it = ItemFactory.getItem(this.getTags(), numberOfItems);
 		while(it.hasNext()){
