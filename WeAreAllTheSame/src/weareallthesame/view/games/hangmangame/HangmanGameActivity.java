@@ -9,20 +9,26 @@ import weareallthesame.model.items.Item;
 import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
 import weareallthesame.view.games.chooseitemgame.ChooseItemTextViewAdapter;
+import weareallthesame.view.games.classifyitemsgames.ClassifyItemsTextViewAdapter;
 import android.app.Activity;
+import android.content.ClipData;
+import android.content.ClipDescription;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.View;
+import android.view.View.DragShadowBuilder;
+import android.view.View.OnDragListener;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 public class HangmanGameActivity extends Activity implements
 		HangmanViewInterface {
@@ -41,6 +47,7 @@ public class HangmanGameActivity extends Activity implements
 	private ArrayList<Character> answerString;
 	LinearLayout.LayoutParams layoutParamsSpaces;
 	private GridView answersContainer;
+	private int positionFrom, positionTo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -172,18 +179,8 @@ public class HangmanGameActivity extends Activity implements
 		answersContainer.setAdapter(new HangmanGameTextViewAdapter(this,
 				answerString, tf, COLORSPACES));
 
-		/*
-		 * answersContainer.setOnItemClickListener(new OnItemClickListener() {
-		 * 
-		 * @Override public void onItemClick(AdapterView<?> parent, View view,
-		 * int position, long id) { // TODO Auto-generated method stub
-		 * 
-		 * Item clickedItem = items.get(position); try {
-		 * appInterface.executeCommand("ChooseItem", clickedItem); } catch
-		 * (Exception e) { e.printStackTrace(); }
-		 * 
-		 * } });
-		 */
+		answersContainer.setOnItemLongClickListener(new MyLongClickListener());
+
 	}
 
 	@Override
@@ -199,6 +196,7 @@ public class HangmanGameActivity extends Activity implements
 		for (int i = 0; i < listSpaces.size(); ++i) {
 			layoutSpaces.addView(listSpaces.get(i), layoutParamsSpaces);
 			// layoutLetters.addView(listLetters.get(i), layoutParamsLetters);
+			listSpaces.get(i).setOnDragListener(new MyDragListener());
 
 		}
 	}
@@ -244,7 +242,7 @@ public class HangmanGameActivity extends Activity implements
 			txS.setWidth(width / 3);
 
 			// txLetter.setHeight(height / 10);
-			txS.setHeight(height / (15));
+			// txS.setHeight(height / (15));
 
 			// listLetters.add(txLetter);
 			listSpaces.add(txS);
@@ -265,6 +263,73 @@ public class HangmanGameActivity extends Activity implements
 		gd.setStroke(2, Color.BLACK, 5, 5);
 
 		return gd;
+
+	}
+
+	private class MyLongClickListener implements OnItemLongClickListener {
+
+		@Override
+		public boolean onItemLongClick(AdapterView<?> parent, View v,
+				int position, long id) {
+			// TODO Auto-generated method stub
+			positionFrom = position;
+			ClipData.Item item = new ClipData.Item((CharSequence) v.getTag());
+			String[] mimeTypes = { ClipDescription.MIMETYPE_TEXT_PLAIN };
+			System.out.println(item.toString());
+			ClipData data = new ClipData(v.getTag().toString(), mimeTypes, item);
+			DragShadowBuilder dsb = new View.DragShadowBuilder(v);
+
+			v.startDrag(data, dsb, v, 0);
+			v.setVisibility(View.INVISIBLE);
+			return false;
+		}
+
+	}
+
+	private class MyDragListener implements OnDragListener {
+
+		@Override
+		public boolean onDrag(View receivingLayoutView, DragEvent event) {
+			// TODO Auto-generated method stub
+
+			TextView draggedTextView = (TextView) event.getLocalState();
+
+			switch (event.getAction()) {
+			case DragEvent.ACTION_DRAG_STARTED:
+				break;
+			case DragEvent.ACTION_DRAG_ENTERED:
+				break;
+			case DragEvent.ACTION_DRAG_LOCATION:
+				break;
+			case DragEvent.ACTION_DROP:
+				TextView tx=(TextView) receivingLayoutView;
+				positionTo = listSpaces.indexOf(tx);
+				try {
+					appInterface.executeCommand("hangmanaddletter",
+							positionFrom, positionTo);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					draggedTextView.setVisibility(View.VISIBLE);
+					return false;
+					// }
+				}
+				//tx.setText(Character.toString(value));
+				System.out.println("positions" +positionFrom+" "+positionTo);
+				
+				return true;
+
+			case DragEvent.ACTION_DRAG_ENDED:
+
+				if (!event.getResult()) {
+
+					draggedTextView.setVisibility(View.VISIBLE);
+				}
+			default:
+				break;
+			}
+			return true;
+		}
 
 	}
 }

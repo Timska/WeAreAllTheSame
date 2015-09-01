@@ -100,12 +100,22 @@ public class FindThePictureFromTheWordActivity extends Activity implements
 		// TODO Auto-generated method stub
 
 		correctAnswer = answer;
+		String type = appInterface.getCurrentCategoryType();
+		System.out.println(type);
+		if (type.equals("Prepositions")) {
+			String text="Глувчето е "+correctAnswer.getName()+" кутијата";
+			txtWord.setText(text);
+			txtWord.setTextSize(15);
+			
+		}
+		else
 		txtWord.setText(correctAnswer.getName());
 	}
 
 	@Override
 	public void setOfferedAnswers(Set<Item> offeredAnswers) {
 		// TODO Auto-generated method stub
+		
 
 		answerResources=new ArrayList<Integer>();
 		answers=new ArrayList<Item>();

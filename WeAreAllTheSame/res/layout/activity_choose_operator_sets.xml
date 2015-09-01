@@ -21,6 +21,8 @@
         android:id="@+id/choose_operator_sets_set_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/background_find_picture_from_word"
         android:orientation="horizontal" >
     </LinearLayout>
 
@@ -36,6 +38,8 @@
         android:id="@+id/choose_operator_sets_set_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/background_find_picture_from_word"
         android:orientation="horizontal" >
     </LinearLayout>
 
