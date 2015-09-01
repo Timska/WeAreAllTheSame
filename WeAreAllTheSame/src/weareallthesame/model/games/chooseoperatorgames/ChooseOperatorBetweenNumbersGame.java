@@ -47,13 +47,13 @@ public class ChooseOperatorBetweenNumbersGame extends AbstractGame implements Ch
 		int correct = random.nextInt(2);
 		if(correct == 0){
 			correctOperator = '+';
-			numberOne = random.nextInt(10) + 1;
-			numberTwo = random.nextInt(15 - numberOne) + 1;
+			numberOne = random.nextInt(6) + 1;
+			numberTwo = random.nextInt(10 - numberOne) + 1;
 			result = numberOne + numberTwo;
 		}
 		else{
 			correctOperator = '-';
-			numberOne = random.nextInt(15) + 1;
+			numberOne = random.nextInt(10) + 1;
 			numberTwo = random.nextInt(numberOne) + 1;
 			result = numberOne - numberTwo;
 		}
