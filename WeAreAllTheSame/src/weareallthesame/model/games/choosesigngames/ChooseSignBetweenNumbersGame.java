@@ -38,19 +38,19 @@ public class ChooseSignBetweenNumbersGame extends AbstractGame implements Choose
 	
 	private void setNumbers(){
 		Random random = new Random();
-		numberOne = random.nextInt(15) + 1;
-		int sign = random.nextInt(2);
+		numberOne = random.nextInt(10) + 1;
+		int sign = random.nextInt(3);
 		if(sign == 0){
 			numberTwo = numberOne;
 			correctSign = '=';
 		}
 		else{
-			if(numberOne > 7){
-				numberTwo = random.nextInt(numberOne);
+			if(numberOne > 5){
+				numberTwo = random.nextInt(numberOne - 1) + 1;
 				correctSign = '>';
 			}
 			else{
-				numberTwo = random.nextInt(15 - numberOne) + numberOne;
+				numberTwo = random.nextInt(10 - numberOne - 1) + numberOne;
 				correctSign = '<';
 			}
 		}
