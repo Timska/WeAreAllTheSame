@@ -60,6 +60,7 @@ public class HangmanGameTextViewAdapter extends BaseAdapter {
 
 		char text = answers.get(position);
 		textView.setTypeface(tf);
+		textView.setTag(Character.toString(text));
 		textView.setTextSize(30);
 		textView.setTextColor(textColor);
 		// textView.setHeight(height);
@@ -68,5 +69,7 @@ public class HangmanGameTextViewAdapter extends BaseAdapter {
 		textView.setText(Character.toString(text));
 		return textView;
 	}
+	
+	
 
 }

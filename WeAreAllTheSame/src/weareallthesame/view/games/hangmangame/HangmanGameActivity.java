@@ -35,6 +35,7 @@ public class HangmanGameActivity extends Activity implements
 
 	private static final long serialVersionUID = 6373187583074782521L;
 	private static final int COLORSPACES = Color.rgb(192, 142, 213);
+	private static final int COLORANSWERS = Color.rgb(88, 243, 129);
 
 	private ArrayList<TextView> listLetters;
 	private ArrayList<TextView> listSpaces;
@@ -177,7 +178,7 @@ public class HangmanGameActivity extends Activity implements
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/amerika_.ttf");
 		answersContainer.setAdapter(new HangmanGameTextViewAdapter(this,
-				answerString, tf, COLORSPACES));
+				answerString, tf, COLORANSWERS));
 
 		answersContainer.setOnItemLongClickListener(new MyLongClickListener());
 
@@ -229,8 +230,7 @@ public class HangmanGameActivity extends Activity implements
 
 			// txLetter.setTextAppearance(getApplicationContext(),
 			// android.R.style.TextAppearance_Large);
-			txS.setTextAppearance(getApplicationContext(),
-					android.R.style.TextAppearance_Large);
+			txS.setTag("i");
 
 			// txLetter.setGravity(Gravity.CENTER);
 			txS.setGravity(Gravity.CENTER);
@@ -302,22 +302,25 @@ public class HangmanGameActivity extends Activity implements
 			case DragEvent.ACTION_DRAG_LOCATION:
 				break;
 			case DragEvent.ACTION_DROP:
-				TextView tx=(TextView) receivingLayoutView;
+				TextView tx = (TextView) receivingLayoutView;
 				positionTo = listSpaces.indexOf(tx);
 				try {
+					String text = (String) draggedTextView.getText();
+					tx.setText(text);
 					appInterface.executeCommand("hangmanaddletter",
 							positionFrom, positionTo);
+					System.out.println("positions" + positionFrom + " "
+							+ positionTo);
+					
+					return true;
 
 				} catch (Exception e) {
-					e.printStackTrace();
 					draggedTextView.setVisibility(View.VISIBLE);
+					e.printStackTrace();
 					return false;
 					// }
 				}
-				//tx.setText(Character.toString(value));
-				System.out.println("positions" +positionFrom+" "+positionTo);
-				
-				return true;
+				// tx.setText(Character.toString(value));
 
 			case DragEvent.ACTION_DRAG_ENDED:
 

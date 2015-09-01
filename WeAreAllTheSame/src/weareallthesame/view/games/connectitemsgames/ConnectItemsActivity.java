@@ -17,27 +17,26 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ConnectItemsActivity extends Activity implements ConnectItemAndResursViewInterface {
+public class ConnectItemsActivity extends Activity implements
+		ConnectItemAndResursViewInterface {
 
 	private static final long serialVersionUID = 6373187583074782521L;
-
-	private ArrayList<TextView> listLetters;
-	private ArrayList<TextView> listImages;
-	private ArrayList<Integer> colors;
+	private static final int COLOR = Color.rgb(88, 243, 129);
+	private ArrayList<TextView> listWords;
+	private ArrayList<ImageView> listImages;
 	private LinearLayout layoutLetters;
 	private LinearLayout layoutImages;
-	private Random r = new Random();
-	private String word = "AVION";
-	private String spaces = "AV_O_";
 	private DisplayMetrics displayMetrics;
 	private int width, height, counts = 0;
-	private TextView firstItem;
 	private ApplicationInterface appInterface;
+	private LinearLayout.LayoutParams layoutParamsSpaces,layoutParams;
 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -46,12 +45,7 @@ public class ConnectItemsActivity extends Activity implements ConnectItemAndResu
 		getMetrics();
 		initializeViews();
 		openGame();
-		
-		
-		
-		
 
-		
 	}
 
 	private void getMetrics() {
@@ -59,39 +53,18 @@ public class ConnectItemsActivity extends Activity implements ConnectItemAndResu
 		getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 		width = displayMetrics.widthPixels;
 		height = displayMetrics.heightPixels;
-		
+
 	}
-	private void initializeViews(){
-		listLetters = new ArrayList<TextView>();
-		listImages = new ArrayList<TextView>();
-		colors = generateColors();
 
-		setTextViews(word, spaces);
-
+	private void initializeViews() {
+		listWords = new ArrayList<TextView>();
+		listImages = new ArrayList<ImageView>();
 		layoutLetters = (LinearLayout) findViewById(R.id.connect_items_layout_letters);
 		layoutImages = (LinearLayout) findViewById(R.id.connect_items_layout_images);
 
-		LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.MATCH_PARENT,
-				LinearLayout.LayoutParams.WRAP_CONTENT);
+		
 
-		layoutParams.setMargins(width / 7, 10, width / 7, 0);
-		layoutParams.gravity = Gravity.CENTER;
-
-		LinearLayout.LayoutParams layoutParamsSpaces = new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.MATCH_PARENT,
-				LinearLayout.LayoutParams.WRAP_CONTENT);
-		layoutParams.setMargins(width / 7, 10, width / 7, 0);
-
-		layoutParamsSpaces.setMargins(0, 10, width / 7, 0);
-
-		for (int i = 0; i < listLetters.size(); ++i) {
-			listLetters.get(i).setOnClickListener(new MyTouchListener());
-			listImages.get(i).setOnClickListener(new MyTouchListener());
-			layoutLetters.addView(listLetters.get(i), layoutParams);
-			layoutImages.addView(listImages.get(i), layoutParamsSpaces);
-
-		}
+		
 
 	}
 
@@ -99,70 +72,92 @@ public class ConnectItemsActivity extends Activity implements ConnectItemAndResu
 		Intent intent = getIntent();
 		String gameType = intent.getStringExtra("gameType");
 		ArrayList<String> gameTags = intent.getStringArrayListExtra("gameTags");
-		appInterface = (ApplicationInterface) intent.getSerializableExtra("appInterface");
-		try{
-			appInterface.openGame(gameType, gameTags.iterator(), this, this.getResources().getString(R.string.connect_items_task_description));
-		}
-		catch(Exception e){
+		appInterface = (ApplicationInterface) intent
+				.getSerializableExtra("appInterface");
+		try {
+			appInterface.openGame(
+					gameType,
+					gameTags.iterator(),
+					this,
+					this.getResources().getString(
+							R.string.connect_items_task_description));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	private void setTextViews(String word, String spaces) {
 
-		for (int i = 0; i < word.length(); ++i) {
+	private void setTextViews(ArrayList<String> words) {
+
+		for (int i = 0; i < words.size(); ++i) {
 
 			TextView txL = new TextView(getApplicationContext());
-			TextView txS = new TextView(getApplicationContext());
+			//TextView txS = new TextView(getApplicationContext());
 
-			txL.setBackground(getGradientDrawable());
-			txS.setBackground(getGradientDrawable());
+			txL.setBackground(getGradientDrawable(COLOR));
+			//txS.setBackground(getGradientDrawable());
 
-			txL.setText(word.charAt(i) + " ");
-			txS.setText(spaces.charAt(i) + " ");
+			txL.setText(words.get(i));
+		
 
-			txL.setTextAppearance(getApplicationContext(),
-					android.R.style.TextAppearance_Large);
-			txS.setTextAppearance(getApplicationContext(),
-					android.R.style.TextAppearance_Large);
-
+		
 			txL.setGravity(Gravity.CENTER);
-			txS.setGravity(Gravity.CENTER);
+			//.setGravity(Gravity.CENTER);
 
 			txL.setTextColor(Color.BLACK);
-			txS.setTextColor(Color.BLACK);
+			//txS.setTextColor(Color.BLACK);
 
 			txL.setWidth(width / 4);
-			txS.setWidth(width / 4);
+			//txS.setWidth(width / 4);
 
-			txL.setHeight(height / 10);
-			txS.setHeight(height / 10);
+			txL.setHeight(height / 16);
+			//txS.setHeight(height / 10);
 
-			listLetters.add(txL);
-			listImages.add(txS);
+			listWords.add(txL);
+			//listImages.add(txS);
 		}
 
 	}
 
-	private ArrayList<Integer> generateColors() {
+	private void setTextViewsBackgrounds(ArrayList<Item> items) {
 
-		ArrayList<Integer> colors = new ArrayList<Integer>();
-		colors.add(Color.rgb(235, 77, 77));
-		colors.add(Color.rgb(88, 243, 129));
-		colors.add(Color.rgb(192, 142, 213));
-		colors.add(Color.rgb(137, 170, 220));
-		colors.add(Color.rgb(88, 243, 129));
-		// colors.add(Color.rgb(244, 252, 244));
-		colors.add(Color.rgb(255, 255, 102));
+		for (int i = 0; i < items.size(); ++i) {
 
-		return colors;
+		ImageView txL = new ImageView(getApplicationContext());
+			//TextView txS = new TextView(getApplicationContext());
+
+			txL.setBackground(getGradientDrawable(COLOR));
+			//txS.setBackground(getGradientDrawable());
+
+			int id=getResources().getIdentifier(
+					items.get(i).getResourceNames().get("picture"), "drawable",
+					this.getPackageName());
+			txL.setScaleType(ImageView.ScaleType.FIT_CENTER);
+			txL.setBackgroundResource(id);
+			
+		
+			//txL.setGravity(Gravity.CENTER);
+			//.setGravity(Gravity.CENTER);
+
+			//txL.setTextColor(Color.BLACK);
+			//txS.setTextColor(Color.BLACK);
+
+			//txL.setWidth(width / 4);
+			//txS.setWidth(width / 4);
+
+			//txL.setHeight(height / 16);
+			//txS.setHeight(height / 10);
+
+			System.out.println("lalala");
+			listImages.add(txL);
+			//listImages.add(txS);
+		}
+
 	}
 
-	private GradientDrawable getGradientDrawable() {
+	private GradientDrawable getGradientDrawable(int color) {
 
-		int i = colors.get(r.nextInt(colors.size()));
 		GradientDrawable gd = new GradientDrawable();
-		gd.setColor(i);
+		gd.setColor(color);
 		gd.setCornerRadius(10);
 		gd.setShape(GradientDrawable.OVAL);
 		// gd.setStroke(1, 0xFF000000);
@@ -178,34 +173,31 @@ public class ConnectItemsActivity extends Activity implements ConnectItemAndResu
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
 			TextView view = (TextView) v;
-			ViewGroup draggedImageViewParentLayout = (ViewGroup) view.getParent();
+			ViewGroup draggedImageViewParentLayout = (ViewGroup) view
+					.getParent();
 			if (counts == 0) {
-				
+
 				if (draggedImageViewParentLayout.equals(layoutLetters)) {
 
 					// draggedImageViewParentLayout.removeView(view);
 					view.setBackgroundColor(Color.BLUE);
 					counts = 1;
-					firstItem = view;
+					
 				} else {
 					Toast.makeText(getApplicationContext(),
 							"Мора да кликнете на еден од зборовите.",
 							Toast.LENGTH_SHORT).show();
 				}
-				
 
 			} else if (counts == 1) {
 
 				if (draggedImageViewParentLayout.equals(layoutImages)) {
 
-					
 					view.setBackgroundColor(Color.BLUE);
 					counts = 0;
-					//draggedImageViewParentLayout.removeView(view);
-					//layoutLetters.removeView(firstItem);
-					
-					
-					
+					// draggedImageViewParentLayout.removeView(view);
+					// layoutLetters.removeView(firstItem);
+
 				} else {
 					Toast.makeText(getApplicationContext(),
 							"Мора да кликнете на една од сликите.",
@@ -223,23 +215,49 @@ public class ConnectItemsActivity extends Activity implements ConnectItemAndResu
 	public void initArrays(List<Item> items, List<String> strings) {
 		// TODO Auto-generated method stub
 		
+		layoutParams = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.MATCH_PARENT,
+				items.size()+2);
+
+		layoutParams.setMargins(width / 7, 10, width / 7, 0);
+		layoutParams.gravity = Gravity.CENTER;
+
+		layoutParams.setMargins(width / 7, 10, width / 7, 0);
+
+		
+		layoutParamsSpaces = new LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.MATCH_PARENT,
+				items.size()+2);
+		layoutParamsSpaces.setMargins(0, 10, width / 7, 0);
+		setTextViews((ArrayList<String>) strings);
+		setTextViewsBackgrounds((ArrayList<Item>) items);
+		for (int i = 0; i < listWords.size(); ++i) {
+			//listWords.get(i).setOnClickListener(new MyTouchListener());
+			//listImages.get(i).setOnClickListener(new MyTouchListener());
+			layoutLetters.addView(listWords.get(i), layoutParams);
+			layoutImages.addView(listImages.get(i), layoutParamsSpaces);
+
+		}
+		
+	
 	}
 
 	@Override
 	public void initConnections(int[] connections) {
 		// TODO Auto-generated method stub
 		
+
 	}
 
 	@Override
 	public void wrongAnswer() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void gameOver() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
