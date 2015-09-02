@@ -356,7 +356,7 @@ public class FillDatabase {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(274, "purple", "picture"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(275, "orange", "picture"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(276, "brown", "picture"));
-		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(277, "grey", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(277, "gray", "picture"));
 		
 		
 	}
