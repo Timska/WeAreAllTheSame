@@ -81,16 +81,22 @@ public class ConnectItemAndResursGame extends AbstractGame implements ConnectIte
 		if(!items.get(positionOne).getName().equals(strings.get(positionTwo))){
 			throw new WrongAnswerException();
 		}
-		if(connectionsFrom[positionOne] != -1){
+		/*if(connectionsFrom[positionOne] != -1){
 			connectionsTo[connectionsFrom[positionOne]] = -1;
 		}
 		if(connectionsTo[positionTwo] != -1){
 			connectionsFrom[connectionsTo[positionTwo]] = -1;
+		}*/
+		items.remove(positionOne);
+		strings.remove(positionTwo);
+		//connectionsFrom[positionOne] = positionTwo;
+		//connectionsTo[positionTwo] = positionOne;
+		//view.initConnections(connectionsFrom);
+		if(items.size() == 0){
+			view.gameOver();
 		}
-		connectionsFrom[positionOne] = positionTwo;
-		connectionsTo[positionTwo] = positionOne;
-		view.initConnections(connectionsFrom);
-		checkAnswer();
+		view.initArrays(items, strings);
+		//checkAnswer();
 	}
 	
 	private void checkAnswer(){
