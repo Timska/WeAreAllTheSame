@@ -6,6 +6,7 @@ import java.util.Random;
 
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
+import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
 import android.app.Activity;
 import android.content.Intent;
@@ -29,6 +30,8 @@ public class ConnectItemsActivity extends Activity implements
 	private static final int COLOR = Color.rgb(88, 243, 129);
 	private ArrayList<TextView> listWords;
 	private ArrayList<ImageView> listImages;
+	private ArrayList<Item> items;
+	private ArrayList<String> strings;
 	private LinearLayout layoutLetters;
 	private LinearLayout layoutImages;
 	private DisplayMetrics displayMetrics;
@@ -164,29 +167,40 @@ public class ConnectItemsActivity extends Activity implements
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			TextView view = (TextView) v;
-			ViewGroup draggedImageViewParentLayout = (ViewGroup) view
-					.getParent();
+			int from = -1, to;
+			ViewGroup draggedImageViewParentLayout = (ViewGroup) v.getParent();
 			if (counts == 0) {
 
 				if (draggedImageViewParentLayout.equals(layoutLetters)) {
-
+					TextView view = (TextView) v;
+					from = listWords.indexOf(view);
 					// draggedImageViewParentLayout.removeView(view);
-					view.setBackgroundColor(Color.BLUE);
+					
+
 					counts = 1;
 
 				} else {
 					Toast.makeText(getApplicationContext(),
 							"Мора да кликнете на еден од зборовите.",
 							Toast.LENGTH_SHORT).show();
+					// from=-1;
 				}
 
 			} else if (counts == 1) {
 
 				if (draggedImageViewParentLayout.equals(layoutImages)) {
-
-					view.setBackgroundColor(Color.BLUE);
+					ImageView view = (ImageView) v;
+					
 					counts = 0;
+					to = listImages.indexOf(view);
+
+					try {
+						appInterface.executeCommand("addconnection",
+								items.get(to), items.get(from));
+					} catch (Exception e) {
+						
+
+					}
 					// draggedImageViewParentLayout.removeView(view);
 					// layoutLetters.removeView(firstItem);
 
@@ -207,9 +221,11 @@ public class ConnectItemsActivity extends Activity implements
 	public void initArrays(List<Item> items, List<String> strings) {
 		// TODO Auto-generated method stub
 
+		this.items = (ArrayList<Item>) items;
+		this.strings = (ArrayList<String>) strings;
 		layoutParams = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.MATCH_PARENT, height
-						/ (items.size() + 2));
+						/ (items.size() + 3));
 
 		layoutParams.setMargins(width / 7, 10, width / 7, 0);
 		layoutParams.gravity = Gravity.CENTER;
@@ -218,13 +234,13 @@ public class ConnectItemsActivity extends Activity implements
 
 		layoutParamsSpaces = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.MATCH_PARENT, height
-						/ (items.size() + 2));
+						/ (items.size() + 3));
 		layoutParamsSpaces.setMargins(0, 10, width / 7, 0);
 		setTextViews((ArrayList<String>) strings);
 		setTextViewsBackgrounds((ArrayList<Item>) items);
 		for (int i = 0; i < listWords.size(); ++i) {
-			// listWords.get(i).setOnClickListener(new MyTouchListener());
-			// listImages.get(i).setOnClickListener(new MyTouchListener());
+			listWords.get(i).setOnClickListener(new MyTouchListener());
+			listImages.get(i).setOnClickListener(new MyTouchListener());
 			layoutLetters.addView(listWords.get(i), layoutParams);
 			layoutImages.addView(listImages.get(i), layoutParamsSpaces);
 
@@ -242,11 +258,59 @@ public class ConnectItemsActivity extends Activity implements
 	public void wrongAnswer() {
 		// TODO Auto-generated method stub
 
+		Toast.makeText(getApplicationContext(), "Неточен одговор",
+				Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
 	public void gameOver() {
-		// TODO Auto-generated method stub
+
+		Intent intent = new Intent(this, GameOverChoiceActivity.class);
+		startActivityForResult(intent, 0);
+		/*
+		 * try { appInterface.exitGame(); } catch (GameNotOpenException e) { //
+		 * TODO Auto-generated catch block e.printStackTrace(); }
+		 */
 
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 0) {
+			if (resultCode == RESULT_OK) {
+				String result = data.getExtras().getString("result");
+				if (result.equals("NEW")) {
+
+					Intent intent = new Intent(this, this.getClass());
+					try {
+						intent.putExtra("gameType",
+								appInterface.getCurrentGameType());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					intent.putStringArrayListExtra("gameTags",
+							appInterface.getCurrentGameTags());
+					intent.putExtra("appInterface", appInterface);
+
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					startActivity(intent);
+
+					finish();
+				} else if (result.equals("BACK")) {
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					finish();
+				}
+			}
+		}
+	}
+
 }
