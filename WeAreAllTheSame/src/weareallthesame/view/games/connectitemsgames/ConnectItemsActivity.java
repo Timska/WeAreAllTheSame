@@ -91,12 +91,13 @@ public class ConnectItemsActivity extends Activity implements
 
 	private void setTextViews(ArrayList<String> words) {
 
+		listWords = new ArrayList<TextView>();
 		for (int i = 0; i < words.size(); ++i) {
 
 			TextView txL = new TextView(getApplicationContext());
 			// TextView txS = new TextView(getApplicationContext());
 
-			txL.setBackground(getGradientDrawable(COLOR));
+			txL.setBackground(getGradientDrawable(COLOR, true));
 			// txS.setBackground(getGradientDrawable());
 
 			txL.setText(words.get(i));
@@ -121,12 +122,13 @@ public class ConnectItemsActivity extends Activity implements
 
 	private void setTextViewsBackgrounds(ArrayList<Item> items) {
 
+		listImages = new ArrayList<ImageView>();
 		for (int i = 0; i < items.size(); ++i) {
 
 			ImageView txL = new ImageView(getApplicationContext());
 			// TextView txS = new TextView(getApplicationContext());
 
-			txL.setBackground(getGradientDrawable(COLOR));
+			txL.setBackground(getGradientDrawable(COLOR, true));
 			// txS.setBackground(getGradientDrawable());
 
 			int id = getResources().getIdentifier(
@@ -154,15 +156,20 @@ public class ConnectItemsActivity extends Activity implements
 
 	}
 
-	private GradientDrawable getGradientDrawable(int color) {
+	private GradientDrawable getGradientDrawable(int color, boolean dashed) {
 
 		GradientDrawable gd = new GradientDrawable();
 		gd.setColor(color);
 		gd.setCornerRadius(10);
 		gd.setShape(GradientDrawable.OVAL);
 		// gd.setStroke(1, 0xFF000000);
-		gd.setStroke(2, Color.BLACK, 5, 5);
-
+		if(dashed){
+			gd.setStroke(2, Color.BLACK, 5, 5);
+		}
+		else{
+			gd.setStroke(3, Color.BLACK);
+		}
+		
 		return gd;
 
 	}
@@ -180,8 +187,9 @@ public class ConnectItemsActivity extends Activity implements
 					TextView view = (TextView) v;
 					to = listWords.indexOf(view);
 					//draggedImageViewParentLayout.removeView(view);
-					//view.setBackgroundColor(Color.BLUE);
-					view.startAnimation(animation);
+					view.setBackground(getGradientDrawable(COLOR, false));
+					
+					//view.startAnimation(animation);
 					counts = 1;
 
 				} else {
@@ -198,7 +206,7 @@ public class ConnectItemsActivity extends Activity implements
 					//view.setBackgroundColor(Color.BLUE);
 					counts = 0;
 					from = listImages.indexOf(view);
-					view.startAnimation(animation);
+					//view.startAnimation(animation);
 					try {
 						System.out.println("indeksi"+to+" "+from);
 						appInterface.executeCommand("AddConnection",
@@ -244,6 +252,9 @@ public class ConnectItemsActivity extends Activity implements
 		layoutParamsSpaces.setMargins(0, 10, width / 7, 0);
 		setTextViews((ArrayList<String>) strings);
 		setTextViewsBackgrounds((ArrayList<Item>) items);
+		
+		layoutLetters.removeAllViewsInLayout();
+		layoutImages.removeAllViewsInLayout();
 		for (int i = 0; i < listWords.size(); ++i) {
 			listWords.get(i).setOnClickListener(new MyTouchListener());
 			listImages.get(i).setOnClickListener(new MyTouchListener());

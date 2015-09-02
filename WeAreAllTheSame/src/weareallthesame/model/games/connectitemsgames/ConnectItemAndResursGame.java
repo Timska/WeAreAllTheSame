@@ -87,6 +87,7 @@ public class ConnectItemAndResursGame extends AbstractGame implements ConnectIte
 		if(connectionsTo[positionTwo] != -1){
 			connectionsFrom[connectionsTo[positionTwo]] = -1;
 		}*/
+		System.out.println("Vo add connection");
 		items.remove(positionOne);
 		strings.remove(positionTwo);
 		//connectionsFrom[positionOne] = positionTwo;
