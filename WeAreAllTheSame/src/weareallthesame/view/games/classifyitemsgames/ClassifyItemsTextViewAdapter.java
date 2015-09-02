@@ -60,7 +60,7 @@ public class ClassifyItemsTextViewAdapter extends BaseAdapter {
 			textView = (TextView) convertView;
 		}
 
-		String text = answers.get(position);
+		String text =answers.get(position) ;
 		Paint paint = new Paint();
 		float size = paint.measureText(longestString);
 		textView.setTypeface(tf);

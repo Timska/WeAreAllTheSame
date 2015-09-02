@@ -36,9 +36,10 @@ import android.widget.Toast;
 public class ClassifyTheElementsActivity extends Activity implements
 		ClassifyItemsViewInterface {
 
-	private final static int COLORGROUPONE =Color.rgb(181, 64, 28);
+	private final static int COLORGROUPONE = Color.rgb(181, 64, 28);
 	private final static int COLORGROUPTWO = Color.rgb(29, 135, 159);
-	private final static int COLOROFFEREDELEMENTS =  Color.rgb(21, 128, 50);
+	private final static int COLOROFFEREDELEMENTS = Color.rgb(21, 128, 50);
+	private final static int COLORBACKGROUND = Color.rgb(226, 245, 87);
 	private ArrayList<Item> answers;
 	private ArrayList<String> elements;
 	private ArrayList<String> elementsGroupOne;
@@ -61,7 +62,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 		getMetrics();
 		initializeViews();
-		 elements = new ArrayList<String>();
+		elements = new ArrayList<String>();
 		elementsGroupOne = new ArrayList<String>();
 		elementsGroupTwo = new ArrayList<String>();
 		tf = Typeface.createFromAsset(getAssets(), "fonts/amerika_.ttf");
@@ -81,13 +82,17 @@ public class ClassifyTheElementsActivity extends Activity implements
 		containerGroupOne = (GridView) findViewById(R.id.classify_elements_group_one_container);
 		containerGroupTwo = (GridView) findViewById(R.id.classify_elements_group_two_container);
 		ViewGroup.LayoutParams layoutParams = container.getLayoutParams();
-		layoutParams.height = height / 7; // this is in pixels
+		layoutParams.height = height / 4; // this is in pixels
 		container.setLayoutParams(layoutParams);
 		containerGroupOne.setLayoutParams(layoutParams);
 		containerGroupTwo.setLayoutParams(layoutParams);
+		container.setBackgroundColor(COLORBACKGROUND);
+		containerGroupOne.setBackgroundColor(COLORBACKGROUND);
+		containerGroupTwo.setBackgroundColor(COLORBACKGROUND);
 		container.setBackground(getGradientDrawable(COLOROFFEREDELEMENTS));
 		containerGroupOne.setBackground(getGradientDrawable(COLORGROUPONE));
 		containerGroupTwo.setBackground(getGradientDrawable(COLORGROUPTWO));
+
 		groupOneDescription = (TextView) findViewById(R.id.classify_elements_group_one_description);
 		groupTwoDescription = (TextView) findViewById(R.id.classify_elements_group_two_description);
 
@@ -132,7 +137,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 		int txtWidth = this.width / 3;
 		int txtHeight = this.height / 10;
-		System.out.println("djhfkfhs"+elements.size());
+		System.out.println("djhfkfhs" + elements.size());
 
 		container.setAdapter(new ClassifyItemsTextViewAdapter(this, elements,
 				tf, txtWidth, txtHeight, COLOROFFEREDELEMENTS, longestAnswer));
@@ -145,12 +150,12 @@ public class ClassifyTheElementsActivity extends Activity implements
 	@Override
 	public void setOrUpdateClassElements(Map<String, Set<Item>> classSetMap) {
 		// TODO Auto-generated method stub
-		
+
 		System.out.println(classSetMap.size());
 		Set<Entry<String, Set<Item>>> entryset = classSetMap.entrySet();
 		Iterator<Entry<String, Set<Item>>> it = entryset.iterator();
 		int i = 0;
-		
+
 		Set<Item> groupOneItems = null;
 		Set<Item> groupTwoItems = null;
 		String nameGroupOne = "";
@@ -160,18 +165,18 @@ public class ClassifyTheElementsActivity extends Activity implements
 				Entry<String, Set<Item>> element = it.next();
 				groupOneItems = element.getValue();
 				nameGroupOne = element.getKey();
-				i=1;
+				i = 1;
 
 			} else {
 				Entry<String, Set<Item>> element = it.next();
 				groupTwoItems = element.getValue();
 				nameGroupTwo = element.getKey();
-				i=0;
+				i = 0;
 			}
-			
+
 		}
-		System.out.println(groupTwoItems.size()+"Size grupa 2");
-		System.out.println(groupOneItems.size()+"Size grupa 1");
+		System.out.println(groupTwoItems.size() + "Size grupa 2");
+		System.out.println(groupOneItems.size() + "Size grupa 1");
 		groupOneDescription.setText(nameGroupOne);
 		groupTwoDescription.setText(nameGroupTwo);
 
@@ -179,24 +184,25 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 		longestAnswer = "";
 		Iterator<Item> itemsOneIterator = groupOneItems.iterator();
-		elementsGroupOne=new ArrayList<String>();
+		elementsGroupOne = new ArrayList<String>();
 		while (itemsOneIterator.hasNext()) {
 
 			String text = itemsOneIterator.next().getName();
-			System.out.println(text);
+			System.out.println("Tekstovi" + text);
 			elementsGroupOne.add(text);
 			elements.add(text);
 			if (text.length() > longestAnswer.length()) {
 				longestAnswer = text;
 			}
 		}
-		System.out.println(elementsGroupOne.size()+"Elements one size");
+		System.out.println(elementsGroupOne.size() + "Elements one size");
 		containerGroupOne.setAdapter(new ClassifyItemsTextViewAdapter(this,
-				elementsGroupOne, tf, 0, 0, COLORGROUPONE, longestAnswer));
+				elementsGroupOne, tf, width / 3, height / 10, COLORGROUPONE,
+				longestAnswer));
 		longestAnswer = "";
 
 		Iterator<Item> itemsTwoIterator = groupTwoItems.iterator();
-		elementsGroupTwo=new ArrayList<String>();
+		elementsGroupTwo = new ArrayList<String>();
 		while (itemsTwoIterator.hasNext()) {
 			String text = itemsTwoIterator.next().getName();
 			elementsGroupTwo.add(text);
@@ -206,9 +212,10 @@ public class ClassifyTheElementsActivity extends Activity implements
 			}
 
 		}
-		System.out.println(elementsGroupTwo.size()+"Elements two size");
+		System.out.println(elementsGroupTwo.size() + "Elements two size");
 		containerGroupTwo.setAdapter(new ClassifyItemsTextViewAdapter(this,
-				elementsGroupTwo, tf, 0, 0, COLORGROUPTWO, longestAnswer));
+				elementsGroupTwo, tf, width / 3, height / 10, COLORGROUPTWO,
+				longestAnswer));
 
 		System.out.println("Elements" + elements.size());
 		containerGroupOne.setOnDragListener(new MyDragListener(
@@ -350,9 +357,6 @@ public class ClassifyTheElementsActivity extends Activity implements
 					// }
 				}
 
-
-				
-
 			case DragEvent.ACTION_DRAG_ENDED:
 
 				if (!event.getResult()) {
@@ -370,7 +374,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 	private GradientDrawable getGradientDrawable(int color) {
 
 		GradientDrawable gd = new GradientDrawable();
-		// gd.setColor(color);
+		gd.setColor(COLORBACKGROUND);
 		gd.setCornerRadius(10);
 		gd.setShape(GradientDrawable.RECTANGLE);
 		gd.setStroke(2, color, 5, 5);
