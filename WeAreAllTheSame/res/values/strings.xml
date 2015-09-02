@@ -56,6 +56,9 @@
 	<string name="fruit">Овошје</string>
 	<string name="day">Денови</string>
 	<string name="month">Месеци</string>
+	<string name="twod">Слики</string>
+	<string name="threed">Форми</string>
+	
 	
     
     <!-- Game names -->

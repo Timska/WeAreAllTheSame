@@ -1359,20 +1359,20 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пирамида", "set"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("топка", "set"));
 		
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("елипса", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("круг", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадрат", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("осумаголник", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("петоаголник", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("правоаголник", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("шестоаголник", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("триаголник", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("цилиндар", "3d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("коцка", "3d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("конус", "3d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадар", "3d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пирамида", "3d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("топка", "3d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("елипса", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("круг", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадрат", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("осумаголник", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("петоаголник", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("правоаголник", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("шестоаголник", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("триаголник", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("цилиндар", "threed"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("коцка", "threed"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("конус", "threed"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадар", "threed"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пирамида", "threed"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("топка", "threed"));
 	}
 	
 	private static void fillObjectsAndColorsTags() {		
