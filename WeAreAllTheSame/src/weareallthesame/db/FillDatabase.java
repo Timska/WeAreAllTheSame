@@ -848,7 +848,7 @@ public class FillDatabase {
 	
 	private static void fillAnimalsTags() {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("камила", "animals"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кенгур", "animals"));
+		//resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кенгур", "animals"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кокошка", "animals"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("коњ", "animals"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("крава", "animals"));
@@ -857,7 +857,7 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лисица", "animals"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("мачка", "animals"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("мечка", "animals"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("овца", "animals"));
+		//resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("овца", "animals"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("слон", "animals"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("свиња", "animals"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("тигар", "animals"));
@@ -888,7 +888,7 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("жирафа", "wild"));
 		
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("камила", "hangman"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кенгур", "hangman"));
+		//resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кенгур", "hangman"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кокошка", "hangman"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("коњ", "hangman"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("крава", "hangman"));
@@ -897,7 +897,7 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лисица", "hangman"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("мачка", "hangman"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("мечка", "hangman"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("овца", "hangman"));
+		//resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("овца", "hangman"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("слон", "hangman"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("свиња", "hangman"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("тигар", "hangman"));
@@ -913,17 +913,17 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("крава", "sound"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("куче", "sound"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лав", "sound"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лисица", "sound"));
+		//resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("лисица", "sound"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("мачка", "sound"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("мечка", "sound"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("овца", "sound"));
+		//resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("овца", "sound"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("слон", "sound"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("свиња", "sound"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("тигар", "sound"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("верверичка", "sound"));
+		//resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("верверичка", "sound"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("волк", "sound"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зајак", "sound"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зебра", "sound"));
+		//resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зебра", "sound"));
 	}
 	
 	private static void fillNumbersTags() {
