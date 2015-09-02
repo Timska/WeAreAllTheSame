@@ -26,14 +26,16 @@ public class LetterFactory implements SimpleFactoryInterface {
 
 	@Override
 	public int compare(String o1, String o2) {
+		System.out.println("Vo compare: " + o1 + " " + o2);
 		if(o1.equals(o2)){
+			System.out.println("dava deka se isti");
 			return 0;
 		}
 		for(int i=0;i<cyrilicLetters.length;++i){
-			if(o1.equals(cyrilicLetters[i])){
+			if(o1.charAt(0) == cyrilicLetters[i]){
 				return -1;
 			}
-			if(o2.equals(cyrilicLetters[i])){
+			if(o2.charAt(0) == cyrilicLetters[i]){
 				return 1;
 			}
 		}

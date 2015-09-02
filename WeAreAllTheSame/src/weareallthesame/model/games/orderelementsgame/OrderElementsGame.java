@@ -12,6 +12,7 @@ import weareallthesame.factories.simplefactories.SimpleFactoryInterface;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
+import weareallthesame.model.exceptions.WrongAnswerException;
 import weareallthesame.model.games.AbstractGame;
 import weareallthesame.view.games.orderelementsgame.OrderElementsViewInterface;
 
@@ -23,6 +24,7 @@ public class OrderElementsGame extends AbstractGame implements OrderElementsInte
 	private Set<String> elements;
 	private SimpleFactoryInterface factory;
 	private List<String> orderedElements;
+	private List<String> correctList;
 	private boolean gameOver;
 	
 	public OrderElementsGame(Iterator<String> tags, Object view, String question) throws InvalidViewTypeException {
@@ -50,13 +52,35 @@ public class OrderElementsGame extends AbstractGame implements OrderElementsInte
 	
 	private void init(){
 		elements = new HashSet<String>();
+		correctList = new ArrayList<String>();
 		Random random = new Random();
 		int numElements = 0;
-		while(numElements < 5){
-			numElements = random.nextInt(10);
+		while(numElements < 4){
+			numElements = random.nextInt(6) + 1;
 		}
 		while(elements.size() < numElements){
-			elements.add(factory.getDefault());
+			String letter = factory.getDefault();
+			if(!elements.contains(letter)){
+				elements.add(letter);
+				correctList.add(letter);
+			}
+			
+		}
+		
+		for(int i=0;i<correctList.size();++i){
+			for(int j=i+1;j<correctList.size();++j){
+				System.out.println("Compare result " + factory.compare(correctList.get(i), correctList.get(j)));
+				if(factory.compare(correctList.get(i), correctList.get(j)) > 0){
+					String temp = correctList.get(i);
+					System.out.println("Compare: " + temp + " " + correctList.get(j));
+					correctList.set(i, correctList.get(j));
+					correctList.set(j, temp);
+				}
+			}
+		}
+		
+		for(int i=0;i<correctList.size();++i){
+			System.out.println("Ordered " + correctList.get(i));
 		}
 		
 		orderedElements = new ArrayList<String>();
@@ -64,6 +88,7 @@ public class OrderElementsGame extends AbstractGame implements OrderElementsInte
 			orderedElements.add("");
 		}
 
+		
 		notifyView();
 	}
 
@@ -89,18 +114,19 @@ public class OrderElementsGame extends AbstractGame implements OrderElementsInte
 	}
 	
 	@Override
-	public void setOnPosition(String element, int position) throws CommandException, GameOverException {
+	public void setOnPosition(String element, int position) throws CommandException, GameOverException, WrongAnswerException {
 		if(gameOver){
 			throw new GameOverException("Igrata e zavrsena");
-		}
-		if(position >= elements.size()){
-			throw new CommandException(String.format("Maksimalnata pozicija na koja moze da se postavi element e %d", elements.size()));
 		}
 		if(!elements.contains(element)){
 			throw new CommandException(String.format("Elementot sto sakate da go postavite na pozicija %d ne e vo ponudenite", position));
 		}
 		if(!orderedElements.get(position).equals("")){
 			throw new CommandException(String.format("Na pozicijata %d veke e namesten drug element", position));
+		}
+		System.out.println("Bukvi: " + orderedElements.get(position) + " " + element);
+		if(!correctList.get(position).equals(element)){
+			throw new WrongAnswerException();
 		}
 		
 		elements.remove(element);

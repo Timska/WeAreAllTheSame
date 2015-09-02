@@ -3,6 +3,7 @@ package weareallthesame.model.games.orderelementsgame;
 import weareallthesame.model.commands.AbstractCommand;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.exceptions.WrongAnswerException;
 
 public class SetElementOnPositionCommand extends AbstractCommand {
 
@@ -24,7 +25,7 @@ public class SetElementOnPositionCommand extends AbstractCommand {
 	}
 
 	@Override
-	public void executeNow() throws GameOverException, CommandException {
+	public void executeNow() throws GameOverException, CommandException, WrongAnswerException {
 		game.setOnPosition(element, position);
 	}
 
