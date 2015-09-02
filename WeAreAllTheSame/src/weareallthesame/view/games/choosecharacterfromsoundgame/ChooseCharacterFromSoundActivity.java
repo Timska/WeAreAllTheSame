@@ -13,7 +13,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.GradientDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
@@ -105,7 +104,11 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 	}
 
 	public void playButtonOnClick(View v) {
-		mMediaPlayer.start();
+		if (mMediaPlayer.isPlaying()) {
+			mMediaPlayer.stop();
+		} else {
+			mMediaPlayer.start();
+		}
 		playButton.startAnimation(animation);
 	}
 
