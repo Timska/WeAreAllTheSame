@@ -45,6 +45,18 @@ public class HowManyObjectsActivity extends Activity implements
 		openGame();
 
 	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		this.answerContainer = null;
+		this.answers = null;
+		this.container = null;
+		this.displayMetrics = null;
+		this.linLayout = null;
+		this.tf = null;
+	}
 
 	private void getMetrics() {
 		displayMetrics = new DisplayMetrics();
