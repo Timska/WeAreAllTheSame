@@ -36,9 +36,9 @@ import android.widget.Toast;
 public class ClassifyTheElementsActivity extends Activity implements
 		ClassifyItemsViewInterface {
 
-	private final static int COLORGROUPONE = Color.rgb(247, 129, 129);
-	private final static int COLORGROUPTWO = Color.rgb(129, 185, 248);
-	private final static int COLOROFFEREDELEMENTS = Color.rgb(244, 236, 95);
+	private final static int COLORGROUPONE =Color.rgb(181, 64, 28);
+	private final static int COLORGROUPTWO = Color.rgb(29, 135, 159);
+	private final static int COLOROFFEREDELEMENTS =  Color.rgb(21, 128, 50);
 	private ArrayList<Item> answers;
 	private ArrayList<String> elements;
 	private ArrayList<String> elementsGroupOne;
@@ -180,7 +180,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 		longestAnswer = "";
 		Iterator<Item> itemsOneIterator = groupOneItems.iterator();
 		elementsGroupOne=new ArrayList<String>();
-		while (it.hasNext()) {
+		while (itemsOneIterator.hasNext()) {
 
 			String text = itemsOneIterator.next().getName();
 			System.out.println(text);
@@ -197,7 +197,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 		Iterator<Item> itemsTwoIterator = groupTwoItems.iterator();
 		elementsGroupTwo=new ArrayList<String>();
-		while (it.hasNext()) {
+		while (itemsTwoIterator.hasNext()) {
 			String text = itemsTwoIterator.next().getName();
 			elementsGroupTwo.add(text);
 			elements.add(text);
