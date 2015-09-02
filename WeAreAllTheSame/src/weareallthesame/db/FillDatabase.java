@@ -1580,10 +1580,10 @@ public class FillDatabase {
 		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(38, "Кој месец е пред јуни?", "Мај"));
 		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(39, "Кој месец е пред јули?", "Јуни"));
 		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(40, "Кој месец е пред август?", "Јули"));
-		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(41, "Кој месец е пред септември?", "Септември"));
-		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(42, "Кој месец е пред октомври?", "Октомври"));
-		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(43, "Кој месец е пред ноември?", "Ноември"));
-		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(44, "Кој месец е пред декември?", "Декември"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(41, "Кој месец е пред септември?", "Август"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(42, "Кој месец е пред октомври?", "Септември"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(43, "Кој месец е пред ноември?", "Октомври"));
+		resolver.insert(QuestionContentProvider.CONTENT_URI, toQuestionContentValues(44, "Кој месец е пред декември?", "Ноември"));
 				
 		
 	}

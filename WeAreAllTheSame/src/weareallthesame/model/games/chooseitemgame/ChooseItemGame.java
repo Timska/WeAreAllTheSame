@@ -36,6 +36,7 @@ public class ChooseItemGame extends AbstractGame implements ChooseItemInterface{
 	}
 	
 	private void setAnswer(){
+		System.out.println(this.getTags().next());
 		answer = ItemFactory.getItem(this.getTags(), 1).next();
 		view.setAnswer(answer);
 	}
