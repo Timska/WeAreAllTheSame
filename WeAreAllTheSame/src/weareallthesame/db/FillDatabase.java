@@ -45,7 +45,7 @@ public class FillDatabase {
 		fillEmotionsResources();
 		fillPrepositionsResources();
 		fillShapesResources();
-		fillObjectsResources();
+		fillObjectsAndColorsResources();
 	}
 	
 	private static void fillFruitsAndVegetablesResources() {
@@ -335,7 +335,7 @@ public class FillDatabase {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(257, "topka", "picture"));
 	}
 	
-	private static void fillObjectsResources() {
+	private static void fillObjectsAndColorsResources() {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(258, "bed", "picture"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(259, "curtains", "picture"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(260, "drawers", "picture"));
@@ -345,6 +345,20 @@ public class FillDatabase {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(264, "shells", "picture"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(265, "table", "picture"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(266, "wardrobe", "picture"));
+	
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(267, "red", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(268, "green", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(269, "blue", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(270, "black", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(271, "white", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(272, "yellow", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(273, "pink", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(274, "purple", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(275, "orange", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(276, "brown", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(277, "grey", "picture"));
+		
+		
 	}
 	
 	private static ContentValues toResourceContentValues(int id, String name, String type) {
@@ -366,7 +380,7 @@ public class FillDatabase {
 		fillYear();
 		fillPrepositions();
 		fillShapes();
-		fillObjects();
+		fillObjectsAndColors();
 	}
 	
 	private static void fillFruitsAndVegetables() {
@@ -659,7 +673,7 @@ public class FillDatabase {
 	}
 	
 	private static void fillPrepositions() {
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("позади", 238));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зад", 238));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("во", 239));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("пред", 240));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("до", 241));
@@ -684,7 +698,7 @@ public class FillDatabase {
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("топка", 257));
 	}
 	
-	private static void fillObjects() {
+	private static void fillObjectsAndColors() {
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кревет", 258));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("завеси", 259));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("фиоки", 260));
@@ -694,6 +708,19 @@ public class FillDatabase {
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("полици", 264));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("маса", 265));
 		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("шкаф", 266));
+		
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("црвена", 267));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("зелена", 268));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("сина", 269));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("црна", 270));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("бела", 271));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("жолта", 272));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("розева", 273));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("виолетова", 274));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("портокалова", 275));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("кафеава", 276));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemContentValues("сива", 277));
+		
 	}
 	
 	private static ContentValues toItemContentValues(String itemName, int resourceID) {
@@ -714,7 +741,7 @@ public class FillDatabase {
 		fillYearTags();
 		fillPrepositionsTags();
 		fillShapesTags();
-		fillObjectsTags();
+		fillObjectsAndColorsTags();
 	}
 	
 	private static void fillFruitsAndVegetablesTags() {
@@ -1348,7 +1375,7 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("топка", "3d"));
 	}
 	
-	private static void fillObjectsTags() {		
+	private static void fillObjectsAndColorsTags() {		
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кревет", "colorsAndObjects"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("завеси", "colorsAndObjects"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("фиоки", "colorsAndObjects"));
@@ -1388,6 +1415,31 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("полици", "set"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("маса", "set"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("шкаф", "set"));
+		
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("црвена", "colors"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("зелена", "colors"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("сина", "colors"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("црна", "colors"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("бела", "colors"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("жолта", "colors"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("розева", "colors"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("виолетова", "colors"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("портокалова", "colors"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("кафеава", "colors"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("сива", "colors"));
+
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("црвена", "colorsAndObjects"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("зелена", "colorsAndObjects"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("сина", "colorsAndObjects"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("црна", "colorsAndObjects"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("бела", "colorsAndObjects"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("жолта", "colorsAndObjects"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("розева", "colorsAndObjects"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("виолетова", "colorsAndObjects"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("портокалова", "colorsAndObjects"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("кафеава", "colorsAndObjects"));
+		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("сива", "colorsAndObjects"));
+		
 	}
 	
 	private static ContentValues toItemTagsContentValues(String itemName, String tag) {
