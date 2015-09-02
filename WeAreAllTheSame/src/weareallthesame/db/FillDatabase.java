@@ -1452,7 +1452,7 @@ public class FillDatabase {
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Letters", "ChooseStringFromSound", "letters_chooseLetter"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Letters", "HangmanEasy", "letters_fillLetters"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Letters", "Hangman", "letters_orderWord"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Letters", "HangmanStandard", "letters_hangman"));
+		// resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Letters", "HangmanStandard", "letters_hangman"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Letters", "OrderElements", "letters_orderLetters"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseItem", "shapes_choosePicture"));
