@@ -31,12 +31,13 @@ public class HowManyObjectsView extends View {
 	private Rect bounds;
 	private Paint paint = new Paint();
 	private int id;
+	private Bitmap bitmap;
 
 	public HowManyObjectsView(Context context, int howMany, int width,
 			int height, int id) {
 		super(context);
 		// TODO Auto-generated constructor stub
-		bitmaps = new ArrayList<Bitmap>();
+		//bitmaps = new ArrayList<Bitmap>();
 		boundsBitmaps = new ArrayList<Rect>();
 		this.vHeight = height;
 		this.vWidth = width - PICTURESIZE;
@@ -50,7 +51,7 @@ public class HowManyObjectsView extends View {
 	public HowManyObjectsView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
-		bitmaps = new ArrayList<Bitmap>();
+		//bitmaps = new ArrayList<Bitmap>();
 		boundsBitmaps = new ArrayList<Rect>();
 
 		addScaledBitmaps();
@@ -67,9 +68,9 @@ public class HowManyObjectsView extends View {
 		// canvas.onDraw(canvas);
 		// canvas.drawColor(0, Mode.CLEAR);
 		// canvas.drawColor(color.holo_red_light);
-		for (int i = 0; i < bitmaps.size(); ++i) {
+		for (int i = 0; i < howMany; ++i) {
 			bounds = boundsBitmaps.get(i);
-			canvas.drawBitmap(bitmaps.get(i), bounds.left, bounds.top, paint);
+			canvas.drawBitmap(bitmap, bounds.left, bounds.top, paint);
 		}
 
 	}
@@ -99,7 +100,7 @@ public class HowManyObjectsView extends View {
 	private void addBitmaps() {
 
 		int i = 0;
-		while (boundsBitmaps.size() < bitmaps.size()) {
+		while (boundsBitmaps.size() < howMany) {
 
 			int x = r.nextInt(vWidth - PICTURESIZE);
 			int y = r.nextInt(vHeight - PICTURESIZE);
@@ -119,13 +120,13 @@ public class HowManyObjectsView extends View {
 	private void addScaledBitmaps() {
 
 		int n = howMany;
-		Bitmap b = Bitmap.createScaledBitmap(
+		bitmap = Bitmap.createScaledBitmap(
 				BitmapFactory.decodeResource(getResources(), id), 100, 100,
 				true);
 
-		for (int i = 0; i < n; ++i) {
+		/*for (int i = 0; i < n; ++i) {
 			bitmaps.add(b);
-		}
+		}*/
 
 	}
 

@@ -21,6 +21,12 @@ public class GameOverChoiceActivity extends Activity {
 		init();
 	}
 	
+	@Override
+	protected void onDestroy() {
+		btnGoBack = null;
+		btnNewGame = null;
+	};
+	
 	public void init(){
 		btnNewGame = (Button) findViewById(R.id.new_game_button);
 		btnNewGame.setOnClickListener(new View.OnClickListener() {
