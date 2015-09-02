@@ -177,8 +177,8 @@ public class ClassifyTheElementsActivity extends Activity implements
 		}
 		System.out.println(groupTwoItems.size() + "Size grupa 2");
 		System.out.println(groupOneItems.size() + "Size grupa 1");
-		groupOneDescription.setText(nameGroupOne);
-		groupTwoDescription.setText(nameGroupTwo);
+		groupOneDescription.setText(this.getResources().getString(this.getResources().getIdentifier(nameGroupOne, "string", this.getPackageName())));
+		groupTwoDescription.setText(this.getResources().getString(this.getResources().getIdentifier(nameGroupTwo, "string", this.getPackageName())));
 
 		// System.out.println(elements.size());
 

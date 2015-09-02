@@ -47,10 +47,15 @@
     <string name="new_game">Нова игра</string>
     <string name="go_back">Врати се назад</string>
     <string name="drop_place_description">Стави го одговорот овде.</string>
-    <string name="domestic">Домашни</string>
-    <string name="wild">Диви</string>
     <string name="find_word_from_picture_prepositions">ГЛУВЧЕТО Е ____________ КУТИЈАТА. </string>
-
+	<string name="domestic">Домашни</string>
+    <string name="wild">Диви</string>
+    <string name="even">Парни</string>
+	<string name="odd">Непарни</string>
+	<string name="vegetables">Зеленчук</string>
+	<string name="fruits">Овошје</string>
+	
+    
     <!-- Game names -->
     <string name="letters_chooseLetter">Избери буква</string>
     <string name="letters_fillLetters">Дополни букви</string>
