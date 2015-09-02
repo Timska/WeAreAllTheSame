@@ -219,7 +219,7 @@ public class AdditionAndSubstractionSetsActivity extends Activity implements
 				this.getPackageName());
 
 		Bitmap b = Bitmap.createScaledBitmap(
-				BitmapFactory.decodeResource(getResources(), id), 100, 100,
+				BitmapFactory.decodeResource(getResources(), id), 140, 140,
 				true);
 
 		DrawSetsView view = new DrawSetsView(this, numberOne, width, height / 4, b);

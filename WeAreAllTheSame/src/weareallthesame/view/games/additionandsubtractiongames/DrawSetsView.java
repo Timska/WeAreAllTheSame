@@ -23,7 +23,7 @@ import android.view.View;
 public class DrawSetsView extends View {
 
 	private static final long serialVersionUID = 8469603708744698511L;
-	private static final int PICTURESIZE = 120;
+	private static final int PICTURESIZE = 150;
 	private ArrayList<Bitmap> bitmaps;
 	private ArrayList<Rect> boundsBitmaps;
 	private Random r = new Random();
