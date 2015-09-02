@@ -49,7 +49,7 @@ public class ChooseItemImageViewAdapter extends BaseAdapter {
 			imageView.setLayoutParams(new GridView.LayoutParams(
 					LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 			imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-			imageView.setPadding(30, 30, 30, 30);
+			//imageView.setPadding(30, 30, 30, 30);
 
 		} else {
 			imageView = (ImageView) convertView;
