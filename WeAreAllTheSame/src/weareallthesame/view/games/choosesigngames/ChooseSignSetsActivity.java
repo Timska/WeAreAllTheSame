@@ -60,6 +60,13 @@ public class ChooseSignSetsActivity extends Activity implements
 		initializeViews();
 		openGame();
 	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		
+	}
 
 	private void getMetrics() {
 
