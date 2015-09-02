@@ -49,13 +49,13 @@ public class ItemFactory {
 			int numberOfItems) {
 		// TODO ke treba da se implementira citanje od baza na itemi za dadenite
 		// tagovi i da se vrati tocno numberOfItems itemi
-
 		Cursor cursor = resolver.query(ItemTagsContentProvider.CONTENT_URI,
 				new String[] { ItemTagsOpenHelper.COLUMN_NAME },
 				ItemTagsOpenHelper.COLUMN_TAG + "=" + "'" + tags.next() + "'",
 				null, null);
 
 		Set<String> itemsSet = getItemNamesFromCursor(cursor);
+
 		cursor.close();
 
 		while (tags.hasNext()) {
@@ -70,7 +70,7 @@ public class ItemFactory {
 
 		List<String> items = new ArrayList<String>(itemsSet);
 		Collections.shuffle(items);
-
+		
 		int size = items.size();
 		for (int i = size - 1; i >= 0; i--) {
 			if (items.size() <= numberOfItems) {
@@ -78,7 +78,7 @@ public class ItemFactory {
 			}
 			items.remove(i);
 		}
-
+		
 		List<Item> result = new ArrayList<Item>();
 		for (String str : items) {
 			cursor = resolver.query(ItemContentProvider.CONTENT_URI,

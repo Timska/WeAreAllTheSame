@@ -1416,30 +1416,29 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("маса", "set"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("шкаф", "set"));
 		
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("црвена", "colors"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("зелена", "colors"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("сина", "colors"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("црна", "colors"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("бела", "colors"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("жолта", "colors"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("розева", "colors"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("виолетова", "colors"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("портокалова", "colors"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("кафеава", "colors"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("сива", "colors"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("црвена", "colors"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зелена", "colors"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("сина", "colors"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("црна", "colors"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("бела", "colors"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("жолта", "colors"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("розева", "colors"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("виолетова", "colors"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("портокалова", "colors"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кафеава", "colors"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("сива", "colors"));
 
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("црвена", "colorsAndObjects"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("зелена", "colorsAndObjects"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("сина", "colorsAndObjects"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("црна", "colorsAndObjects"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("бела", "colorsAndObjects"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("жолта", "colorsAndObjects"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("розева", "colorsAndObjects"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("виолетова", "colorsAndObjects"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("портокалова", "colorsAndObjects"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("кафеава", "colorsAndObjects"));
-		resolver.insert(ItemContentProvider.CONTENT_URI, toItemTagsContentValues("сива", "colorsAndObjects"));
-		
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("црвена", "colorsAndObjects"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зелена", "colorsAndObjects"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("сина", "colorsAndObjects"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("црна", "colorsAndObjects"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("бела", "colorsAndObjects"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("жолта", "colorsAndObjects"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("розева", "colorsAndObjects"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("виолетова", "colorsAndObjects"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("портокалова", "colorsAndObjects"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("кафеава", "colorsAndObjects"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("сива", "colorsAndObjects"));	
 	}
 	
 	private static ContentValues toItemTagsContentValues(String itemName, String tag) {
