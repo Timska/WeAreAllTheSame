@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -66,7 +67,16 @@ public class FindThePictureFromTheSoundActivity extends Activity implements
 						correctAnswer.getResourceNames().get("sound"), "raw",
 						this.getPackageName()));
 		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-		mMediaPlayer.start();
+		mMediaPlayer.setOnPreparedListener(new OnPreparedListener() {
+			
+			@Override
+			public void onPrepared(MediaPlayer mp) {
+				// TODO Auto-generated method stub
+				mp.start();
+			}
+			
+		});
+		
 	}
 
 	private void initializeViews() {
@@ -150,6 +160,7 @@ public class FindThePictureFromTheSoundActivity extends Activity implements
 
 	@Override
 	public void gameOver() {
+		mMediaPlayer.release();
 		Intent intent = new Intent(this, GameOverChoiceActivity.class);
 		startActivityForResult(intent, 0);
 	}

@@ -16,6 +16,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -92,7 +93,15 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 						correctAnswer.getResourceNames().get("sound"), "raw",
 						this.getPackageName()));
 		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-		mMediaPlayer.start();
+		mMediaPlayer.setOnPreparedListener(new OnPreparedListener() {
+
+			@Override
+			public void onPrepared(MediaPlayer mp) {
+				// TODO Auto-generated method stub
+				mp.start();
+			}
+
+		});
 	}
 
 	public void playButtonOnClick(View v) {
@@ -174,7 +183,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	@Override
 	public void wrongAnswer() {
-		mMediaPlayer.start();
+		//mMediaPlayer.start();
 		Toast.makeText(getApplicationContext(), "Неточен одговор",
 				Toast.LENGTH_SHORT).show();
 	}
