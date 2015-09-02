@@ -10,6 +10,7 @@ import weareallthesame.factories.ItemFactory;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
 import weareallthesame.model.exceptions.InvalidViewTypeException;
+import weareallthesame.model.exceptions.WrongAnswerException;
 import weareallthesame.model.games.AbstractGame;
 import weareallthesame.model.items.Item;
 import weareallthesame.view.games.connectitemsgames.ConnectItemAndResursViewInterface;
@@ -70,12 +71,15 @@ public class ConnectItemAndResursGame extends AbstractGame implements ConnectIte
 	}
 
 	@Override
-	public void addConnection(int positionOne, int positionTwo) throws GameOverException, CommandException {
+	public void addConnection(int positionOne, int positionTwo) throws GameOverException, CommandException, WrongAnswerException {
 		if(gameOver){
 			throw new GameOverException("Igrata e zavrsena");
 		}
 		if(positionOne >= connectionsFrom.length || positionTwo >= connectionsFrom.length){
 			throw new CommandException("Poziciite treba da se pomali od " + connectionsFrom.length);
+		}
+		if(!items.get(positionOne).getName().equals(strings.get(positionTwo))){
+			throw new WrongAnswerException();
 		}
 		if(connectionsFrom[positionOne] != -1){
 			connectionsTo[connectionsFrom[positionOne]] = -1;

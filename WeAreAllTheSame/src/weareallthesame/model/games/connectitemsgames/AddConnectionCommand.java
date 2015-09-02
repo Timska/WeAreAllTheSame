@@ -3,6 +3,7 @@ package weareallthesame.model.games.connectitemsgames;
 import weareallthesame.model.commands.AbstractCommand;
 import weareallthesame.model.exceptions.CommandException;
 import weareallthesame.model.exceptions.GameOverException;
+import weareallthesame.model.exceptions.WrongAnswerException;
 
 public class AddConnectionCommand extends AbstractCommand {
 
@@ -23,7 +24,7 @@ public class AddConnectionCommand extends AbstractCommand {
 	}
 
 	@Override
-	public void executeNow() throws GameOverException, CommandException {
+	public void executeNow() throws GameOverException, CommandException, WrongAnswerException {
 		game.addConnection(positionOne, positionTwo);
 	}
 
