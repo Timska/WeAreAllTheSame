@@ -71,7 +71,7 @@ public class FindThePictureFromTheWordActivity extends Activity implements
 		gd.setStroke(2, Color.BLACK, 5, 5);
 		txtWord.setHeight(height/10);
 		txtWord.setBackground(gd);
-		txtWord.setTextSize(30);
+		txtWord.setTextSize(15);
 		
 	}
 
@@ -106,7 +106,7 @@ public class FindThePictureFromTheWordActivity extends Activity implements
 			String text="Глувчето е "+correctAnswer.getName()+" кутијата";
 			txtWord.setText(text);
 			txtWord.setTextSize(15);
-			
+			txtWord.setHeight(height / 10);
 		}
 		else
 		txtWord.setText(correctAnswer.getName());

@@ -1305,7 +1305,7 @@ public class FillDatabase {
 	}
 	
 	private static void fillPrepositionsTags() {
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("позади", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зад", "prepositions"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("во", "prepositions"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пред", "prepositions"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("до", "prepositions"));
@@ -1464,16 +1464,16 @@ public class FillDatabase {
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseStringFromSound", "numbers_chooseNumber"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "HowMany", "numbers_countObjects"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseSignBetweenNumbers", "numbers_findSign"));
+		// resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseSignBetweenNumbers", "numbers_findSign"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseSignBetweenSets", "numbers_sets"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionNumbers", "numbers_addNumbers"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionSets", "numbers_addSets"));
+		// resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionSets", "numbers_addSets"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionNumbers", "numbers_substractNumbers"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionSets", "numbers_substractSets"));
+		// resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionSets", "numbers_substractSets"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "OrderElements", "numbers_orderNumbers"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ClassifyItems", "numbers_classify"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseOperatorBetweenNumbers", "numbers_chooseOperator"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseOperatorBetweenSets", "numbers_chooseOperatorSets"));
+		// resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseOperatorBetweenSets", "numbers_chooseOperatorSets"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_chooseAnimal"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_choosePicture"));
@@ -1508,7 +1508,7 @@ public class FillDatabase {
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_choosePreposition"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_choosePicture"));
-		//resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ConnectItemAndResurs", "prepositions_connect"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ConnectItemAndResurs", "prepositions_connect"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromWord"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromPicture"));
