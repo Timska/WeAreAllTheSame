@@ -59,6 +59,7 @@ public class OrderElementsTextViewAdapter extends BaseAdapter {
 		String text = answers.get(position);
 		textView.setTypeface(tf);
 		textView.setTextSize(30);
+		textView.setTag(text);
 		textView.setTextColor(textColor);
 		textView.setGravity(Gravity.CENTER);
 		textView.setText(text);
