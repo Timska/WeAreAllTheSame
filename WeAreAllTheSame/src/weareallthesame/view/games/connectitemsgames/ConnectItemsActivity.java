@@ -212,6 +212,7 @@ public class ConnectItemsActivity extends Activity implements
 						appInterface.executeCommand("AddConnection",
 								from, to);
 					} catch (Exception e) {
+						listWords.get(to).setBackground(getGradientDrawable(COLOR, true));
 						
 						e.printStackTrace();
 					}
