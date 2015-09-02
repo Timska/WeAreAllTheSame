@@ -28,6 +28,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemLongClickListener;
 
 public class HangmanGameActivity extends Activity implements
@@ -320,6 +321,8 @@ public class HangmanGameActivity extends Activity implements
 
 				} catch (Exception e) {
 					draggedTextView.setVisibility(View.VISIBLE);
+					Toast.makeText(getApplicationContext(), "Неточен одговор",
+							Toast.LENGTH_SHORT).show();
 					e.printStackTrace();
 					return false;
 					// }
