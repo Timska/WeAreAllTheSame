@@ -17,10 +17,11 @@ public class HangmanEasyGame extends HangmanGame{
 	private void addHelp(){
 		String correctAnswer = this.getCorrectAnswer();
 		Random random = new Random();
-		for(int i=0;i<correctAnswer.length()/3;++i){
-			int position = random.nextInt(this.getUserAnswer().size());
+		for(int i=0;i<Math.round(correctAnswer.length()/3.0);++i){
+			int position = random.nextInt(correctAnswer.length());
 			this.getUserAnswer().set(position, correctAnswer.charAt(position));
 		}
+		super.getView().setOrUpdateUserAnswer(this.getUserAnswer());
 	}
 	
 	@Override

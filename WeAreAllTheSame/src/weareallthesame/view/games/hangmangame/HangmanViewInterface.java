@@ -23,10 +23,8 @@ public interface HangmanViewInterface extends Serializable {
 	 * Ovoj metod se koristi za inicijalizacija i update na ponudenite bukvi i koi od niv se iskoristeni pri sekoja promena
 	 * na sostojbata na igrata.
 	 * @param allOfferedLetters site ponudeni bukvi megu koi moze da ima i veke iskoristeni
-	 * @param usedLettersFlagged koi bukvi od ponudenite se iskoristeni, indeksite se sovpagaat so onie vo allOfferedLetters
-	 * i so true e oznaceno deka soodvetnata bukva vo allOfferedLetters e iskoristena
 	 */
-	public void setOrUpdateOfferedLettersAndUsedLetters(List<Character> allOfferedLetters, List<Boolean> usedLettersFlagged);
+	public void setOrUpdateOfferedLetters(List<Character> allOfferedLetters);
 	
 	/**
 	 * Ovoj metod se korisi za setiranje ili update na momentalniot odgovor na korisnikot sto ja igra igrata.

@@ -24,7 +24,7 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 	private Item answer;
 	private List<Character> offeredLetters;
 	private List<Character> userAnswer;
-	private List<Boolean> offeredLettersUsed;
+	//private List<Boolean> offeredLettersUsed;
 	private boolean gameOver;
 	private HangmanViewInterface view;
 	
@@ -54,7 +54,6 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 	
 	private void init(){
 		offeredLetters = new ArrayList<Character>();
-		offeredLettersUsed = new ArrayList<Boolean>();
 		for(int i=0;i<numberOfOfferedLetters;++i){
 			if(i < answer.getName().length()){
 				offeredLetters.add(Character.toUpperCase(answer.getName().charAt(i)));
@@ -62,7 +61,6 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 			else{
 				offeredLetters.add(addRandomLetter());
 			}
-			offeredLettersUsed.add(false);
 		}
 		Collections.shuffle(offeredLetters);
 		
@@ -87,7 +85,7 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 	}
 	
 	private void updateView(){
-		view.setOrUpdateOfferedLettersAndUsedLetters(offeredLetters, offeredLettersUsed);
+		view.setOrUpdateOfferedLetters(offeredLetters);
 		view.setOrUpdateUserAnswer(userAnswer);
 	}
 
@@ -95,15 +93,14 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 		if(gameOver){
 			throw new GameOverException("Igrata zavrsi");
 		}
-		if(offeredLettersUsed.get(positionFrom)){
-			throw new CommandException(String.format("Ponudenata bukva %c na pozicija %d veke e iskoristena.",offeredLetters.get(positionFrom), positionFrom));
-		}
-		if(offeredLetters.get(positionFrom).equals(answer.getName().charAt(positionTo))){
+		System.out.println("Bukvi " + offeredLetters.get(positionFrom) + " " + answer.getName().charAt(positionTo));
+		if(!offeredLetters.get(positionFrom).toString().equalsIgnoreCase(String.format("%c", answer.getName().charAt(positionTo)))){
 			throw new WrongAnswerException();
 		}
 		
 		userAnswer.set(positionTo, offeredLetters.get(positionFrom));
-		offeredLettersUsed.set(positionFrom, true);
+		offeredLetters.remove(positionFrom);
+		//offeredLettersUsed.set(positionFrom, true);
 		
 		updateView();
 		
@@ -117,11 +114,8 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 		if(userAnswer.get(positionFrom).equals(Character.valueOf('_'))){
 			throw new CommandException(String.format("Nema postaveno bukva na pozicija %d za da se trgne", positionFrom));
 		}
-		if(!offeredLettersUsed.get(positionTo)){
-			throw new CommandException(String.format("Bukvata %c sto treba da se trgne od odgovorot i da se vrati vo ponudenite na pozicija %d ne e voopsto zemena od ponudenite.", userAnswer.get(positionFrom), positionTo));
-		}
+		
 		userAnswer.set(positionFrom, Character.valueOf('_'));
-		offeredLettersUsed.set(positionTo, false);
 		
 		updateView();
 	}
@@ -135,7 +129,7 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 				wrongAnswer = false;
 			}
 		}
-		if(sb.toString().equals(answer.getName())){
+		if(sb.toString().equalsIgnoreCase(answer.getName())){
 			wrongAnswer = false;
 			gameOver = true;
 			view.gameOver();
@@ -152,6 +146,10 @@ public class HangmanGame extends AbstractGame implements HangmanInterface {
 
 	public List<Character> getUserAnswer() {
 		return userAnswer;
+	}
+
+	public HangmanViewInterface getView() {
+		return view;
 	}
 	
 	

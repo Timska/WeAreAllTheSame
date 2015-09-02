@@ -159,14 +159,14 @@ public class HangmanGameActivity extends Activity implements
 	}
 
 	@Override
-	public void setOrUpdateOfferedLettersAndUsedLetters(
-			List<Character> allOfferedLetters, List<Boolean> usedLettersFlagged) {
+	public void setOrUpdateOfferedLetters(
+			List<Character> allOfferedLetters) {
 		// TODO Auto-generated method stub
 		// ako e true ne ja postavuvaj, ako e false, da
 
 		answerString = new ArrayList<Character>();
 
-		for (int i = 0; i < usedLettersFlagged.size(); ++i) {
+		/*for (int i = 0; i < usedLettersFlagged.size(); ++i) {
 
 			if (!usedLettersFlagged.get(i)) {
 				System.out.println("Pecati");
@@ -174,12 +174,12 @@ public class HangmanGameActivity extends Activity implements
 			//	System.out
 				//		.println(Character.toString(allOfferedLetters.get(i)));
 			}
-		}
+		}*/
 		System.out.println(answerString.size());
 		Typeface tf = Typeface.createFromAsset(getAssets(),
 				"fonts/amerika_.ttf");
 		answersContainer.setAdapter(new HangmanGameTextViewAdapter(this,
-				answerString, tf, COLORANSWERS));
+				(ArrayList<Character>)allOfferedLetters, tf, COLORANSWERS));
 
 		answersContainer.setOnItemLongClickListener(new MyLongClickListener());
 
