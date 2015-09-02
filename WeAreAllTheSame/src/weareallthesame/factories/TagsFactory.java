@@ -153,7 +153,7 @@ public class TagsFactory {
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.colorsandobjects_whatsTheColor))){
 				tags.add("colors");
-				tags.add("tag");
+				//tags.add("tag");
 				return tags;
 			}
 		}
