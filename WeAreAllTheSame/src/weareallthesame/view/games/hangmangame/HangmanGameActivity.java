@@ -41,7 +41,7 @@ public class HangmanGameActivity extends Activity implements
 	private ArrayList<TextView> listSpaces;
 	private TextView txtPicture;
 	private LinearLayout layoutSpaces;
-	private String spaces;
+	private ArrayList<Character> spaces;
 	private DisplayMetrics displayMetrics;
 	private int width, height;
 	private ApplicationInterface appInterface;
@@ -170,8 +170,8 @@ public class HangmanGameActivity extends Activity implements
 			if (!usedLettersFlagged.get(i)) {
 				System.out.println("Pecati");
 				answerString.add(allOfferedLetters.get(i));
-				System.out
-						.println(Character.toString(allOfferedLetters.get(i)));
+			//	System.out
+				//		.println(Character.toString(allOfferedLetters.get(i)));
 			}
 		}
 		System.out.println(answerString.size());
@@ -188,11 +188,11 @@ public class HangmanGameActivity extends Activity implements
 	public void setOrUpdateUserAnswer(List<Character> userAnswer) {
 		// TODO Auto-generated method stub
 		System.out.println("Inside");
-		spaces = "";
+		spaces =new ArrayList<Character>();
 		for (int i = 0; i < userAnswer.size(); ++i) {
-			spaces += userAnswer.get(i);
+			spaces.add(userAnswer.get(i));
 		}
-		System.out.println(spaces);
+		System.out.println(spaces.size());
 		setTextViews(spaces);
 		for (int i = 0; i < listSpaces.size(); ++i) {
 			layoutSpaces.addView(listSpaces.get(i), layoutParamsSpaces);
@@ -212,9 +212,9 @@ public class HangmanGameActivity extends Activity implements
 
 	}
 
-	private void setTextViews(String spaces) {
+	private void setTextViews(ArrayList<Character> spaces) {
 
-		for (int i = 0; i < spaces.length(); ++i) {
+		for (int i = 0; i < spaces.size(); ++i) {
 
 			// TextView txLetter = new TextView(getApplicationContext());
 
@@ -226,7 +226,7 @@ public class HangmanGameActivity extends Activity implements
 			// txLetter.setBackground(gd);
 
 			// txLetter.setText(word.charAt(i) + " ");
-			txS.setText(spaces.charAt(i) + " ");
+			txS.setText(Character.toString(spaces.get(i)));
 
 			// txLetter.setTextAppearance(getApplicationContext(),
 			// android.R.style.TextAppearance_Large);
@@ -304,15 +304,17 @@ public class HangmanGameActivity extends Activity implements
 			case DragEvent.ACTION_DROP:
 				TextView tx = (TextView) receivingLayoutView;
 				positionTo = listSpaces.indexOf(tx);
+				//String text = (String) draggedTextView.getText();
 				try {
-					String text = (String) draggedTextView.getText();
-					tx.setText(text);
-					appInterface.executeCommand("hangmanaddletter",
-							positionFrom, positionTo);
 					System.out.println("positions" + positionFrom + " "
 							+ positionTo);
+					appInterface.executeCommand("hangmanaddletter",
+							positionFrom, positionTo);
+				
 					
+					//tx.setText(text);
 					return true;
+					//return true;
 
 				} catch (Exception e) {
 					draggedTextView.setVisibility(View.VISIBLE);
@@ -320,6 +322,7 @@ public class HangmanGameActivity extends Activity implements
 					return false;
 					// }
 				}
+				
 				// tx.setText(Character.toString(value));
 
 			case DragEvent.ACTION_DRAG_ENDED:

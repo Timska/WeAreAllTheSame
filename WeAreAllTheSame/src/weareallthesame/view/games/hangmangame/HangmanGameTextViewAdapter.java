@@ -65,7 +65,7 @@ public class HangmanGameTextViewAdapter extends BaseAdapter {
 		textView.setTextColor(textColor);
 		// textView.setHeight(height);
 		textView.setGravity(Gravity.CENTER);
-		System.out.println(text);
+		//System.out.println(text);
 		textView.setText(Character.toString(text));
 		return textView;
 	}
