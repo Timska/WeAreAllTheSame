@@ -189,11 +189,13 @@ public class HangmanGameActivity extends Activity implements
 		// TODO Auto-generated method stub
 		System.out.println("Inside");
 		spaces =new ArrayList<Character>();
+		listSpaces=new ArrayList<TextView>();
 		for (int i = 0; i < userAnswer.size(); ++i) {
 			spaces.add(userAnswer.get(i));
 		}
 		System.out.println(spaces.size());
 		setTextViews(spaces);
+		layoutSpaces.removeAllViewsInLayout();
 		for (int i = 0; i < listSpaces.size(); ++i) {
 			layoutSpaces.addView(listSpaces.get(i), layoutParamsSpaces);
 			// layoutLetters.addView(listLetters.get(i), layoutParamsLetters);

@@ -2,7 +2,6 @@ package weareallthesame.view.games.connectitemsgames;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import weareallthesame.model.ApplicationInterface;
 import weareallthesame.model.items.Item;
@@ -18,6 +17,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,6 +39,8 @@ public class ConnectItemsActivity extends Activity implements
 	private int width, height, counts = 0;
 	private ApplicationInterface appInterface;
 	private LinearLayout.LayoutParams layoutParamsSpaces, layoutParams;
+	private int to, from;
+	private Animation animation;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,8 @@ public class ConnectItemsActivity extends Activity implements
 		listImages = new ArrayList<ImageView>();
 		layoutLetters = (LinearLayout) findViewById(R.id.connect_items_layout_letters);
 		layoutImages = (LinearLayout) findViewById(R.id.connect_items_layout_images);
+		animation = AnimationUtils.loadAnimation(this,
+				R.anim.choose_character_from_sound_animation_scaling);
 
 	}
 
@@ -167,16 +172,16 @@ public class ConnectItemsActivity extends Activity implements
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
-			int from = -1, to;
+			
 			ViewGroup draggedImageViewParentLayout = (ViewGroup) v.getParent();
 			if (counts == 0) {
 
 				if (draggedImageViewParentLayout.equals(layoutLetters)) {
 					TextView view = (TextView) v;
-					from = listWords.indexOf(view);
-					// draggedImageViewParentLayout.removeView(view);
-					
-
+					to = listWords.indexOf(view);
+					//draggedImageViewParentLayout.removeView(view);
+					//view.setBackgroundColor(Color.BLUE);
+					view.startAnimation(animation);
 					counts = 1;
 
 				} else {
@@ -190,18 +195,19 @@ public class ConnectItemsActivity extends Activity implements
 
 				if (draggedImageViewParentLayout.equals(layoutImages)) {
 					ImageView view = (ImageView) v;
-					
+					//view.setBackgroundColor(Color.BLUE);
 					counts = 0;
-					to = listImages.indexOf(view);
-
+					from = listImages.indexOf(view);
+					view.startAnimation(animation);
 					try {
-						appInterface.executeCommand("addconnection",
-								items.get(to), items.get(from));
+						System.out.println("indeksi"+to+" "+from);
+						appInterface.executeCommand("AddConnection",
+								from, to);
 					} catch (Exception e) {
 						
-
+						e.printStackTrace();
 					}
-					// draggedImageViewParentLayout.removeView(view);
+					 //draggedImageViewParentLayout.removeView(view);
 					// layoutLetters.removeView(firstItem);
 
 				} else {
@@ -243,6 +249,7 @@ public class ConnectItemsActivity extends Activity implements
 			listImages.get(i).setOnClickListener(new MyTouchListener());
 			layoutLetters.addView(listWords.get(i), layoutParams);
 			layoutImages.addView(listImages.get(i), layoutParamsSpaces);
+		
 
 		}
 
