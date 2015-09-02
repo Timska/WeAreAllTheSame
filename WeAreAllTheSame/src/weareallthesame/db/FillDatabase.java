@@ -1508,7 +1508,7 @@ public class FillDatabase {
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_choosePreposition"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_choosePicture"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ConnectItemAndResurs", "prepositions_connect"));
+		//resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ConnectItemAndResurs", "prepositions_connect"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromWord"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromPicture"));
