@@ -24,7 +24,7 @@ public class DrawSetsView extends View {
 
 	private static final long serialVersionUID = 8469603708744698511L;
 	private static final int PICTURESIZE = 150;
-	private ArrayList<Bitmap> bitmaps;
+	//private ArrayList<Bitmap> bitmaps;
 	private ArrayList<Rect> boundsBitmaps;
 	private Random r = new Random();
 	private int vWidth, vHeight, howMany;
@@ -36,7 +36,7 @@ public class DrawSetsView extends View {
 			Bitmap bitmap) {
 		super(context);
 		// TODO Auto-generated constructor stub
-		bitmaps = new ArrayList<Bitmap>();
+		//bitmaps = new ArrayList<Bitmap>();
 		boundsBitmaps = new ArrayList<Rect>();
 		this.vHeight = height;
 		this.vWidth = width - PICTURESIZE;
@@ -51,7 +51,7 @@ public class DrawSetsView extends View {
 	public DrawSetsView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
-		bitmaps = new ArrayList<Bitmap>();
+		//bitmaps = new ArrayList<Bitmap>();
 		boundsBitmaps = new ArrayList<Rect>();
 
 		addScaledBitmaps();
@@ -68,9 +68,9 @@ public class DrawSetsView extends View {
 		// canvas.onDraw(canvas);
 		// canvas.drawColor(0, Mode.CLEAR);
 		// canvas.drawColor(color.holo_red_light);
-		for (int i = 0; i < bitmaps.size(); ++i) {
+		for (int i = 0; i < howMany; ++i) {
 			bounds = boundsBitmaps.get(i);
-			canvas.drawBitmap(bitmaps.get(i), bounds.left, bounds.top, paint);
+			canvas.drawBitmap(bitmap, bounds.left, bounds.top, paint);
 		}
 
 	}
@@ -100,7 +100,7 @@ public class DrawSetsView extends View {
 	private void addBitmaps() {
 
 		int i = 0;
-		while (boundsBitmaps.size() < bitmaps.size()) {
+		while (boundsBitmaps.size() < howMany) {
 
 			int x = r.nextInt(vWidth - PICTURESIZE);
 			int y = r.nextInt(vHeight - PICTURESIZE);
@@ -121,9 +121,7 @@ public class DrawSetsView extends View {
 
 		int n = howMany;
 
-		for (int i = 0; i < n; ++i) {
-			bitmaps.add(bitmap);
-		}
+		
 
 	}
 
