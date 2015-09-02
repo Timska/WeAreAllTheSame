@@ -173,6 +173,7 @@ public class ChooseSignSetsActivity extends Activity implements
 	@Override
 	public void gameOver() {
 	
+		txtResult.setText(signString);
 		Intent intent = new Intent(this, GameOverChoiceActivity.class);
 		startActivityForResult(intent, 0);
 		/*try {
