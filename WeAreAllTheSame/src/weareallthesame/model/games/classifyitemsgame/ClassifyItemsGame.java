@@ -54,7 +54,7 @@ public class ClassifyItemsGame extends AbstractGame implements ClassifyItemsInte
 		while(tags.hasNext()){
 			String tag = tags.next();
 			Random random = new Random();
-			int numElements = random.nextInt(sum) + 1;
+			int numElements = random.nextInt(Math.max(1, sum)) + 1;
 			sum = sum - numElements;
 			List<String> setTags = new ArrayList<String>();
 			setTags.add(tag);

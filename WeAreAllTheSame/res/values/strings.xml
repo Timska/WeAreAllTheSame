@@ -52,8 +52,10 @@
     <string name="wild">Диви</string>
     <string name="even">Парни</string>
 	<string name="odd">Непарни</string>
-	<string name="vegetables">Зеленчук</string>
-	<string name="fruits">Овошје</string>
+	<string name="vegetable">Зеленчук</string>
+	<string name="fruit">Овошје</string>
+	<string name="day">Денови</string>
+	<string name="month">Месеци</string>
 	
     
     <!-- Game names -->
