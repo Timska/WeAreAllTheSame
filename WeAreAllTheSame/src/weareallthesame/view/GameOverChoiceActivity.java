@@ -23,6 +23,7 @@ public class GameOverChoiceActivity extends Activity {
 	
 	@Override
 	protected void onDestroy() {
+		super.onDestroy();
 		btnGoBack = null;
 		btnNewGame = null;
 	};
