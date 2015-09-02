@@ -15,4 +15,21 @@
         android:layout_height="wrap_content"
         android:text="@string/order_elements_task_description" />
 
+    <LinearLayout
+        android:id="@+id/order_elements_layout"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/find_picture_from_word_answers_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center|bottom"
+        android:numColumns="auto_fit"
+        android:padding="5dp" >
+    </GridView>
+
 </LinearLayout>

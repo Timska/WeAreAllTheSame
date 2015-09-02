@@ -170,7 +170,8 @@ public class ClassifyTheElementsActivity extends Activity implements
 			}
 			
 		}
-
+		System.out.println(groupTwoItems.size()+"Size grupa 2");
+		System.out.println(groupOneItems.size()+"Size grupa 1");
 		groupOneDescription.setText(nameGroupOne);
 		groupTwoDescription.setText(nameGroupTwo);
 
@@ -178,9 +179,11 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 		longestAnswer = "";
 		Iterator<Item> itemsOneIterator = groupOneItems.iterator();
+		elementsGroupOne=new ArrayList<String>();
 		while (it.hasNext()) {
 
 			String text = itemsOneIterator.next().getName();
+			System.out.println(text);
 			elementsGroupOne.add(text);
 			elements.add(text);
 			if (text.length() > longestAnswer.length()) {
@@ -193,15 +196,17 @@ public class ClassifyTheElementsActivity extends Activity implements
 		longestAnswer = "";
 
 		Iterator<Item> itemsTwoIterator = groupTwoItems.iterator();
+		elementsGroupTwo=new ArrayList<String>();
 		while (it.hasNext()) {
 			String text = itemsTwoIterator.next().getName();
-			elementsGroupOne.add(text);
+			elementsGroupTwo.add(text);
 			elements.add(text);
 			if (text.length() > longestAnswer.length()) {
 				longestAnswer = text;
 			}
 
 		}
+		System.out.println(elementsGroupTwo.size()+"Elements two size");
 		containerGroupTwo.setAdapter(new ClassifyItemsTextViewAdapter(this,
 				elementsGroupTwo, tf, 0, 0, COLORGROUPTWO, longestAnswer));
 
