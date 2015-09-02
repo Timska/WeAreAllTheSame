@@ -180,7 +180,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 		longestAnswer = "";
 		Iterator<Item> itemsOneIterator = groupOneItems.iterator();
 		elementsGroupOne=new ArrayList<String>();
-		while (it.hasNext()) {
+		while (itemsOneIterator.hasNext()) {
 
 			String text = itemsOneIterator.next().getName();
 			System.out.println(text);
@@ -197,7 +197,7 @@ public class ClassifyTheElementsActivity extends Activity implements
 
 		Iterator<Item> itemsTwoIterator = groupTwoItems.iterator();
 		elementsGroupTwo=new ArrayList<String>();
-		while (it.hasNext()) {
+		while (itemsTwoIterator.hasNext()) {
 			String text = itemsTwoIterator.next().getName();
 			elementsGroupTwo.add(text);
 			elements.add(text);
