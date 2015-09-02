@@ -239,7 +239,7 @@ public class ConnectItemsActivity extends Activity implements
 		this.strings = (ArrayList<String>) strings;
 		layoutParams = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.MATCH_PARENT, height
-						/ (items.size() + 3));
+						/ (15));
 
 		layoutParams.setMargins(width / 7, 10, width / 7, 0);
 		layoutParams.gravity = Gravity.CENTER;

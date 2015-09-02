@@ -7,15 +7,17 @@ import java.util.List;
 import java.util.Set;
 
 import weareallthesame.model.ApplicationInterface;
+import weareallthesame.view.GameOverChoiceActivity;
 import weareallthesame.view.R;
+import weareallthesame.view.games.hangmangame.HangmanGameTextViewAdapter;
 import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
-import android.nfc.cardemulation.OffHostApduService;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.DragEvent;
@@ -24,12 +26,14 @@ import android.view.View;
 import android.view.View.DragShadowBuilder;
 import android.view.View.OnDragListener;
 import android.view.View.OnLongClickListener;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class OrderElementsActivity extends Activity implements
 		OrderElementsViewInterface {
 
+	private final static int COLOR = Color.rgb(255, 255, 102);
 	private ArrayList<String> answers;
 	private ArrayList<String> ordered;
 	private ArrayList<TextView> txtAnswers;
@@ -37,6 +41,7 @@ public class OrderElementsActivity extends Activity implements
 	private DisplayMetrics displayMetrics;
 	private int width, height;
 	private ApplicationInterface appInterface;
+	private GridView answersContainer;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,7 @@ public class OrderElementsActivity extends Activity implements
 		txtAnswers = new ArrayList<TextView>();
 
 		container = (LinearLayout) findViewById(R.id.order_elements_container);
+		answersContainer = (GridView) findViewById(R.id.order_elements_answers_container);
 
 		openGame();
 		setTextViews();
@@ -221,6 +227,10 @@ public class OrderElementsActivity extends Activity implements
 			String answer = it.next();
 			answers.add(answer);
 		}
+		Typeface tf = Typeface.createFromAsset(getAssets(),
+				"fonts/amerika_.ttf");
+		answersContainer.setAdapter(new  OrderElementsTextViewAdapter(this,
+				answers, tf, COLOR));
 		// Collections.sort(answers);
 	}
 
@@ -244,8 +254,46 @@ public class OrderElementsActivity extends Activity implements
 
 	@Override
 	public void gameOver() {
-		// TODO Auto-generated method stub
-
+		Intent intent = new Intent(this, GameOverChoiceActivity.class);
+		startActivityForResult(intent, 0);
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 0) {
+			if (resultCode == RESULT_OK) {
+				String result = data.getExtras().getString("result");
+				if (result.equals("NEW")) {
+
+					Intent intent = new Intent(this, this.getClass());
+					try {
+						intent.putExtra("gameType",
+								appInterface.getCurrentGameType());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					intent.putStringArrayListExtra("gameTags",
+							appInterface.getCurrentGameTags());
+					intent.putExtra("appInterface", appInterface);
+
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
+					startActivity(intent);
+
+					finish();
+				} else if (result.equals("BACK")) {
+					try {
+						appInterface.exitGame();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					finish();
+				}
+			}
+		}
+	}
 }

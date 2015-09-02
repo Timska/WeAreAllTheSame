@@ -128,6 +128,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 
 	@Override
 	public void gameOver() {
+		mMediaPlayer.release();
 		Intent intent = new Intent(this, GameOverChoiceActivity.class);
 		startActivityForResult(intent, 0);
 	}

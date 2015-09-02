@@ -17,13 +17,13 @@
 
     <LinearLayout
         android:id="@+id/order_elements_layout"
-        android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
     </LinearLayout>
 
     <GridView
-        android:id="@+id/find_picture_from_word_answers_container"
+        android:id="@+id/order_elements_answers_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
