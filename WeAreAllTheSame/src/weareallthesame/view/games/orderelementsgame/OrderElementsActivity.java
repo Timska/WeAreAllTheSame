@@ -77,7 +77,7 @@ public class OrderElementsActivity extends Activity implements
 		answersContainer = (GridView) findViewById(R.id.order_elements_answers_container);
 
 		layoutParams = new LinearLayout.LayoutParams(
-				width/3,
+				width/2,
 				height/15);
 		layoutParams.gravity=Gravity.CENTER;
 		container.setOrientation(LinearLayout.VERTICAL);
@@ -212,6 +212,7 @@ public class OrderElementsActivity extends Activity implements
 			tx.setText("-");
 			tx.setTag(String.format("%d", i));
 			tx.setTextColor(Color.BLACK);
+			
 			tx.setBackground(getGradientDrawable(COLORGREEN));
 			txtAnswers.add(tx);
 			container.addView(tx, layoutParams);
@@ -226,9 +227,9 @@ public class OrderElementsActivity extends Activity implements
 			tx.setHeight(height / (12));
 			tx.setGravity(Gravity.CENTER);
 			tx.setText(answers.get(i));
-			tx.setTextSize(30);
+			tx.setTextSize(20);
 			tx.setTag(String.format("%d", i));
-			tx.setTextColor(COLORBLUE);
+			tx.setTextColor(Color.WHITE);
 			tx.setBackground(getGradientDrawable(COLORGREEN));
 			txtAnswers.add(tx);
 			container.addView(tx, layoutParams);
