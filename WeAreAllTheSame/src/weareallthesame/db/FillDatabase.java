@@ -1458,10 +1458,10 @@ public class FillDatabase {
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseItem", "shapes_choosePicture"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseItem", "shapes_chooseWord"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseSimilarItem", "shapes_similarity"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseSimilarItem", "shapes_looksLike"));
+		//resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseSimilarItem", "shapes_similarity"));
+		//resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ChooseSimilarItem", "shapes_looksLike"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ClassifyItems", "shapes_classifyWords"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ClassifyItems", "shapes_classifyPictures"));
+		//resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Shapes", "ClassifyItems", "shapes_classifyPictures"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseStringFromSound", "numbers_chooseNumber"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "HowMany", "numbers_countObjects"));
@@ -1480,14 +1480,14 @@ public class FillDatabase {
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_choosePicture"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ConnectItemAndResurs", "animals_connectAnimals"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ClassifyItems", "animals_groupWords"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ClassifyItems", "animals_groupPictures"));
+		//resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ClassifyItems", "animals_groupPictures"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_chooseWord"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ChooseItem", "fruitsandvegetables_choosePicture"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ChooseItem", "fruitsandvegetables_chooseWord"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ConnectItemAndResurs", "fruitsandvegetables_connectPictures"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ClassifyItems", "fruitsandvegetables_groupWords"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ClassifyItems", "fruitsandvegetables_groupPictures"));
+		//resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("FruitsAndVegetables", "ClassifyItems", "fruitsandvegetables_groupPictures"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Weather", "ChooseItem", "weather_choosePicture"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Weather", "ChooseItem", "weather_chooseWord"));
@@ -1509,7 +1509,7 @@ public class FillDatabase {
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_choosePreposition"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_choosePicture"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ChooseItem", "prepositions_connect"));
+		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Prepositions", "ConnectItemAndResurs", "prepositions_connect"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromWord"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("ClothesAndBodyParts", "ChooseItem", "clothesandbodyparts_chooseBodyPartFromPicture"));
