@@ -60,6 +60,7 @@ public class QuestionGameTextViewAdapter extends BaseAdapter {
 		textView.setTextSize(18);
 		textView.setTextColor(textColor);
 		textView.setTypeface(tf);
+		textView.setHeight(100);
 		textView.setGravity(Gravity.CENTER);
 		textView.setText(text);
 		return textView;
