@@ -356,7 +356,7 @@ public class FillDatabase {
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(274, "purple", "picture"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(275, "orange", "picture"));
 		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(276, "brown", "picture"));
-		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(277, "grey", "picture"));
+		resolver.insert(ResourceContentProvider.CONTENT_URI, toResourceContentValues(277, "gray", "picture"));
 		
 		
 	}
@@ -1305,7 +1305,7 @@ public class FillDatabase {
 	}
 	
 	private static void fillPrepositionsTags() {
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("позади", "prepositions"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("зад", "prepositions"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("во", "prepositions"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пред", "prepositions"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("до", "prepositions"));
@@ -1359,20 +1359,20 @@ public class FillDatabase {
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пирамида", "set"));
 		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("топка", "set"));
 		
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("елипса", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("круг", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадрат", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("осумаголник", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("петоаголник", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("правоаголник", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("шестоаголник", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("триаголник", "2d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("цилиндар", "3d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("коцка", "3d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("конус", "3d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадар", "3d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пирамида", "3d"));
-		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("топка", "3d"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("елипса", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("круг", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадрат", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("осумаголник", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("петоаголник", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("правоаголник", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("шестоаголник", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("триаголник", "twod"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("цилиндар", "threed"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("коцка", "threed"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("конус", "threed"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("квадар", "threed"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("пирамида", "threed"));
+		resolver.insert(ItemTagsContentProvider.CONTENT_URI, toItemTagsContentValues("топка", "threed"));
 	}
 	
 	private static void fillObjectsAndColorsTags() {		
@@ -1465,15 +1465,15 @@ public class FillDatabase {
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseStringFromSound", "numbers_chooseNumber"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "HowMany", "numbers_countObjects"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseSignBetweenNumbers", "numbers_findSign"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseSignBetweenSets", "numbers_sets"));
+		// resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseSignBetweenSets", "numbers_sets"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionNumbers", "numbers_addNumbers"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionSets", "numbers_addSets"));
+		// resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionSets", "numbers_addSets"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionNumbers", "numbers_substractNumbers"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionSets", "numbers_substractSets"));
+		// resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "AdditionAndSubtractionSets", "numbers_substractSets"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "OrderElements", "numbers_orderNumbers"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ClassifyItems", "numbers_classify"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseOperatorBetweenNumbers", "numbers_chooseOperator"));
-		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseOperatorBetweenSets", "numbers_chooseOperatorSets"));
+		// resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Numbers", "ChooseOperatorBetweenSets", "numbers_chooseOperatorSets"));
 			
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_chooseAnimal"));
 		resolver.insert(GameContentProvider.CONTENT_URI, toGameContentValues("Animals", "ChooseItem", "animals_choosePicture"));

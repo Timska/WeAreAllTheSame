@@ -235,13 +235,13 @@ public class TagsFactory {
 				return tags;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.shapes_classifyPictures))){
-				tags.add("2d");
-				tags.add("3d");
+				tags.add("twod");
+				tags.add("threed");
 				return tags;
 			}
 			if(gameName.equalsIgnoreCase(context.getResources().getString(R.string.shapes_classifyWords))){
-				tags.add("2d");
-				tags.add("3d");
+				tags.add("twod");
+				tags.add("threed");
 				return tags;
 			}
 		}
