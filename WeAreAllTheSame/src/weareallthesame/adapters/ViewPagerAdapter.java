@@ -62,7 +62,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 		txtName = (TextView) itemView.findViewById(R.id.category_name);
 		@SuppressWarnings("deprecation")
 		int screenHeight = ((WindowManager) context.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getHeight();
-		float textSize = (float) (screenHeight / 50.0);
+		float textSize = (float) (screenHeight / 30.0);
 		System.out.println(screenHeight + ", " + textSize);
 		txtName.setTextSize(textSize);
 		txtName.setText(categories.get(position).getName());
