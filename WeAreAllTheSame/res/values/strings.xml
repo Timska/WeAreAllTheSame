@@ -48,19 +48,17 @@
     <string name="go_back">Врати се назад</string>
     <string name="drop_place_description">Стави го одговорот овде.</string>
     <string name="find_word_from_picture_prepositions">ГЛУВЧЕТО Е ____________ КУТИЈАТА. </string>
-	<string name="domestic">Домашни</string>
+    <string name="domestic">Домашни</string>
     <string name="wild">Диви</string>
     <string name="even">Парни</string>
-	<string name="odd">Непарни</string>
-	<string name="vegetable">Зеленчук</string>
-	<string name="fruit">Овошје</string>
-	<string name="day">Денови</string>
-	<string name="month">Месеци</string>
-	<string name="twod">Слики</string>
-	<string name="threed">Форми</string>
-	
-	
-    
+    <string name="odd">Непарни</string>
+    <string name="vegetable">Зеленчук</string>
+    <string name="fruit">Овошје</string>
+    <string name="day">Денови</string>
+    <string name="month">Месеци</string>
+    <string name="twod">Слики</string>
+    <string name="threed">Форми</string>
+
     <!-- Game names -->
     <string name="letters_chooseLetter">Избери буква</string>
     <string name="letters_fillLetters">Дополни букви</string>
@@ -150,5 +148,6 @@
     <string name="title_activity_classify_items_images">ClassifyItemsImagesActivity</string>
     <string name="title_activity_choose_operator_sets">ChooseOperatorSetsActivity</string>
     <string name="title_activity_choose_sign_sets">ChooseSignSetsActivity</string>
+    <string name="title_activity_waats">WAATS</string>
 
 </resources>
