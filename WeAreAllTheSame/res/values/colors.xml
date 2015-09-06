@@ -17,6 +17,7 @@
     <color name="brown">#6D430E</color>
     <color name="gray">#888888</color>
     <color name="greenDeep">#43D23B</color>
-     <color name="blueDeep">#7FB9E5</color>
+    <color name="blueDeep">#7FB9E5</color>
+    <color name="purple">#C400FF</color>
 
 </resources>

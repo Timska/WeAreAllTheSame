@@ -27,7 +27,7 @@ public class FindTheWordFromThePictureActivity extends Activity implements
 
 	private static final long serialVersionUID = -2816647589304154272L;
 
-	public static final int COLORTEXTVIEWS = Color.rgb(155, 61, 176);
+	public static final int COLORTEXTVIEWS =Color.BLUE;
 	private GridView answersContainer;
 	private DisplayMetrics displayMetrics;
 	private ApplicationInterface appInterface;
