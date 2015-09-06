@@ -35,8 +35,8 @@ public class HangmanGameActivity extends Activity implements
 		HangmanViewInterface {
 
 	private static final long serialVersionUID = 6373187583074782521L;
-	private static final int COLORSPACES = Color.rgb(243, 207, 88);
-	private static final int COLORANSWERS = Color.rgb(88, 243, 129);
+	private static final int COLORSPACES = Color.rgb(255, 151, 46);
+	private static final int COLORANSWERS = Color.rgb(67, 210, 59);
 
 	private ArrayList<TextView> listLetters;
 	private ArrayList<TextView> listSpaces;
