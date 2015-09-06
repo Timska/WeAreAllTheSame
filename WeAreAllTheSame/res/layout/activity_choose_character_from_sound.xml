@@ -15,6 +15,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:text="@string/clickDescription"
+        android:textColor="@color/red"
          />
 
     <Button

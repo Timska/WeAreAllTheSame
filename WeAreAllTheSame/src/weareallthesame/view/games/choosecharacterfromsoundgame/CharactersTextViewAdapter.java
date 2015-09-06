@@ -1,7 +1,9 @@
 package weareallthesame.view.games.choosecharacterfromsoundgame;
 
 import java.util.ArrayList;
+import java.util.Random;
 
+import weareallthesame.view.R;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -10,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
 public class CharactersTextViewAdapter extends BaseAdapter {
 
@@ -19,6 +21,9 @@ public class CharactersTextViewAdapter extends BaseAdapter {
 	private Typeface tf;
 	private ArrayList<String> answers;
 	private int width,height;
+	int count;
+	private Random r=new Random();
+	private int [] colors={R.color.blue,R.color.green,R.color.red,R.color.yellow,R.color.pink};
 
 	public CharactersTextViewAdapter(Context c, ArrayList<String> answers,
 			Typeface tf, int height, int width) {
@@ -28,6 +33,7 @@ public class CharactersTextViewAdapter extends BaseAdapter {
 		this.answers = answers;
 		this.width=width;
 		this.height=height;
+		count=0;
 	}
 
 	public int getCount() {
@@ -58,7 +64,8 @@ public class CharactersTextViewAdapter extends BaseAdapter {
 		textView.setTypeface(tf);
 		textView.setTextSize(30);
 		textView.setGravity(Gravity.CENTER);
-		textView.setTextColor(Color.BLUE);
+		textView.setTextColor(Color.RED);
+		count++;
 		textView.setText(answers.get(position));
 		
 		return textView;
