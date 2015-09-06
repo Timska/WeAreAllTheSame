@@ -35,7 +35,7 @@ public class HangmanGameActivity extends Activity implements
 		HangmanViewInterface {
 
 	private static final long serialVersionUID = 6373187583074782521L;
-	private static final int COLORSPACES = Color.rgb(192, 142, 213);
+	private static final int COLORSPACES = Color.rgb(243, 207, 88);
 	private static final int COLORANSWERS = Color.rgb(88, 243, 129);
 
 	private ArrayList<TextView> listLetters;
@@ -227,10 +227,10 @@ public class HangmanGameActivity extends Activity implements
 			// GradientDrawable gd=getGradientDrawable();
 			// gd.setShape(GradientDrawable.OVAL);
 			// txLetter.setBackground(gd);
-
+			txS.setTextSize(20);
 			// txLetter.setText(word.charAt(i) + " ");
 			txS.setText(Character.toString(spaces.get(i)));
-
+			txS.setTextColor(COLORANSWERS);
 			// txLetter.setTextAppearance(getApplicationContext(),
 			// android.R.style.TextAppearance_Large);
 			txS.setTag("i");
