@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
-        android:text="@string/choose_operator_numbers_task_description"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/clickDescription"
+     />
 
     <LinearLayout
         android:layout_width="match_parent"

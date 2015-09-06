@@ -100,11 +100,12 @@ public class HowManyObjectsActivity extends Activity implements
 				item.getResourceNames().get("picture"), "drawable",
 				this.getPackageName()));
 		HowManyObjectsView view = new HowManyObjectsView(this, howMany, width,
-				height / 2, getResources().getIdentifier(
-						item.getResourceNames().get("picture"), "drawable",
-						this.getPackageName()));
+				height / 2);
 		linLayout.addView(view);
 
+		// getResources().getIdentifier(
+		//			item.getResourceNames().get("picture"), "drawable",
+		//			this.getPackageName())
 		/*
 		 * int i = 0; ArrayList<Integer> offeredImagesResources = new
 		 * ArrayList<Integer>(); while (i < 5) {

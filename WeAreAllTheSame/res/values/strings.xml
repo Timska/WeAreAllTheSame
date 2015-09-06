@@ -37,6 +37,13 @@
     <string name="choose_character_from_sound_task_description">Избери ја буквата која ја слушаш.</string>
     <string name="order_elements_task_description">Подреди ги елементите.</string>
 
+    <!-- Task descriptions longer -->
+    <string name="clickDescription">Со кликање, означи го точниот одговор. </string>
+    <string name="longTouchOrderingDescription">Подреди ги елементите. Секој елемент се поместува на подолг клик и се носи до соодветната позиција. </string>
+    <string name="longTouchClassifyDescription">Групирај ги елементите. Секој елемент се поместува на подолг клик и се носи до соодветната група. </string>
+    <string name="longTouchHangmanDescription">Најди го зборот. Секоја буква се поместува на подолг клик и се носи до соодветната позиција. </string>
+    <string name="clickConnectDescription">Поврзи ги елементите. Кликнете на еден од зборовите,а потоа на сликата која е соодветна.</string>
+
     <!-- Rest -->
     <string name="description_zoom_touch_close">Expanded image (touch to close)</string>
     <string name="find_picture_from_sound_button_play_text">Преслушај повторно.</string>

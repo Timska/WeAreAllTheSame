@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="@string/order_elements_task_description"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:text="@string/longTouchOrderingDescription"
+    />
 
     <LinearLayout
         android:id="@+id/order_elements_layout"

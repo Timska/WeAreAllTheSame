@@ -34,27 +34,28 @@ public class HowManyObjectsView extends View {
 	private Bitmap bitmap;
 
 	public HowManyObjectsView(Context context, int howMany, int width,
-			int height, int id) {
+			int height) {
 		super(context);
 		// TODO Auto-generated constructor stub
-		//bitmaps = new ArrayList<Bitmap>();
+		// bitmaps = new ArrayList<Bitmap>();
 		boundsBitmaps = new ArrayList<Rect>();
 		this.vHeight = height;
 		this.vWidth = width - PICTURESIZE;
 		this.howMany = howMany;
-		this.id = id;
-		addScaledBitmaps();
+
+		// addScaledBitmaps();
 		addBitmaps();
 		paint.setStyle(Paint.Style.STROKE);
+		paint.setColor(Color.RED);
 	}
 
 	public HowManyObjectsView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
-		//bitmaps = new ArrayList<Bitmap>();
+		// bitmaps = new ArrayList<Bitmap>();
 		boundsBitmaps = new ArrayList<Rect>();
 
-		addScaledBitmaps();
+		// addScaledBitmaps();
 		addBitmaps();
 		paint.setStyle(Paint.Style.STROKE);
 
@@ -70,7 +71,7 @@ public class HowManyObjectsView extends View {
 		// canvas.drawColor(color.holo_red_light);
 		for (int i = 0; i < howMany; ++i) {
 			bounds = boundsBitmaps.get(i);
-			canvas.drawBitmap(bitmap, bounds.left, bounds.top, paint);
+			canvas.drawRect(bounds, paint);
 		}
 
 	}
@@ -124,9 +125,9 @@ public class HowManyObjectsView extends View {
 				BitmapFactory.decodeResource(getResources(), id), 100, 100,
 				true);
 
-		/*for (int i = 0; i < n; ++i) {
-			bitmaps.add(b);
-		}*/
+		/*
+		 * for (int i = 0; i < n; ++i) { bitmaps.add(b); }
+		 */
 
 	}
 

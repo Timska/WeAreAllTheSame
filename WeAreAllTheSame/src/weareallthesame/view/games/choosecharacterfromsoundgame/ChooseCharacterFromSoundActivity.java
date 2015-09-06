@@ -92,15 +92,15 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 						correctAnswer.getResourceNames().get("sound"), "raw",
 						this.getPackageName()));
 		mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-mMediaPlayer.setOnPreparedListener(new OnPreparedListener() {
+		mMediaPlayer.setOnPreparedListener(new OnPreparedListener() {
 
-		@Override
-		public void onPrepared(MediaPlayer mp) {
-			mp.start();
-		}
+			@Override
+			public void onPrepared(MediaPlayer mp) {
+				// TODO Auto-generated method stub
+				mp.start();
+			}
 
 		});
-		//mMediaPlayer.start();
 	}
 
 	public void playButtonOnClick(View v) {

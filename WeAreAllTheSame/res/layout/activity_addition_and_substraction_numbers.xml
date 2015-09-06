@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
-        android:text="@string/addition_and_substraction_task_description"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="@string/clickDescription"
+       />
 
     <TextView
         android:id="@+id/addition_and_substraction_numbers_additioner_one"

@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
-        android:text="@string/choose_character_from_sound_task_description"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="@string/clickDescription"
+         />
 
     <Button
         android:id="@+id/choose_character_from_sound_play_buttons"

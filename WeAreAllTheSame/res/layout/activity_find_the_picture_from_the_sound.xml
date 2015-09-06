@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:text="@string/find_picture_from_sound_task_description" />
+        android:text="@string/clickDescription" />
 
     <Button
         android:id="@+id/find_picture_from_sound_button_play"
