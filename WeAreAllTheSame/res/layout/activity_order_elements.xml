@@ -15,7 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
+        android:textColor="@color/blue"
         android:text="@string/longTouchOrderingDescription"
+        android:layout_marginBottom="10dp"
     />
 
     <LinearLayout

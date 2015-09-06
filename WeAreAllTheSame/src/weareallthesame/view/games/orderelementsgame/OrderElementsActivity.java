@@ -36,8 +36,8 @@ import android.widget.AdapterView.OnItemLongClickListener;
 public class OrderElementsActivity extends Activity implements
 		OrderElementsViewInterface {
 
-	private final static int COLORBLUE = Color.rgb(127, 185, 229);
-	private final static int COLORGREEN = Color.rgb(89, 230, 127);
+	private final static int COLORBLUE = Color.rgb(0,0,255);
+	private final static int COLORGREEN =Color.rgb(237, 237, 70);
 	private ArrayList<String> answers;
 	private ArrayList<String> ordered;
 	private ArrayList<TextView> txtAnswers;
