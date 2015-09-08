@@ -12,12 +12,13 @@
     <color name="green">#00FF00</color>
     <color name="yellow">#FFFF00</color>
     <color name="magenta">#FF00FF</color>
-    <color name="orange">#FF8800</color>
+    <color name="orange">#FF8B06</color>
     <color name="pink">#FF0088</color>
     <color name="brown">#6D430E</color>
     <color name="gray">#888888</color>
     <color name="greenDeep">#43D23B</color>
     <color name="blueDeep">#7FB9E5</color>
     <color name="purple">#C400FF</color>
+    <color name="yellowSoft">#F7E75E</color>
 
 </resources>
