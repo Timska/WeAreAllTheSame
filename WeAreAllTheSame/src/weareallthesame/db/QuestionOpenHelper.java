@@ -8,7 +8,7 @@ public class QuestionOpenHelper extends SQLiteOpenHelper {
 
 	public static final String COLUMN_ID = "_id";
 	public static final String COLUMN_QUESTION = "question";
-	public static final String COLUMN_ANSWER = "name";
+	public static final String COLUMN_ANSWER = "answer";
 
 	public static final String TABLE_NAME = "Questions";
 

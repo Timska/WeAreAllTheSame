@@ -48,8 +48,9 @@
     <string name="description_zoom_touch_close">Expanded image (touch to close)</string>
     <string name="find_picture_from_sound_button_play_text">Преслушај повторно.</string>
     <string name="content_description_image_pager_item">Слика од категорија</string>
-    <string name="cloudPic_desc">Слика со облак</string>
-    <string name="cloud_text">Игра</string>
+    <string name="buttonPic_desc">Жолто копче</string>
+    <string name="game_text">Игра</string>
+    <string name="logoPic_desc">Логото на апликацијата</string>
     <string name="hangman_game_standard_choose_letter">Избери буква.</string>
     <string name="new_game">Нова игра</string>
     <string name="go_back">Врати се назад</string>
