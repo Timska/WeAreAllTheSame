@@ -2,6 +2,9 @@ package weareallthesame.view;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.GradientDrawable.Orientation;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +33,7 @@ public class GameOverChoiceActivity extends Activity {
 	
 	public void init(){
 		btnNewGame = (Button) findViewById(R.id.new_game_button);
+		btnNewGame.setBackground(getGradientDrawable());
 		btnNewGame.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -42,6 +46,7 @@ public class GameOverChoiceActivity extends Activity {
 		});
 		
 		btnGoBack = (Button) this.findViewById(R.id.go_back_button);
+		btnGoBack.setBackground(getGradientDrawable());
 		btnGoBack.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -71,5 +76,17 @@ public class GameOverChoiceActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	private GradientDrawable getGradientDrawable() {
+
+		int [] colors={Color.rgb(245, 137, 14),Color.YELLOW};
+		GradientDrawable gd = new GradientDrawable();
+		gd.setColors(colors);
+		gd.setOrientation(Orientation.LEFT_RIGHT);
+		gd.setCornerRadius(5);
+		gd.setShape(GradientDrawable.RECTANGLE);
+		gd.setStroke(2, Color.BLACK);
+		return gd;
+
 	}
 }
