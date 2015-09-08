@@ -64,7 +64,7 @@ public class CharactersTextViewAdapter extends BaseAdapter {
 		textView.setTypeface(tf);
 		textView.setTextSize(30);
 		textView.setGravity(Gravity.CENTER);
-		textView.setTextColor(Color.RED);
+		textView.setTextColor(Color.BLUE);
 		count++;
 		textView.setText(answers.get(position));
 		

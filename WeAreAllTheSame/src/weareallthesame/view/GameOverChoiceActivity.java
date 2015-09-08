@@ -79,7 +79,7 @@ public class GameOverChoiceActivity extends Activity {
 	}
 	private GradientDrawable getGradientDrawable() {
 
-		int [] colors={Color.rgb(245, 137, 14),Color.YELLOW};
+		int [] colors={Color.YELLOW,Color.WHITE};
 		GradientDrawable gd = new GradientDrawable();
 		gd.setColors(colors);
 		gd.setOrientation(Orientation.LEFT_RIGHT);

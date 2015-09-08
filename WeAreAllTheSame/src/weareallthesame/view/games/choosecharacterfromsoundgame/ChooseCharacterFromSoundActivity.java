@@ -37,7 +37,7 @@ public class ChooseCharacterFromSoundActivity extends Activity implements
 	 *
 	 */
 	private static final long serialVersionUID = -7323382117223325759L;
-	public static final int TEXTVIEWCOLOR = Color.rgb(88, 243, 129);
+	public static final int TEXTVIEWCOLOR = Color.rgb(237, 237, 70);
 	public static final int DROPPLACECOLOR = Color.rgb(107, 205, 237);
 	public static final String CORRECT = "Correct";
 	public static final String WRONG = "Wrong";
